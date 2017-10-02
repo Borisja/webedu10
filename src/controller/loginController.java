@@ -13,6 +13,8 @@ public class loginController {
 		
 	}
 	
+	//Hoi Boris.
+	
 	public gebruikerModel login_assignment(String email, String pw){
 
 		String login_sql = "SELECT * FROM gebruiker WHERE gebruiker_email = ? AND gebruiker_wachtwoord = ?";
