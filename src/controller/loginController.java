@@ -21,7 +21,6 @@ public class loginController {
 	 * @param pw - users password to verify login
 	 * @return a user model if login was successful
 	 */
->>>>>>> nachosbranch
 	public gebruikerModel login_assignment(String email, String pw){
 
 		String login_sql = "SELECT * FROM gebruiker WHERE gebruiker_email = ? AND gebruiker_wachtwoord = ?";
