@@ -12,7 +12,7 @@ public class loginController {
 	public loginController(){
 		
 	}
-	
+	//hoi
 	/**
 	 * Method to assign a user to a empty user model to be used throughout the application.
 	 * @param email - users email to verify login
