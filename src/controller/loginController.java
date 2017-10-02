@@ -1,10 +1,10 @@
-package src.controller;
+package controller;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import src.dao.connectDao;
-import src.model.gebruikerModel;
+import dao.connectDao;
+import model.gebruikerModel;
 
 public class loginController {
 	connectDao connect_db = new connectDao();
