@@ -13,10 +13,8 @@ public class loginController {
 		
 	}
 	
-<<<<<<< HEAD
 	//Hoi Boris.
-	
-=======
+
 	/**
 	 * Method to assign a user to a empty user model to be used throughout the application.
 	 * @param email - users email to verify login
