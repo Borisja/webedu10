@@ -1,10 +1,10 @@
-package controller;
+package src.controller;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import dao.connectDao;
-import model.gebruikerModel;
+import src.dao.connectDao;
+import src.model.gebruikerModel;
 
 public class loginController {
 	connectDao connect_db = new connectDao();
@@ -13,17 +13,12 @@ public class loginController {
 		
 	}
 	
-<<<<<<< HEAD
-	//Hoi Boris.
-	
-=======
 	/**
 	 * Method to assign a user to a empty user model to be used throughout the application.
 	 * @param email - users email to verify login
 	 * @param pw - users password to verify login
 	 * @return a user model if login was successful
 	 */
->>>>>>> nachosbranch
 	public gebruikerModel login_assignment(String email, String pw){
 
 		String login_sql = "SELECT * FROM gebruiker WHERE gebruiker_email = ? AND gebruiker_wachtwoord = ?";
@@ -56,6 +51,12 @@ public class loginController {
 		return null;
 	}
 	
+	/**
+	 * Method to verify login.
+	 * @param email - users email to verify login
+	 * @param pw - users password to verify login
+	 * @return a user model if login was successful
+	 */
 	public void login_request(String email, String pw){
 		gebruikerModel user = this.login_assignment(email, pw);
 		if(user == null){
