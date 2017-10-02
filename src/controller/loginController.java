@@ -12,9 +12,6 @@ public class loginController {
 	public loginController(){
 		
 	}
-	
-	//Hoi Boris.
-
 	/**
 	 * Method to assign a user to a empty user model to be used throughout the application.
 	 * @param email - users email to verify login
@@ -53,6 +50,12 @@ public class loginController {
 		return null;
 	}
 	
+	/**
+	 * Method to verify login.
+	 * @param email - users email to verify login
+	 * @param pw - users password to verify login
+	 * @return a user model if login was successful
+	 */
 	public void login_request(String email, String pw){
 		gebruikerModel user = this.login_assignment(email, pw);
 		if(user == null){
