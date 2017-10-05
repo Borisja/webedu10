@@ -1,6 +1,6 @@
 package view;
 
-import controller.loginController;
+import controller.LoginController;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -10,7 +10,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class LoginView {
-	loginController login_controller = new loginController();
+	LoginController login_controller = new LoginController();
 	public void show_login_view() {
 		Stage login_stage = new Stage();
 		Scene login_scene;

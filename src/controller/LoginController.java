@@ -3,13 +3,9 @@ package controller;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-<<<<<<< HEAD
-import dao.connectDao;
-import model.employeeModel;
-=======
 import dao.ConnectDAO;
-import model.GebruikerModel;
->>>>>>> eadb6b568835a65df15163c46f074c59cdedc141
+import model.EmployeeModel;
+
 
 public class LoginController {
 	ConnectDAO connect_db = new ConnectDAO();
@@ -24,7 +20,7 @@ public class LoginController {
 	 * @param pw - users password to verify login
 	 * @return a user model if login was successful
 	 */
-	public employeeModel login_assignment(String email, String pw){
+	public EmployeeModel login_assignment(String email, String pw){
 
 		String login_sql = "SELECT * "
 				+ "FROM employee, employee_version "
@@ -38,7 +34,7 @@ public class LoginController {
 			ResultSet user_set = login_statement.executeQuery();
 			
 			while(user_set.next()){
-				employeeModel user = new employeeModel(
+				EmployeeModel user = new EmployeeModel(
 						user_set.getInt("employee_id"),
 						user_set.getBoolean("employee_isdeleted"),
 						user_set.getString("employee_version_firstname"),
@@ -63,7 +59,7 @@ public class LoginController {
 	 * @return a user model if login was successful
 	 */
 	public void login_request(String email, String pw){
-		employeeModel user = this.login_assignment(email, pw);
+		EmployeeModel user = this.login_assignment(email, pw);
 		if(user == null){
 			System.out.println("Login failed...E-mail and/or password do not match!");
 		} else {
