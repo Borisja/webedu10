@@ -1,6 +1,6 @@
 package model;
 
-public class employeeModel {
+public class EmployeeModel {
 	private int employeeId;
 	
 	private String employeeFirstName;
@@ -12,7 +12,7 @@ public class employeeModel {
 	
 	private String employeeRole;
 
-	public employeeModel(int id, boolean isdeleted, String firstname, String lastname, String wachtwoord, String email, String role){
+	public EmployeeModel(int id, boolean isdeleted, String firstname, String lastname, String wachtwoord, String email, String role){
 		this.employeeId = id;
 		this.employeeFirstName = firstname;
 		this.employeeLastName = lastname;

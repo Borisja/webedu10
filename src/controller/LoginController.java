@@ -3,13 +3,18 @@ package controller;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+<<<<<<< HEAD
 import dao.connectDao;
 import model.employeeModel;
+=======
+import dao.ConnectDAO;
+import model.GebruikerModel;
+>>>>>>> eadb6b568835a65df15163c46f074c59cdedc141
 
-public class loginController {
-	connectDao connect_db = new connectDao();
+public class LoginController {
+	ConnectDAO connect_db = new ConnectDAO();
 	
-	public loginController(){
+	public LoginController(){
 		
 	}
 	
@@ -40,8 +45,7 @@ public class loginController {
 						user_set.getString("employee_version_lastname"),
 						user_set.getString("employee_version_password"),
 						user_set.getString("employee_version_email"),
-						user_set.getString("employee_version_role")
-						);
+						user_set.getString("employee_version_role"));
 				return user;
 			}
 			login_statement.close();

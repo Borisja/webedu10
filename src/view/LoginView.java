@@ -9,7 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class loginView {
+public class LoginView {
 	loginController login_controller = new loginController();
 	public void show_login_view() {
 		Stage login_stage = new Stage();
