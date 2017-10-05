@@ -3,11 +3,11 @@ package controller;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import dao.connectDao;
-import model.gebruikerModel;
+import dao.ConnectDAO;
+import model.GebruikerModel;
 
 public class loginController {
-	connectDao connect_db = new connectDao();
+	ConnectDAO connect_db = new ConnectDAO();
 	
 	public loginController(){
 		
@@ -19,7 +19,7 @@ public class loginController {
 	 * @param pw - users password to verify login
 	 * @return a user model if login was successful
 	 */
-	public gebruikerModel login_assignment(String email, String pw){
+	public GebruikerModel login_assignment(String email, String pw){
 
 		String login_sql = "SELECT * FROM gebruiker WHERE gebruiker_email = ? AND gebruiker_wachtwoord = ?";
 		PreparedStatement login_statement;
@@ -31,7 +31,7 @@ public class loginController {
 			ResultSet user_set = login_statement.executeQuery();
 			
 			while(user_set.next()){
-				gebruikerModel user = new gebruikerModel(
+				GebruikerModel user = new GebruikerModel(
 						user_set.getInt("gebruiker_id"),
 						user_set.getString("gebruiker_voornaam"),
 						user_set.getString("gebruiker_achternaam"),
@@ -58,7 +58,7 @@ public class loginController {
 	 * @return a user model if login was successful
 	 */
 	public void login_request(String email, String pw){
-		gebruikerModel user = this.login_assignment(email, pw);
+		GebruikerModel user = this.login_assignment(email, pw);
 		if(user == null){
 			System.out.println("Login failed...E-mail and/or password do not match!");
 		} else {

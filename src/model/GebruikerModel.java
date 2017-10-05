@@ -1,6 +1,6 @@
 package model;
 
-public class gebruikerModel {
+public class GebruikerModel {
 	private int gebruikerId;
 	
 	private String gebruikerVoornaam;
@@ -12,7 +12,7 @@ public class gebruikerModel {
 	private int gebruikerSleutel;
 	private int gebruikerRol;
 	
-	public gebruikerModel(int id, String vnaam, String anaam, String wachtwoord, String email, int totaaluren, int sleutel, int rol){
+	public GebruikerModel(int id, String vnaam, String anaam, String wachtwoord, String email, int totaaluren, int sleutel, int rol){
 		this.gebruikerId = id;
 		this.gebruikerVoornaam = vnaam;
 		this.gebruikerAchternaam = anaam;

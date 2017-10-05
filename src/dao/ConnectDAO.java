@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class connectDao {
+public class ConnectDAO {
 	/**
      * Open een connectie met de database.
      * In de URL van .getConnection moet je de correcte database informatie toevoegen.
@@ -19,7 +19,7 @@ public class connectDao {
         	Class.forName("org.postgresql.Driver");
             // Setup the connection with the DB
             connect = DriverManager
-            		.getConnection("jdbc:postgresql://localhost:5432/webeduproject",
+            		.getConnection("jdbc:postgresql://localhost:5432/webedu",
             	            "postgres", "root");
         } catch(SQLException e){
         	
