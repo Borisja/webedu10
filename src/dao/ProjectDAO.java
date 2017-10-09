@@ -10,8 +10,6 @@ public class ProjectDAO {
 	
 	ObservableList<ProjectModel> arrProjecten;
 	
-	
-	
 	public ProjectDAO(){
 		System.out.println("test");
 		ConnectDAO connect = new ConnectDAO();
@@ -43,9 +41,5 @@ public class ProjectDAO {
 		
 	}
 
-	
-		
-	
-	
 	
 }
