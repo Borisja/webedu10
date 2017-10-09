@@ -1,27 +1,15 @@
-package controller;
+package view;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import dao.ConnectDAO;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
-import model.EmployeeModel;
+import model.GebruikerModel;
 
-public class LoginController {
-	/**
-	 * Class to control the login process.
-	 * @author nach7vs
-	 *
-	 */
+public class loginController {
 	ConnectDAO connect_db = new ConnectDAO();
-	@FXML private TextField txtEmail;
-	@FXML private TextField txtWachtwoord;
-	@FXML private Button inlogBtn;
 	
-	public LoginController(){
+	public loginController(){
 		
 	}
 	
@@ -31,11 +19,9 @@ public class LoginController {
 	 * @param pw - users password to verify login
 	 * @return a user model if login was successful
 	 */
-	public EmployeeModel login_assignment(String email, String pw){
+	public GebruikerModel login_assignment(String email, String pw){
 
-		String login_sql = "SELECT * "
-				+ "FROM employee, employee_version "
-				+ "WHERE employee_version_email = ? AND employee_version_password = ?";
+		String login_sql = "SELECT * FROM gebruiker WHERE gebruiker_email = ? AND gebruiker_wachtwoord = ?";
 		PreparedStatement login_statement;
 		
 		try {
@@ -45,14 +31,16 @@ public class LoginController {
 			ResultSet user_set = login_statement.executeQuery();
 			
 			while(user_set.next()){
-				EmployeeModel user = new EmployeeModel(
-						user_set.getInt("employee_id"),
-						user_set.getBoolean("employee_isdeleted"),
-						user_set.getString("employee_version_firstname"),
-						user_set.getString("employee_version_lastname"),
-						user_set.getString("employee_version_password"),
-						user_set.getString("employee_version_email"),
-						user_set.getString("employee_version_role"));
+				GebruikerModel user = new GebruikerModel(
+						user_set.getInt("gebruiker_id"),
+						user_set.getString("gebruiker_voornaam"),
+						user_set.getString("gebruiker_achternaam"),
+						user_set.getString("gebruiker_wachtwoord"),
+						user_set.getString("gebruiker_email"),
+						user_set.getInt("gebruiker_totaalUren"),
+						user_set.getInt("gebruiker_sleutel"),
+						user_set.getInt("gebruiker_rol")
+						);
 				return user;
 			}
 			login_statement.close();
@@ -70,11 +58,11 @@ public class LoginController {
 	 * @return a user model if login was successful
 	 */
 	public void login_request(String email, String pw){
-		EmployeeModel user = this.login_assignment(email, pw);
+		GebruikerModel user = this.login_assignment(email, pw);
 		if(user == null){
 			System.out.println("Login failed...E-mail and/or password do not match!");
 		} else {
-			System.out.println("Login success, assigning user id... " + user.getEmployeeId());
+			System.out.println("Login success, assigning user id... " + user.getGebruikerId());
 		}
 	}
 }
