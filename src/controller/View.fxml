@@ -1,102 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="278.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.LoginView">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DeclareEntryController">
    <children>
-      <StackPane layoutX="300.0" layoutY="14.0" prefHeight="199.0" prefWidth="152.0">
+      <StackPane layoutX="182.0" layoutY="16.0" prefHeight="199.0" prefWidth="152.0">
          <children>
-            <SplitMenuButton mnemonicParsing="false" text="11:00">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-                <MenuItem mnemonicParsing="false" text="Action 2" />
-              </items>
-               <StackPane.margin>
-                  <Insets top="-150.0" />
-               </StackPane.margin>
-            </SplitMenuButton>
-            <SplitMenuButton mnemonicParsing="false" text="11:55">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Action 1" />
-                  <MenuItem mnemonicParsing="false" text="Action 2" />
-               </items>
-               <StackPane.margin>
-                  <Insets top="-80.0" />
-               </StackPane.margin>
-            </SplitMenuButton>
-            <SplitMenuButton mnemonicParsing="false" text="11:55">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Action 1" />
-                  <MenuItem mnemonicParsing="false" text="Action 2" />
-               </items>
+            <ComboBox fx:id="projectComboBox" prefHeight="25.0" prefWidth="81.0" promptText="Project">
                <StackPane.margin>
                   <Insets top="-10.0" />
                </StackPane.margin>
-            </SplitMenuButton>
-            <SplitMenuButton mnemonicParsing="false" text="11:55">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Action 1" />
-                  <MenuItem mnemonicParsing="false" text="Action 2" />
-               </items>
+            </ComboBox>
+            <ComboBox fx:id="endTimeHourComboBox" prefHeight="25.0" prefWidth="61.0" promptText="12">
+               <StackPane.margin>
+                  <Insets top="-80.0" />
+               </StackPane.margin>
+            </ComboBox>
+            <ComboBox fx:id="startTimeHourComboBox" editable="true" prefHeight="25.0" prefWidth="61.0" promptText="11">
+               <StackPane.margin>
+                  <Insets top="-150.0" />
+               </StackPane.margin>
+            </ComboBox>
+            <ComboBox fx:id="startTimeMinuteComboBox" prefHeight="25.0" prefWidth="57.0" promptText="00">
+               <StackPane.margin>
+                  <Insets right="-175.0" top="-150.0" />
+               </StackPane.margin>
+            </ComboBox>
+            <ComboBox fx:id="endTimeMinuteComboBox" prefHeight="25.0" prefWidth="57.0" promptText="55">
+               <StackPane.margin>
+                  <Insets right="-175.0" top="-80.0" />
+               </StackPane.margin>
+            </ComboBox>
+            <ComboBox fx:id="sprintComboBox" prefHeight="25.0" prefWidth="81.0" promptText="Sprint">
                <StackPane.margin>
                   <Insets top="60.0" />
                </StackPane.margin>
-            </SplitMenuButton>
-            <SplitMenuButton mnemonicParsing="false" text="11:55">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Action 1" />
-                  <MenuItem mnemonicParsing="false" text="Action 2" />
-               </items>
+            </ComboBox>
+            <ComboBox fx:id="userStoryComboBox" prefHeight="25.0" prefWidth="108.0" promptText="User Story">
                <StackPane.margin>
                   <Insets top="130.0" />
                </StackPane.margin>
-            </SplitMenuButton>
+            </ComboBox>
          </children>
       </StackPane>
-      <StackPane layoutX="148.0" layoutY="14.0" prefHeight="199.0" prefWidth="152.0">
+      <StackPane layoutX="30.0" layoutY="25.0" prefHeight="199.0" prefWidth="152.0">
          <children>
-            <Label text="Begintijd">
+            <Label fx:id="startTimeLabel" text="Begintijd">
                <StackPane.margin>
-                  <Insets top="-150.0" />
+                  <Insets top="-165.0" />
                </StackPane.margin>
                <effect>
                   <Blend />
                </effect>
             </Label>
-            <Label text="Eindtijd">
+            <Label fx:id="endTimeLabel" text="Eindtijd">
                <StackPane.margin>
-                  <Insets top="-80.0" />
+                  <Insets top="-95.0" />
                </StackPane.margin>
             </Label>
-            <Label text="Project">
+            <Label fx:id="projectLabel" text="Project">
                <StackPane.margin>
-                  <Insets top="-10.0" />
+                  <Insets top="-25.0" />
                </StackPane.margin>
             </Label>
-            <Label text="Sprint" textFill="#0d0000">
+            <Label fx:id="sprintLabel" text="Sprint" textFill="#0d0000">
                <StackPane.margin>
-                  <Insets top="60.0" />
+                  <Insets top="45.0" />
                </StackPane.margin>
             </Label>
-            <Label text="User Story">
+            <Label fx:id="userStoryLabel" text="User Story">
                <StackPane.margin>
-                  <Insets top="130.0" />
+                  <Insets top="115.0" />
                </StackPane.margin>
             </Label>
-            <Label text="Notitie">
+            <Label fx:id="descriptionLabel" text="Beschrijving">
                <StackPane.margin>
-                  <Insets top="200.0" />
+                  <Insets top="185.0" />
                </StackPane.margin>
             </Label>
          </children>
       </StackPane>
-      <TextArea layoutX="340.0" layoutY="202.0" prefHeight="59.0" prefWidth="205.0" />
+      <TextArea fx:id="descriptionTextArea" layoutX="222.0" layoutY="204.0" prefHeight="59.0" prefWidth="205.0" text="Vul hier de beschrijving in &#10;van de activiteit." />
    </children>
+   <padding>
+      <Insets top="-10.0" />
+   </padding>
 </AnchorPane>
