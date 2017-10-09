@@ -1,4 +1,4 @@
-package controller;
+package view;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
