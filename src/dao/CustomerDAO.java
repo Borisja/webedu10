@@ -27,12 +27,12 @@ public class CustomerDAO {
 			customer_statement.setInt(1, c_id);
 			ResultSet customer_set = customer_statement.executeQuery();
 			
+			CustomerModel customer = new CustomerModel();
 			while(customer_set.next()){
-				CustomerModel customer = new CustomerModel(
-						customer_set.getInt("customer_id"),
-						customer_set.getBoolean("customer_isdeleted"),
-						customer_set.getString("customer_version_name"),
-						customer_set.getString("customer_version_description"));
+				customer.setCustomer_id(customer_set.getInt("customer_id"));
+				customer.setCustomer_isdeleted(customer_set.getBoolean("customer_isdeleted"));
+				customer.setCustomer_name(customer_set.getString("customer_version_name"));
+				customer.setCustomer_description(customer_set.getString("customer_version_description"));
 				return customer;
 			}
 			customer_statement.close();

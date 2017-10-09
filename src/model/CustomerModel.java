@@ -5,13 +5,6 @@ public class CustomerModel {
 	private String customer_name;
 	private String customer_description;
 	private boolean customer_isdeleted;
-	
-	public CustomerModel(int c_id, boolean isdeleted, String c_name, String c_description) {
-		this.customer_id = c_id;
-		this.customer_isdeleted = isdeleted;
-		this.customer_name = c_name;
-		this.customer_description = c_description;
-	}
 
 	public int getCustomer_id() {
 		return customer_id;
