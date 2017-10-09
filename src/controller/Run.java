@@ -13,7 +13,8 @@ public class Run extends Application{
 		Application.launch(args);
 //		loginController lc = new loginController();
 //		lc.login_request("lmao@lmao.com", "password2");
-		ProjectDAO test = new ProjectDAO();
+//		ProjectDAO test = new ProjectDAO();
+		
 	}
 
 	@Override

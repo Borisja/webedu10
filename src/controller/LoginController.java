@@ -6,8 +6,12 @@ import java.sql.ResultSet;
 import dao.ConnectDAO;
 import model.EmployeeModel;
 
-
 public class LoginController {
+	/**
+	 * Class to control the login process.
+	 * @author nach7vs
+	 *
+	 */
 	ConnectDAO connect_db = new ConnectDAO();
 	
 	public LoginController(){

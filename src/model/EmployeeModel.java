@@ -1,6 +1,9 @@
 package model;
 
 public class EmployeeModel {
+	/**
+	 * Employee Model.
+	 */
 	private int employeeId;
 	
 	private String employeeFirstName;
