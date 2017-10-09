@@ -61,6 +61,7 @@
                   <Insets />
                </opaqueInsets>
             </GridPane>
+            <FlowPane prefHeight="200.0" prefWidth="200.0" />
          </children>
       </FlowPane>
    </center>
