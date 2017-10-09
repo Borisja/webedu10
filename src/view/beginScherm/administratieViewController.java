@@ -6,7 +6,7 @@ import javafx.scene.layout.Pane;
 import view.goedkeurenView.goedkeurenController;
 import view.handleiding.handleidingController;
 
-public class viewController {
+public class administratieViewController {
 	
 	@FXML private Button btnGoedkeuren;
 	@FXML private Pane pane;
