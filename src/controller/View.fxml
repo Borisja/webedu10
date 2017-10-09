@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="278.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.LoginView">
+   <children>
+      <StackPane layoutX="300.0" layoutY="14.0" prefHeight="199.0" prefWidth="152.0">
+         <children>
+            <SplitMenuButton mnemonicParsing="false" text="11:00">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+                <MenuItem mnemonicParsing="false" text="Action 2" />
+              </items>
+               <StackPane.margin>
+                  <Insets top="-150.0" />
+               </StackPane.margin>
+            </SplitMenuButton>
+            <SplitMenuButton mnemonicParsing="false" text="11:55">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Action 1" />
+                  <MenuItem mnemonicParsing="false" text="Action 2" />
+               </items>
+               <StackPane.margin>
+                  <Insets top="-80.0" />
+               </StackPane.margin>
+            </SplitMenuButton>
+            <SplitMenuButton mnemonicParsing="false" text="11:55">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Action 1" />
+                  <MenuItem mnemonicParsing="false" text="Action 2" />
+               </items>
+               <StackPane.margin>
+                  <Insets top="-10.0" />
+               </StackPane.margin>
+            </SplitMenuButton>
+            <SplitMenuButton mnemonicParsing="false" text="11:55">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Action 1" />
+                  <MenuItem mnemonicParsing="false" text="Action 2" />
+               </items>
+               <StackPane.margin>
+                  <Insets top="60.0" />
+               </StackPane.margin>
+            </SplitMenuButton>
+            <SplitMenuButton mnemonicParsing="false" text="11:55">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Action 1" />
+                  <MenuItem mnemonicParsing="false" text="Action 2" />
+               </items>
+               <StackPane.margin>
+                  <Insets top="130.0" />
+               </StackPane.margin>
+            </SplitMenuButton>
+         </children>
+      </StackPane>
+      <StackPane layoutX="148.0" layoutY="14.0" prefHeight="199.0" prefWidth="152.0">
+         <children>
+            <Label text="Begintijd">
+               <StackPane.margin>
+                  <Insets top="-150.0" />
+               </StackPane.margin>
+               <effect>
+                  <Blend />
+               </effect>
+            </Label>
+            <Label text="Eindtijd">
+               <StackPane.margin>
+                  <Insets top="-80.0" />
+               </StackPane.margin>
+            </Label>
+            <Label text="Project">
+               <StackPane.margin>
+                  <Insets top="-10.0" />
+               </StackPane.margin>
+            </Label>
+            <Label text="Sprint" textFill="#0d0000">
+               <StackPane.margin>
+                  <Insets top="60.0" />
+               </StackPane.margin>
+            </Label>
+            <Label text="User Story">
+               <StackPane.margin>
+                  <Insets top="130.0" />
+               </StackPane.margin>
+            </Label>
+            <Label text="Notitie">
+               <StackPane.margin>
+                  <Insets top="200.0" />
+               </StackPane.margin>
+            </Label>
+         </children>
+      </StackPane>
+      <TextArea layoutX="340.0" layoutY="202.0" prefHeight="59.0" prefWidth="205.0" />
+   </children>
+</AnchorPane>
