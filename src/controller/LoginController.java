@@ -4,11 +4,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import dao.ConnectDAO;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import model.EmployeeModel;
 
 
 public class LoginController {
 	ConnectDAO connect_db = new ConnectDAO();
+	@FXML private TextField txtEmail;
+	@FXML private TextField txtWachtwoord;
+	@FXML private Button inlogBtn;
 	
 	public LoginController(){
 		
