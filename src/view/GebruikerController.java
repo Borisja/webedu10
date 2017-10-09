@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 
 
-public class GebruikersController {
+public class GebruikerController {
 	
 
 	@FXML ImageView imageView;
