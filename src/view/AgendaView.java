@@ -1,20 +1,32 @@
 package view;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import dao.EmployeeDAO;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import model.EmployeeModel;
 
 public class AgendaView {
 	Label lbl_ma, lbl_di, lbl_wo, lbl_do, lbl_fri;
 	Label lbl_day1, lbl_day2, lbl_day3, lbl_day4, lbl_day5;
+	Button[] buttons_monday = new Button[10];
+	Button[] buttons_tuesday = new Button[10];
+	Button[] buttons_wednesday = new Button[10];
+	Button[] buttons_thursday = new Button[10];
+	Button[] buttons_friday = new Button[10];
 	
-	public void agenda_show() {
+	public void agendaShow(EmployeeModel em) throws ParseException {
 		Stage agenda_stage = new Stage();
 		GridPane grid = new GridPane();
+		initButtons();
 		
 		Date date_now = new Date();
 		SimpleDateFormat day_df = new SimpleDateFormat("d"); //Day in numbers
@@ -63,9 +75,69 @@ public class AgendaView {
 		grid.add(lbl_day4, 3, 1);
 		grid.add(lbl_day5, 4, 1);
 		
+		System.out.println(em.getEmployeeEmail());
+		
+		EmployeeDAO edao = new EmployeeDAO();
+		String[] start_time = edao.entry_list(em.getEmployeeId()).get(0).getEntryStartTime().split(":", 3);
+		String[] end_time = edao.entry_list(em.getEmployeeId()).get(0).getEntryEndTime().split(":", 3);
+		int time_difference = (Integer.parseInt(end_time[0])-1) - Integer.parseInt(start_time[0]);
+		
+		int start = Integer.parseInt(start_time[0]);
+		int end = (Integer.parseInt(end_time[0])-1);
+		
+		SimpleDateFormat getEntryDay = new SimpleDateFormat("E");
+		Date entryDay = getEntryDay.parse(edao.entry_list(em.getEmployeeId()).get(0).getEntryDate());
+		System.out.println(entryDay);
+		
+		//Monday
+		for(int i = 2; i < 12; i++) {
+			grid.add(buttons_monday[i-2], 0, i);
+			if(start == Integer.parseInt(buttons_monday[i-2].getText())){
+				buttons_monday[i-2].setStyle("-fx-background-color: green");
+			}
+			else if(Integer.parseInt(buttons_monday[i-2].getText()) >= start && Integer.parseInt(buttons_monday[i-2].getText()) <= end) {
+					buttons_monday[i-2].setStyle("-fx-background-color: green");
+			}
+			else {
+				buttons_monday[i-2].setStyle("-fx-background-color: red");
+			}
+		}
+		
+		//Tuesday
+		for(int i = 2; i < 12; i++) {
+			grid.add(buttons_tuesday[i-2], 1, i);
+		}
+		
+		//Wednesday
+		for(int i = 2; i < 12; i++) {
+			grid.add(buttons_wednesday[i-2], 2, i);
+		}
+		
+		//Thursday
+		for(int i = 2; i < 12; i++) {
+			grid.add(buttons_thursday[i-2], 3, i);
+		}
+		
+		//Friday
+		for(int i = 2; i < 12; i++) {
+			grid.add(buttons_friday[i-2], 4, i);
+		}
+		
 		Scene agenda_scene = new Scene(grid, 600, 400);
 		agenda_stage.setScene(agenda_scene);
 		agenda_stage.show();
 		
+	}
+	
+	public void initButtons(){
+		int hour = 8; // start hour
+		for(int i = 0; i < 10; i++) {
+			buttons_monday[i] = new Button(Integer.toString(hour));
+			buttons_tuesday[i] = new Button(Integer.toString(hour));
+			buttons_wednesday[i] = new Button(Integer.toString(hour));
+			buttons_thursday[i] = new Button(Integer.toString(hour));
+			buttons_friday[i] = new Button(Integer.toString(hour));
+			hour++;
+		}
 	}
 }

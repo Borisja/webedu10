@@ -8,17 +8,13 @@ import model.CustomerModel;
 public class CustomerDAO {
 	ConnectDAO connect = new ConnectDAO();
 	
-	public CustomerDAO() {
-		
-	}
-	
 	/**
 	 * Return a customer model filled with information relating to given customer id
 	 * If id does not match with any given customer you will get a empty customer
 	 * @param c_id - to match with unique customer
 	 * @return CustomerModel with specific customer information
 	 */
-	public CustomerModel customer_information(int c_id) {
+	public CustomerModel customerInformation(int c_id) {
 		String login_sql = "SELECT * FROM customer, customer_version WHERE customer_id = ?";
 		PreparedStatement customer_statement;
 		
