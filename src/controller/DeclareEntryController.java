@@ -1,16 +1,14 @@
 package controller;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.swing.JComboBox;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-
-
 
 public class DeclareEntryController 
 {
@@ -21,7 +19,7 @@ public class DeclareEntryController
 	@FXML Label userStoryLabel;
 	@FXML Label descriptionLabel;	
 	
-	@FXML ComboBox<int[]> startTimeHourComboBox;
+	@FXML ComboBox<Hour> startTimeHourComboBox;
 	@FXML ComboBox startTimeMinuteComboBox;
 	@FXML ComboBox endTimeHourComboBox;
 	@FXML ComboBox endTimeMinuteComboBox;
@@ -30,17 +28,16 @@ public class DeclareEntryController
 	@FXML ComboBox userStoryComboBox;
 	@FXML TextArea descriptionTextArea;
 	
+	public void init()
+	{
+		startTimeHourComboBox.getItems().removeAll();
+		startTimeHourComboBox.getItems().add(new Hour(1));
+	}
+	
 	
 
-	public void fillComboBoxes()
-	{
-		
-		int[] hours = {1,2,3,4,5,6,7,8};
-		startTimeHourComboBox.getItems().add(hours);
+	
+	
 
-
-		System.out.println("Done adding.");
-		
-	}
 	
 }
