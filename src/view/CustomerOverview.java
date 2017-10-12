@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 import model.CustomerModel;
 
 public class CustomerOverview {
-	public void customer_view_show(CustomerModel cm) {
+	public void customerViewShow(CustomerModel cm) {
 		Stage customer_stage = new Stage();
 		Label lbl_customer_id = new Label();
 		Label lbl_customer_name = new Label();

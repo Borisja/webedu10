@@ -10,7 +10,7 @@ public class ConnectDAO {
      * In de URL van .getConnection moet je de correcte database informatie toevoegen.
      * @return Connection - die ook te gebruiken is in andere klasses.
      * @throws Exception - SQLException
-     * @author IIPSEN - Groep 13
+     * @author IIPSEN - Groep 10
      */
     public Connection connectToDB() throws Exception {
     	Connection connect = null;
