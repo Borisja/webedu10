@@ -5,10 +5,6 @@ public class ProjectModel {
 	String project_id;
 	String project_isdeleted;
 	
-	public ProjectModel(String project_id, String project_isdeleted){
-		this.project_id = project_id;
-		this.project_isdeleted = project_isdeleted;
-	}
 
 	public String getProject_id() {
 		return project_id;

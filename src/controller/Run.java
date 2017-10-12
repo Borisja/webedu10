@@ -26,10 +26,10 @@ public class Run extends Application{
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		 Parent root = FXMLLoader.load(getClass().getResource("/view/GebruikerView.fxml"));
-	       Scene scene = new Scene(root);
-	       primaryStage.setScene(scene);
-	       primaryStage.show();
+//		 Parent root = FXMLLoader.load(getClass().getResource("/view/GebruikerView.fxml"));
+//	       Scene scene = new Scene(root);
+//	       primaryStage.setScene(scene);
+//	       primaryStage.show();
 		// TODO Auto-generated method stub
 		//new LoginView().show_login_view();
 	       

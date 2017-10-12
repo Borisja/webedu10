@@ -1,5 +1,7 @@
 package view;
 
+import java.text.ParseException;
+
 import controller.LoginController;
 import dao.CustomerDAO;
 import dao.EmployeeDAO;
@@ -36,11 +38,12 @@ public class LoginView {
 		login_gp.add(btn_login, 0, 2);
 		
 		btn_login.setOnAction(e-> {
-//			login_controller.login_request(txt_username.getText(), pw_field.getText());
-			EmployeeOverview co = new EmployeeOverview();
-			EmployeeDAO cdao = new EmployeeDAO();
-			EmployeeModel cm = cdao.employee_information(1);
-			co.customer_view_show(cm);
+			try {
+				login_controller.loginRequest("lol@lol.com", "password");
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		});
 
 		login_scene = new Scene(login_gp, 300, 200);

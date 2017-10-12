@@ -13,27 +13,12 @@ import view.goedkeurenView.goedkeurenController;
 import view.handleiding.handleidingController;
 import view.home.homeController;
 
-/**
- * Deze klasse is bestemd voor de administratie. 
- * 
- * @author rezanaser
- * 
- * @throws IOException
- */
-
-public class administratieViewController {
+public class beheerderViewController {
 	
-	@FXML private Button btnGoedkeuren;
-	@FXML private Pane pane;
-	private goedkeurenController gkC;
-	private handleidingController hdC;
-
-	/**
-	 * Deze methode geeft de administratieView  na succesvol inloggen.
-	 * @author rezanaser
-	 * @throws IOException
-	 */
-	public void startAdministrator() throws IOException
+	@FXML Button btn1;
+	@FXML Pane beheerderPane;
+	
+	public void startBeheerder() throws IOException
 	{
 		Stage primaryStage = new Stage();
 		FXMLLoader administratieScherm = new FXMLLoader(getClass().getResource("/view/beginScherm/administratieView.fxml"));	
@@ -64,24 +49,5 @@ public class administratieViewController {
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
-	/**
-	 * Deze methode krijgt de controller van andere views.
-	 * @param gk
-	 */
-	public void setControllerGoedkeuren(goedkeurenController gk)
-	{
-		this.gkC = gk;
-	}
-	public void setControllerHandleiding(handleidingController gk)
-	{
-		this.hdC = gk;
-	}
-	public void toonHanleiding()
-	{
-		this.hdC.openHandleidingMenu();
-	}
-	public void toonGoedkeurenMenu()
-	{
-		this.gkC.openGoedkeurenMenu();
-	}
+
 }
