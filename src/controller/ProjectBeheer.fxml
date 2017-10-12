@@ -156,6 +156,11 @@
                   <Font size="18.0" />
                </font>
             </Button>
+            <Button mnemonicParsing="false" text="Verwijderen">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
          </children>
       </HBox>
    </bottom>
