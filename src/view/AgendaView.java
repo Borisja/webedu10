@@ -11,6 +11,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -23,6 +24,7 @@ import model.EntryModel;
 public class AgendaView {
 	private ObservableList<EntryModel> data;
     private TableView<EntryModel> table = new TableView<EntryModel>();
+    Button btn_edit;
 	
 	@SuppressWarnings("unchecked")
 	public void agendaShow(EmployeeModel em) throws ParseException {
@@ -51,15 +53,19 @@ public class AgendaView {
         table.getColumns().addAll(EntryNameCol, EntryStartCol, EntryStopCol);
         
         edao.entry_list(1).forEach(e-> data.add(e));
-        edao.entry_list(1).forEach(e-> System.out.println(e.getEntryDescription()));
+
         table.setItems(data);
         
+        btn_edit = new Button("Edit Hours");
+        
         grid.add(table, 0, 0);
-		
-		System.out.println(em.getEmployeeEmail());
-		
-		
-		
+        grid.add(btn_edit, 1, 0);
+
+        btn_edit.setOnAction(e->{
+        	EntryModel selected_entry = table.getSelectionModel().getSelectedItem();
+        	new EntryHoursOverview().EntryOverviewShow(selected_entry);
+        });
+        
 		Scene agenda_scene = new Scene(grid, 600, 400);
 		agenda_stage.setScene(agenda_scene);
 		agenda_stage.show();

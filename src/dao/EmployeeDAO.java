@@ -51,7 +51,7 @@ public class EmployeeDAO {
 	 */
 	public ArrayList<EntryModel> entry_list(int e_id){
 		ArrayList<EntryModel> entry_alist = new ArrayList<EntryModel>();
-		String employee_entry_sql = "SELECT entry_version_starttime, entry_version_endtime, entry_version_creationtime, entry_version_description "
+		String employee_entry_sql = "SELECT DISTINCT ON(entry_version_description)entry_version_description, entry_version_starttime, entry_version_endtime, entry_version_creationtime "
 				+ "FROM entry_version, entry "
 				+ "WHERE entry_employee_fk = ?";
 		try {
