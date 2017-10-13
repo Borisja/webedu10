@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import view.ExportController;
 import view.goedkeurenView.goedkeurenController;
 import view.handleiding.handleidingController;
 import view.home.homeController;
@@ -27,6 +28,7 @@ public class administratieViewController {
 	@FXML private Pane pane;
 	private goedkeurenController gkC;
 	private handleidingController hdC;
+	private ExportController export = new ExportController();
 
 	/**
 	 * Deze methode geeft de administratieView  na succesvol inloggen.
@@ -83,5 +85,9 @@ public class administratieViewController {
 	public void toonGoedkeurenMenu()
 	{
 		this.gkC.openGoedkeurenMenu();
+	}
+	public void downloadCSV()
+	{
+		this.export.exportCSV();
 	}
 }
