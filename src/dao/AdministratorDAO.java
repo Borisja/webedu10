@@ -94,7 +94,7 @@ public class AdministratorDAO {
 	 * @param e_id
 	 * @return
 	 */
-	public ArrayList<EntryModel> entry_list(int e_id){
+	public ArrayList<EntryModel> entry_queued_list(int e_id){
 		ArrayList<EntryModel> entry_alist = new ArrayList<EntryModel>();
 		String employee_entry_sql = "SELECT entry_id, entry_version_starttime, entry_version_endtime, entry_version_creationtime, entry_version_description "
 				+ "FROM entry_version, entry "
@@ -120,18 +120,33 @@ public class AdministratorDAO {
 		return entry_alist;
 	}
 	
+	/**
+	 * Deze methode krijgt de geselecteerde uur van de goedkeuren view en stuurt deze wijziging naar de database.
+	 * @param id is de id van de entry.
+	 * @author rezanaser
+	 */
 	public void approveHours(int id)
 	{
-		String employee_entry_sql = "UPDATE entry SET"
-				+ "entry_staus = 'approved'"
-				+ " WHERE entry_id = ?";
-			PreparedStatement entries_statement;
+		String employee_entry_sql = "UPDATE entry SET entry_status = 'approved' WHERE entry_id = ? ";
 			try {
+				PreparedStatement entries_statement;
 				entries_statement = connect.connectToDB().prepareStatement(employee_entry_sql);
 				entries_statement.setInt(1, id);
 				entries_statement.executeUpdate();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+	}
+	public void rejectHours(int id)
+	{
+		String employee_entry_sql = "UPDATE entry SET entry_status = 'rejected' WHERE entry_id = ? ";
+			try {
+				PreparedStatement entries_statement;
+				entries_statement = connect.connectToDB().prepareStatement(employee_entry_sql);
+				entries_statement.setInt(1, id);
+				entries_statement.executeUpdate();
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			

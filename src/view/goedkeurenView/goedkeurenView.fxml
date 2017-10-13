@@ -16,7 +16,7 @@
             <TableColumn fx:id="iEndTime" prefWidth="65.0" text="EndTime" />
         </columns>
       </TableView>
-      <Button layoutX="462.0" layoutY="60.0" mnemonicParsing="false" text="Approve" />
-      <Button layoutX="462.0" layoutY="126.0" mnemonicParsing="false" text="Reject" />
+      <Button fx:id="approve" layoutX="462.0" layoutY="60.0" mnemonicParsing="false" onAction="#approveSelectedHour" text="Approve" />
+      <Button fx:id="reject" layoutX="462.0" layoutY="126.0" mnemonicParsing="false" text="Reject" />
    </children>
 </Pane>

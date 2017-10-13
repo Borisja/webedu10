@@ -20,6 +20,8 @@ import model.EntryModel;
 public class goedkeurenController implements Initializable{
 	@FXML Pane pane;
 	@FXML Button sluitKnop;
+	@FXML Button approve;
+	@FXML Button reject;
 	@FXML TableView<EntryModel> tableView;
 	@FXML TableColumn<EntryModel, Integer> iId;
 	@FXML TableColumn<EntryModel, String> iDescription;
@@ -30,11 +32,39 @@ public class goedkeurenController implements Initializable{
 	
 	private AdministratorDAO adminDao = new AdministratorDAO();
 	
+	/**
+	 * Deze methode keurt de geselcteerde uur goed
+	 * @author rezanaser
+	 */
+	public void approveSelectedHour()
+	{
+		EntryModel selected_item = tableView.getSelectionModel().getSelectedItem();
+		adminDao.approveHours(selected_item.getEntry_id());
+	}
+	
+	/**
+	 * Deze methode keurt de geselcteerde uur af
+	 * @author rezanaser
+	 */
+	public void rejectSelectedHour()
+	{
+		EntryModel selected_item = tableView.getSelectionModel().getSelectedItem();
+		adminDao.rejectHours(selected_item.getEntry_id());
+	}
+	
+	/**
+	 * Deze methode opent de goedkeuren view nadat er geklickt word
+	 * @author rezanaser
+	 */
 	public void openGoedkeurenMenu()
 	{
 		pane.setVisible(true);
 	}
 	
+	/**
+	 * Deze methode sluit de view nadat er geklickt wordt op de sluit button.
+	 * @author rezanaser
+	 */
 	public void sluitGoedkeurenMenu()
 	{
 		pane.setVisible(false);
@@ -49,8 +79,8 @@ public class goedkeurenController implements Initializable{
 		iStartTime.setCellValueFactory(new PropertyValueFactory<EntryModel, String>("entryStartTime"));
 		iEndTime.setCellValueFactory(new PropertyValueFactory<EntryModel, String>("entryEndTime"));
 		
+		data.addAll(adminDao.entry_queued_list(0));
 		
-		data.addAll(adminDao.entry_list(1));
 		
 		tableView.setItems(data);
 	}
