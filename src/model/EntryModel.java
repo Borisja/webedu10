@@ -15,7 +15,21 @@ public class EntryModel {
 	private String entryStartTime;
 	private String entryEndTime;
 	private Boolean entryIsLocked;
+	private String entryProjectDescription;
+	private String entrySprintDescription;
 	
+	public String getEntryProjectDescription() {
+		return entryProjectDescription;
+	}
+	public void setEntryProjectDescription(String entryProjectDescription) {
+		this.entryProjectDescription = entryProjectDescription;
+	}
+	public String getEntrySprintDescription() {
+		return entrySprintDescription;
+	}
+	public void setEntrySprintDescription(String entrySprintDescription) {
+		this.entrySprintDescription = entrySprintDescription;
+	}
 	public int getEntryId() {
 		return entryId;
 	}

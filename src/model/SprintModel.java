@@ -13,6 +13,7 @@ public class SprintModel {
 	private String sprintEndDate;
 	private String sprintDescription;
 	private ArrayList<EntryModel> entries;
+	
 	public String getSprintName() {
 		return sprintName;
 	}
