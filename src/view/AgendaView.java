@@ -45,6 +45,16 @@ public class AgendaView {
 	    		new PropertyValueFactory<EntryModel, String>("entryId"));
 		EntryIdCol.setMinWidth(50);
 		
+		TableColumn<EntryModel, String> EntryProjectCol = new TableColumn<EntryModel, String>("Entry Project");
+		EntryProjectCol.setCellValueFactory(
+	    		new PropertyValueFactory<EntryModel, String>("entryProjectDescription"));
+		EntryProjectCol.setMinWidth(150);
+        
+		TableColumn<EntryModel, String> EntrySprintCol = new TableColumn<EntryModel, String>("Entry Sprint");
+		EntrySprintCol.setCellValueFactory(
+	    		new PropertyValueFactory<EntryModel, String>("entrySprintDescription"));
+		EntrySprintCol.setMinWidth(150);
+        
 		TableColumn<EntryModel, String> EntryNameCol = new TableColumn<EntryModel, String>("Entry Description");
 		EntryNameCol.setCellValueFactory(
 	    		new PropertyValueFactory<EntryModel, String>("entryDescription"));
@@ -65,9 +75,17 @@ public class AgendaView {
 	    		new PropertyValueFactory<EntryModel, String>("entryStatus"));
 		EntryStatusCol.setMinWidth(150);
         
-		table.setPrefSize(600, 460);
+//		table.setPrefSize(600, 600);
+		EntryIdCol.prefWidthProperty().bind(table.widthProperty().divide(12));
+		EntryProjectCol.prefWidthProperty().bind(table.widthProperty().divide(8));
+		EntrySprintCol.prefWidthProperty().bind(table.widthProperty().divide(8));
+		EntryNameCol.prefWidthProperty().bind(table.widthProperty().divide(7));
+		EntryStartCol.prefWidthProperty().bind(table.widthProperty().divide(10));
+		EntryStopCol.prefWidthProperty().bind(table.widthProperty().divide(10));
+		EntryStatusCol.prefWidthProperty().bind(table.widthProperty().divide(7));
+		
 		//add columns to table
-        table.getColumns().addAll(EntryIdCol, EntryNameCol, EntryStartCol, EntryStopCol, EntryStatusCol);
+        table.getColumns().addAll(EntryIdCol, EntryProjectCol, EntrySprintCol,EntryNameCol, EntryStartCol, EntryStopCol, EntryStatusCol);
         
         //For each entry in entry_list add to data
         EmployeeDAO edao = new EmployeeDAO();
