@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.goedkeurenView.goedkeurenController">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" visible="false" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.goedkeurenView.goedkeurenController">
    <children>
       <Button fx:id="sluitKnop" layoutX="27.0" layoutY="353.0" mnemonicParsing="false" onAction="#sluitGoedkeurenMenu" prefHeight="27.0" prefWidth="77.0" text="Sluiten" />
       <TableView fx:id="tableView" layoutX="-1.0" prefHeight="349.0" prefWidth="436.0">

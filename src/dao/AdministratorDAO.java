@@ -1,7 +1,11 @@
 package dao;
 
+import java.io.FileWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import model.EmployeeModel;
@@ -150,6 +154,30 @@ public class AdministratorDAO {
 				e.printStackTrace();
 			}
 			
+	}
+	
+	public void exportCsv()
+	{
+		String filename ="/Users/rezanaser/Desktop/test.csv";
+	    try {
+	        FileWriter fw = new FileWriter(filename);
+	        String query = "select * from entry";
+	        Statement stmt = connect.connectToDB().createStatement();
+	        ResultSet rs = stmt.executeQuery(query);
+	        while (rs.next()) {
+	            fw.append(rs.getString(1));
+	            fw.append(';');
+	            fw.append(rs.getString(2));
+	            fw.append(';');
+	            fw.append(rs.getString(3));
+	            fw.append('\n');
+	           }
+	        fw.flush();
+	        fw.close();
+	        System.out.println("CSV File is created successfully.");
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
 	}
 	
 }
