@@ -100,7 +100,9 @@ public class AdministratorDAO {
 	 */
 	public ArrayList<EntryModel> entry_queued_list(int e_id){
 		ArrayList<EntryModel> entry_alist = new ArrayList<EntryModel>();
-		String employee_entry_sql = "SELECT  entry_id, entry_version_starttime, entry_version_endtime, entry_version_creationtime, entry_version_description FROM entry_version, entry WHERE entry_version.entry_version_entry_fk = entry.entry_id AND entry.entry_status = 'queued' ";
+		String employee_entry_sql = "SELECT  entry_id, entry_version_starttime, entry_version_endtime, entry_version_creationtime, entry_version_description"
+				+ " FROM entry_version, entry "
+				+ "WHERE entry_version.entry_version_entry_fk = entry.entry_id AND entry.entry_status = 'queued' ";
 		try {
 			PreparedStatement entries_statement = connect.connectToDB().prepareStatement(employee_entry_sql);
 			
