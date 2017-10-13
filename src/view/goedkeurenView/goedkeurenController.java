@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -27,6 +28,7 @@ public class goedkeurenController implements Initializable{
 	@FXML TableColumn<EntryModel, String> iDescription;
 	@FXML TableColumn<EntryModel, String> iStartTime;
 	@FXML TableColumn<EntryModel, String> iEndTime;
+	@FXML Label notSelected;
 	
 	private ObservableList<EntryModel> data = FXCollections.observableArrayList();
 	
@@ -38,8 +40,14 @@ public class goedkeurenController implements Initializable{
 	 */
 	public void approveSelectedHour()
 	{
-		EntryModel selected_item = tableView.getSelectionModel().getSelectedItem();
-		adminDao.approveHours(selected_item.getEntry_id());
+		
+		try{
+			EntryModel selected_item = tableView.getSelectionModel().getSelectedItem();
+			adminDao.approveHours(selected_item.getEntry_id());
+		}catch(NullPointerException e)
+		{
+			notSelected.setText("Select an hour");
+		}
 	}
 	
 	/**
@@ -48,8 +56,13 @@ public class goedkeurenController implements Initializable{
 	 */
 	public void rejectSelectedHour()
 	{
-		EntryModel selected_item = tableView.getSelectionModel().getSelectedItem();
-		adminDao.rejectHours(selected_item.getEntry_id());
+		try{
+			EntryModel selected_item = tableView.getSelectionModel().getSelectedItem();
+			adminDao.rejectHours(selected_item.getEntry_id());
+		}catch(NullPointerException e)
+		{
+			notSelected.setText("Select an hour");
+		}
 	}
 	
 	/**
