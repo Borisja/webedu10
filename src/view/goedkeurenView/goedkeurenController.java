@@ -23,6 +23,7 @@ public class goedkeurenController implements Initializable{
 	@FXML Button sluitKnop;
 	@FXML Button approve;
 	@FXML Button reject;
+	@FXML Button refresh;
 	@FXML TableView<EntryModel> tableView;
 	@FXML TableColumn<EntryModel, Integer> iId;
 	@FXML TableColumn<EntryModel, String> iDescription;
@@ -83,6 +84,15 @@ public class goedkeurenController implements Initializable{
 		pane.setVisible(false);
 	}
 
+	/**
+	 * Deze methode word uitgevoerd wanneer er op refresh knop wordt gedrukt.
+	 * Bijwerken lijst
+	 * @author rezanaser
+	 */
+	public void refreshTable()
+	{
+		//Moet nog maken
+	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
@@ -93,8 +103,6 @@ public class goedkeurenController implements Initializable{
 		iEndTime.setCellValueFactory(new PropertyValueFactory<EntryModel, String>("entryEndTime"));
 		
 		data.addAll(adminDao.entry_queued_list(0));
-		
-		
 		tableView.setItems(data);
 	}
 }
