@@ -13,11 +13,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-padding: 0;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-padding: 0 100 100 100;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProjectBeheerController">
    <center>
       <FlowPane orientation="VERTICAL" BorderPane.alignment="CENTER">
          <children>
-            <GridPane>
+            <GridPane maxWidth="-Infinity" prefHeight="90.0" prefWidth="1723.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -50,7 +50,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <ComboBox prefHeight="25.0" prefWidth="502.0" promptText="Kies een Klant" GridPane.rowIndex="1" />
+                  <ComboBox fx:id="klantCB" onAction="#klant" onContextMenuRequested="#klant" prefHeight="25.0" prefWidth="502.0" promptText="Kies een Klant" GridPane.rowIndex="1" />
                   <ComboBox prefHeight="25.0" prefWidth="502.0" promptText="Kies een Project" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <opaqueInsets>
                         <Insets />
@@ -67,17 +67,17 @@
                   <Insets />
                </opaqueInsets>
             </GridPane>
-            <FlowPane orientation="VERTICAL" prefHeight="200.0" prefWidth="200.0">
+            <FlowPane orientation="VERTICAL">
                <children>
-                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="1920.0" text="Project">
+                  <Label alignment="CENTER" prefHeight="53.0" prefWidth="1723.0" text="Project">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Label>
                   <GridPane maxHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="1280.0">
                      <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="673.3333129882812" minWidth="10.0" prefWidth="494.9999694824219" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1427.3333435058594" minWidth="10.0" prefWidth="1425.0000305175781" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="673.3333129882812" minWidth="10.0" prefWidth="392.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1427.3333435058594" minWidth="10.0" prefWidth="1331.0" />
                      </columnConstraints>
                      <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -151,7 +151,7 @@
    <bottom>
       <HBox alignment="CENTER_RIGHT" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="Bewerken">
+            <Button fx:id="editBtn" mnemonicParsing="false" onAction="#test" text="Bewerken">
                <font>
                   <Font size="18.0" />
                </font>
