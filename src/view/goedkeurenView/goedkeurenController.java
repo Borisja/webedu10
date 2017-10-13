@@ -44,7 +44,7 @@ public class goedkeurenController implements Initializable{
 		
 		try{
 			EntryModel selected_item = tableView.getSelectionModel().getSelectedItem();
-			adminDao.approveHours(selected_item.getEntry_id());
+			adminDao.approveHours(selected_item.getEntryId());
 		}catch(NullPointerException e)
 		{
 			notSelected.setText("Select an hour");
@@ -59,7 +59,7 @@ public class goedkeurenController implements Initializable{
 	{
 		try{
 			EntryModel selected_item = tableView.getSelectionModel().getSelectedItem();
-			adminDao.rejectHours(selected_item.getEntry_id());
+			adminDao.rejectHours(selected_item.getEntryId());
 		}catch(NullPointerException e)
 		{
 			notSelected.setText("Select an hour");

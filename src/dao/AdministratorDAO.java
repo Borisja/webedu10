@@ -109,7 +109,7 @@ public class AdministratorDAO {
 			ResultSet entry_set = entries_statement.executeQuery();
 			while(entry_set.next()) {
 				EntryModel dummy = new EntryModel();
-				dummy.setEntry_id(entry_set.getInt("entry_id"));
+				dummy.setEntryId(entry_set.getInt("entry_id"));
 				dummy.setEntryDescription(entry_set.getString("entry_version_description"));
 				dummy.setEntryStartTime(entry_set.getString("entry_version_starttime"));
 				dummy.setEntryEndTime(entry_set.getString("entry_version_endtime"));
@@ -165,7 +165,7 @@ public class AdministratorDAO {
 		String filename ="/Users/rezanaser/Desktop/factuur.csv";
 	    try {
 	        FileWriter fw = new FileWriter(filename);
-	        String query = "select  from entry, entry_version ";
+	        String query = "select  from entry, entry";
 	        Statement stmt = connect.connectToDB().createStatement();
 	        ResultSet rs = stmt.executeQuery(query);
 	        while (rs.next()) {
