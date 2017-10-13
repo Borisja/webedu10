@@ -39,7 +39,7 @@ public class EntryHoursOverview {
 		txt_start_time.setText(em.getEntryStartTime());
 		txt_end_time.setText(em.getEntryEndTime());
 		
-		entry_edit_scene = new Scene(grid, 400, 400);
+		entry_edit_scene = new Scene(grid, 400, 150);
 		
 		entry_edit_stage.setScene(entry_edit_scene);
 		entry_edit_stage.show();
