@@ -1,41 +1,54 @@
 package view;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 import dao.EmployeeDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.EmployeeModel;
 import model.EntryModel;
 
 public class AgendaView {
+	/**
+	 * Load a table with the entries that have been submitted.
+	 * Allow user to submit new entries.
+	 */
 	private ObservableList<EntryModel> data;
     private TableView<EntryModel> table = new TableView<EntryModel>();
+    private Button btn_edit, btn_submit;
+    private Stage agenda_stage;
+    private GridPane grid;
+    private VBox btn_box;
 	
+    /**
+	 * Show table containing entries from user that is currently logged in.
+	 * @param em - employee model to use throughout the flow.
+	 * 
+	 */
 	@SuppressWarnings("unchecked")
-	public void agendaShow(EmployeeModel em) throws ParseException {
-		Stage agenda_stage = new Stage();
-		GridPane grid = new GridPane();
-		EmployeeDAO edao = new EmployeeDAO();
+	public void agendaShow(EmployeeModel em){
+		agenda_stage = new Stage();
+		grid = new GridPane();
+		btn_box = new VBox();
 		
 		data = FXCollections.observableArrayList();
+		
+		//Columns
+		TableColumn<EntryModel, String> EntryIdCol = new TableColumn<EntryModel, String>("Entry ID");
+		EntryIdCol.setCellValueFactory(
+	    		new PropertyValueFactory<EntryModel, String>("entryId"));
+		EntryIdCol.setMinWidth(50);
 		
 		TableColumn<EntryModel, String> EntryNameCol = new TableColumn<EntryModel, String>("Entry Description");
 		EntryNameCol.setCellValueFactory(
 	    		new PropertyValueFactory<EntryModel, String>("entryDescription"));
-		EntryNameCol.setMinWidth(100);
+		EntryNameCol.setMinWidth(150);
         
 		TableColumn<EntryModel, String> EntryStartCol = new TableColumn<EntryModel, String>("Entry Start Time");
 		EntryStartCol.setCellValueFactory(
@@ -47,21 +60,38 @@ public class AgendaView {
 	    		new PropertyValueFactory<EntryModel, String>("entryEndTime"));
 		EntryStopCol.setMinWidth(100);
 		
-		
-        table.getColumns().addAll(EntryNameCol, EntryStartCol, EntryStopCol);
+		TableColumn<EntryModel, String> EntryStatusCol = new TableColumn<EntryModel, String>("Entry Current Status");
+		EntryStatusCol.setCellValueFactory(
+	    		new PropertyValueFactory<EntryModel, String>("entryStatus"));
+		EntryStatusCol.setMinWidth(150);
         
-        edao.entry_list(1).forEach(e-> data.add(e));
-        edao.entry_list(1).forEach(e-> System.out.println(e.getEntryDescription()));
+		table.setPrefSize(600, 460);
+		//add columns to table
+        table.getColumns().addAll(EntryIdCol, EntryNameCol, EntryStartCol, EntryStopCol, EntryStatusCol);
+        
+        //For each entry in entry_list add to data
+        EmployeeDAO edao = new EmployeeDAO();
+        edao.entry_list(em.getEmployeeId()).forEach(entry-> data.add(entry));
+        
+        //Set data into the table items.
         table.setItems(data);
         
+        btn_edit = new Button("Edit Hours");
+        btn_submit = new Button("Submit Hours");
+        
+        btn_box.getChildren().addAll(btn_edit, btn_submit);
+        
         grid.add(table, 0, 0);
-		
-		System.out.println(em.getEmployeeEmail());
-		
-		
-		
-		Scene agenda_scene = new Scene(grid, 600, 400);
+        grid.add(btn_box, 1, 0);
+
+        btn_edit.setOnAction(e->{
+        	EntryModel selected_entry = table.getSelectionModel().getSelectedItem();
+        	new EntryHoursOverview().EntryOverviewShow(selected_entry);
+        });
+        
+		Scene agenda_scene = new Scene(grid, 800, 300);
 		agenda_stage.setScene(agenda_scene);
+		agenda_stage.setMaximized(true);
 		agenda_stage.show();
 		
 	}
