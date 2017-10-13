@@ -6,6 +6,7 @@ package model;
  * @date 9-10-2017
  */
 public class EntryModel {
+	private int entryId;
 	private String entryName;
 	private String entryDescription;
 	private Exception entryException;
@@ -14,6 +15,13 @@ public class EntryModel {
 	private String entryStartTime;
 	private String entryEndTime;
 	private Boolean entryIsLocked;
+	
+	public int getEntryId() {
+		return entryId;
+	}
+	public void setEntryId(int entryId) {
+		this.entryId = entryId;
+	}
 	
 	public String getEntryName() {
 		return entryName;

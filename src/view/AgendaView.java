@@ -34,10 +34,15 @@ public class AgendaView {
 		
 		data = FXCollections.observableArrayList();
 		
+		TableColumn<EntryModel, String> EntryIdCol = new TableColumn<EntryModel, String>("Entry ID");
+		EntryIdCol.setCellValueFactory(
+	    		new PropertyValueFactory<EntryModel, String>("entryId"));
+		EntryIdCol.setMinWidth(50);
+		
 		TableColumn<EntryModel, String> EntryNameCol = new TableColumn<EntryModel, String>("Entry Description");
 		EntryNameCol.setCellValueFactory(
 	    		new PropertyValueFactory<EntryModel, String>("entryDescription"));
-		EntryNameCol.setMinWidth(100);
+		EntryNameCol.setMinWidth(150);
         
 		TableColumn<EntryModel, String> EntryStartCol = new TableColumn<EntryModel, String>("Entry Start Time");
 		EntryStartCol.setCellValueFactory(
@@ -50,7 +55,7 @@ public class AgendaView {
 		EntryStopCol.setMinWidth(100);
 		
 		
-        table.getColumns().addAll(EntryNameCol, EntryStartCol, EntryStopCol);
+        table.getColumns().addAll(EntryIdCol, EntryNameCol, EntryStartCol, EntryStopCol);
         
         edao.entry_list(1).forEach(e-> data.add(e));
 

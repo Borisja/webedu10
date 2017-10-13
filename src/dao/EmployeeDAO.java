@@ -51,7 +51,8 @@ public class EmployeeDAO {
 	 */
 	public ArrayList<EntryModel> entry_list(int e_id){
 		ArrayList<EntryModel> entry_alist = new ArrayList<EntryModel>();
-		String employee_entry_sql = "SELECT DISTINCT ON(entry_version_description)entry_version_description, entry_version_starttime, entry_version_endtime, entry_version_creationtime "
+		String employee_entry_sql = "SELECT DISTINCT ON(entry_id)entry_id, entry_version_starttime, "
+				+ "entry_version_endtime, entry_version_creationtime, entry_version_description "
 				+ "FROM entry_version, entry "
 				+ "WHERE entry_employee_fk = ?";
 		try {
@@ -60,12 +61,13 @@ public class EmployeeDAO {
 			
 			ResultSet entry_set = entries_statement.executeQuery();
 			while(entry_set.next()) {
-				EntryModel dummy = new EntryModel();
-				dummy.setEntryDescription(entry_set.getString("entry_version_description"));
-				dummy.setEntryStartTime(entry_set.getString("entry_version_starttime"));
-				dummy.setEntryEndTime(entry_set.getString("entry_version_endtime"));
-				dummy.setEntryDate(entry_set.getString("entry_version_creationtime"));
-				entry_alist.add(dummy);
+				EntryModel entry_container = new EntryModel();
+				entry_container.setEntryId(entry_set.getInt("entry_id"));
+				entry_container.setEntryDescription(entry_set.getString("entry_version_description"));
+				entry_container.setEntryStartTime(entry_set.getString("entry_version_starttime"));
+				entry_container.setEntryEndTime(entry_set.getString("entry_version_endtime"));
+				entry_container.setEntryDate(entry_set.getString("entry_version_creationtime"));
+				entry_alist.add(entry_container);
 			}
 			entries_statement.close();
 		} catch (Exception e) {
