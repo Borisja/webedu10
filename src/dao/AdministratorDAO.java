@@ -48,7 +48,6 @@ public class AdministratorDAO {
 			}
 			login_statement.close();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
@@ -67,7 +66,6 @@ public class AdministratorDAO {
 			lock_statement.setInt(1, emp_id);
 			lock_statement.executeUpdate();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -165,7 +163,7 @@ public class AdministratorDAO {
 		String filename ="/Users/rezanaser/Desktop/factuur.csv";
 	    try {
 	        FileWriter fw = new FileWriter(filename);
-	        String query = "select  from entry, entry";
+	        String query = "select * from entry";
 	        Statement stmt = connect.connectToDB().createStatement();
 	        ResultSet rs = stmt.executeQuery(query);
 	        while (rs.next()) {

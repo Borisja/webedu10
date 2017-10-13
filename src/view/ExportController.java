@@ -8,6 +8,11 @@ import java.sql.Statement;
 
 import dao.AdministratorDAO;
 
+/**
+ * Deze klasse is verantwoordelijk voor exporteren van data in een csv file.
+ * @author rezanaser
+ *
+ */
 public class ExportController {
 	private AdministratorDAO adminDao = new AdministratorDAO();
 	
