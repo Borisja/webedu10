@@ -1,12 +1,12 @@
 package controller;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+
 import java.text.ParseException;
 
 import dao.AdministratorDAO;
-import dao.ConnectDAO;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -38,7 +38,12 @@ public class LoginController {
 		
 		//If null login failed. This should be displayed to the user.
 		if(user == null){
-			System.out.println("Login failed...E-mail and/or password do not match!");
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("Login Failed");
+			alert.setHeaderText("E-mail or password was incorrect!");
+			alert.setContentText("Contact your administrator for help.");
+
+			alert.showAndWait();
 		} else {
 			//Here we open the screen after login, use user.getEmployeeRol() to get users rol and then load correct view. 
 			new AgendaView().agendaShow(user);

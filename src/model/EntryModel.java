@@ -6,22 +6,37 @@ package model;
  * @date 9-10-2017
  */
 public class EntryModel {
+	private int entryId;
 	private String entryName;
 	private String entryDescription;
 	private Exception entryException;
-	private EntryStatus entryStatus;
+	private String entryStatus;
 	private String entryDate;
 	private String entryStartTime;
 	private String entryEndTime;
 	private Boolean entryIsLocked;
-	private int entry_id;
+	private String entryProjectDescription;
+	private String entrySprintDescription;
 	
-	public int getEntry_id() {
-		return entry_id;
+	public String getEntryProjectDescription() {
+		return entryProjectDescription;
 	}
-	public void setEntry_id(int entry_id) {
-		this.entry_id = entry_id;
+	public void setEntryProjectDescription(String entryProjectDescription) {
+		this.entryProjectDescription = entryProjectDescription;
 	}
+	public String getEntrySprintDescription() {
+		return entrySprintDescription;
+	}
+	public void setEntrySprintDescription(String entrySprintDescription) {
+		this.entrySprintDescription = entrySprintDescription;
+	}
+	public int getEntryId() {
+		return entryId;
+	}
+	public void setEntryId(int entryId) {
+		this.entryId = entryId;
+	}
+	
 	public String getEntryName() {
 		return entryName;
 	}
@@ -40,10 +55,10 @@ public class EntryModel {
 	public void setEntryException(Exception entryException) {
 		this.entryException = entryException;
 	}
-	public EntryStatus getEntryStatus() {
+	public String getEntryStatus() {
 		return entryStatus;
 	}
-	public void setEntryStatus(EntryStatus entryStatus) {
+	public void setEntryStatus(String entryStatus) {
 		this.entryStatus = entryStatus;
 	}
 	public String getEntryDate() {

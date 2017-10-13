@@ -100,16 +100,16 @@ public class AdministratorDAO {
 	 */
 	public ArrayList<EntryModel> entry_queued_list(int e_id){
 		ArrayList<EntryModel> entry_alist = new ArrayList<EntryModel>();
-		String employee_entry_sql = "SELECT DISTINCT entry_id, entry_version_starttime, entry_version_endtime, entry_version_creationtime, entry_version_description "
-				+ "FROM entry_version, entry "
-				+ "WHERE entry_status = 'queued'";
+		String employee_entry_sql = "SELECT  entry_id, entry_version_starttime, entry_version_endtime, entry_version_creationtime, entry_version_description"
+				+ " FROM entry_version, entry "
+				+ "WHERE entry_version.entry_version_entry_fk = entry.entry_id AND entry.entry_status = 'queued' ";
 		try {
 			PreparedStatement entries_statement = connect.connectToDB().prepareStatement(employee_entry_sql);
 			
 			ResultSet entry_set = entries_statement.executeQuery();
 			while(entry_set.next()) {
 				EntryModel dummy = new EntryModel();
-				dummy.setEntry_id(entry_set.getInt("entry_id"));
+				dummy.setEntryId(entry_set.getInt("entry_id"));
 				dummy.setEntryDescription(entry_set.getString("entry_version_description"));
 				dummy.setEntryStartTime(entry_set.getString("entry_version_starttime"));
 				dummy.setEntryEndTime(entry_set.getString("entry_version_endtime"));
@@ -156,12 +156,16 @@ public class AdministratorDAO {
 			
 	}
 	
+	/**
+	 * Deze methode maakt een csv bestand van de database.
+	 * @author rezanaser
+	 */
 	public void exportCsv()
 	{
-		String filename ="/Users/rezanaser/Desktop/test.csv";
+		String filename ="/Users/rezanaser/Desktop/factuur.csv";
 	    try {
 	        FileWriter fw = new FileWriter(filename);
-	        String query = "select * from entry";
+	        String query = "select  from entry, entry";
 	        Statement stmt = connect.connectToDB().createStatement();
 	        ResultSet rs = stmt.executeQuery(query);
 	        while (rs.next()) {
