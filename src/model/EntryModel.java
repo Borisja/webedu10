@@ -14,7 +14,14 @@ public class EntryModel {
 	private String entryStartTime;
 	private String entryEndTime;
 	private Boolean entryIsLocked;
+	private int entry_id;
 	
+	public int getEntry_id() {
+		return entry_id;
+	}
+	public void setEntry_id(int entry_id) {
+		this.entry_id = entry_id;
+	}
 	public String getEntryName() {
 		return entryName;
 	}

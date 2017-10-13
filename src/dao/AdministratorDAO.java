@@ -2,8 +2,10 @@ package dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import model.EmployeeModel;
+import model.EntryModel;
 
 public class AdministratorDAO {
 
@@ -83,6 +85,56 @@ public class AdministratorDAO {
 			e.printStackTrace();
 		}
 	
+	}
+	
+	
+	/**
+	 * Deze methode laat een lijst zoen van entries die de status queued hebben.
+	 * @author rezanaser
+	 * @param e_id
+	 * @return
+	 */
+	public ArrayList<EntryModel> entry_list(int e_id){
+		ArrayList<EntryModel> entry_alist = new ArrayList<EntryModel>();
+		String employee_entry_sql = "SELECT entry_id, entry_version_starttime, entry_version_endtime, entry_version_creationtime, entry_version_description "
+				+ "FROM entry_version, entry "
+				+ "WHERE entry_status = 'queued'";
+		try {
+			PreparedStatement entries_statement = connect.connectToDB().prepareStatement(employee_entry_sql);
+			
+			ResultSet entry_set = entries_statement.executeQuery();
+			while(entry_set.next()) {
+				EntryModel dummy = new EntryModel();
+				dummy.setEntry_id(entry_set.getInt("entry_id"));
+				dummy.setEntryDescription(entry_set.getString("entry_version_description"));
+				dummy.setEntryStartTime(entry_set.getString("entry_version_starttime"));
+				dummy.setEntryEndTime(entry_set.getString("entry_version_endtime"));
+				dummy.setEntryDate(entry_set.getString("entry_version_creationtime"));
+				entry_alist.add(dummy);
+			}
+			entries_statement.close();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return entry_alist;
+	}
+	
+	public void approveHours(int id)
+	{
+		String employee_entry_sql = "UPDATE entry SET"
+				+ "entry_staus = 'approved'"
+				+ " WHERE entry_id = ?";
+			PreparedStatement entries_statement;
+			try {
+				entries_statement = connect.connectToDB().prepareStatement(employee_entry_sql);
+				entries_statement.setInt(1, id);
+				entries_statement.executeUpdate();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 	}
 	
 }
