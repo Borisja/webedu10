@@ -45,6 +45,7 @@ public class goedkeurenController implements Initializable{
 		try{
 			EntryModel selected_item = tableView.getSelectionModel().getSelectedItem();
 			adminDao.approveHours(selected_item.getEntryId());
+			refreshTable();
 		}catch(NullPointerException e)
 		{
 			notSelected.setText("Select an hour");
@@ -60,6 +61,7 @@ public class goedkeurenController implements Initializable{
 		try{
 			EntryModel selected_item = tableView.getSelectionModel().getSelectedItem();
 			adminDao.rejectHours(selected_item.getEntryId());
+			refreshTable();
 		}catch(NullPointerException e)
 		{
 			notSelected.setText("Select an hour");
@@ -89,14 +91,21 @@ public class goedkeurenController implements Initializable{
 	 * Bijwerken lijst
 	 * @author rezanaser
 	 */
+	
 	public void refreshTable()
 	{
-		//Moet nog maken
+		tableView.getItems().clear();
+		iId.setCellValueFactory(new PropertyValueFactory<EntryModel, Integer>("entry_id"));
+		iDescription.setCellValueFactory(new PropertyValueFactory<EntryModel, String>("entryDescription"));
+		iStartTime.setCellValueFactory(new PropertyValueFactory<EntryModel, String>("entryStartTime"));
+		iEndTime.setCellValueFactory(new PropertyValueFactory<EntryModel, String>("entryEndTime"));
+		data.addAll(adminDao.entry_queued_list(0));
+		tableView.setItems(data);
+		tableView.refresh();
 	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-		EntryModel entry = new EntryModel();
 		iId.setCellValueFactory(new PropertyValueFactory<EntryModel, Integer>("entry_id"));
 		iDescription.setCellValueFactory(new PropertyValueFactory<EntryModel, String>("entryDescription"));
 		iStartTime.setCellValueFactory(new PropertyValueFactory<EntryModel, String>("entryStartTime"));

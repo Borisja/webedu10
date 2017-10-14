@@ -91,7 +91,7 @@ public class AdministratorDAO {
 	
 	
 	/**
-	 * Deze methode laat een lijst zoen van entries die de status queued hebben.
+	 * Deze methode laat een lijst zien van entries die de status queued hebben.
 	 * @author rezanaser
 	 * @param e_id
 	 * @return
@@ -163,7 +163,7 @@ public class AdministratorDAO {
 		String filename ="/Users/rezanaser/Desktop/factuur.csv";
 	    try {
 	        FileWriter fw = new FileWriter(filename);
-	        String query = "select * from entry";
+	        String query = "select * from entry_version";
 	        Statement stmt = connect.connectToDB().createStatement();
 	        ResultSet rs = stmt.executeQuery(query);
 	        while (rs.next()) {
@@ -171,7 +171,11 @@ public class AdministratorDAO {
 	            fw.append(';');
 	            fw.append(rs.getString(2));
 	            fw.append(';');
-	            fw.append(rs.getString(3));
+	            fw.append(rs.getString(5));
+	            fw.append(';');
+	            fw.append(rs.getString(6));
+	            fw.append(';');
+	            fw.append(rs.getString(7));
 	            fw.append('\n');
 	           }
 	        fw.flush();
