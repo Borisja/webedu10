@@ -163,19 +163,54 @@ public class AdministratorDAO {
 		String filename ="/Users/rezanaser/Desktop/factuur.csv";
 	    try {
 	        FileWriter fw = new FileWriter(filename);
-	        String query = "select * from entry_version";
+	        String query = "SELECT entry_version_date, entry_version_starttime, entry_version_endtime, entry_version_description, project_version_name, (entry_version_endtime - entry_version_starttime) AS Uren "
+	        		+ "FROM entry_version, project_version "
+	        		+ "WHERE entry_version_project_fk = project_version_project_fk";
 	        Statement stmt = connect.connectToDB().createStatement();
+	        fw.append("Datum");
+            fw.append(';');
+            fw.append("BeginTijd");
+            fw.append(';');
+            fw.append("EindTijd");
+            fw.append(';');
+            fw.append("Project");
+            fw.append(';');
+            fw.append("Werkzaamheden");
+            fw.append(';');
+            fw.append("Uren");
+            fw.append(';');
+            fw.append("Algemeen");
+            fw.append(';');
+            fw.append("Praktijkbeoordelen");
+            fw.append(';');
+            fw.append("EduCourse");
+            fw.append(';');
+            fw.append("Overige");
+            fw.append(';');
+            fw.append("Actorius");
+            fw.append(';');
+            fw.append("Totaal");
+            fw.append(';');
+            fw.append("Check");
+            fw.append('\n');
 	        ResultSet rs = stmt.executeQuery(query);
 	        while (rs.next()) {
 	            fw.append(rs.getString(1));
 	            fw.append(';');
-	            fw.append(rs.getString(2));
+	            fw.append(rs.getString(2).substring(0, 5));
+	            fw.append(';');
+	            fw.append(rs.getString(3).substring(0, 5));
 	            fw.append(';');
 	            fw.append(rs.getString(5));
 	            fw.append(';');
-	            fw.append(rs.getString(6));
+	            fw.append(rs.getString(4));
 	            fw.append(';');
-	            fw.append(rs.getString(7));
+	            fw.append(rs.getString(6).substring(0, 5));
+	            fw.append(';');
+	            if(rs.getString(5).equals("General"))
+	            	{
+	            		fw.append(rs.getString(6).substring(0, 5));
+	            	};
 	            fw.append('\n');
 	           }
 	        fw.flush();
