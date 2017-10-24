@@ -15,15 +15,15 @@ public class Run extends Application{
 
 	public static void main(String[] args) {
 		Application.launch(args);
-		
 	}
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		 Parent root = FXMLLoader.load(getClass().getResource("/view/beginScherm/GebruikerView.fxml"));
-	       Scene scene = new Scene(root);
-	       primaryStage.setScene(scene);
-	       primaryStage.show();
+//		 Parent root = FXMLLoader.load(getClass().getResource("/view/beginScherm/GebruikerView.fxml"));
+//	       Scene scene = new Scene(root);
+//	       primaryStage.setScene(scene);
+//	       primaryStage.show();
+		System.out.println(new ProjectDAO().project_list().size());
 
 //		Parent root = FXMLLoader.load(getClass().getResource("ProjectBeheer.fxml"));
 //		Scene scene = new Scene(root);
