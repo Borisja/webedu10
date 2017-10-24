@@ -13,7 +13,7 @@ import view.goedkeurenView.goedkeurenController;
 import view.handleiding.handleidingController;
 import view.home.homeController;
 
-public class beheerderViewController {
+public class BeheerderViewController {
 	
 	@FXML Button btn1;
 	@FXML Pane beheerderPane;
@@ -23,7 +23,7 @@ public class beheerderViewController {
 		Stage primaryStage = new Stage();
 		FXMLLoader administratieScherm = new FXMLLoader(getClass().getResource("/view/beginScherm/administratieView.fxml"));	
 		BorderPane View  = (BorderPane)administratieScherm.load();
-		administratieViewController administratieController = administratieScherm.getController();
+		AdministratieViewController administratieController = administratieScherm.getController();
 		FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("/view/home/home.fxml"));			//get xml file
 	    Pane homeView = homeLoader.load();
 	    homeController homeController = homeLoader.getController();

@@ -6,6 +6,9 @@ public class ProjectModel {
 	private boolean projectIsDeleted;
 	private String projectDescription;
 	private String projectName;
+	private int projectEntryFk;
+	private int projectUserStoryFk;
+	private int projectSprintFk;
 	
 	public int getProjectId() {
 		return projectId;
