@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import model.EmployeeModel;
 import view.ExportController;
 import view.goedkeurenView.goedkeurenController;
 import view.handleiding.handleidingController;
@@ -35,7 +36,7 @@ public class AdministratieViewController {
 	 * @author rezanaser
 	 * @throws IOException
 	 */
-	public void startAdministrator() throws IOException
+	public void startAManager(EmployeeModel em) throws IOException
 	{
 		Stage primaryStage = new Stage();
 		FXMLLoader administratieScherm = new FXMLLoader(getClass().getResource("/view/beginScherm/administratieView.fxml"));	

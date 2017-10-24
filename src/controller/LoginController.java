@@ -13,7 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import model.EmployeeModel;
 import view.AgendaView;
-import view.beginScherm.administratieViewController;
+import view.beginScherm.AdministratieViewController;
 
 public class LoginController {
 	/**
@@ -51,7 +51,7 @@ public class LoginController {
 			if(user.getEmployeeRol().equals("manager"))
 			{
 				try {
-					new administratieViewController().startManager(user);
+					new AdministratieViewController().startAManager(user);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
