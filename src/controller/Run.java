@@ -26,8 +26,8 @@ public class Run extends Application{
 		// TODO Auto-generated method stub
 		//new LoginView().show_login_view();
 
-		FXMLLoader loader = new FXMLLoader();
-		Parent root = loader.load(getClass().getResource("ProjectBeheer.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("ProjectBeheer.fxml"));
+		Parent root = loader.load();
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
 		System.out.println(this.getClass().toString()+": geinstancieerd");

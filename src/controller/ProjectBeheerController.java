@@ -33,13 +33,8 @@ public class ProjectBeheerController {
 	@FXML Button newSprint;
 	@FXML Button newUserStory;
 
+
 	Stage customerStage = new Stage();
-	@FXML TextField custName;
-	@FXML TextArea custDescription;
-	@FXML Button custAddBtn;
-	@FXML Button custCancelBtn;
-
-
 //	public ProjectBeheerController(Stage primaryStage) throws IOException{
 //		Parent root = FXMLLoader.load(getClass().getResource("ProjectBeheer.fxml"));
 //		Scene scene = new Scene(root);
@@ -77,7 +72,7 @@ public class ProjectBeheerController {
 		klantCB.setValue("klant");
 		update();
 	}
-	private void update(){
+	public void update(){
 		ArrayList<CustomerModel> customers = customerDao.getCustomerList();
 		ObservableSet<String> observableSet = FXCollections.observableSet();
 		for(CustomerModel customer: customers) {
@@ -90,23 +85,19 @@ public class ProjectBeheerController {
 		System.out.println("new Customer");
 		try {
 			Parent root = null;
-			root = FXMLLoader.load(getClass().getResource("ProjectBeheer_KlantEditor.fxml"));
+			FXMLLoader loader  = new FXMLLoader(getClass().getResource("ProjectBeheer_KlantEditor.fxml"));
+			root = loader.load();
 			Scene scene = new Scene(root);
 			customerStage.setScene(scene);
 			System.out.println(this.getClass().toString()+": geinstancieerd");
 			customerStage.show();
+			ProjectBeheerKlantController projectBeheerKlantController = loader.getController();
+			projectBeheerKlantController.setProjectBeheerController(this);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	public void addCustomer(){
-		System.out.println(this.getClass().toString()+": addCustomer name: "+custName.getText());
-		System.out.println(this.getClass().toString()+": addCustomer Description: "+custDescription.getText());
-		custName.setText(custName.getText()+" update!");
-		customerDao.addCustomer(custName.getText(),custDescription.getText());
-		this.update();
-		hideCustomerPane();
-	}
+
 	public void hideCustomerPane(){
 		System.out.println(this.getClass().toString()+": hideCustomerPane");
 		customerStage.hide();
