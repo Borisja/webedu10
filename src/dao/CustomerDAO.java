@@ -72,9 +72,20 @@ public class CustomerDAO {
 		}
 		return null;
 	}
-	
-	public void addCustomer() {
-		// SQL: 
+
+
+	public void addCustomer(String name, String description) {
+		String login_sql = "SELECT add_customer('"+name+"','"+description+"')";
+		PreparedStatement customer_statement;
+
+		try {
+			customer_statement = connect.connectToDB().prepareStatement(login_sql);
+			ResultSet customer_set = customer_statement.executeQuery();
+			customer_statement.close();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 }
