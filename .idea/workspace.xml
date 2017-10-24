@@ -2,10 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3583d79c-9c20-4de5-8a8d-d87821684c76" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/ProjectBeheerController.java" afterPath="$PROJECT_DIR$/src/controller/ProjectBeheerController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/ProjectBeheerKlantController.java" afterPath="$PROJECT_DIR$/src/controller/ProjectBeheerKlantController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/ProjectBeheer_klantEditor.fxml" afterPath="$PROJECT_DIR$/src/controller/ProjectBeheer_klantEditor.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/webedu10/controller/Run.class" afterPath="$PROJECT_DIR$/out/production/webedu10/controller/Run.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/webedu10/dao/ProjectDAO.class" afterPath="$PROJECT_DIR$/out/production/webedu10/dao/ProjectDAO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/webedu10/model/ProjectModel.class" afterPath="$PROJECT_DIR$/out/production/webedu10/model/ProjectModel.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/Run.java" afterPath="$PROJECT_DIR$/src/controller/Run.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dao/ProjectDAO.java" afterPath="$PROJECT_DIR$/src/dao/ProjectDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/ProjectModel.java" afterPath="$PROJECT_DIR$/src/model/ProjectModel.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,14 +24,17 @@
       <file leaf-file-name="Run.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/Run.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
-              <caret line="29" column="36" lean-forward="true" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
-              <folding />
+            <state relative-caret-position="210">
+              <caret line="24" column="31" lean-forward="false" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
+              <folding>
+                <element signature="e#380#381#0" expanded="true" />
+                <element signature="e#411#412#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProjectBeheerController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ProjectBeheerController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/ProjectBeheerController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-459">
@@ -54,15 +60,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProjectDAO.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ProjectDAO.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/dao/ProjectDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="74" column="46" lean-forward="true" selection-start-line="74" selection-start-column="46" selection-end-line="74" selection-end-column="46" />
+            <state relative-caret-position="482">
+              <caret line="101" column="4" lean-forward="false" selection-start-line="101" selection-start-column="4" selection-end-line="101" selection-end-column="4" />
               <folding>
-                <marker date="1508852424921" expanded="true" signature="461:482" ph="select * fro... project" />
-                <marker date="1508852424921" expanded="true" signature="1263:1366" ph="SELECT * FRO... project" />
-                <marker date="1508852424921" expanded="false" signature="1667:1682" ph="&lt;~&gt;" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#1204#1218#0" expanded="true" />
+                <marker date="1508864260035" expanded="true" signature="1251:1353" ph="SELECT * FRO... project_version" />
               </folding>
             </state>
           </provider>
@@ -104,11 +110,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/dao/ProjectDAO.java" />
         <option value="$PROJECT_DIR$/src/dao/CustomerDAO.java" />
-        <option value="$PROJECT_DIR$/src/controller/Run.java" />
         <option value="$PROJECT_DIR$/src/controller/ProjectBeheerKlantController.java" />
         <option value="$PROJECT_DIR$/src/controller/ProjectBeheerController.java" />
+        <option value="$PROJECT_DIR$/src/controller/Run.java" />
+        <option value="$PROJECT_DIR$/src/dao/ProjectDAO.java" />
       </list>
     </option>
   </component>
@@ -679,12 +685,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1508847756334</updated>
-      <workItem from="1508847768914" duration="14875000" />
+      <workItem from="1508847768914" duration="15019000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14875000" />
+    <option name="totallyTimeSpent" value="15019000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="56" y="-8" width="1872" height="1096" extended-state="6" />
@@ -736,18 +742,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/dao/ProjectDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="74" column="46" lean-forward="true" selection-start-line="74" selection-start-column="46" selection-end-line="74" selection-end-column="46" />
-          <folding>
-            <marker date="1508852424921" expanded="true" signature="461:482" ph="select * fro... project" />
-            <marker date="1508852424921" expanded="true" signature="1263:1366" ph="SELECT * FRO... project" />
-            <marker date="1508852424921" expanded="false" signature="1667:1682" ph="&lt;~&gt;" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/dao/CustomerDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1298">
@@ -759,14 +753,6 @@
             <marker date="1508859382098" expanded="true" signature="2695:2727" ph="SELECT add_c... " />
             <marker date="1508859382098" expanded="true" signature="2695:2744" ph="SELECT add_c... " />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/Run.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="29" column="36" lean-forward="true" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -788,6 +774,29 @@
             <element signature="method#ProjectBeheerController#0;class#ProjectBeheerController#0" expanded="false" />
             <element signature="e#3462#3463#0" expanded="true" />
             <element signature="e#3498#3499#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/Run.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="24" column="31" lean-forward="false" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
+          <folding>
+            <element signature="e#380#381#0" expanded="true" />
+            <element signature="e#411#412#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/ProjectDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="482">
+          <caret line="101" column="4" lean-forward="false" selection-start-line="101" selection-start-column="4" selection-end-line="101" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1204#1218#0" expanded="true" />
+            <marker date="1508864260035" expanded="true" signature="1251:1353" ph="SELECT * FRO... project_version" />
           </folding>
         </state>
       </provider>
