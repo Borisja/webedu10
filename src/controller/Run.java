@@ -8,12 +8,13 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.Stage;
 import view.LoginView;
+import view.beginScherm.administratieViewController;
 import dao.ProjectDAO;
 
 public class Run extends Application{
 
 	public static void main(String[] args) {
-		Application.launch(args);
+		launch(args);
 		
 	}
 
@@ -25,6 +26,7 @@ public class Run extends Application{
 //	       primaryStage.show();
 		// TODO Auto-generated method stub
 		new LoginView().show_login_view();
+	
 
 //		Parent root = FXMLLoader.load(getClass().getResource("ProjectBeheer.fxml"));
 //		Scene scene = new Scene(root);
