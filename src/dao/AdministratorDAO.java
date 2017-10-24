@@ -91,7 +91,6 @@ public class AdministratorDAO {
 	
 	}
 	
-	
 	/**
 	 * Deze methode laat een lijst zoen van entries die de status queued hebben.
 	 * @author rezanaser
@@ -142,6 +141,7 @@ public class AdministratorDAO {
 			}
 			
 	}
+	
 	public void rejectHours(int id)
 	{
 		String employee_entry_sql = "UPDATE entry SET entry_status = 'rejected' WHERE entry_id = ? ";

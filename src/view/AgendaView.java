@@ -29,7 +29,6 @@ public class AgendaView {
     /**
 	 * Show table containing entries from user that is currently logged in.
 	 * @param em - employee model to use throughout the flow.
-	 * 
 	 */
 	@SuppressWarnings("unchecked")
 	public void agendaShow(EmployeeModel em){
