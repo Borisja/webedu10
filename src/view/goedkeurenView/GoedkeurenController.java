@@ -18,7 +18,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import model.EntryModel;
 
-public class goedkeurenController implements Initializable{
+public class GoedkeurenController implements Initializable{
 	@FXML Pane pane;
 	@FXML Button sluitKnop;
 	@FXML Button approve;

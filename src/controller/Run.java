@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import javafx.stage.Stage;
 import view.LoginView;
 import view.beginScherm.AdministratieViewController;
+import view.beginScherm.GebruikerViewController;
 import dao.ProjectDAO;
 
 public class Run extends Application{
@@ -19,6 +20,7 @@ public class Run extends Application{
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+
 //		 Parent root = FXMLLoader.load(getClass().getResource("/view/beginScherm/GebruikerView.fxml"));
 //	       Scene scene = new Scene(root);
 //	       primaryStage.setScene(scene);
@@ -34,7 +36,16 @@ public class Run extends Application{
 		System.out.println(this.getClass().toString()+": geinstancieerd");
 		primaryStage.show();
 		ProjectBeheerController projectBeheerController=loader.getController();
-//		ProjectBeheerController projectBeheerController = new ProjectBeheerController();
-//		projectBeheerController.setLoader(loader);
+
+//		GebruikerViewController view = new GebruikerViewController();
+//		view.startGebruiker();
+
+//		 Parent root = FXMLLoader.load(getClass().getResource("/view/AddEntryView.fxml"));
+//	       Scene scene = new Scene(root);
+//	       primaryStage.setScene(scene);
+//	       primaryStage.show();
+
+		// TODO Auto-generated method stub
+		//new LoginView().show_login_view();
 	}
 }

@@ -1,6 +1,7 @@
 package controller;
 
 
+import java.io.IOException;
 import java.text.ParseException;
 
 import dao.AdministratorDAO;
@@ -12,6 +13,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import model.EmployeeModel;
 import view.AgendaView;
+import view.beginScherm.GebruikerViewController;
+import view.beginScherm.AdministratieViewController;
 
 public class LoginController {
 	/**
@@ -46,7 +49,26 @@ public class LoginController {
 			alert.showAndWait();
 		} else {
 			//Here we open the screen after login, use user.getEmployeeRol() to get users rol and then load correct view. 
-			new AgendaView().agendaShow(user);
+
+			if(user.getEmployeeRol().equals("employee")){
+				GebruikerViewController view = new GebruikerViewController();
+				try {
+					view.startGebruiker(user);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			if(user.getEmployeeRol().equals("manager"))
+			{
+				try {
+					new AdministratieViewController().startAManager(user);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			
+			} 
 		}
 	}
 }

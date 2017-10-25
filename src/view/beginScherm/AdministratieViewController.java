@@ -6,11 +6,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import model.EmployeeModel;
 import view.ExportController;
-import view.goedkeurenView.goedkeurenController;
+import view.goedkeurenView.GoedkeurenController;
 import view.handleiding.handleidingController;
 import view.home.homeController;
 
@@ -26,16 +28,17 @@ public class AdministratieViewController {
 	
 	@FXML private Button btnGoedkeuren;
 	@FXML private Pane pane;
-	private goedkeurenController gkC;
+	private GoedkeurenController gkC;
 	private handleidingController hdC;
 	private ExportController export = new ExportController();
+	private Label name;
 
 	/**
 	 * Deze methode geeft de administratieView  na succesvol inloggen.
 	 * @author rezanaser
 	 * @throws IOException
 	 */
-	public void startAdministrator() throws IOException
+	public void startAManager(EmployeeModel em) throws IOException
 	{
 		Stage primaryStage = new Stage();
 		FXMLLoader administratieScherm = new FXMLLoader(getClass().getResource("/view/beginScherm/administratieView.fxml"));	
@@ -45,12 +48,12 @@ public class AdministratieViewController {
 	    Pane homeView = homeLoader.load();
 	    homeController homeController = homeLoader.getController();
 	    View.setTop(homeView);
-	    
+	    homeController.setUserName(em.getEmployeeVoornaam());
 	    
 	    
 	    FXMLLoader goedkeurenLoader = new FXMLLoader(getClass().getResource("/view/goedkeurenView/goedkeurenView.fxml"));			//get xml file
 	    Pane goedkeurenView = goedkeurenLoader.load();	
-	    goedkeurenController goedkeurenController = goedkeurenLoader.getController();
+	    GoedkeurenController goedkeurenController = goedkeurenLoader.getController();
 	    
 	    FXMLLoader handleidingLoader = new FXMLLoader(getClass().getResource("/view/handleiding/handleiding.fxml"));			//get xml file
 	    Pane handleidingView = handleidingLoader.load();	
@@ -70,7 +73,7 @@ public class AdministratieViewController {
 	 * Deze methode krijgt de controller van andere views.
 	 * @param gk
 	 */
-	public void setControllerGoedkeuren(goedkeurenController gk)
+	public void setControllerGoedkeuren(GoedkeurenController gk)
 	{
 		this.gkC = gk;
 	}

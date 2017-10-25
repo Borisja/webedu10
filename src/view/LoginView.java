@@ -42,7 +42,7 @@ public class LoginView {
 		
 		btn_login.setOnAction(e-> {
 			try {
-				login_controller.loginRequest("lol@lol.com", "password");
+				login_controller.loginRequest(txt_username.getText(), pw_field.getText());
 				login_stage.close();
 			} catch (ParseException e1) {
 				// TODO Auto-generated catch block
