@@ -11,7 +11,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.EmployeeModel;
 import view.ExportController;
-import view.goedkeurenView.goedkeurenController;
+import view.goedkeurenView.GoedkeurenController;
 import view.handleiding.handleidingController;
 import view.home.homeController;
 
@@ -27,7 +27,7 @@ public class AdministratieViewController {
 	
 	@FXML private Button btnGoedkeuren;
 	@FXML private Pane pane;
-	private goedkeurenController gkC;
+	private GoedkeurenController gkC;
 	private handleidingController hdC;
 	private ExportController export = new ExportController();
 
@@ -51,7 +51,7 @@ public class AdministratieViewController {
 	    
 	    FXMLLoader goedkeurenLoader = new FXMLLoader(getClass().getResource("/view/goedkeurenView/goedkeurenView.fxml"));			//get xml file
 	    Pane goedkeurenView = goedkeurenLoader.load();	
-	    goedkeurenController goedkeurenController = goedkeurenLoader.getController();
+	    GoedkeurenController goedkeurenController = goedkeurenLoader.getController();
 	    
 	    FXMLLoader handleidingLoader = new FXMLLoader(getClass().getResource("/view/handleiding/handleiding.fxml"));			//get xml file
 	    Pane handleidingView = handleidingLoader.load();	
@@ -71,7 +71,7 @@ public class AdministratieViewController {
 	 * Deze methode krijgt de controller van andere views.
 	 * @param gk
 	 */
-	public void setControllerGoedkeuren(goedkeurenController gk)
+	public void setControllerGoedkeuren(GoedkeurenController gk)
 	{
 		this.gkC = gk;
 	}
