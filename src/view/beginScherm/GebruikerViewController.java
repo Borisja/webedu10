@@ -2,6 +2,7 @@ package view.beginScherm;
 
 import java.io.IOException;
 
+import controller.AddHoursController;
 import controller.GebruikerGegevensController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,6 +26,7 @@ public class GebruikerViewController {
 	private SprintController scC;
 	private ProjectController pjC;
 	private AddEntryViewController entryController;
+	private AddHoursController addHours;
 	private GebruikerGegevensController gebruikerGegevensController;
 	private EmployeeModel user;
 	
@@ -47,11 +49,12 @@ public class GebruikerViewController {
 		
 		FXMLLoader addHoursLoader = new FXMLLoader(getClass().getResource("/controller/AddHours.fxml"));
 		Pane addHoursView = addHoursLoader.load();
-		//AddHoursController addHoursController = addHoursLoader.getController();
+		AddHoursController addHoursController = addHoursLoader.getController();
 		
 		FXMLLoader addEntryLoader = new FXMLLoader(getClass().getResource("/view/AddEntryView.fxml"));
 		Pane addEntryView = addEntryLoader.load();
 		AddEntryViewController addEntryController = addEntryLoader.getController();
+		
 		
 		FXMLLoader employeeGegevensLoader = new FXMLLoader(getClass().getResource("/controller/GebruikerGegevensView.fxml"));
 		Pane gebruikerGegevensView = employeeGegevensLoader.load();
@@ -70,6 +73,7 @@ public class GebruikerViewController {
 		gebruikerController.setControllerSprint(sprintController);
 		gebruikerController.setControllerProject(projectController);
 		gebruikerController.setControllerAddEntryHours(addEntryController);
+		addEntryController.setController(addHoursController);
 		gebruikerController.setControllerGebruikerGegevens(gebruikerGegevensController);
 		
 		
