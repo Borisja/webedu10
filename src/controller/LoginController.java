@@ -50,10 +50,10 @@ public class LoginController {
 		} else {
 			//Here we open the screen after login, use user.getEmployeeRol() to get users rol and then load correct view. 
 
-			if(user.getEmployeeRol().equals("Employee")){
+			if(user.getEmployeeRol().equals("employee")){
 				GebruikerViewController view = new GebruikerViewController();
 				try {
-					view.startGebruiker();
+					view.startGebruiker(user);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

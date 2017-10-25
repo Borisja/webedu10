@@ -8,9 +8,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.EmployeeModel;
+import view.home.homeController;
 import view.projectView.ProjectController;
 import view.sprintView.SprintController;
 
@@ -21,11 +23,11 @@ public class GebruikerViewController {
 	private SprintController scC;
 	private ProjectController pjC;
 	
-	public void startGebruiker() throws IOException
+	public void startGebruiker(EmployeeModel em) throws IOException
 	{
 		Stage primaryStage = new Stage();
 		FXMLLoader gebruikerView = new FXMLLoader(getClass().getResource("/view/beginScherm/GebruikerView.fxml"));
-		Pane view =(Pane) gebruikerView.load();
+		BorderPane view =(BorderPane) gebruikerView.load();
 		GebruikerViewController gebruikerController = gebruikerView.getController();
 		
 		
@@ -37,6 +39,12 @@ public class GebruikerViewController {
 		Pane projectView = projectLoader.load();
 		ProjectController projectController = projectLoader.getController();
 		
+		FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("/view/home/home.fxml"));			//get xml file
+	    Pane homeView = homeLoader.load();
+	    homeController homeController = homeLoader.getController();
+	    view.setTop(homeView);
+	    homeController.setUserName(em.getEmployeeVoornaam());  
+	    
 		gebruikerController.setControllerSprint(sprintController);
 		gebruikerController.setControllerProject(projectController);
 		
