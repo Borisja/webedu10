@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import dao.CustomerDAO;
 import dao.ProjectDAO;
@@ -17,16 +18,19 @@ import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 import model.CustomerModel;
 import model.ProjectModel;
+import model.SprintModel;
 
 public class ProjectBeheerController {
+
+	final private String CUSTOMER_DEFAULT = "Alle Klanten";
 
 	CustomerDAO customerDao = new CustomerDAO();
 	ProjectDAO projectDAO = new ProjectDAO();
 	
 	@FXML Button editBtn;
-	@FXML ComboBox<String> customerCB;
-	@FXML ComboBox<String> projectCB;
-	@FXML ComboBox<String> sprintCB;
+	@FXML ComboBox<CustomerModel> customerCB;
+	@FXML ComboBox<ProjectModel> projectCB;
+	@FXML ComboBox<SprintModel> sprintCB;
 	@FXML ComboBox<String> userStoryCB;
 	ObservableList<String> obList = FXCollections.observableArrayList("klant1","klant2");
 	@FXML Button newCustomer;
@@ -39,64 +43,37 @@ public class ProjectBeheerController {
 
 
 	Stage customerStage = new Stage();
-//	public ProjectBeheerController(Stage primaryStage) throws IOException{
-//		Parent root = FXMLLoader.load(getClass().getResource("ProjectBeheer.fxml"));
-//		Scene scene = new Scene(root);
-//		primaryStage.setScene(scene);
-//		System.out.println(this.getClass().toString()+": geinstancieerd");
-//		primaryStage.show();
-//	}
+
 	public ProjectBeheerController() {
-//		ObservableList<String> options =
-//			    FXCollections.observableArrayList(
-//			        "Option 1",
-//			        "Option 2",
-//			        "Option 3"
-//			    );
-//		customerCB = new ComboBox<String>();
-//		customerCB.getItems().clear();
-//		customerCB.setItems(options);
-//		customerCB = new ComboBox();
-//		customerCB.getItems().addAll(
-//	            "jacob.smith@example.com",
-//	            "isabella.johnson@example.com",
-//	            "ethan.williams@example.com",
-//	            "emma.jones@example.com",
-//	            "michael.brown@example.com");
-		customerCB = new ComboBox<String>();
-//		List<String> list = new ArrayList<String>();
-//        list.add("Item A");
-//        list.add("Item B");
-//        list.add("Item C");
-//        customerCB.getItems().clear();
 	}
 
 	@FXML
 	private void initialize() {
-		customerCB.setValue("Klant");
-		projectCB.setValue("Project");
-		sprintCB.setValue("Sprint");
-		userStoryCB.setValue("UserStory");
+//		customerCB.setValue("Klant");
+//		projectCB.setValue("Project");
+//		sprintCB.setValue("Sprint");
+//		userStoryCB.setValue("UserStory");
 		updateCutomerCB();
 		updateProjectCB();
 	}
 	public void updateCutomerCB(){
 		this.selectedCustomers = customerDao.getCustomerList();
-		ObservableSet<String> observableSet = FXCollections.observableSet();
-		observableSet.add("Alle klanten");
+//		ObservableSet<String> observableSet = FXCollections.observableSet();
+//		observableSet.add("Alle klanten");
 		for(CustomerModel customer: this.selectedCustomers) {
-			observableSet.add(customer.getCustomer_name());
+//			observableSet.add(customer.getCustomer_name());
+			customerCB.getItems().add(customer);
 		}
-		customerCB.setItems(FXCollections.observableArrayList(observableSet));
+//		customerCB.setItems(FXCollections.observableArrayList(observableSet));
 	}
 	public void updateProjectCB(){
 		this.selectedProjects = projectDAO.project_list();
-		ObservableSet<String> observableSet = FXCollections.observableSet();
-		observableSet.add("Alle projecten");
+//		ObservableSet<String> observableSet = FXCollections.observableSet();
+//		observableSet.add("Alle klanten");
 		for(ProjectModel project: this.selectedProjects) {
-			observableSet.add(project.getProjectName());
+//			observableSet.add(customer.getCustomer_name());
+			projectCB.getItems().add(project);
 		}
-		projectCB.setItems(FXCollections.observableArrayList(observableSet));
 	}
 
 
@@ -124,8 +101,12 @@ public class ProjectBeheerController {
 	}
 	public void klant() {
 		System.out.println("klant!");
-		ProjectDAO projectDAO = new ProjectDAO();
-
+//		if(customerCB.getValue().==CUSTOMER_DEFAULT){
+//
+//		}
+//		for (CustomerModel customer: this.selectedCustomers) {
+//			if(customer.getCustomer_name())
+//		}
 	}
 	public void test() {
 		System.out.println("t werkt");

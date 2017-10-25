@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3583d79c-9c20-4de5-8a8d-d87821684c76" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/ProjectBeheer.fxml" afterPath="$PROJECT_DIR$/src/controller/ProjectBeheer.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/webedu10/controller/ProjectBeheerController.class" afterPath="$PROJECT_DIR$/out/production/webedu10/controller/ProjectBeheerController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/webedu10/model/CustomerModel.class" afterPath="$PROJECT_DIR$/out/production/webedu10/model/CustomerModel.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/ProjectBeheerController.java" afterPath="$PROJECT_DIR$/src/controller/ProjectBeheerController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/ProjectBeheerKlantController.java" afterPath="$PROJECT_DIR$/src/controller/ProjectBeheerKlantController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dao/ProjectDAO.java" afterPath="$PROJECT_DIR$/src/dao/ProjectDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/CustomerModel.java" afterPath="$PROJECT_DIR$/src/model/CustomerModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/ProjectModel.java" afterPath="$PROJECT_DIR$/src/model/ProjectModel.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,13 +33,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProjectBeheerController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ProjectBeheerController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/ProjectBeheerController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="85" column="42" lean-forward="true" selection-start-line="85" selection-start-column="42" selection-end-line="85" selection-end-column="42" />
+            <state relative-caret-position="-232">
+              <caret line="73" column="57" lean-forward="false" selection-start-line="73" selection-start-column="57" selection-end-line="73" selection-end-column="57" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProjectModel.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/model/ProjectModel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="39" column="32" lean-forward="false" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="32" />
               <folding>
-                <element signature="method#ProjectBeheerController#0;class#ProjectBeheerController#0" expanded="false" />
+                <element signature="e#941#942#0" expanded="true" />
+                <element signature="e#971#972#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CustomerModel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/CustomerModel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="42" column="34" lean-forward="false" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="34" />
+              <folding>
+                <element signature="e#909#910#0" expanded="true" />
+                <element signature="e#941#942#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -87,7 +112,9 @@
         <option value="$PROJECT_DIR$/src/controller/ProjectBeheerKlantController.java" />
         <option value="$PROJECT_DIR$/src/controller/Run.java" />
         <option value="$PROJECT_DIR$/src/dao/ProjectDAO.java" />
+        <option value="$PROJECT_DIR$/src/model/CustomerModel.java" />
         <option value="$PROJECT_DIR$/src/controller/ProjectBeheerController.java" />
+        <option value="$PROJECT_DIR$/src/model/ProjectModel.java" />
       </list>
     </option>
   </component>
@@ -658,12 +685,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1508847756334</updated>
-      <workItem from="1508847768914" duration="18378000" />
+      <workItem from="1508847768914" duration="20839000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18378000" />
+    <option name="totallyTimeSpent" value="20839000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="56" y="-8" width="1872" height="1096" extended-state="6" />
@@ -762,12 +789,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/CustomerModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="42" column="34" lean-forward="false" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="34" />
+          <folding>
+            <element signature="e#909#910#0" expanded="true" />
+            <element signature="e#941#942#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/ProjectBeheerController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="85" column="42" lean-forward="true" selection-start-line="85" selection-start-column="42" selection-end-line="85" selection-end-column="42" />
+        <state relative-caret-position="-232">
+          <caret line="73" column="57" lean-forward="false" selection-start-line="73" selection-start-column="57" selection-end-line="73" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/ProjectModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="39" column="32" lean-forward="false" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="32" />
           <folding>
-            <element signature="method#ProjectBeheerController#0;class#ProjectBeheerController#0" expanded="false" />
+            <element signature="e#941#942#0" expanded="true" />
+            <element signature="e#971#972#0" expanded="true" />
           </folding>
         </state>
       </provider>

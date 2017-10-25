@@ -35,6 +35,9 @@ public class ProjectModel {
 		this.projectName = projectName;
 	}
 	
-	
+	@Override
+	public String toString(){
+		return this.projectName;
+	}
 
 }
