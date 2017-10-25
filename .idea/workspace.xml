@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3583d79c-9c20-4de5-8a8d-d87821684c76" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/webedu10/controller/ProjectBeheerController.class" afterPath="$PROJECT_DIR$/out/production/webedu10/controller/ProjectBeheerController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/webedu10/model/CustomerModel.class" afterPath="$PROJECT_DIR$/out/production/webedu10/model/CustomerModel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/ProjectBeheerController.java" afterPath="$PROJECT_DIR$/src/controller/ProjectBeheerController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/CustomerModel.java" afterPath="$PROJECT_DIR$/src/model/CustomerModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/ProjectModel.java" afterPath="$PROJECT_DIR$/src/model/ProjectModel.java" />
-    </list>
+    <list default="true" id="3583d79c-9c20-4de5-8a8d-d87821684c76" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -685,12 +678,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1508847756334</updated>
-      <workItem from="1508847768914" duration="20839000" />
+      <workItem from="1508847768914" duration="20890000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20839000" />
+    <option name="totallyTimeSpent" value="20890000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="56" y="-8" width="1872" height="1096" extended-state="6" />
