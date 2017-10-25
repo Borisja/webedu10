@@ -33,6 +33,6 @@ public class ProjectBeheerKlantController {
         System.out.println(this.getClass().toString()+": addCustomer name: "+custName.getText());
         System.out.println(this.getClass().toString()+": addCustomer Description: "+custDescription.getText());
         customerDao.addCustomer(custName.getText(),custDescription.getText());
-        projectBeheerController.update();
+        projectBeheerController.updateCutomerCB();
     }
 }

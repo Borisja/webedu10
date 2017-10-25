@@ -2,8 +2,6 @@ package controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Observable;
 
 import dao.CustomerDAO;
 import dao.ProjectDAO;
@@ -16,22 +14,28 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.CustomerModel;
+import model.ProjectModel;
 
 public class ProjectBeheerController {
 
 	CustomerDAO customerDao = new CustomerDAO();
+	ProjectDAO projectDAO = new ProjectDAO();
 	
 	@FXML Button editBtn;
-	@FXML ComboBox<String> klantCB;
+	@FXML ComboBox<String> customerCB;
+	@FXML ComboBox<String> projectCB;
+	@FXML ComboBox<String> sprintCB;
+	@FXML ComboBox<String> userStoryCB;
 	ObservableList<String> obList = FXCollections.observableArrayList("klant1","klant2");
 	@FXML Button newCustomer;
 	@FXML Button newProject;
 	@FXML Button newSprint;
 	@FXML Button newUserStory;
+
+	ArrayList<CustomerModel> selectedCustomers;
+	ArrayList<ProjectModel> selectedProjects;
 
 
 	Stage customerStage = new Stage();
@@ -49,37 +53,52 @@ public class ProjectBeheerController {
 //			        "Option 2",
 //			        "Option 3"
 //			    );
-//		klantCB = new ComboBox<String>();
-//		klantCB.getItems().clear();
-//		klantCB.setItems(options);
-//		klantCB = new ComboBox();
-//		klantCB.getItems().addAll(
+//		customerCB = new ComboBox<String>();
+//		customerCB.getItems().clear();
+//		customerCB.setItems(options);
+//		customerCB = new ComboBox();
+//		customerCB.getItems().addAll(
 //	            "jacob.smith@example.com",
 //	            "isabella.johnson@example.com",
 //	            "ethan.williams@example.com",
 //	            "emma.jones@example.com",
 //	            "michael.brown@example.com");
-		klantCB = new ComboBox<String>();
+		customerCB = new ComboBox<String>();
 //		List<String> list = new ArrayList<String>();
 //        list.add("Item A");
 //        list.add("Item B");
 //        list.add("Item C");
-//        klantCB.getItems().clear();
+//        customerCB.getItems().clear();
 	}
 
 	@FXML
 	private void initialize() {
-		klantCB.setValue("klant");
-		update();
+		customerCB.setValue("Klant");
+		projectCB.setValue("Project");
+		sprintCB.setValue("Sprint");
+		userStoryCB.setValue("UserStory");
+		updateCutomerCB();
+		updateProjectCB();
 	}
-	public void update(){
-		ArrayList<CustomerModel> customers = customerDao.getCustomerList();
+	public void updateCutomerCB(){
+		this.selectedCustomers = customerDao.getCustomerList();
 		ObservableSet<String> observableSet = FXCollections.observableSet();
-		for(CustomerModel customer: customers) {
+		observableSet.add("Alle klanten");
+		for(CustomerModel customer: this.selectedCustomers) {
 			observableSet.add(customer.getCustomer_name());
 		}
-		klantCB.setItems(FXCollections.observableArrayList(observableSet));
+		customerCB.setItems(FXCollections.observableArrayList(observableSet));
 	}
+	public void updateProjectCB(){
+		this.selectedProjects = projectDAO.project_list();
+		ObservableSet<String> observableSet = FXCollections.observableSet();
+		observableSet.add("Alle projecten");
+		for(ProjectModel project: this.selectedProjects) {
+			observableSet.add(project.getProjectName());
+		}
+		projectCB.setItems(FXCollections.observableArrayList(observableSet));
+	}
+
 
 	public void newCustomerPane(){
 		System.out.println("new Customer");
