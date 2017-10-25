@@ -17,6 +17,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
 import model.EntryModel;
@@ -36,6 +37,7 @@ public class AddEntryViewController implements Initializable {
 	@FXML ComboBox userStorysCombo;
 	@FXML ComboBox<SprintModel> sprintCombo;
 	@FXML Button btnAddEntry;
+	@FXML Pane pane;
 	
 	/**
 	 * Fill the sprint box when project box onaction is called
@@ -142,6 +144,22 @@ public class AddEntryViewController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		this.fillProjectsBox();
+	}
+	/**
+	 * Deze methode opent de view van AddEntryView
+	 * @author rezanaser
+	 */
+	public void showView() {
+		this.pane.setVisible(true);
+
+	}
+	/**
+	 * Deze methode sluit de view van AddEntryView als er op sluit button geklikt wordt
+	 * @author rezanaser
+	 */
+	public void closeView()
+	{
+		this.pane.setVisible(false);
 	}
 
 }
