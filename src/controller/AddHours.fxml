@@ -5,19 +5,19 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #e3e4e5;" visible="false" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddHoursController">
    <children>
-      <Label layoutX="31.0" layoutY="31.0" text="ProjectNaam" />
-      <Label layoutX="142.0" layoutY="31.0" text="Label" />
-      <Label layoutX="31.0" layoutY="75.0" text="UserStory " />
-      <Label layoutX="142.0" layoutY="75.0" text="Label" />
-      <Label layoutX="31.0" layoutY="122.0" text="Sprint" />
-      <Label layoutX="142.0" layoutY="122.0" text="Label" />
+      <Label layoutX="31.0" layoutY="31.0" text="ProjectNaam: " />
+      <Label fx:id="project_naam_lbl" layoutX="142.0" layoutY="31.0" />
+      <Label layoutX="31.0" layoutY="75.0" text="UserStory:" />
+      <Label fx:id="userstory_naam_lbl" layoutX="142.0" layoutY="75.0" />
+      <Label layoutX="31.0" layoutY="122.0" text="Sprint:" />
+      <Label fx:id="sprint_naam_lbl" layoutX="142.0" layoutY="122.0" />
       <Label layoutX="318.0" layoutY="213.0" text="EindTijd" />
       <Label layoutX="318.0" layoutY="170.0" text="BeginTijd" />
       <TextField layoutX="404.0" layoutY="165.0" />
       <TextField layoutX="404.0" layoutY="208.0" />
       <Button layoutX="487.0" layoutY="286.0" mnemonicParsing="false" text="Toevoegen" />
+      <Button fx:id="sluit" layoutX="20.0" layoutY="329.0" mnemonicParsing="false" onAction="#closeView" text="Sluit" />
    </children>
 </Pane>
