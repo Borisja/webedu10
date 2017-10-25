@@ -70,6 +70,13 @@ public class ProjectBeheerController {
 	}
 	public void updateProjectCB(){
 		projectCB.getItems().clear();
+
+		ProjectModel projectModel = new ProjectModel();
+		projectModel.setProjectName(this.PROJECT_DEFAULT);
+		projectModel.setProjectId(this.PROJECT_ID_DEFAULT);
+		projectCB.setValue(projectModel);
+		projectCB.getItems().add(projectModel);
+
 		ArrayList<ProjectModel> projects = new ArrayList<ProjectModel>();
 		if(this.selectedCustomer!=null&&this.selectedCustomer.getCustomer_id()!=this.PROJECT_ID_DEFAULT){
 			projects = projectDAO.project_list(this.selectedCustomer);
@@ -111,7 +118,7 @@ public class ProjectBeheerController {
 			ProjectBeheerProjectController projectBeheerProjectController = loader.getController();
 			projectBeheerProjectController.setProjectBeheerController(this);
 			projectBeheerProjectController.setViewStage(customerStage);
-			if(this.selectedCustomer!=null&&this.selectedCustomer.getCustomer_id()==this.CUSTOMER_ID_DEFAULT) {
+			if(this.selectedCustomer!=null&&this.selectedCustomer.getCustomer_id()!=this.CUSTOMER_ID_DEFAULT) {
 				projectBeheerProjectController.setCustomer(selectedCustomer);
 			}
 			if(this.selectedProject!=null&&this.selectedProject.getProjectId()==this.PROJECT_ID_DEFAULT){

@@ -4,16 +4,15 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.beginScherm.beheerderViewController">
+<BorderPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.beginScherm.BeheerderViewController">
    <center>
       <Pane fx:id="beheerderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="35.0" layoutY="84.0" mnemonicParsing="false" onAction="#toonGoedkeurenMenu" prefHeight="88.0" prefWidth="105.0" style="-fx-background-image: url('view/images/goedkeuren.jpg' ); -fx-background-size: 110 90; -fx-background-repeat: no-repeat;" text="Account Beheren" />
-            <Button layoutX="228.0" layoutY="84.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="105.0" style="-fx-background-image: url('view/images/overzicht.jpg'); -fx-background-size: 110 90; -fx-background-repeat: no-repeat;" text="Projecten Beheren" />
-            <Button layoutX="415.0" layoutY="84.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="105.0" style="-fx-background-image: url('view/images/export.jpg'); -fx-background-repeat: no-repeat; -fx-background-size: 105 90;" text="Sprints Beheren" />
-            <Button layoutX="35.0" layoutY="242.0" mnemonicParsing="false" onAction="#toonHanleiding" prefHeight="88.0" prefWidth="105.0" style="-fx-background-image: url('view/images/handleiding.png'); -fx-background-repeat: no-repeat; -fx-background-size: 110 90;" />
-            <Button layoutX="415.0" layoutY="242.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="105.0" />
-            <Button layoutX="228.0" layoutY="242.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="105.0" />
+            <Button fx:id="btnAccounts" layoutX="26.0" layoutY="84.0" mnemonicParsing="false" prefHeight="89.0" prefWidth="138.0" style="-fx-background-image: url('view/images/goedkeuren.jpg' ); -fx-background-size: 110 90; -fx-background-repeat: no-repeat;" text="Account Beheren" />
+            <Button layoutX="208.0" layoutY="82.0" mnemonicParsing="false" prefHeight="93.0" prefWidth="145.0" style="-fx-background-image: url('view/images/overzicht.jpg'); -fx-background-size: 110 90; -fx-background-repeat: no-repeat;" text="Projecten Beheren" />
+            <Button layoutX="400.0" layoutY="83.0" mnemonicParsing="false" prefHeight="91.0" prefWidth="136.0" style="-fx-background-image: url('view/images/export.jpg'); -fx-background-repeat: no-repeat; -fx-background-size: 105 90;" text="Sprints Beheren" />
+            <Button layoutX="24.0" layoutY="240.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="142.0" style="-fx-background-image: url('view/images/handleiding.png'); -fx-background-repeat: no-repeat; -fx-background-size: 110 90;" text="Overzichten" />
+            <Button layoutX="208.0" layoutY="241.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="147.0" text="Entry's beheren" />
          </children>
       </Pane>
    </center>

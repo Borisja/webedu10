@@ -9,6 +9,36 @@ import model.ProjectModel;
 public class ProjectDAO {
 	ConnectDAO connect = new ConnectDAO();
 	ObservableList<ProjectModel> arrProjecten;
+
+	/**
+	 * Deze constructor maakt een stored procedure aan die een nieuw project kan toevoegen zonder onderbroken te worden
+	 * door een andere gebruiker (atomicity).
+	 *
+	 * @author Robert den Blaauwen
+	 * @date 25-10-2017
+	 */
+	public ProjectDAO(){
+		String project_list_sql = "CREATE OR REPLACE FUNCTION add_project(name TEXT, description TEXT, customer INT4) " +
+				"RETURNS void AS $$ " +
+				"DECLARE pk INT; " +
+				"BEGIN " +
+				" INSERT INTO project(project_isdeleted) VALUES(false) " +
+				"    RETURNING project_id INTO pk; " +
+				"    INSERT INTO project_version(project_version_project_fk, project_version_name, project_version_description, project_version_customer_fk) " +
+				"    VALUES(pk,name,description, customer); " +
+				"END $$ LANGUAGE plpgsql;";
+		try {
+			PreparedStatement project_statement = connect.connectToDB().prepareStatement(project_list_sql);
+			project_statement.executeUpdate();
+			System.out.println(this.getClass().toString()+": constructor: FUNCTION add_project(name, description, customer) has been created!");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 //	public ProjectDAO(){
 //		System.out.println("test");
@@ -44,7 +74,8 @@ public class ProjectDAO {
 	public ArrayList<ProjectModel> project_list(){
 		ArrayList<ProjectModel> proj_list = new ArrayList<ProjectModel>();
 		String project_list_sql = "SELECT * FROM project_version "
-				+ "INNER JOIN project ON (project_id = project_version_project_fk)";
+				+ "INNER JOIN project ON (project_id = project_version_project_fk) "
+				+ "ORDER BY project_version.project_version_name ASC";
 		try {
 			PreparedStatement project_statement = connect.connectToDB().prepareStatement(project_list_sql);
 			ResultSet project_set = project_statement.executeQuery();
@@ -69,7 +100,8 @@ public class ProjectDAO {
 		ArrayList<ProjectModel> proj_list = new ArrayList<ProjectModel>();
 		String project_list_sql = "SELECT * FROM project_version "
 				+ "INNER JOIN project ON (project.project_id = project_version.project_version_project_fk) "
-				+ "WHERE project_version.project_version_customer_fk="+customerModel.getCustomer_id();
+				+ "WHERE project_version.project_version_customer_fk="+customerModel.getCustomer_id()
+				+ " ORDER BY project_version.project_version_name ASC";
 		try {
 			PreparedStatement project_statement = connect.connectToDB().prepareStatement(project_list_sql);
 			ResultSet project_set = project_statement.executeQuery();
