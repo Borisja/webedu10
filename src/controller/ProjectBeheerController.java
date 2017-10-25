@@ -93,6 +93,7 @@ public class ProjectBeheerController {
 			customerStage.show();
 			ProjectBeheerKlantController projectBeheerKlantController = loader.getController();
 			projectBeheerKlantController.setProjectBeheerController(this);
+			projectBeheerKlantController.setViewStage(customerStage);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -109,6 +110,7 @@ public class ProjectBeheerController {
 			customerStage.show();
 			ProjectBeheerProjectController projectBeheerProjectController = loader.getController();
 			projectBeheerProjectController.setProjectBeheerController(this);
+			projectBeheerProjectController.setViewStage(customerStage);
 			if(this.selectedCustomer!=null&&this.selectedCustomer.getCustomer_id()==this.CUSTOMER_ID_DEFAULT) {
 				projectBeheerProjectController.setCustomer(selectedCustomer);
 			}

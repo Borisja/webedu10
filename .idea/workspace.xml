@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3583d79c-9c20-4de5-8a8d-d87821684c76" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/controller/ProjectBeheerProjectController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/webedu10/controller/ProjectBeheerController.class" afterPath="$PROJECT_DIR$/out/production/webedu10/controller/ProjectBeheerController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/ProjectBeheer.fxml" afterPath="$PROJECT_DIR$/src/controller/ProjectBeheer.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/ProjectBeheerController.java" afterPath="$PROJECT_DIR$/src/controller/ProjectBeheerController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/ProjectBeheerKlantController.java" afterPath="$PROJECT_DIR$/src/controller/ProjectBeheerKlantController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dao/ProjectDAO.java" afterPath="$PROJECT_DIR$/src/dao/ProjectDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/ProjectBeheerProjectController.java" afterPath="$PROJECT_DIR$/src/controller/ProjectBeheerProjectController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/ProjectBeheer_ProjectEditor.fxml" afterPath="$PROJECT_DIR$/src/controller/ProjectBeheer_ProjectEditor.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/ProjectBeheer_klantEditor.fxml" afterPath="$PROJECT_DIR$/src/controller/ProjectBeheer_klantEditor.fxml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,12 +35,12 @@
       <file leaf-file-name="ProjectBeheerController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/controller/ProjectBeheerController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="109" column="0" lean-forward="false" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+            <state relative-caret-position="245">
+              <caret line="95" column="67" lean-forward="false" selection-start-line="95" selection-start-column="67" selection-end-line="95" selection-end-column="67" />
               <folding>
                 <element signature="e#2108#2122#0" expanded="true" />
-                <marker date="1508940454596" expanded="false" signature="4316:4321" ph=" { " />
-                <marker date="1508940454596" expanded="false" signature="4351:4354" ph=" }" />
+                <marker date="1508942912004" expanded="false" signature="4440:4445" ph=" { " />
+                <marker date="1508942912004" expanded="false" signature="4475:4478" ph=" }" />
               </folding>
             </state>
           </provider>
@@ -51,10 +49,14 @@
       <file leaf-file-name="ProjectBeheerProjectController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/ProjectBeheerProjectController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="58" column="55" lean-forward="false" selection-start-line="58" selection-start-column="55" selection-end-line="58" selection-end-column="55" />
+            <state relative-caret-position="458">
+              <caret line="74" column="9" lean-forward="false" selection-start-line="74" selection-start-column="9" selection-end-line="74" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1500#1501#0" expanded="true" />
+                <element signature="e#1542#1543#0" expanded="true" />
+                <element signature="e#2239#2240#0" expanded="true" />
+                <element signature="e#2276#2277#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -63,10 +65,14 @@
       <file leaf-file-name="ProjectBeheerKlantController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/ProjectBeheerKlantController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="14" column="4" lean-forward="false" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="60" />
+            <state relative-caret-position="509">
+              <caret line="47" column="9" lean-forward="true" selection-start-line="47" selection-start-column="9" selection-end-line="47" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#869#870#0" expanded="true" />
+                <element signature="e#911#912#0" expanded="true" />
+                <element signature="e#1394#1395#0" expanded="true" />
+                <element signature="e#1431#1432#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -136,10 +142,10 @@
         <option value="$PROJECT_DIR$/src/model/CustomerModel.java" />
         <option value="$PROJECT_DIR$/src/model/ProjectModel.java" />
         <option value="$PROJECT_DIR$/src/dao/CustomerDAO.java" />
-        <option value="$PROJECT_DIR$/src/controller/ProjectBeheerKlantController.java" />
         <option value="$PROJECT_DIR$/src/dao/ProjectDAO.java" />
-        <option value="$PROJECT_DIR$/src/controller/ProjectBeheerController.java" />
         <option value="$PROJECT_DIR$/src/controller/ProjectBeheerProjectController.java" />
+        <option value="$PROJECT_DIR$/src/controller/ProjectBeheerKlantController.java" />
+        <option value="$PROJECT_DIR$/src/controller/ProjectBeheerController.java" />
       </list>
     </option>
   </component>
@@ -715,7 +721,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28343000" />
+    <option name="totallyTimeSpent" value="30405000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="56" y="-8" width="1872" height="1096" extended-state="6" />
@@ -847,8 +853,8 @@
           <caret line="103" column="8" lean-forward="true" selection-start-line="103" selection-start-column="8" selection-end-line="108" selection-end-column="9" />
           <folding>
             <element signature="e#2108#2122#0" expanded="true" />
-            <marker date="1508940454596" expanded="false" signature="4316:4321" ph=" { " />
-            <marker date="1508940454596" expanded="false" signature="4351:4354" ph=" }" />
+            <marker date="1508942912004" expanded="false" signature="4440:4445" ph=" { " />
+            <marker date="1508942912004" expanded="false" signature="4475:4478" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -894,8 +900,8 @@
           <caret line="103" column="8" lean-forward="true" selection-start-line="103" selection-start-column="8" selection-end-line="108" selection-end-column="9" />
           <folding>
             <element signature="e#2108#2122#0" expanded="true" />
-            <marker date="1508940454596" expanded="false" signature="4316:4321" ph=" { " />
-            <marker date="1508940454596" expanded="false" signature="4351:4354" ph=" }" />
+            <marker date="1508942912004" expanded="false" signature="4440:4445" ph=" { " />
+            <marker date="1508942912004" expanded="false" signature="4475:4478" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -1019,8 +1025,8 @@
           <caret line="74" column="72" lean-forward="false" selection-start-line="74" selection-start-column="72" selection-end-line="74" selection-end-column="72" />
           <folding>
             <element signature="e#2108#2122#0" expanded="true" />
-            <marker date="1508940454596" expanded="false" signature="4316:4321" ph=" { " />
-            <marker date="1508940454596" expanded="false" signature="4351:4354" ph=" }" />
+            <marker date="1508942912004" expanded="false" signature="4440:4445" ph=" { " />
+            <marker date="1508942912004" expanded="false" signature="4475:4478" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -1062,6 +1068,10 @@
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#869#870#0" expanded="true" />
+            <element signature="e#911#912#0" expanded="true" />
+            <element signature="e#1394#1395#0" expanded="true" />
+            <element signature="e#1431#1432#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1094,8 +1104,8 @@
           <caret line="71" column="42" lean-forward="false" selection-start-line="71" selection-start-column="42" selection-end-line="71" selection-end-column="42" />
           <folding>
             <element signature="e#2108#2122#0" expanded="true" />
-            <marker date="1508940454596" expanded="false" signature="4316:4321" ph=" { " />
-            <marker date="1508940454596" expanded="false" signature="4351:4354" ph=" }" />
+            <marker date="1508942912004" expanded="false" signature="4440:4445" ph=" { " />
+            <marker date="1508942912004" expanded="false" signature="4475:4478" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -1148,6 +1158,10 @@
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#869#870#0" expanded="true" />
+            <element signature="e#911#912#0" expanded="true" />
+            <element signature="e#1394#1395#0" expanded="true" />
+            <element signature="e#1431#1432#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1191,8 +1205,8 @@
           <caret line="103" column="8" lean-forward="true" selection-start-line="103" selection-start-column="8" selection-end-line="108" selection-end-column="9" />
           <folding>
             <element signature="e#2108#2122#0" expanded="true" />
-            <marker date="1508940454596" expanded="false" signature="4316:4321" ph=" { " />
-            <marker date="1508940454596" expanded="false" signature="4351:4354" ph=" }" />
+            <marker date="1508942912004" expanded="false" signature="4440:4445" ph=" { " />
+            <marker date="1508942912004" expanded="false" signature="4475:4478" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -1217,6 +1231,10 @@
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#869#870#0" expanded="true" />
+            <element signature="e#911#912#0" expanded="true" />
+            <element signature="e#1394#1395#0" expanded="true" />
+            <element signature="e#1431#1432#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1238,8 +1256,8 @@
           <caret line="103" column="8" lean-forward="true" selection-start-line="103" selection-start-column="8" selection-end-line="108" selection-end-column="9" />
           <folding>
             <element signature="e#2108#2122#0" expanded="true" />
-            <marker date="1508940454596" expanded="false" signature="4316:4321" ph=" { " />
-            <marker date="1508940454596" expanded="false" signature="4351:4354" ph=" }" />
+            <marker date="1508942912004" expanded="false" signature="4440:4445" ph=" { " />
+            <marker date="1508942912004" expanded="false" signature="4475:4478" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -1347,34 +1365,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/ProjectBeheerKlantController.java">
+    <entry file="file://$PROJECT_DIR$/src/controller/ProjectBeheerProjectController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="14" column="4" lean-forward="false" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="60" />
+        <state relative-caret-position="458">
+          <caret line="74" column="9" lean-forward="false" selection-start-line="74" selection-start-column="9" selection-end-line="74" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1500#1501#0" expanded="true" />
+            <element signature="e#1542#1543#0" expanded="true" />
+            <element signature="e#2239#2240#0" expanded="true" />
+            <element signature="e#2276#2277#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/ProjectBeheerProjectController.java">
+    <entry file="file://$PROJECT_DIR$/src/controller/ProjectBeheerKlantController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="58" column="55" lean-forward="false" selection-start-line="58" selection-start-column="55" selection-end-line="58" selection-end-column="55" />
+        <state relative-caret-position="509">
+          <caret line="47" column="9" lean-forward="true" selection-start-line="47" selection-start-column="9" selection-end-line="47" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#869#870#0" expanded="true" />
+            <element signature="e#911#912#0" expanded="true" />
+            <element signature="e#1394#1395#0" expanded="true" />
+            <element signature="e#1431#1432#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/ProjectBeheerController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="109" column="0" lean-forward="false" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+        <state relative-caret-position="245">
+          <caret line="95" column="67" lean-forward="false" selection-start-line="95" selection-start-column="67" selection-end-line="95" selection-end-column="67" />
           <folding>
             <element signature="e#2108#2122#0" expanded="true" />
-            <marker date="1508940454596" expanded="false" signature="4316:4321" ph=" { " />
-            <marker date="1508940454596" expanded="false" signature="4351:4354" ph=" }" />
+            <marker date="1508942912004" expanded="false" signature="4440:4445" ph=" { " />
+            <marker date="1508942912004" expanded="false" signature="4475:4478" ph=" }" />
           </folding>
         </state>
       </provider>

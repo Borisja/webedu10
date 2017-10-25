@@ -3,10 +3,8 @@ package controller;
 import dao.CustomerDAO;
 import dao.ProjectDAO;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
 import model.CustomerModel;
 import model.ProjectModel;
 
@@ -19,6 +17,8 @@ public class ProjectBeheerProjectController {
 
     private CustomerModel customer;
     private ProjectBeheerController projectBeheerController;
+    private Stage viewStage;
+
     private CustomerDAO customerDAO = new CustomerDAO();
     private ProjectDAO projectDAO = new ProjectDAO();
 
@@ -31,7 +31,8 @@ public class ProjectBeheerProjectController {
     @FXML
     Button projectAddBtn;
     @FXML Button projectCancelBtn;
-
+    @FXML
+    Label errorLbl;
 
     @FXML
     private void initialize(){
@@ -53,9 +54,27 @@ public class ProjectBeheerProjectController {
     public void setValuesTo(ProjectModel projectModel){
 
     }
+    public void setViewStage(Stage viewStage) {
+        this.viewStage = viewStage;
+    }
 
     public void addProject(){
-        projectDAO.addProject(projectName.getText(),projectDescription.getText(),projectCustomers.getValue().getCustomer_id());
-        this.projectBeheerController.updateProjectCB();
+        if(projectCustomers.getValue()!=null){
+            String name = projectName.getText().trim();
+            String description = projectDescription.getText().trim();
+            int custID = projectCustomers.getValue().getCustomer_id();
+            if(name!=null&&!name.equals("")&&description!=null&&!description.equals("")){
+                projectDAO.addProject(name,description,custID);
+                this.projectBeheerController.updateProjectCB();
+                this.viewStage.hide();
+            }else{
+                errorLbl.setOpacity(1);
+            }
+        }else{
+            errorLbl.setOpacity(1);
+        }
+    }
+    public void close(){
+        this.viewStage.hide();
     }
 }
