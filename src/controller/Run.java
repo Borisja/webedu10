@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import javafx.stage.Stage;
 import view.LoginView;
 import view.beginScherm.AdministratieViewController;
+import view.beginScherm.GebruikerViewController;
 import dao.ProjectDAO;
 
 public class Run extends Application{
@@ -23,7 +24,9 @@ public class Run extends Application{
 //	       Scene scene = new Scene(root);
 //	       primaryStage.setScene(scene);
 //	       primaryStage.show();
-		System.out.println(new ProjectDAO().project_list().size());
+//		GebruikerViewController view = new GebruikerViewController();
+//		view.startGebruiker();
+
 
 //		Parent root = FXMLLoader.load(getClass().getResource("ProjectBeheer.fxml"));
 //		Scene scene = new Scene(root);
