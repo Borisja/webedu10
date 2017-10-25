@@ -50,14 +50,14 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="klantCB" onAction="#klant" onContextMenuRequested="#klant" prefHeight="25.0" prefWidth="502.0" promptText="Kies een Klant" GridPane.rowIndex="1" />
-                  <ComboBox prefHeight="25.0" prefWidth="502.0" promptText="Kies een Project" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <ComboBox fx:id="customerCB" onAction="#klant" onContextMenuRequested="#klant" prefHeight="25.0" prefWidth="502.0" promptText="Kies een Klant" GridPane.rowIndex="1" />
+                  <ComboBox fx:id="projectCB" prefHeight="25.0" prefWidth="502.0" promptText="Kies een Project" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
                   </ComboBox>
-                  <ComboBox prefHeight="25.0" prefWidth="502.0" promptText="Kies een Sprint" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                  <ComboBox prefHeight="25.0" prefWidth="502.0" promptText="Kies een UserStory" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <ComboBox fx:id="sprintCB" prefHeight="25.0" prefWidth="502.0" promptText="Kies een Sprint" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <ComboBox fx:id="userStoryCB" prefHeight="25.0" prefWidth="502.0" promptText="Kies een UserStory" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                   <Button fx:id="newProject" mnemonicParsing="false" prefHeight="50.0" prefWidth="481.0" text="Nieuw Project" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <Button fx:id="newCustomer" mnemonicParsing="false" onAction="#newCustomerPane" prefHeight="50.0" prefWidth="481.0" text="Nieuwe Klant" GridPane.rowIndex="2" />
                   <Button fx:id="newSprint" mnemonicParsing="false" prefHeight="50.0" prefWidth="481.0" text="Nieuwe Sprint" GridPane.columnIndex="2" GridPane.rowIndex="2" />
