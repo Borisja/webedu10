@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -30,6 +31,7 @@ public class AdministratieViewController {
 	private goedkeurenController gkC;
 	private handleidingController hdC;
 	private ExportController export = new ExportController();
+	private Label name;
 
 	/**
 	 * Deze methode geeft de administratieView  na succesvol inloggen.
@@ -46,7 +48,7 @@ public class AdministratieViewController {
 	    Pane homeView = homeLoader.load();
 	    homeController homeController = homeLoader.getController();
 	    View.setTop(homeView);
-	    
+	    homeController.setUserName(em.getEmployeeVoornaam());
 	    
 	    
 	    FXMLLoader goedkeurenLoader = new FXMLLoader(getClass().getResource("/view/goedkeurenView/goedkeurenView.fxml"));			//get xml file

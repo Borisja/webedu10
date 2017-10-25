@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import dao.ProjectDAO;
+import dao.SprintDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -12,9 +13,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
+import model.EntryModel;
 import model.ProjectModel;
+import model.SprintModel;
 
 /**
  * Deze klasse is bestemd voor invullen entries.
@@ -29,85 +33,41 @@ public class AddEntryViewController {
 	@FXML ComboBox sprintCombo;
 	@FXML Button btnAddEntry;
 	
-	public AddEntryViewController()
+	public void fillSprints(int nr)
 	{
-		//this.fillProjectsBox();
+		ArrayList<SprintModel> pList = new SprintDAO().sprintsProjects(nr);
+		ObservableList<SprintModel> data;
+		ObservableList<String> dataNames;
+		data = FXCollections.observableArrayList();
+		dataNames = FXCollections.observableArrayList();
+		pList.forEach(e -> data.add(e));
+		pList.forEach(e -> dataNames.add(e.getSprintName()));
+		this.sprintCombo.setItems(dataNames);
 	}
-	
 	
 	public void fillProjectsBox()
 	{
-//		projectCombo.setButtonCell(
-//			    new ListCell<ProjectModel>() {
-//			        @Override
-//			        protected void updateItem(ProjectModel t, boolean bln) {
-//			            super.updateItem(t, bln);
-//			            if (bln) {
-//			                setText("");
-//			            } else {
-//			                setText(t.getProjectName());
-//			            }
-//			        }
-//			    });
-//
-//		projectCombo.setConverter(
-//			    new StringConverter() {
-//			        private Map<String, ProjectModel> map = new HashMap<>();
-//
-//			        @Override
-//			        public String toString(ProjectModel t) {
-//			            if (t != null) {
-//			                String str = t.getProjectName();
-//			                map.put(str, t);
-//			                return str;
-//			            } else {
-//			                return "";
-//			            }
-//			        }
-//
-//			        @Override
-//			        public Object fromString(String string) {
-//			            if (validate && !map.containsKey(string)) {
-//			            	projectCombo.setValue(null);
-//			            	projectCombo.getEditor().clear();
-//			                return null;
-//			            }
-//			            return map.get(string);
-//			        }
-//
-//					@Override
-//					public String toString(Object object) {
-//						// TODO Auto-generated method stub
-//						return null;
-//					}
-//			    });
-//
-//		projectCombo.setCellFactory(
-//			    new Callback<ListView<Object>, ListCell<ProjectModel>>() {
-//			        @Override
-//			        public ListCell<Object> call(ListView<Object> p) {
-//			            ListCell cell = new ListCell<Object>() {
-//			                @Override
-//			                protected void updateItem(Object item, boolean empty) {
-//			                    super.updateItem(item, empty);
-//			                    if (empty) {
-//			                        setText("");
-//			                    } else {
-//			                        setText((item.));
-//			                    }
-//			                }
-//			            };return cell;
-//			        }
-//			    });
+
+		
+		refresh();
+		
+		if(projectCombo.getSelectionModel().getSelectedItem().equals(1))
+		{
+			fillSprints(1);
+		}
+		
+		
+		
+	}
+	public void refresh()
+	{
 		ArrayList<ProjectModel> pList = new ProjectDAO().project_list();
-		ObservableList<String> data;
+		ObservableList<ProjectModel> data;
+		ObservableList<Integer> dataNames;
 		data = FXCollections.observableArrayList();
-		
-		pList.forEach(e -> data.add(e.getProjectName()));
-		
-		this.projectCombo.setItems(data);
-		
-		
-		
+		dataNames = FXCollections.observableArrayList();
+		pList.forEach(e -> data.add(e));
+		pList.forEach(e -> dataNames.add(e.getProjectId()));
+		this.projectCombo.setItems(dataNames);
 	}
 }
