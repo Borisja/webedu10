@@ -12,7 +12,7 @@ import javafx.scene.control.TextField;
 public class ProjectBeheerKlantController {
     CustomerDAO customerDao = new CustomerDAO();
 
-    ProjectBeheerController projectBeheerController;
+    private ProjectBeheerController projectBeheerController;
 
     @FXML
     TextField custName;
@@ -22,9 +22,6 @@ public class ProjectBeheerKlantController {
     Button custAddBtn;
     @FXML Button custCancelBtn;
 
-    public void ProjectBeheerKlantControllerController (ProjectBeheerController projectBeheerController){
-        this.projectBeheerController=projectBeheerController;
-    }
     public void setProjectBeheerController(ProjectBeheerController projectBeheerController){
         this.projectBeheerController = projectBeheerController;
     }

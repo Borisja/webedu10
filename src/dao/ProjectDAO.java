@@ -90,4 +90,18 @@ public class ProjectDAO {
 		}
 		return proj_list;
 	}
+
+	public void addProject(String name, String description, int customerID) {
+		String login_sql = "SELECT add_project('"+name+"','"+description+"','"+customerID+"')";
+		PreparedStatement project_statement;
+
+		try {
+			project_statement = connect.connectToDB().prepareStatement(login_sql);
+			project_statement.executeQuery();
+			project_statement.close();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
