@@ -21,7 +21,9 @@ import model.SprintModel;
 public class ProjectBeheerController {
 
 	final private String CUSTOMER_DEFAULT = "Alle Klanten";
+	final private int CUSTOMER_ID_DEFAULT = -1;
 	final private String PROJECT_DEFAULT = "Alle Projecten";
+	final private int PROJECT_ID_DEFAULT = -1;
 
 	CustomerDAO customerDao = new CustomerDAO();
 	ProjectDAO projectDAO = new ProjectDAO();
@@ -48,34 +50,31 @@ public class ProjectBeheerController {
 
 	@FXML
 	private void initialize() {
-		CustomerModel defaultCustomer = new CustomerModel();
-		defaultCustomer.setCustomer_name(this.CUSTOMER_DEFAULT);
-		customerCB.getItems().add(defaultCustomer);
-		customerCB.setValue(defaultCustomer);
 		updateCustomerCB();
-
-//		ProjectModel defaultProject = new ProjectModel();
-//		defaultProject.setProjectName(this.PROJECT_DEFAULT);
-		updateProjectCB(defaultCustomer);
+		updateProjectCB();
 	}
 	public void updateCustomerCB(){
 		customerCB.getItems().clear();
+
+		//de default klant, voor als je alles wilt zien
+		CustomerModel defaultCustomer = new CustomerModel();
+		defaultCustomer.setCustomer_name(this.CUSTOMER_DEFAULT);
+		defaultCustomer.setCustomer_id(this.CUSTOMER_ID_DEFAULT);
+		customerCB.setValue(defaultCustomer);
+		customerCB.getItems().add(defaultCustomer);
+
 		ArrayList<CustomerModel> customers = customerDao.getCustomerList();
-//		ObservableSet<String> observableSet = FXCollections.observableSet();
-//		observableSet.add("Alle klanten");
 		for(CustomerModel customer: customers) {
-//			observableSet.add(customer.getCustomer_name());
 			customerCB.getItems().add(customer);
 		}
-//		customerCB.setItems(FXCollections.observableArrayList(observableSet));
 	}
-	public void updateProjectCB(CustomerModel customerModel){
+	public void updateProjectCB(){
 		projectCB.getItems().clear();
 		ArrayList<ProjectModel> projects = new ArrayList<ProjectModel>();
-		if(customerModel.getCustomer_name().equals(this.CUSTOMER_DEFAULT)){
-			projects = projectDAO.project_list();
+		if(this.selectedCustomer!=null&&this.selectedCustomer.getCustomer_id()!=this.PROJECT_ID_DEFAULT){
+			projects = projectDAO.project_list(this.selectedCustomer);
 		}else{
-			projects = projectDAO.project_list(customerModel);
+			projects = projectDAO.project_list();
 		}
 		for(ProjectModel project: projects) {
 			projectCB.getItems().add(project);
@@ -94,6 +93,30 @@ public class ProjectBeheerController {
 			customerStage.show();
 			ProjectBeheerKlantController projectBeheerKlantController = loader.getController();
 			projectBeheerKlantController.setProjectBeheerController(this);
+			projectBeheerKlantController.setViewStage(customerStage);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	public void newProjectPane(){
+		System.out.println("new Project");
+		try {
+			Parent root = null;
+			FXMLLoader loader  = new FXMLLoader(getClass().getResource("ProjectBeheer_ProjectEditor.fxml"));
+			root = loader.load();
+			Scene scene = new Scene(root);
+			customerStage.setScene(scene);
+			System.out.println(this.getClass().toString()+": geinstancieerd");
+			customerStage.show();
+			ProjectBeheerProjectController projectBeheerProjectController = loader.getController();
+			projectBeheerProjectController.setProjectBeheerController(this);
+			projectBeheerProjectController.setViewStage(customerStage);
+			if(this.selectedCustomer!=null&&this.selectedCustomer.getCustomer_id()==this.CUSTOMER_ID_DEFAULT) {
+				projectBeheerProjectController.setCustomer(selectedCustomer);
+			}
+			if(this.selectedProject!=null&&this.selectedProject.getProjectId()==this.PROJECT_ID_DEFAULT){
+				projectBeheerProjectController.setValuesTo(selectedProject);
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -107,7 +130,7 @@ public class ProjectBeheerController {
 	public void klant() {
 		System.out.println("klant!");
 		selectedCustomer=customerCB.getValue();
-		updateProjectCB(customerCB.getValue());
+		updateProjectCB();
 	}
 	public void test() {
 		System.out.println("t werkt");

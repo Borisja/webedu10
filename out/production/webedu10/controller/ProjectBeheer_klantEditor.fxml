@@ -9,17 +9,27 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" style="-fx-padding: 10;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProjectBeheerKlantController">
    <top>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" prefHeight="35.0" prefWidth="668.0" text="Klant toevoegen">
-               <font>
-                  <Font size="32.0" />
-               </font>
-            </Label>
+            <VBox prefHeight="100.0" prefWidth="797.0" style="-fx-padding: 10px;">
+               <children>
+                  <Label alignment="CENTER" prefHeight="47.0" prefWidth="761.0" text="Klant toevoegen">
+                     <font>
+                        <Font size="32.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="errorLbl" alignment="CENTER" prefHeight="17.0" prefWidth="694.0" style="-fx-border-color: rgb(255,110,100); -fx-background-color: rgb(255,220,210); -fx-border-radius: 10px; -fx-opacity: 0;" text="Vul alstublieft alle gegevens in">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
          </children></HBox>
    </top>
    <bottom>
@@ -28,7 +38,7 @@
             <HBox prefHeight="100.0" prefWidth="656.0">
                <children>
                   <Button fx:id="custAddBtn" mnemonicParsing="false" onAction="#addCustomer" text="Opslaan" />
-                  <Button fx:id="custCancelBtn" mnemonicParsing="false" text="Annuleren" />
+                  <Button fx:id="custCancelBtn" mnemonicParsing="false" onAction="#close" text="Annuleren" />
                </children>
             </HBox>
          </children></HBox>
