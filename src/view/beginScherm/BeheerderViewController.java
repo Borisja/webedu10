@@ -9,7 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import view.goedkeurenView.goedkeurenController;
+import view.goedkeurenView.GoedkeurenController;
 import view.handleiding.handleidingController;
 import view.home.homeController;
 
@@ -33,7 +33,7 @@ public class BeheerderViewController {
 	    
 	    FXMLLoader goedkeurenLoader = new FXMLLoader(getClass().getResource("/view/goedkeurenView/goedkeurenView.fxml"));			//get xml file
 	    Pane goedkeurenView = goedkeurenLoader.load();	
-	    goedkeurenController goedkeurenController = goedkeurenLoader.getController();
+	    GoedkeurenController goedkeurenController = goedkeurenLoader.getController();
 	    
 	    FXMLLoader handleidingLoader = new FXMLLoader(getClass().getResource("/view/handleiding/handleiding.fxml"));			//get xml file
 	    Pane handleidingView = handleidingLoader.load();	
