@@ -1,34 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3583d79c-9c20-4de5-8a8d-d87821684c76" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/view/images/contact.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/view/images/sprint.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/factuur.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/controller/AddHours.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/model/UserStoryModel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/view/AddEntryView.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/view/AddEntryViewController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/view/beginScherm/GebruikerView.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/view/beginScherm/GebruikerViewController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/view/projectView/ProjectController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/view/projectView/ProjectView.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/view/sprintView/SprintController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/view/sprintView/SprintOverzichtView.fxml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/view/goedkeurenView/goedkeurenController.java" afterPath="$PROJECT_DIR$/src/view/goedkeurenView/GoedkeurenController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.classpath" afterPath="$PROJECT_DIR$/.classpath" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/LoginController.java" afterPath="$PROJECT_DIR$/src/controller/LoginController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/Run.java" afterPath="$PROJECT_DIR$/src/controller/Run.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dao/AdministratorDAO.java" afterPath="$PROJECT_DIR$/src/dao/AdministratorDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dao/SprintDAO.java" afterPath="$PROJECT_DIR$/src/dao/SprintDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/LoginView.java" afterPath="$PROJECT_DIR$/src/view/LoginView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/beginScherm/AdministratieViewController.java" afterPath="$PROJECT_DIR$/src/view/beginScherm/AdministratieViewController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/beginScherm/BeheerderViewController.java" afterPath="$PROJECT_DIR$/src/view/beginScherm/BeheerderViewController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/beginScherm/administratieView.fxml" afterPath="$PROJECT_DIR$/src/view/beginScherm/administratieView.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/goedkeurenView/goedkeurenView.fxml" afterPath="$PROJECT_DIR$/src/view/goedkeurenView/goedkeurenView.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/home/home.fxml" afterPath="$PROJECT_DIR$/src/view/home/home.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/home/homeController.java" afterPath="$PROJECT_DIR$/src/view/home/homeController.java" />
-    </list>
+    <list default="true" id="3583d79c-9c20-4de5-8a8d-d87821684c76" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -43,7 +16,7 @@
       <file leaf-file-name="Run.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/controller/Run.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="329">
+            <state relative-caret-position="397">
               <caret line="42" column="42" lean-forward="false" selection-start-line="42" selection-start-column="42" selection-end-line="42" selection-end-column="42" />
               <folding>
                 <element signature="e#429#430#0" expanded="true" />
@@ -742,7 +715,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30458000" />
+    <option name="totallyTimeSpent" value="30539000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="56" y="-8" width="1872" height="1096" extended-state="6" />
@@ -1387,7 +1360,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/Run.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
+        <state relative-caret-position="397">
           <caret line="42" column="42" lean-forward="false" selection-start-line="42" selection-start-column="42" selection-end-line="42" selection-end-column="42" />
           <folding>
             <element signature="e#429#430#0" expanded="true" />
