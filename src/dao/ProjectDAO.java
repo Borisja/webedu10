@@ -3,6 +3,7 @@ package dao;
 import java.sql.*;
 import java.util.ArrayList;
 import javafx.collections.ObservableList;
+import model.CustomerModel;
 import model.ProjectModel;
 
 public class ProjectDAO {
@@ -64,40 +65,29 @@ public class ProjectDAO {
 		} 
 		return proj_list;
 	}
-	/**
-	 * Deze shit is WIP
-	 *
-	 * @author Robert den Blaauwen
-	 * @date 24-10-2017
-	 * @param customerName
-	 * @return
-	 */
-//	public ArrayList<ProjectModel> getProjects(String customerName){
-//		String login_sql = "SELECT * FROM project p INNER JOIN customer_version cv ON c.customer_id=cv.customer_version_customer_fk";
-//		PreparedStatement customer_statement;
-//
-//		try {
-//			customer_statement = connect.connectToDB().prepareStatement(login_sql);
-////			customer_statement.setInt(1, c_id);
-//			ResultSet customer_set = customer_statement.executeQuery();
-//
-//			ArrayList<CustomerModel> customers = new ArrayList<CustomerModel>();
-//			while(customer_set.next()){
-//				CustomerModel customer = new CustomerModel();
-//				customer = new CustomerModel();
-//				customer.setCustomer_id(customer_set.getInt("customer_id"));
-//				customer.setCustomer_isdeleted(customer_set.getBoolean("customer_isdeleted"));
-//				customer.setCustomer_name(customer_set.getString("customer_version_name"));
-//				customer.setCustomer_description(customer_set.getString("customer_version_description"));
-//				customers.add(customer);
-//			}
-//			customer_statement.close();
-//			return customers;
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		return null;
-//	}
-
+	public ArrayList<ProjectModel> project_list(CustomerModel customerModel){
+		ArrayList<ProjectModel> proj_list = new ArrayList<ProjectModel>();
+		String project_list_sql = "SELECT * FROM project_version "
+				+ "INNER JOIN project ON (project.project_id = project_version.project_version_project_fk) "
+				+ "WHERE project_version.project_version_customer_fk="+customerModel.getCustomer_id();
+		try {
+			PreparedStatement project_statement = connect.connectToDB().prepareStatement(project_list_sql);
+			ResultSet project_set = project_statement.executeQuery();
+			while(project_set.next()) {
+				ProjectModel pm_container = new ProjectModel();
+				pm_container.setProjectId(project_set.getInt("project_id"));
+				pm_container.setProjectDescription(project_set.getString("project_version_description"));
+				pm_container.setProjectName(project_set.getString("project_version_name"));
+				pm_container.setProjectIsDeleted(project_set.getBoolean("project_isdeleted"));
+				proj_list.add(pm_container);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return proj_list;
+	}
 }

@@ -2,13 +2,11 @@ package controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import dao.CustomerDAO;
 import dao.ProjectDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableSet;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -23,6 +21,7 @@ import model.SprintModel;
 public class ProjectBeheerController {
 
 	final private String CUSTOMER_DEFAULT = "Alle Klanten";
+	final private String PROJECT_DEFAULT = "Alle Projecten";
 
 	CustomerDAO customerDao = new CustomerDAO();
 	ProjectDAO projectDAO = new ProjectDAO();
@@ -38,8 +37,8 @@ public class ProjectBeheerController {
 	@FXML Button newSprint;
 	@FXML Button newUserStory;
 
-	ArrayList<CustomerModel> selectedCustomers;
-	ArrayList<ProjectModel> selectedProjects;
+	private CustomerModel selectedCustomer;
+	private ProjectModel selectedProject;
 
 
 	Stage customerStage = new Stage();
@@ -49,33 +48,39 @@ public class ProjectBeheerController {
 
 	@FXML
 	private void initialize() {
-//		customerCB.setValue("Klant");
-//		projectCB.setValue("Project");
-//		sprintCB.setValue("Sprint");
-//		userStoryCB.setValue("UserStory");
-		updateCutomerCB();
-		updateProjectCB();
+		CustomerModel defaultCustomer = new CustomerModel();
+		defaultCustomer.setCustomer_name(this.CUSTOMER_DEFAULT);
+		customerCB.getItems().add(defaultCustomer);
+		customerCB.setValue(defaultCustomer);
+		updateCustomerCB();
+
+//		ProjectModel defaultProject = new ProjectModel();
+//		defaultProject.setProjectName(this.PROJECT_DEFAULT);
+		updateProjectCB(defaultCustomer);
 	}
-	public void updateCutomerCB(){
-		this.selectedCustomers = customerDao.getCustomerList();
+	public void updateCustomerCB(){
+		customerCB.getItems().clear();
+		ArrayList<CustomerModel> customers = customerDao.getCustomerList();
 //		ObservableSet<String> observableSet = FXCollections.observableSet();
 //		observableSet.add("Alle klanten");
-		for(CustomerModel customer: this.selectedCustomers) {
+		for(CustomerModel customer: customers) {
 //			observableSet.add(customer.getCustomer_name());
 			customerCB.getItems().add(customer);
 		}
 //		customerCB.setItems(FXCollections.observableArrayList(observableSet));
 	}
-	public void updateProjectCB(){
-		this.selectedProjects = projectDAO.project_list();
-//		ObservableSet<String> observableSet = FXCollections.observableSet();
-//		observableSet.add("Alle klanten");
-		for(ProjectModel project: this.selectedProjects) {
-//			observableSet.add(customer.getCustomer_name());
+	public void updateProjectCB(CustomerModel customerModel){
+		projectCB.getItems().clear();
+		ArrayList<ProjectModel> projects = new ArrayList<ProjectModel>();
+		if(customerModel.getCustomer_name().equals(this.CUSTOMER_DEFAULT)){
+			projects = projectDAO.project_list();
+		}else{
+			projects = projectDAO.project_list(customerModel);
+		}
+		for(ProjectModel project: projects) {
 			projectCB.getItems().add(project);
 		}
 	}
-
 
 	public void newCustomerPane(){
 		System.out.println("new Customer");
@@ -101,12 +106,8 @@ public class ProjectBeheerController {
 	}
 	public void klant() {
 		System.out.println("klant!");
-//		if(customerCB.getValue().==CUSTOMER_DEFAULT){
-//
-//		}
-//		for (CustomerModel customer: this.selectedCustomers) {
-//			if(customer.getCustomer_name())
-//		}
+		selectedCustomer=customerCB.getValue();
+		updateProjectCB(customerCB.getValue());
 	}
 	public void test() {
 		System.out.println("t werkt");
