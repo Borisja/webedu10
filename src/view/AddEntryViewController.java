@@ -47,18 +47,14 @@ public class AddEntryViewController {
 	
 	public void fillProjectsBox()
 	{
-
-		
 		refresh();
 		
 		if(projectCombo.getSelectionModel().getSelectedItem().equals(1))
 		{
 			fillSprints(1);
-		}
-		
-		
-		
+		}						
 	}
+	
 	public void refresh()
 	{
 		ArrayList<ProjectModel> pList = new ProjectDAO().project_list();
