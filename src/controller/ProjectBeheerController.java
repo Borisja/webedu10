@@ -21,6 +21,7 @@ import model.SprintModel;
 public class ProjectBeheerController {
 
 	final private String CUSTOMER_DEFAULT = "Alle Klanten";
+	final private int CUSTOMER_ID_DEFAULT = -1;
 	final private String PROJECT_DEFAULT = "Alle Projecten";
 
 	CustomerDAO customerDao = new CustomerDAO();
@@ -48,35 +49,35 @@ public class ProjectBeheerController {
 
 	@FXML
 	private void initialize() {
-		CustomerModel defaultCustomer = new CustomerModel();
-		defaultCustomer.setCustomer_name(this.CUSTOMER_DEFAULT);
-		customerCB.getItems().add(defaultCustomer);
-		customerCB.setValue(defaultCustomer);
 		updateCustomerCB();
-
-//		ProjectModel defaultProject = new ProjectModel();
-//		defaultProject.setProjectName(this.PROJECT_DEFAULT);
-		updateProjectCB(defaultCustomer);
+		updateProjectCB();
 	}
 	public void updateCustomerCB(){
 		customerCB.getItems().clear();
+
+		//de default klant, voor als je alles wilt zien
+		CustomerModel defaultCustomer = new CustomerModel();
+		defaultCustomer.setCustomer_name(this.CUSTOMER_DEFAULT);
+		defaultCustomer.setCustomer_id(this.CUSTOMER_ID_DEFAULT);
+		customerCB.setValue(defaultCustomer);
+		customerCB.getItems().add(defaultCustomer);
+
 		ArrayList<CustomerModel> customers = customerDao.getCustomerList();
-//		ObservableSet<String> observableSet = FXCollections.observableSet();
-//		observableSet.add("Alle klanten");
 		for(CustomerModel customer: customers) {
-//			observableSet.add(customer.getCustomer_name());
 			customerCB.getItems().add(customer);
 		}
-//		customerCB.setItems(FXCollections.observableArrayList(observableSet));
+	}
+	public void updateProjectCB(){
+		projectCB.getItems().clear();
+		ArrayList<ProjectModel> projects = new ArrayList<ProjectModel>();
+		projects = projectDAO.project_list();
+		for(ProjectModel project: projects) {
+			projectCB.getItems().add(project);
+		}
 	}
 	public void updateProjectCB(CustomerModel customerModel){
 		projectCB.getItems().clear();
-		ArrayList<ProjectModel> projects = new ArrayList<ProjectModel>();
-		if(customerModel.getCustomer_name().equals(this.CUSTOMER_DEFAULT)){
-			projects = projectDAO.project_list();
-		}else{
-			projects = projectDAO.project_list(customerModel);
-		}
+		ArrayList<ProjectModel> projects = projectDAO.project_list(customerModel);
 		for(ProjectModel project: projects) {
 			projectCB.getItems().add(project);
 		}
@@ -107,7 +108,11 @@ public class ProjectBeheerController {
 	public void klant() {
 		System.out.println("klant!");
 		selectedCustomer=customerCB.getValue();
-		updateProjectCB(customerCB.getValue());
+		if(selectedCustomer.getCustomer_id()==this.CUSTOMER_ID_DEFAULT){
+			updateProjectCB();
+		}else {
+			updateProjectCB(customerCB.getValue());
+		}
 	}
 	public void test() {
 		System.out.println("t werkt");
