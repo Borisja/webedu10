@@ -2,6 +2,7 @@ package dao;
 
 import java.io.FileWriter;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -100,6 +101,7 @@ public class AdministratorDAO {
 		String employee_entry_sql = "SELECT  entry_id, entry_version_starttime, entry_version_endtime, entry_version_creationtime, entry_version_description"
 				+ " FROM entry_version, entry "
 				+ "WHERE entry_version.entry_version_entry_fk = entry.entry_id AND entry.entry_status = 'queued' ";
+				//+ "AND entry_version_current = 'y' ";
 		try {
 			PreparedStatement entries_statement = connect.connectToDB().prepareStatement(employee_entry_sql);
 			
@@ -160,12 +162,14 @@ public class AdministratorDAO {
 	 */
 	public void exportCsv()
 	{
-		String filename ="/Users/rezanaser/Desktop/factuur.csv";
+		String time = new String();
+		String filename ="factuur.csv";
 	    try {
 	        FileWriter fw = new FileWriter(filename);
 	        String query = "SELECT entry_version_date, entry_version_starttime, entry_version_endtime, entry_version_description, project_version_name, (entry_version_endtime - entry_version_starttime) AS Uren "
 	        		+ "FROM entry_version, project_version "
-	        		+ "WHERE entry_version_project_fk = project_version_project_fk";
+	        		+ "WHERE entry_version_project_fk = project_version_project_fk ";
+	        		//+"AND entry_version_current = 'y'";
 	        Statement stmt = connect.connectToDB().createStatement();
 	        fw.append("Datum");
             fw.append(';');
@@ -207,10 +211,36 @@ public class AdministratorDAO {
 	            fw.append(';');
 	            fw.append(rs.getString(6).substring(0, 5));
 	            fw.append(';');
-	            if(rs.getString(5).equals("General"))
+	            if(rs.getString(5).equals("Algemeen"))
 	            	{
 	            		fw.append(rs.getString(6).substring(0, 5));
 	            	};
+	            if(rs.getString(5).equals("Praktijkbeoordelen"))
+	            	{
+	            		fw.append(';');
+	            		fw.append(rs.getString(6).substring(0, 5));
+	            	}
+	            if(rs.getString(5).equals("EduCourse"))
+            	{
+	            	fw.append(';');
+	            	fw.append(';');
+            		fw.append(rs.getString(6).substring(0, 5));
+            	}
+	            if(rs.getString(5).equals("Overige"))
+            	{
+	            	fw.append(';');
+	            	fw.append(';');
+	            	fw.append(';');
+            		fw.append(rs.getString(6).substring(0, 5));
+            	}
+	            if(rs.getString(5).equals("Actorius"))
+            	{
+	            	fw.append(';');
+	            	fw.append(';');
+	            	fw.append(';');
+	            	fw.append(';');
+            		fw.append(rs.getString(6).substring(0, 5));
+            	}
 	            fw.append('\n');
 	           }
 	        fw.flush();

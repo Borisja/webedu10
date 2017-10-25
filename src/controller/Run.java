@@ -20,6 +20,7 @@ public class Run extends Application{
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+
 //		 Parent root = FXMLLoader.load(getClass().getResource("/view/beginScherm/GebruikerView.fxml"));
 //	       Scene scene = new Scene(root);
 //	       primaryStage.setScene(scene);
@@ -27,12 +28,12 @@ public class Run extends Application{
 //		GebruikerViewController view = new GebruikerViewController();
 //		view.startGebruiker();
 
+		 Parent root = FXMLLoader.load(getClass().getResource("/view/AddEntryView.fxml"));
+	       Scene scene = new Scene(root);
+	       primaryStage.setScene(scene);
+	       primaryStage.show();
 
-//		Parent root = FXMLLoader.load(getClass().getResource("ProjectBeheer.fxml"));
-//		Scene scene = new Scene(root);
-//		primaryStage.setScene(scene);
-//		System.out.println(this.getClass().toString()+": geinstancieerd");
-//		primaryStage.show();
-//		new ProjectBeheerController();
+		// TODO Auto-generated method stub
+		//new LoginView().show_login_view();
 	}
 }
