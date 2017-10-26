@@ -7,8 +7,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.Stage;
 import view.LoginView;
-import view.beginScherm.AdministratieViewController;
-import view.beginScherm.GebruikerViewController;
+import view.startScreen.AdministrationViewController;
+import view.startScreen.UserViewController;
 import dao.ProjectDAO;
 
 public class Run extends Application{

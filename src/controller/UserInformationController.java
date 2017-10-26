@@ -11,7 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import model.EmployeeModel;
 
-public class GebruikerGegevensController implements Initializable{
+public class UserInformationController implements Initializable{
 	@FXML Button sluit;
 	@FXML TextField txt_voornaam;
 	@FXML TextField txt_achternaam;

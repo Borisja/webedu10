@@ -13,10 +13,10 @@ import java.util.ArrayList;
 /**
  * Created by Robert on 10/25/2017.
  */
-public class ProjectBeheerProjectController {
+public class ProjectManagementProjectController {
 
     private CustomerModel customer;
-    private ProjectBeheerController projectBeheerController;
+    private ProjectManagementController projectBeheerController;
     private Stage viewStage;
 
     private CustomerDAO customerDAO = new CustomerDAO();
@@ -47,7 +47,7 @@ public class ProjectBeheerProjectController {
         this.customer = customer;
         projectCustomers.setValue(customer);
     }
-    public void setProjectBeheerController(ProjectBeheerController projectBeheerController) {
+    public void setProjectBeheerController(ProjectManagementController projectBeheerController) {
         this.projectBeheerController = projectBeheerController;
     }
 

@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 import model.EmployeeModel;
 import model.EntryModel;
 
-public class AgendaView {
+public class CalenderView {
 	/**
 	 * Load a table with the entries that have been submitted.
 	 * Allow user to submit new entries.

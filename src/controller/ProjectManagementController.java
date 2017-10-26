@@ -18,7 +18,7 @@ import model.CustomerModel;
 import model.ProjectModel;
 import model.SprintModel;
 
-public class ProjectBeheerController {
+public class ProjectManagementController {
 
 	final private String CUSTOMER_DEFAULT = "Alle Klanten";
 	final private int CUSTOMER_ID_DEFAULT = -1;
@@ -45,7 +45,7 @@ public class ProjectBeheerController {
 
 	Stage customerStage = new Stage();
 
-	public ProjectBeheerController() {
+	public ProjectManagementController() {
 	}
 
 	@FXML
@@ -98,7 +98,7 @@ public class ProjectBeheerController {
 			customerStage.setScene(scene);
 			System.out.println(this.getClass().toString()+": geinstancieerd");
 			customerStage.show();
-			ProjectBeheerKlantController projectBeheerKlantController = loader.getController();
+			ProjectManagementCustomerController projectBeheerKlantController = loader.getController();
 			projectBeheerKlantController.setProjectBeheerController(this);
 			projectBeheerKlantController.setViewStage(customerStage);
 		} catch (IOException e) {
@@ -115,7 +115,7 @@ public class ProjectBeheerController {
 			customerStage.setScene(scene);
 			System.out.println(this.getClass().toString()+": geinstancieerd");
 			customerStage.show();
-			ProjectBeheerProjectController projectBeheerProjectController = loader.getController();
+			ProjectManagementProjectController projectBeheerProjectController = loader.getController();
 			projectBeheerProjectController.setProjectBeheerController(this);
 			projectBeheerProjectController.setViewStage(customerStage);
 			if(this.selectedCustomer!=null&&this.selectedCustomer.getCustomer_id()!=this.CUSTOMER_ID_DEFAULT) {

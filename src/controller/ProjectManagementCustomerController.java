@@ -11,10 +11,10 @@ import javafx.stage.Stage;
 /**
  * Created by Robert on 10/24/2017.
  */
-public class ProjectBeheerKlantController {
+public class ProjectManagementCustomerController {
     CustomerDAO customerDao = new CustomerDAO();
 
-    private ProjectBeheerController projectBeheerController;
+    private ProjectManagementController projectBeheerController;
 
     private Stage viewStage = new Stage();
 
@@ -28,7 +28,7 @@ public class ProjectBeheerKlantController {
     @FXML
     Label errorLbl;
 
-    public void setProjectBeheerController(ProjectBeheerController projectBeheerController){
+    public void setProjectBeheerController(ProjectManagementController projectBeheerController){
         this.projectBeheerController = projectBeheerController;
     }
     public void setViewStage(Stage viewStage) {

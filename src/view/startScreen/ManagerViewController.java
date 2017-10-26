@@ -1,10 +1,10 @@
-package view.beginScherm;
+package view.startScreen;
 
 import java.io.IOException;
 
-import controller.AccountBeherenController;
+import controller.AccountManagementController;
 import controller.CreateUserController;
-import controller.MedewerkerBeherenController;
+import controller.EmployeeManagementController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -12,22 +12,22 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import view.goedkeurenView.GoedkeurenController;
-import view.handleiding.handleidingController;
+import view.approvalView.ApprovalController;
 import view.home.homeController;
+import view.manual.ManualController;
 /**
  * Deze klasse is de controller van de beheerderview
  * @author rezanaser
  *
  */
-public class BeheerderViewController {
+public class ManagerViewController {
 	
 	private @FXML Button btnAccounts;
 	
 	private @FXML Pane pane;
-	private AccountBeherenController accountController;
+	private AccountManagementController accountController;
 
-	private MedewerkerBeherenController medewerkerBeheren;
+	private EmployeeManagementController medewerkerBeheren;
 	
 
 	
@@ -43,7 +43,7 @@ public class BeheerderViewController {
 		Stage primaryStage = new Stage();
 		FXMLLoader beheerderScherm = new FXMLLoader(getClass().getResource("/view/beginScherm/beheerderView.fxml"));	
 		BorderPane View  = (BorderPane)beheerderScherm.load();
-		BeheerderViewController beheerderController = beheerderScherm.getController();
+		ManagerViewController beheerderController = beheerderScherm.getController();
 		FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("/view/home/home.fxml"));			//get xml file
 	    Pane homeView = homeLoader.load();
 	    homeController homeController = homeLoader.getController();
@@ -51,11 +51,11 @@ public class BeheerderViewController {
 	    
 	    FXMLLoader accountbeheren = new FXMLLoader(getClass().getResource("/controller/AccountsBeheren.fxml"));			//get xml file
 	    Pane accountBeherenView = accountbeheren.load();	
-	    AccountBeherenController accountController = accountbeheren.getController();
+	    AccountManagementController accountController = accountbeheren.getController();
 	    
 	    FXMLLoader medewerkerBeheren = new FXMLLoader(getClass().getResource("/controller/MedewerkerBeheren.fxml"));			//get xml file
 	    Pane medewerkerBeherenView = medewerkerBeheren.load();	
-	    MedewerkerBeherenController medewerkerBeherenController = medewerkerBeheren.getController();
+	    EmployeeManagementController medewerkerBeherenController = medewerkerBeheren.getController();
 	    
 	    FXMLLoader addEmployeeLoader = new FXMLLoader(getClass().getResource("/controller/CreateUser.fxml"));			//get xml file
 	    Pane createUserView = addEmployeeLoader.load();	
@@ -78,11 +78,11 @@ public class BeheerderViewController {
 		primaryStage.show();
 	}
 
-	private void setControllerAccount(AccountBeherenController accountController) {
+	private void setControllerAccount(AccountManagementController accountController) {
 		this.accountController = accountController;
 		
 	}
-	private void setControllerMedewerkerBeheren(MedewerkerBeherenController medewerkerBeherenController) {
+	private void setControllerMedewerkerBeheren(EmployeeManagementController medewerkerBeherenController) {
 		this.medewerkerBeheren = medewerkerBeherenController;
 		
 	}

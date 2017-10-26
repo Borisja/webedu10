@@ -1,4 +1,4 @@
-package view.handleiding;
+package view.manual;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -6,7 +6,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
-public class handleidingController {
+public class ManualController {
 	@FXML Button nextBtn;
 	@FXML Button preBtn;
 	@FXML Button sluit;

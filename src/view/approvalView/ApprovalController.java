@@ -1,4 +1,4 @@
-package view.goedkeurenView;
+package view.approvalView;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,7 +18,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import model.EntryModel;
 
-public class GoedkeurenController implements Initializable{
+public class ApprovalController implements Initializable{
 	@FXML Pane pane;
 	@FXML Button sluitKnop;
 	@FXML Button approve;

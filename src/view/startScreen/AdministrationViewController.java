@@ -1,4 +1,4 @@
-package view.beginScherm;
+package view.startScreen;
 
 import java.io.IOException;
 
@@ -12,9 +12,9 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.EmployeeModel;
 import view.ExportController;
-import view.goedkeurenView.GoedkeurenController;
-import view.handleiding.handleidingController;
+import view.approvalView.ApprovalController;
 import view.home.homeController;
+import view.manual.ManualController;
 
 /**
  * Deze klasse is bestemd voor de administratie. 
@@ -24,12 +24,12 @@ import view.home.homeController;
  * @throws IOException
  */
 
-public class AdministratieViewController {
+public class AdministrationViewController {
 	
 	@FXML private Button btnGoedkeuren;
 	@FXML private Pane pane;
-	private GoedkeurenController gkC;
-	private handleidingController hdC;
+	private ApprovalController gkC;
+	private ManualController hdC;
 	private ExportController export = new ExportController();
 	private Label name;
 
@@ -43,7 +43,7 @@ public class AdministratieViewController {
 		Stage primaryStage = new Stage();
 		FXMLLoader administratieScherm = new FXMLLoader(getClass().getResource("/view/beginScherm/administratieView.fxml"));	
 		BorderPane View  = (BorderPane)administratieScherm.load();
-		AdministratieViewController administratieController = administratieScherm.getController();
+		AdministrationViewController administratieController = administratieScherm.getController();
 		FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("/view/home/home.fxml"));			//get xml file
 	    Pane homeView = homeLoader.load();
 	    homeController homeController = homeLoader.getController();
@@ -53,11 +53,11 @@ public class AdministratieViewController {
 	    
 	    FXMLLoader goedkeurenLoader = new FXMLLoader(getClass().getResource("/view/goedkeurenView/goedkeurenView.fxml"));			//get xml file
 	    Pane goedkeurenView = goedkeurenLoader.load();	
-	    GoedkeurenController goedkeurenController = goedkeurenLoader.getController();
+	    ApprovalController goedkeurenController = goedkeurenLoader.getController();
 	    
 	    FXMLLoader handleidingLoader = new FXMLLoader(getClass().getResource("/view/handleiding/handleiding.fxml"));			//get xml file
 	    Pane handleidingView = handleidingLoader.load();	
-	    handleidingController handleidingController = handleidingLoader.getController();
+	    ManualController handleidingController = handleidingLoader.getController();
 
 	    administratieController.setControllerGoedkeuren(goedkeurenController);
 	    administratieController.setControllerHandleiding(handleidingController);
@@ -73,11 +73,11 @@ public class AdministratieViewController {
 	 * Deze methode krijgt de controller van andere views.
 	 * @param gk
 	 */
-	public void setControllerGoedkeuren(GoedkeurenController gk)
+	public void setControllerGoedkeuren(ApprovalController gk)
 	{
 		this.gkC = gk;
 	}
-	public void setControllerHandleiding(handleidingController gk)
+	public void setControllerHandleiding(ManualController gk)
 	{
 		this.hdC = gk;
 	}

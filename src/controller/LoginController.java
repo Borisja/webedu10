@@ -12,9 +12,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import model.EmployeeModel;
-import view.AgendaView;
-import view.beginScherm.GebruikerViewController;
-import view.beginScherm.AdministratieViewController;
+import view.CalenderView;
+import view.startScreen.AdministrationViewController;
+import view.startScreen.UserViewController;
 
 public class LoginController {
 	/**
@@ -51,7 +51,7 @@ public class LoginController {
 			//Here we open the screen after login, use user.getEmployeeRol() to get users rol and then load correct view. 
 
 			if(user.getEmployeeRol().equals("employee")){
-				GebruikerViewController view = new GebruikerViewController();
+				UserViewController view = new UserViewController();
 				try {
 					view.startGebruiker(user);
 				} catch (IOException e) {
@@ -62,7 +62,7 @@ public class LoginController {
 			if(user.getEmployeeRol().equals("manager"))
 			{
 				try {
-					new AdministratieViewController().startAManager(user);
+					new AdministrationViewController().startAManager(user);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

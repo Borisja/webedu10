@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 
-public class AccountBeherenController {
+public class AccountManagementController {
 	
 	@FXML Pane pane;
 	@FXML Button accountToevoegen;
