@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import model.CreateUserModel;
 
@@ -19,6 +20,7 @@ public class CreateUserController {
 	
 	@FXML Label firstNameLabel;
 	@FXML TextField firstNameText;
+	@FXML Pane pane;
 	
 	@FXML Label lastNameLabel;
 	@FXML TextField lastNameText;
@@ -30,14 +32,21 @@ public class CreateUserController {
 	@FXML Button createButton;
 	@FXML Label errorLabel;
 	
-	ObservableList<String> roleList = FXCollections.observableArrayList("employee","administration","manager");
+	ObservableList<String> roleList = FXCollections.observableArrayList("Employee","Administration","Manager");
 	
 	@FXML
 	private void initialize() {
 		roleCombo.setValue("Employee");
 		roleCombo.setItems(roleList);
 	}
-	
+	/**
+	 * Deze methode open the view
+	 * @author rezanaser
+	 */
+	public void showView()
+	{
+		this.pane.setVisible(true);
+	}
 	public void createUser() {
 		
 		String firstName = firstNameText.getText();
@@ -52,7 +61,7 @@ public class CreateUserController {
 			setLabelToDefaultColor(errorLabel);
 			errorLabel.setText("");
 			
-			CreateUserModel createUserModel = new CreateUserModel(firstName, lastName, email, password, Role);
+			CreateUserModel createUserModel = new CreateUserModel(firstName, lastName, email, password, Role.toLowerCase());
 			createUserModel.createUser();
 			
 		} else {
