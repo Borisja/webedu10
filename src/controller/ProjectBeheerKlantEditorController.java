@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 /**
  * Created by Robert on 10/24/2017.
  */
-public class ProjectBeheerKlantController {
+public class ProjectBeheerKlantEditorController {
     CustomerDAO customerDao = new CustomerDAO();
 
     private ProjectBeheerController projectBeheerController;

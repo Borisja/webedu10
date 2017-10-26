@@ -13,7 +13,7 @@ import java.util.ArrayList;
 /**
  * Created by Robert on 10/25/2017.
  */
-public class ProjectBeheerProjectController {
+public class ProjectBeheerProjectEditorController {
 
     private CustomerModel customer;
     private ProjectBeheerController projectBeheerController;

@@ -13,7 +13,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -33,18 +32,7 @@ public class ProjectBeheerController {
 	
 	@FXML Button editBtn;
 	@FXML ComboBox<CustomerModel> customerCB;
-	@FXML
-	Text customerName;
-	@FXML
-	Text customerDescription;
-
 	@FXML ComboBox<ProjectModel> projectCB;
-	@FXML
-	Text projectName;
-	@FXML
-	Text projectDescription;
-	@FXML
-	Text projectCustomer;
 	@FXML ComboBox<SprintModel> sprintCB;
 	@FXML ComboBox<String> userStoryCB;
 	ObservableList<String> obList = FXCollections.observableArrayList("klant1","klant2");
@@ -117,9 +105,9 @@ public class ProjectBeheerController {
 			customerStage.setScene(scene);
 			System.out.println(this.getClass().toString()+": geinstancieerd");
 			customerStage.show();
-			ProjectBeheerKlantController projectBeheerKlantController = loader.getController();
-			projectBeheerKlantController.setProjectBeheerController(this);
-			projectBeheerKlantController.setViewStage(customerStage);
+			ProjectBeheerKlantEditorController projectBeheerKlantEditorController = loader.getController();
+			projectBeheerKlantEditorController.setProjectBeheerController(this);
+			projectBeheerKlantEditorController.setViewStage(customerStage);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -134,14 +122,14 @@ public class ProjectBeheerController {
 			customerStage.setScene(scene);
 			System.out.println(this.getClass().toString()+": geinstancieerd");
 			customerStage.show();
-			ProjectBeheerProjectController projectBeheerProjectController = loader.getController();
-			projectBeheerProjectController.setProjectBeheerController(this);
-			projectBeheerProjectController.setViewStage(customerStage);
+			ProjectBeheerProjectEditorController projectBeheerProjectEditorController = loader.getController();
+			projectBeheerProjectEditorController.setProjectBeheerController(this);
+			projectBeheerProjectEditorController.setViewStage(customerStage);
 			if(this.selectedCustomer!=null&&this.selectedCustomer.getCustomer_id()!=this.CUSTOMER_ID_DEFAULT) {
-				projectBeheerProjectController.setCustomer(selectedCustomer);
+				projectBeheerProjectEditorController.setCustomer(selectedCustomer);
 			}
 			if(this.selectedProject!=null&&this.selectedProject.getProjectId()==this.PROJECT_ID_DEFAULT){
-				projectBeheerProjectController.setValuesTo(selectedProject);
+				projectBeheerProjectEditorController.setValuesTo(selectedProject);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -163,7 +151,8 @@ public class ProjectBeheerController {
 			Parent root = loader.load();
 			this.infoPane.getChildren().clear();
 			this.infoPane.getChildren().add(root);
-			this.customerName.setText(selectedCustomer.getCustomer_name());
+			ProjectBeheerKlantInfoController projectBeheerKlantInfoController = loader.getController();
+			projectBeheerKlantInfoController.setValuesTo(selectedCustomer);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

@@ -2,15 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3583d79c-9c20-4de5-8a8d-d87821684c76" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/webedu10/controller/DeclareEntryController.class" afterPath="$PROJECT_DIR$/out/production/webedu10/controller/DeclareEntryController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/webedu10/controller/Run.class" afterPath="$PROJECT_DIR$/out/production/webedu10/controller/Run.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/webedu10/view/beginScherm/BeheerderViewController.class" afterPath="$PROJECT_DIR$/out/production/webedu10/view/beginScherm/BeheerderViewController.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/controller/ProjectBeheerKlantInfoController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/controller/ProjectBeheerProjectInfoController.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/controller/ProjectBeheerKlantController.java" afterPath="$PROJECT_DIR$/src/controller/ProjectBeheerKlantEditorController.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/controller/ProjectBeheerProjectController.java" afterPath="$PROJECT_DIR$/src/controller/ProjectBeheerProjectEditorController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/webedu10/controller/View.fxml" afterPath="$PROJECT_DIR$/out/production/webedu10/controller/View.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/webedu10/view/beginScherm/beheerderView.fxml" afterPath="$PROJECT_DIR$/out/production/webedu10/view/beginScherm/beheerderView.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/ProjectBeheer.fxml" afterPath="$PROJECT_DIR$/src/controller/ProjectBeheer.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/ProjectBeheerController.java" afterPath="$PROJECT_DIR$/src/controller/ProjectBeheerController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/ProjectBeheer_Klant.fxml" afterPath="$PROJECT_DIR$/src/controller/ProjectBeheer_Klant.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/ProjectBeheer_ProjectEditor.fxml" afterPath="$PROJECT_DIR$/src/controller/ProjectBeheer_ProjectEditor.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/ProjectBeheer_klantEditor.fxml" afterPath="$PROJECT_DIR$/src/controller/ProjectBeheer_klantEditor.fxml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,31 +38,19 @@
         <entry file="file://$PROJECT_DIR$/src/controller/ProjectBeheerController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="329">
-              <caret line="165" column="0" lean-forward="false" selection-start-line="165" selection-start-column="0" selection-end-line="165" selection-end-column="0" />
+              <caret line="154" column="75" lean-forward="true" selection-start-line="154" selection-start-column="75" selection-end-line="154" selection-end-column="75" />
               <folding>
-                <element signature="e#2632#2646#0" expanded="true" />
+                <element signature="e#2443#2457#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProjectBeheerProjectController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/ProjectBeheerProjectController.java">
+      <file leaf-file-name="ProjectBeheerKlantInfoController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controller/ProjectBeheerKlantInfoController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="594">
-              <caret line="74" column="9" lean-forward="false" selection-start-line="74" selection-start-column="9" selection-end-line="74" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProjectBeheerKlantController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/ProjectBeheerKlantController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="509">
-              <caret line="47" column="9" lean-forward="false" selection-start-line="47" selection-start-column="9" selection-end-line="47" selection-end-column="9" />
+            <state relative-caret-position="289">
+              <caret line="17" column="77" lean-forward="true" selection-start-line="17" selection-start-column="77" selection-end-line="17" selection-end-column="77" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -141,11 +130,15 @@
       <list>
         <option value="$PROJECT_DIR$/src/model/CustomerModel.java" />
         <option value="$PROJECT_DIR$/src/model/ProjectModel.java" />
-        <option value="$PROJECT_DIR$/src/controller/ProjectBeheerProjectController.java" />
-        <option value="$PROJECT_DIR$/src/controller/ProjectBeheerKlantController.java" />
         <option value="$PROJECT_DIR$/src/controller/Run.java" />
         <option value="$PROJECT_DIR$/src/dao/ProjectDAO.java" />
         <option value="$PROJECT_DIR$/src/dao/CustomerDAO.java" />
+        <option value="$PROJECT_DIR$/src/controller/ProjectBeheerProjectController.java" />
+        <option value="$PROJECT_DIR$/src/controller/ProjectBeheerProjectEditorController.java" />
+        <option value="$PROJECT_DIR$/src/controller/ProjectBeheerKlantController.java" />
+        <option value="$PROJECT_DIR$/src/controller/ProjectBeheerKlantEditorController.java" />
+        <option value="$PROJECT_DIR$/src/controller/ProjectBeheerProjectInfoController.java" />
+        <option value="$PROJECT_DIR$/src/controller/ProjectBeheerKlantInfoController.java" />
         <option value="$PROJECT_DIR$/src/controller/ProjectBeheerController.java" />
       </list>
     </option>
@@ -730,7 +723,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37586000" />
+    <option name="totallyTimeSpent" value="39000000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="56" y="-8" width="1872" height="1092" extended-state="0" />
@@ -805,35 +798,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/controller/ProjectBeheerProjectController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
-          <caret line="74" column="9" lean-forward="false" selection-start-line="74" selection-start-column="9" selection-end-line="74" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/CustomerDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1298">
-          <caret line="83" column="39" lean-forward="false" selection-start-line="83" selection-start-column="39" selection-end-line="83" selection-end-column="39" />
-          <folding>
-            <marker date="1508965736041" expanded="true" signature="657:754" ph="INSERT INTO customer... " />
-            <marker date="1508965736041" expanded="true" signature="769:921" ph="INSERT INTO customer_version... " />
-            <marker date="1508965736041" expanded="true" signature="1776:1816" ph="SELECT * FRO... customer" />
-            <marker date="1508965736041" expanded="true" signature="1776:1838" ph="SELECT * FRO... customer" />
-            <marker date="1508965736041" expanded="true" signature="1776:1839" ph="SELECT * FRO... customer" />
-            <marker date="1508965736041" expanded="true" signature="2782:2886" ph="SELECT * FRO... customer" />
-            <marker date="1508965736041" expanded="true" signature="2911:3070" ph="SELECT * FRO... customer" />
-            <marker date="1508965736041" expanded="true" signature="4098:4119" ph="SELECT add_c... " />
-            <marker date="1508965736041" expanded="true" signature="4098:4130" ph="SELECT add_c... " />
-            <marker date="1508965736041" expanded="true" signature="4098:4147" ph="SELECT add_c... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/dao/ProjectDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-391">
@@ -856,7 +820,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/ProjectBeheerKlantController.java">
+    <entry file="file://$PROJECT_DIR$/src/controller/ProjectBeheerKlantEditorController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="118">
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
@@ -893,7 +857,7 @@
         <state relative-caret-position="839">
           <caret line="103" column="8" lean-forward="true" selection-start-line="103" selection-start-column="8" selection-end-line="108" selection-end-column="9" />
           <folding>
-            <element signature="e#2632#2646#0" expanded="true" />
+            <element signature="e#2443#2457#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -917,7 +881,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/ProjectBeheerKlantController.java">
+    <entry file="file://$PROJECT_DIR$/src/controller/ProjectBeheerKlantEditorController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="118">
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
@@ -940,7 +904,7 @@
         <state relative-caret-position="839">
           <caret line="103" column="8" lean-forward="true" selection-start-line="103" selection-start-column="8" selection-end-line="108" selection-end-column="9" />
           <folding>
-            <element signature="e#2632#2646#0" expanded="true" />
+            <element signature="e#2443#2457#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -981,7 +945,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/ProjectBeheerKlantController.java">
+    <entry file="file://$PROJECT_DIR$/src/controller/ProjectBeheerKlantEditorController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="118">
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
@@ -1059,7 +1023,7 @@
         <state relative-caret-position="425">
           <caret line="74" column="72" lean-forward="false" selection-start-line="74" selection-start-column="72" selection-end-line="74" selection-end-column="72" />
           <folding>
-            <element signature="e#2632#2646#0" expanded="true" />
+            <element signature="e#2443#2457#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1105,7 +1069,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/ProjectBeheerKlantController.java">
+    <entry file="file://$PROJECT_DIR$/src/controller/ProjectBeheerKlantEditorController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="118">
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
@@ -1135,7 +1099,7 @@
         <state relative-caret-position="295">
           <caret line="71" column="42" lean-forward="false" selection-start-line="71" selection-start-column="42" selection-end-line="71" selection-end-column="42" />
           <folding>
-            <element signature="e#2632#2646#0" expanded="true" />
+            <element signature="e#2443#2457#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1188,7 +1152,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/ProjectBeheerKlantController.java">
+    <entry file="file://$PROJECT_DIR$/src/controller/ProjectBeheerKlantEditorController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="118">
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
@@ -1225,7 +1189,7 @@
         <state relative-caret-position="839">
           <caret line="103" column="8" lean-forward="true" selection-start-line="103" selection-start-column="8" selection-end-line="108" selection-end-column="9" />
           <folding>
-            <element signature="e#2632#2646#0" expanded="true" />
+            <element signature="e#2443#2457#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1249,7 +1213,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/ProjectBeheerKlantController.java">
+    <entry file="file://$PROJECT_DIR$/src/controller/ProjectBeheerKlantEditorController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="118">
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
@@ -1272,7 +1236,7 @@
         <state relative-caret-position="839">
           <caret line="103" column="8" lean-forward="true" selection-start-line="103" selection-start-column="8" selection-end-line="108" selection-end-column="9" />
           <folding>
-            <element signature="e#2632#2646#0" expanded="true" />
+            <element signature="e#2443#2457#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1327,16 +1291,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/ProjectBeheerProjectController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="74" column="9" lean-forward="false" selection-start-line="74" selection-start-column="9" selection-end-line="74" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/dao/ProjectDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -1355,16 +1309,6 @@
             <marker date="1508965534965" expanded="true" signature="4868:4899" ph="SELECT add_c... " />
             <marker date="1508965534965" expanded="true" signature="4868:4917" ph="SELECT add_c... " />
             <marker date="1508965534965" expanded="true" signature="4868:4933" ph="SELECT add_c... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/ProjectBeheerKlantController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="509">
-          <caret line="47" column="9" lean-forward="false" selection-start-line="47" selection-start-column="9" selection-end-line="47" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1396,12 +1340,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/ProjectBeheerKlantEditorController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="20" column="9" lean-forward="true" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/ProjectBeheerProjectInfoController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="25" lean-forward="false" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/ProjectBeheerProjectEditorController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-307">
+          <caret line="15" column="16" lean-forward="false" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/ProjectBeheerKlantInfoController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="77" lean-forward="true" selection-start-line="17" selection-start-column="77" selection-end-line="17" selection-end-column="77" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/ProjectBeheerController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="329">
-          <caret line="165" column="0" lean-forward="false" selection-start-line="165" selection-start-column="0" selection-end-line="165" selection-end-column="0" />
+          <caret line="154" column="75" lean-forward="true" selection-start-line="154" selection-start-column="75" selection-end-line="154" selection-end-column="75" />
           <folding>
-            <element signature="e#2632#2646#0" expanded="true" />
+            <element signature="e#2443#2457#0" expanded="true" />
           </folding>
         </state>
       </provider>
