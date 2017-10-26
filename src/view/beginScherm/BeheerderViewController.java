@@ -3,6 +3,8 @@ package view.beginScherm;
 import java.io.IOException;
 
 import controller.AccountBeherenController;
+import controller.CreateUserController;
+import controller.MedewerkerBeherenController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -22,8 +24,10 @@ public class BeheerderViewController {
 	
 	private @FXML Button btnAccounts;
 	
-	private @FXML Pane beheerderPane;
+	private @FXML Pane pane;
 	private AccountBeherenController accountController;
+
+	private MedewerkerBeherenController medewerkerBeheren;
 	
 
 	
@@ -49,26 +53,46 @@ public class BeheerderViewController {
 	    Pane accountBeherenView = accountbeheren.load();	
 	    AccountBeherenController accountController = accountbeheren.getController();
 	    
+	    FXMLLoader medewerkerBeheren = new FXMLLoader(getClass().getResource("/controller/MedewerkerBeheren.fxml"));			//get xml file
+	    Pane medewerkerBeherenView = medewerkerBeheren.load();	
+	    MedewerkerBeherenController medewerkerBeherenController = medewerkerBeheren.getController();
+	    
+	    FXMLLoader addEmployeeLoader = new FXMLLoader(getClass().getResource("/controller/CreateUser.fxml"));			//get xml file
+	    Pane createUserView = addEmployeeLoader.load();	
+	    CreateUserController createUserController = addEmployeeLoader.getController();
+	    
 //	    FXMLLoader handleidingLoader = new FXMLLoader(getClass().getResource("/view/handleiding/handleiding.fxml"));			//get xml file
 //	    Pane handleidingView = handleidingLoader.load();	
 //	    handleidingController handleidingController = handleidingLoader.getController();
 
 	    beheerderController.setControllerAccount(accountController);
+	    beheerderController.setControllerMedewerkerBeheren(medewerkerBeherenController);
+	    medewerkerBeherenController.setControllerCreateUserController(createUserController);
 	   // beheerderController.setControllerHandleiding(handleidingController);
 	    
-	    Pane tabPane = (Pane)beheerderScherm.getNamespace().get("beheerderPane"); 						//get stackPane from fieldView
-        tabPane.getChildren().addAll(accountBeherenView, homeView);
+	    Pane tabPane = (Pane)beheerderScherm.getNamespace().get("pane"); 						//get stackPane from fieldView
+        tabPane.getChildren().addAll(accountBeherenView, homeView, medewerkerBeherenView, createUserView);
         
 		Scene scene = new Scene(View);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
 
-
 	private void setControllerAccount(AccountBeherenController accountController) {
 		this.accountController = accountController;
 		
 	}
+	private void setControllerMedewerkerBeheren(MedewerkerBeherenController medewerkerBeherenController) {
+		this.medewerkerBeheren = medewerkerBeherenController;
+		
+	}
+
+	public void openMedewerkerView()
+	{
+		this.medewerkerBeheren.showView();
+	}
+
+
 	private void openAccountView()
 	{
 		this.accountController.showAccountView();
