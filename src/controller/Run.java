@@ -14,6 +14,10 @@ import dao.ProjectDAO;
 
 public class Run extends Application{
 
+	
+
+    DeclareEntryController dce = new DeclareEntryController();
+	
 	public static void main(String[] args) {
 
 		// TODO Auto-generated method stub
@@ -31,8 +35,8 @@ public class Run extends Application{
 //	       primaryStage.setScene(scene);
 //	       primaryStage.show();
 		// TODO Auto-generated method stub
-		//new LoginView().show_login_view();
 	       
-	       DeclareEntryController dce = new DeclareEntryController();
+	       dce.init();
+	       
 	}
 }
