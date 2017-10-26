@@ -30,7 +30,7 @@ public class CreateUserController {
 	@FXML Button createButton;
 	@FXML Label errorLabel;
 	
-	ObservableList<String> roleList = FXCollections.observableArrayList("employee","administration","manager");
+	ObservableList<String> roleList = FXCollections.observableArrayList("Employee","Administration","Manager");
 	
 	@FXML
 	private void initialize() {
@@ -52,7 +52,7 @@ public class CreateUserController {
 			setLabelToDefaultColor(errorLabel);
 			errorLabel.setText("");
 			
-			CreateUserModel createUserModel = new CreateUserModel(firstName, lastName, email, password, Role);
+			CreateUserModel createUserModel = new CreateUserModel(firstName, lastName, email, password, Role.toLowerCase());
 			createUserModel.createUser();
 			
 		} else {
