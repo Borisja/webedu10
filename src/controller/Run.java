@@ -1,6 +1,5 @@
 package controller;
 
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,6 +13,10 @@ import dao.ProjectDAO;
 
 public class Run extends Application{
 
+	
+
+    DeclareEntryController dce = new DeclareEntryController();
+	
 	public static void main(String[] args) {
 		Application.launch(args);
 	}
@@ -26,6 +29,7 @@ public class Run extends Application{
 //	       primaryStage.setScene(scene);
 //	       primaryStage.show();
 		// TODO Auto-generated method stub
+
 		//new LoginView().show_login_view();
 		System.out.println(new ProjectDAO().project_list().size());
 

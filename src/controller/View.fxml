@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
@@ -20,11 +22,6 @@
             <ComboBox fx:id="endTimeHourComboBox" prefHeight="25.0" prefWidth="61.0" promptText="12">
                <StackPane.margin>
                   <Insets top="-80.0" />
-               </StackPane.margin>
-            </ComboBox>
-            <ComboBox fx:id="startTimeHourComboBox" editable="true" prefHeight="25.0" prefWidth="61.0" promptText="11">
-               <StackPane.margin>
-                  <Insets top="-150.0" />
                </StackPane.margin>
             </ComboBox>
             <ComboBox fx:id="startTimeMinuteComboBox" prefHeight="25.0" prefWidth="57.0" promptText="00">
@@ -47,6 +44,11 @@
                   <Insets top="130.0" />
                </StackPane.margin>
             </ComboBox>
+            <ChoiceBox fx:id="startTimeHourChoiceBox" prefHeight="25.0" prefWidth="57.0">
+               <StackPane.margin>
+                  <Insets top="-150.0" />
+               </StackPane.margin>
+            </ChoiceBox>
          </children>
       </StackPane>
       <StackPane layoutX="30.0" layoutY="25.0" prefHeight="199.0" prefWidth="152.0">
@@ -87,6 +89,8 @@
          </children>
       </StackPane>
       <TextArea fx:id="descriptionTextArea" layoutX="222.0" layoutY="204.0" prefHeight="59.0" prefWidth="205.0" text="Vul hier de beschrijving in &#10;van de activiteit." />
+      <Button fx:id="save" layoutX="386.0" layoutY="273.0" mnemonicParsing="false" onAction="#saveEntry" text="Save" />
+      <Button fx:id="cancel" layoutX="320.0" layoutY="273.0" mnemonicParsing="false" text="Cancel" />
    </children>
    <padding>
       <Insets top="-10.0" />
