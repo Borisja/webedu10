@@ -30,14 +30,15 @@ public class EmployeeModel {
 	public void setEmployeeId(int employeeId) {
 		this.employeeId = employeeId;
 	}
-	public String getEmployeeVoornaam() {
+	public String getEmployeeFirstname() {
 		return employeeFirstName;
 	}
-	public void setEmployeeVoornaam(String employeeFirstName) {
-		this.employeeFirstName = employeeFirstName;
-	}
+
 	public String getEmployeeAchternaam() {
 		return employeeLastName;
+	}
+	public void setEmployeeFirstname(String employeeFirstName) {
+		this.employeeFirstName = employeeFirstName;
 	}
 	public void setEmployeeAchternaam(String employeeLastName) {
 		this.employeeLastName = employeeLastName;
