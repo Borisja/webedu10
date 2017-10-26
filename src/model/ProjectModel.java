@@ -2,25 +2,42 @@ package model;
 
 public class ProjectModel {
 	
-	String project_id;
-	String project_isdeleted;
+	private int projectId;
+	private boolean projectIsDeleted;
+	private String projectDescription;
+	private String projectName;
+	private int projectEntryFk;
+	private int projectUserStoryFk;
+	private int projectSprintFk;
 	
-
-	public String getProject_id() {
-		return project_id;
+	public int getProjectId() {
+		return projectId;
 	}
-
-	public void setProject_id(String project_id) {
-		this.project_id = project_id;
+	public void setProjectId(int projectId) {
+		this.projectId = projectId;
 	}
-
-	public String getProject_isdeleted() {
-		return project_isdeleted;
+	public boolean isProjectIsDeleted() {
+		return projectIsDeleted;
 	}
-
-	public void setProject_isdeleted(String project_isdeleted) {
-		this.project_isdeleted = project_isdeleted;
+	public void setProjectIsDeleted(boolean projectIsDeleted) {
+		this.projectIsDeleted = projectIsDeleted;
+	}
+	public String getProjectDescription() {
+		return projectDescription;
+	}
+	public void setProjectDescription(String projectDescription) {
+		this.projectDescription = projectDescription;
+	}
+	public String getProjectName() {
+		return projectName;
+	}
+	public void setProjectName(String projectName) {
+		this.projectName = projectName;
 	}
 	
+	@Override
+	public String toString(){
+		return this.projectName;
+	}
 
 }
