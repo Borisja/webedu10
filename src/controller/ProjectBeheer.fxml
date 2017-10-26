@@ -67,7 +67,7 @@
                   <Insets />
                </opaqueInsets>
             </GridPane>
-            <FlowPane orientation="VERTICAL">
+            <FlowPane fx:id="infoPane" orientation="VERTICAL">
                <children>
                   <Label alignment="CENTER" prefHeight="53.0" prefWidth="1723.0" text="Project">
                      <font>

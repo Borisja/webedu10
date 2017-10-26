@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
@@ -8,21 +9,22 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label alignment="CENTER" prefHeight="53.0" prefWidth="1280.0" text="Klant">
+      <Label alignment="CENTER" prefHeight="53.0" prefWidth="902.0" text="Klant">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <GridPane maxHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="1280.0">
+      <GridPane maxHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="902.0">
          <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="673.3333129882812" minWidth="10.0" prefWidth="321.6666564941406" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1293.9999923706055" minWidth="10.0" prefWidth="1038.3333435058594" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="673.3333129882812" minWidth="10.0" prefWidth="127.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1293.9999923706055" minWidth="10.0" prefWidth="22.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1293.9999923706055" minWidth="10.0" prefWidth="736.0" />
          </columnConstraints>
          <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="103.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="430.0" minHeight="10.0" prefHeight="430.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
             <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="488.0" text="Naam">
@@ -35,17 +37,26 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Klantnaam" GridPane.columnIndex="1">
+            <Text fx:id="customerName" strokeType="OUTSIDE" strokeWidth="0.0" text="Klantnaam" GridPane.columnIndex="2">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Klantbeschrijving" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Text fx:id="customerDescription" strokeType="OUTSIDE" strokeWidth="0.0" text="Klantbeschrijving" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
          </children>
+         <FlowPane.margin>
+            <Insets />
+         </FlowPane.margin>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
       </GridPane>
    </children>
 </FlowPane>
