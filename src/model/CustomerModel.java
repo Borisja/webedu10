@@ -5,6 +5,7 @@ public class CustomerModel {
 	private String customer_name;
 	private String customer_description;
 	private boolean customer_isdeleted;
+	private boolean isSaved=true;
 
 	public int getCustomer_id() {
 		return customer_id;
@@ -36,6 +37,14 @@ public class CustomerModel {
 
 	public void setCustomer_isdeleted(boolean customer_isdeleted) {
 		this.customer_isdeleted = customer_isdeleted;
+	}
+
+	public boolean isSaved() {
+		return isSaved;
+	}
+
+	public void setSaved(boolean saved) {
+		isSaved = saved;
 	}
 
 	@Override

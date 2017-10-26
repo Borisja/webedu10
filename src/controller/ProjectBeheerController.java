@@ -13,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -32,9 +33,15 @@ public class ProjectBeheerController {
 	
 	@FXML Button editBtn;
 	@FXML ComboBox<CustomerModel> customerCB;
+	@FXML
+	Tooltip customerTT;
 	@FXML ComboBox<ProjectModel> projectCB;
+	@FXML
+	Tooltip projectTT;
 	@FXML ComboBox<SprintModel> sprintCB;
 	@FXML ComboBox<String> userStoryCB;
+	@FXML
+	Tooltip sprint_userstoryTT;
 	ObservableList<String> obList = FXCollections.observableArrayList("klant1","klant2");
 	@FXML Button newCustomer;
 	@FXML Button newProject;

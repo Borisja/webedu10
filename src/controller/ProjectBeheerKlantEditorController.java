@@ -28,6 +28,7 @@ public class ProjectBeheerKlantEditorController {
     @FXML
     Label errorLbl;
 
+
     public void setProjectBeheerController(ProjectBeheerController projectBeheerController){
         this.projectBeheerController = projectBeheerController;
     }
