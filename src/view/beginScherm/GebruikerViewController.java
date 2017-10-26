@@ -68,7 +68,7 @@ public class GebruikerViewController {
 	    
 	    
 	    view.setTop(homeView);
-	    homeController.setUserName(em.getEmployeeVoornaam());  
+	    homeController.setUserName(em.getEmployeeFirstname());  
 	    gebruikerGegevensController.fillUserData(em);
 		gebruikerController.setControllerSprint(sprintController);
 		gebruikerController.setControllerProject(projectController);

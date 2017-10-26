@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import javafx.stage.Stage;
 import view.LoginView;
 import view.beginScherm.AdministratieViewController;
+import view.beginScherm.BeheerderViewController;
 import view.beginScherm.GebruikerViewController;
 import dao.ProjectDAO;
 
@@ -24,32 +25,34 @@ public class Run extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 
-//		 Parent root = FXMLLoader.load(getClass().getResource("/view/beginScherm/GebruikerView.fxml"));
-//	       Scene scene = new Scene(root);
-//	       primaryStage.setScene(scene);
-//	       primaryStage.show();
+//		 BeheerderViewController view = new BeheerderViewController();
+//		 view.startBeheerder();
+		Parent root = FXMLLoader.load(getClass().getResource("/view/RemoveUser.fxml"));
+	       Scene scene = new Scene(root);
+	       primaryStage.setScene(scene);
+	       primaryStage.show();
 		// TODO Auto-generated method stub
 
 		//new LoginView().show_login_view();
-		System.out.println(new ProjectDAO().project_list().size());
-
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("ProjectBeheer.fxml"));
-		Parent root = loader.load();
-		Scene scene = new Scene(root);
-		primaryStage.setScene(scene);
-		System.out.println(this.getClass().toString()+": geinstancieerd");
-		primaryStage.show();
-		ProjectBeheerController projectBeheerController=loader.getController();
-
-//		GebruikerViewController view = new GebruikerViewController();
-//		view.startGebruiker();
-
-//		 Parent root = FXMLLoader.load(getClass().getResource("/view/AddEntryView.fxml"));
-//	       Scene scene = new Scene(root);
-//	       primaryStage.setScene(scene);
-//	       primaryStage.show();
-
-		// TODO Auto-generated method stub
-		//new LoginView().show_login_view();
+//		System.out.println(new ProjectDAO().project_list().size());
+//
+//		FXMLLoader loader = new FXMLLoader(getClass().getResource("ProjectBeheer.fxml"));
+//		Parent root = loader.load();
+//		Scene scene = new Scene(root);
+//		primaryStage.setScene(scene);
+//		System.out.println(this.getClass().toString()+": geinstancieerd");
+//		primaryStage.show();
+//		ProjectBeheerController projectBeheerController=loader.getController();
+//
+////		GebruikerViewController view = new GebruikerViewController();
+////		view.startGebruiker();
+//
+////		 Parent root = FXMLLoader.load(getClass().getResource("/view/AddEntryView.fxml"));
+////	       Scene scene = new Scene(root);
+////	       primaryStage.setScene(scene);
+////	       primaryStage.show();
+//
+//		// TODO Auto-generated method stub
+//		new LoginView().show_login_view();
 	}
 }

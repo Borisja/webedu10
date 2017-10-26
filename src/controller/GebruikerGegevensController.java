@@ -37,7 +37,7 @@ public class GebruikerGegevensController implements Initializable{
 	
 	public void fillUserData(EmployeeModel em)
 	{
-		this.txt_voornaam.setText(em.getEmployeeVoornaam());
+		this.txt_voornaam.setText(em.getEmployeeFirstname());
 		this.txt_achternaam.setText(em.getEmployeeAchternaam());
 		this.txt_email.setText(em.getEmployeeEmail());
 	}
