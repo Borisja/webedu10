@@ -11,48 +11,20 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.control.TextArea;
+import model.CustomerModel;
 
 public class DeclareEntryController 
 {
-	int startTimeHour;
-	int startTimeMinute;
-	int endTimeHour;
-	int endTimeMinute;
-	String project;
-	String sprint;
-	String userStory;
-	String description;
 	
-	@FXML Label startTimeLabel;
-	@FXML Label endTimeLabel;
-	@FXML Label projectLabel;
-	@FXML Label sprintLabel;
-	@FXML Label userStoryLabel;
-	@FXML Label descriptionLabel;	
+	@FXML ComboBox<String> userStoryCB;
+	ObservableList<String> obList = FXCollections.observableArrayList("klant1","klant2");
 	
 	@FXML 
-	private ChoiceBox startTimeHourChoiceBox = new ChoiceBox<String>(FXCollections.observableArrayList(
-		    "First", "Second", "Third"));
-	
-	
-	@FXML Button save;
-	@FXML Button cancel;
-	
-	ObservableList<String> mainDepartmentList = FXCollections.observableArrayList("Electrical", "Mechanical");
-	
 	public void init()
 	{
+		userStoryCB = new ComboBox<String>();
+		userStoryCB.getItems().add("1");
 	}
-	
-	public void saveEntry()
-	{
-		
-	}
-	
-	
-
-	
-	
 
 	
 }

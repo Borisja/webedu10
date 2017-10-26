@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
@@ -14,46 +13,46 @@
    <children>
       <StackPane layoutX="182.0" layoutY="16.0" prefHeight="199.0" prefWidth="152.0">
          <children>
-            <ComboBox fx:id="projectComboBox" prefHeight="25.0" prefWidth="81.0" promptText="Project">
+            <ComboBox prefHeight="25.0" prefWidth="81.0" promptText="Project">
                <StackPane.margin>
                   <Insets top="-10.0" />
                </StackPane.margin>
             </ComboBox>
-            <ComboBox fx:id="endTimeHourComboBox" prefHeight="25.0" prefWidth="61.0" promptText="12">
+            <ComboBox prefHeight="25.0" prefWidth="61.0" promptText="12">
                <StackPane.margin>
                   <Insets top="-80.0" />
                </StackPane.margin>
             </ComboBox>
-            <ComboBox fx:id="startTimeMinuteComboBox" prefHeight="25.0" prefWidth="57.0" promptText="00">
+            <ComboBox prefHeight="25.0" prefWidth="57.0" promptText="00">
                <StackPane.margin>
                   <Insets right="-175.0" top="-150.0" />
                </StackPane.margin>
             </ComboBox>
-            <ComboBox fx:id="endTimeMinuteComboBox" prefHeight="25.0" prefWidth="57.0" promptText="55">
+            <ComboBox prefHeight="25.0" prefWidth="57.0" promptText="55">
                <StackPane.margin>
                   <Insets right="-175.0" top="-80.0" />
                </StackPane.margin>
             </ComboBox>
-            <ComboBox fx:id="sprintComboBox" prefHeight="25.0" prefWidth="81.0" promptText="Sprint">
+            <ComboBox prefHeight="25.0" prefWidth="81.0" promptText="Sprint">
                <StackPane.margin>
                   <Insets top="60.0" />
                </StackPane.margin>
             </ComboBox>
-            <ComboBox fx:id="userStoryComboBox" prefHeight="25.0" prefWidth="108.0" promptText="User Story">
+            <ComboBox prefHeight="25.0" prefWidth="108.0" promptText="User Story">
                <StackPane.margin>
                   <Insets top="130.0" />
                </StackPane.margin>
             </ComboBox>
-            <ChoiceBox fx:id="startTimeHourChoiceBox" prefHeight="25.0" prefWidth="57.0">
+            <ComboBox fx:id="userStoryCB" prefHeight="25.0" prefWidth="57.0" promptText="00">
                <StackPane.margin>
                   <Insets top="-150.0" />
                </StackPane.margin>
-            </ChoiceBox>
+            </ComboBox>
          </children>
       </StackPane>
       <StackPane layoutX="30.0" layoutY="25.0" prefHeight="199.0" prefWidth="152.0">
          <children>
-            <Label fx:id="startTimeLabel" text="Begintijd">
+            <Label text="Begintijd">
                <StackPane.margin>
                   <Insets top="-165.0" />
                </StackPane.margin>
@@ -61,36 +60,36 @@
                   <Blend />
                </effect>
             </Label>
-            <Label fx:id="endTimeLabel" text="Eindtijd">
+            <Label text="Eindtijd">
                <StackPane.margin>
                   <Insets top="-95.0" />
                </StackPane.margin>
             </Label>
-            <Label fx:id="projectLabel" text="Project">
+            <Label text="Project">
                <StackPane.margin>
                   <Insets top="-25.0" />
                </StackPane.margin>
             </Label>
-            <Label fx:id="sprintLabel" text="Sprint" textFill="#0d0000">
+            <Label text="Sprint" textFill="#0d0000">
                <StackPane.margin>
                   <Insets top="45.0" />
                </StackPane.margin>
             </Label>
-            <Label fx:id="userStoryLabel" text="User Story">
+            <Label text="User Story">
                <StackPane.margin>
                   <Insets top="115.0" />
                </StackPane.margin>
             </Label>
-            <Label fx:id="descriptionLabel" text="Beschrijving">
+            <Label text="Beschrijving">
                <StackPane.margin>
                   <Insets top="185.0" />
                </StackPane.margin>
             </Label>
          </children>
       </StackPane>
-      <TextArea fx:id="descriptionTextArea" layoutX="222.0" layoutY="204.0" prefHeight="59.0" prefWidth="205.0" text="Vul hier de beschrijving in &#10;van de activiteit." />
-      <Button fx:id="save" layoutX="386.0" layoutY="273.0" mnemonicParsing="false" onAction="#saveEntry" text="Save" />
-      <Button fx:id="cancel" layoutX="320.0" layoutY="273.0" mnemonicParsing="false" text="Cancel" />
+      <TextArea layoutX="222.0" layoutY="204.0" prefHeight="59.0" prefWidth="205.0" text="Vul hier de beschrijving in &#10;van de activiteit." />
+      <Button layoutX="386.0" layoutY="273.0" mnemonicParsing="false" text="Save" />
+      <Button layoutX="320.0" layoutY="273.0" mnemonicParsing="false" text="Cancel" />
    </children>
    <padding>
       <Insets top="-10.0" />

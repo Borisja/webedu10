@@ -1,4 +1,7 @@
 package view.beginScherm;
+/**
+ * This class loads fxml files of the employeesceen and initializes their respective controllers.
+ */
 
 import java.io.IOException;
 

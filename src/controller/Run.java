@@ -31,15 +31,17 @@ public class Run extends Application{
 		// TODO Auto-generated method stub
 
 		//new LoginView().show_login_view();
-		System.out.println(new ProjectDAO().project_list().size());
-
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("ProjectBeheer.fxml"));
-		Parent root = loader.load();
-		Scene scene = new Scene(root);
-		primaryStage.setScene(scene);
-		System.out.println(this.getClass().toString()+": geinstancieerd");
-		primaryStage.show();
-		ProjectBeheerController projectBeheerController=loader.getController();
+//		System.out.println(new ProjectDAO().project_list().size());
+//
+//		FXMLLoader loader = new FXMLLoader(getClass().getResource("AddHours.fxml"));
+//		Parent root = loader.load();
+//		Scene scene = new Scene(root);
+//		primaryStage.setScene(scene);
+//		System.out.println(this.getClass().toString()+": geinstancieerd");
+//		primaryStage.show();
+	
+		
+//		ProjectBeheerController projectBeheerController=loader.getController();
 
 //		GebruikerViewController view = new GebruikerViewController();
 //		view.startGebruiker();
@@ -50,6 +52,6 @@ public class Run extends Application{
 //	       primaryStage.show();
 
 		// TODO Auto-generated method stub
-		//new LoginView().show_login_view();
+		new LoginView().show_login_view();
 	}
 }
