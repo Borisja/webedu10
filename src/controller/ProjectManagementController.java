@@ -92,7 +92,7 @@ public class ProjectManagementController {
 		System.out.println("new Customer");
 		try {
 			Parent root = null;
-			FXMLLoader loader  = new FXMLLoader(getClass().getResource("ProjectBeheer_KlantEditor.fxml"));
+			FXMLLoader loader  = new FXMLLoader(getClass().getResource("ProjectManagementCustomerEditor.fxml"));
 			root = loader.load();
 			Scene scene = new Scene(root);
 			customerStage.setScene(scene);

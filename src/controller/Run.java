@@ -19,7 +19,7 @@ public class Run extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 
-		new LoginView().show_login_view();
+//		new LoginView().show_login_view();
 
 	}
 }

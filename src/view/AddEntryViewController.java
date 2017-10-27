@@ -2,11 +2,8 @@ package view;
 
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.ResourceBundle;
 
-import controller.EntryController;
 import dao.ProjectDAO;
 import dao.SprintDAO;
 import javafx.collections.FXCollections;
@@ -17,11 +14,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.util.Callback;
-import javafx.util.StringConverter;
-import model.EntryModel;
 import model.ProjectModel;
 import model.SprintModel;
 import model.UserStoryModel;

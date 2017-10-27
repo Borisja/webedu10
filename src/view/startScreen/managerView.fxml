@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.beginScherm.BeheerderViewController">
+<BorderPane xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.startScreen.ManagerViewController">
    <left>
       <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
@@ -13,7 +13,7 @@
             <Button layoutX="24.0" layoutY="240.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="142.0" style="-fx-background-repeat: no-repeat; -fx-background-size: 110 90;" text="Overzichten" />
             <Button layoutX="208.0" layoutY="241.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="147.0" text="Entry's beheren" />
             <Button layoutX="400.0" layoutY="241.0" mnemonicParsing="false" onAction="#openMedewerkerView" prefHeight="97.0" prefWidth="141.0" text="Medewerkers Beheren" />
-            <Button fx:id="btnAccounts" layoutX="21.0" layoutY="82.0" mnemonicParsing="false" prefHeight="93.0" prefWidth="148.0" text="Accounts Beheren" />
+            <Button fx:id="buttonAccounts" layoutX="21.0" layoutY="82.0" mnemonicParsing="false" prefHeight="93.0" prefWidth="148.0" text="Accounts Beheren" />
          </children>
       </Pane>
    </left>

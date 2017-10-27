@@ -22,7 +22,7 @@ import view.manual.ManualController;
  */
 public class ManagerViewController {
 	
-	private @FXML Button btnAccounts;
+	private @FXML Button buttonAccounts;
 	
 	private @FXML Pane pane;
 	private AccountManagementController accountController;
