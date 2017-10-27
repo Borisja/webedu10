@@ -20,10 +20,10 @@ import model.EntryModel;
 
 public class ApprovalController implements Initializable{
 	@FXML Pane pane;
-	@FXML Button sluitKnop;
-	@FXML Button approve;
-	@FXML Button reject;
-	@FXML Button refresh;
+	@FXML Button closeButton;
+	@FXML Button approveButton;
+	@FXML Button rejectButton;
+	@FXML Button refreshButton;
 	@FXML TableView<EntryModel> tableView;
 	@FXML TableColumn<EntryModel, Integer> iId;
 	@FXML TableColumn<EntryModel, String> iDescription;
@@ -72,7 +72,7 @@ public class ApprovalController implements Initializable{
 	 * Deze methode opent de goedkeuren view nadat er geklickt word
 	 * @author rezanaser
 	 */
-	public void openGoedkeurenMenu()
+	public void openApprovalMenu()
 	{
 		pane.setVisible(true);
 	}
@@ -81,7 +81,7 @@ public class ApprovalController implements Initializable{
 	 * Deze methode sluit de view nadat er geklickt wordt op de sluit button.
 	 * @author rezanaser
 	 */
-	public void sluitGoedkeurenMenu()
+	public void closeApprovalMenu()
 	{
 		pane.setVisible(false);
 	}

@@ -7,8 +7,8 @@ import javafx.scene.layout.Pane;
 public class EmployeeManagementController {
 	
 	@FXML Pane pane;
-	@FXML Button medewerkerToevoegen;
-	@FXML Button medewerkerVerwijderen;
+	@FXML Button addEmployee;
+	@FXML Button deleteEmployee;
 	private CreateUserController createUserController;
 	
 	public void showView()

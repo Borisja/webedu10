@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class ProjectManagementProjectController {
 
     private CustomerModel customer;
-    private ProjectManagementController projectBeheerController;
+    private ProjectManagementController projectManagementController;
     private Stage viewStage;
 
     private CustomerDAO customerDAO = new CustomerDAO();
@@ -30,9 +30,9 @@ public class ProjectManagementProjectController {
     ComboBox<CustomerModel> projectCustomers;
     @FXML
     Button projectAddBtn;
-    @FXML Button projectCancelBtn;
+    @FXML Button cancelProjectButton;
     @FXML
-    Label errorLbl;
+    Label errorLabel;
 
     @FXML
     private void initialize(){
@@ -47,8 +47,8 @@ public class ProjectManagementProjectController {
         this.customer = customer;
         projectCustomers.setValue(customer);
     }
-    public void setProjectBeheerController(ProjectManagementController projectBeheerController) {
-        this.projectBeheerController = projectBeheerController;
+    public void setProjectBeheerController(ProjectManagementController projectManagementController) {
+        this.projectManagementController = projectManagementController;
     }
 
     public void setValuesTo(ProjectModel projectModel){
@@ -65,13 +65,13 @@ public class ProjectManagementProjectController {
             int custID = projectCustomers.getValue().getCustomer_id();
             if(name!=null&&!name.equals("")&&description!=null&&!description.equals("")){
                 projectDAO.addProject(name,description,custID);
-                this.projectBeheerController.updateProjectCB();
+                this.projectManagementController.updateProjectCB();
                 this.viewStage.hide();
             }else{
-                errorLbl.setOpacity(1);
+                errorLabel.setOpacity(1);
             }
         }else{
-            errorLbl.setOpacity(1);
+            errorLabel.setOpacity(1);
         }
     }
     public void close(){

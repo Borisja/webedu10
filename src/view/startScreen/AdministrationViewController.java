@@ -87,7 +87,7 @@ public class AdministrationViewController {
 	}
 	public void toonGoedkeurenMenu()
 	{
-		this.gkC.openGoedkeurenMenu();
+		this.gkC.openApprovalMenu();
 	}
 	public void downloadCSV()
 	{

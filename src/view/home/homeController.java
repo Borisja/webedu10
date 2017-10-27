@@ -10,7 +10,7 @@ import javafx.scene.layout.Pane;
  *
  */
 public class homeController {
-	@FXML Button terugNaarHome;
+	@FXML Button homeButton;
 	@FXML Label userName;
 	@FXML Pane mainPane;
 	
@@ -31,7 +31,7 @@ public class homeController {
 	 * @param name: Dit is de maonPane dat  meekegregen is van  de hoofd controller
 	 * @author rezanaser
 	 */
-	public void setGebruikerPane(Pane pane)
+	public void setUserPane(Pane pane)
 	{
 		this.mainPane = pane;
 	}

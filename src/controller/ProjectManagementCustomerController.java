@@ -19,32 +19,32 @@ public class ProjectManagementCustomerController {
     private Stage viewStage = new Stage();
 
     @FXML
-    TextField custName;
+    TextField customerName;
     @FXML
-    TextArea custDescription;
+    TextArea customerDescription;
     @FXML
-    Button custAddBtn;
-    @FXML Button custCancelBtn;
+    Button addCustomerButton;
+    @FXML Button cancelCustomerButton; //?
     @FXML
-    Label errorLbl;
+    Label errorLabel;
 
-    public void setProjectBeheerController(ProjectManagementController projectBeheerController){
-        this.projectBeheerController = projectBeheerController;
+    public void setProjectBeheerController(ProjectManagementController projectManagementController){
+        this.projectBeheerController = projectManagementController;
     }
     public void setViewStage(Stage viewStage) {
         this.viewStage = viewStage;
     }
 
     public void addCustomer(){
-        String name = custName.getText().trim();
-        String description = custDescription.getText().trim();
+        String name = customerName.getText().trim();
+        String description = customerDescription.getText().trim();
 
         if(name!=null&&!name.equals("")&&description!=null&&!description.equals("")){
-            customerDao.addCustomer(custName.getText(),custDescription.getText());
+            customerDao.addCustomer(customerName.getText(),customerDescription.getText());
             projectBeheerController.updateCustomerCB();
             close();
         }else{
-            errorLbl.setOpacity(1);
+            errorLabel.setOpacity(1);
         }
     }
     public void close(){

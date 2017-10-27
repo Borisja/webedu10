@@ -12,9 +12,9 @@ import javafx.scene.layout.Pane;
 import model.EmployeeModel;
 
 public class UserInformationController implements Initializable{
-	@FXML Button sluit;
-	@FXML TextField txt_voornaam;
-	@FXML TextField txt_achternaam;
+	@FXML Button close;
+	@FXML TextField txt_firstName;
+	@FXML TextField txt_lastName;
 	@FXML TextField txt_email;
 	@FXML Pane pane;
 	
@@ -28,24 +28,24 @@ public class UserInformationController implements Initializable{
 		this.pane.setVisible(false);
 	}
 	
-	public void updateGegevens()
+	public void updateInformation()
 	{
-		this.txt_achternaam.setEditable(true);
-		this.txt_voornaam.setEditable(true);
+		this.txt_lastName.setEditable(true);
+		this.txt_firstName.setEditable(true);
 		this.txt_email.setEditable(true);
 	}
 	
 	public void fillUserData(EmployeeModel em)
 	{
-		this.txt_voornaam.setText(em.getEmployeeFirstname());
-		this.txt_achternaam.setText(em.getEmployeeAchternaam());
+		this.txt_firstName.setText(em.getEmployeeFirstname());
+		this.txt_lastName.setText(em.getEmployeeAchternaam());
 		this.txt_email.setText(em.getEmployeeEmail());
 	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		this.txt_achternaam.setEditable(false);
-		this.txt_voornaam.setEditable(false);
+		this.txt_lastName.setEditable(false);
+		this.txt_firstName.setEditable(false);
 		this.txt_email.setEditable(false);
 		
 	}

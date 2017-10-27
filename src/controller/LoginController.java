@@ -24,8 +24,8 @@ public class LoginController {
 	 */
 
 	@FXML private TextField txtEmail;
-	@FXML private TextField txtWachtwoord;
-	@FXML private Button inlogBtn;
+	@FXML private TextField txtPassword;
+	@FXML private Button loginButton;
 	
 	/**
 	 * Method to verify login.

@@ -7,10 +7,10 @@ import javafx.scene.layout.Pane;
 public class AccountManagementController {
 	
 	@FXML Pane pane;
-	@FXML Button accountToevoegen;
-	@FXML Button accountVerwijderen;
-	@FXML Button accountWijzigen;
-	@FXML Button sluitButton;
+	@FXML Button addAccount;
+	@FXML Button deleteAccount;
+	@FXML Button modifyAccount;
+	@FXML Button closeButton;
 	
 	public void showAccountView()
 	{

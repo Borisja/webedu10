@@ -13,12 +13,12 @@ import model.UserStoryModel;
  * @author rezanaser
  *
  */
-public class AddHoursController {
-	@FXML Button toevoegen;
-	@FXML Button sluit;
-	@FXML Label project_naam_lbl;
-	@FXML Label userstory_naam_lbl;
-	@FXML Label sprint_naam_lbl;
+public class EntryController {
+	@FXML Button add;
+	@FXML Button close;
+	@FXML Label projectLabel;
+	@FXML Label userStoryLabel;
+	@FXML Label sprintLabel;
 	@FXML Pane pane;
 	private ProjectModel projectModel;
 	private SprintModel sprintModel;
@@ -29,10 +29,10 @@ public class AddHoursController {
 	 * @param project -> dit is het projectModel meegekregen van AddEntryViewController
 	 * @author rezanaser
 	 */
-	public void setChoosenProject(ProjectModel project)
+	public void setChosenProject(ProjectModel project)
 	{
 		this.projectModel = project;
-		this.project_naam_lbl.setText(project.getProjectName());
+		this.projectLabel.setText(project.getProjectName());
 	}
 	
 	/**
@@ -40,10 +40,10 @@ public class AddHoursController {
 	 * @param userstory  -> dit is het userstorymodel meegekregen van AddEntryViewController
 	 * @author rezanaser
 	 */
-	public void setChoosenUserstory(UserStoryModel userstory)
+	public void setChosenUserStory(UserStoryModel userstory)
 	{
 		this.userStoryModel = userstory;
-		this.userstory_naam_lbl.setText(userstory.getUserStoryName());
+		this.userStoryLabel.setText(userstory.getUserStoryName());
 	}
 	
 	
@@ -52,10 +52,10 @@ public class AddHoursController {
 	 * @param sprint  -> dit is het Sprintmodel meegekregen van AddEntryViewController
 	 * @author rezanaser
 	 */
-	public void setChoosenSprint(SprintModel sprint)
+	public void setChosenSprint(SprintModel sprint)
 	{
 		this.sprintModel = sprint;
-		this.sprint_naam_lbl.setText(sprint.getSprintName());
+		this.sprintLabel.setText(sprint.getSprintName());
 	}
 	public void showView()
 	{

@@ -1,4 +1,4 @@
-package view.beginScherm;
+package controller;
 
 import java.io.IOException;
 
@@ -12,9 +12,9 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.EmployeeModel;
 import view.ExportController;
-import view.goedkeurenView.GoedkeurenController;
-import view.handleiding.handleidingController;
+import view.approvalView.ApprovalController;
 import view.home.homeController;
+import view.manual.ManualController;
 
 /**
  * Deze klasse is bestemd voor de administratie. 
@@ -26,11 +26,11 @@ import view.home.homeController;
 
 public class AdministratieViewController {
 	
-	@FXML private Button btnGoedkeuren;
+	@FXML private Button approvalButton;
 	@FXML private Pane pane;
-	private GoedkeurenController gkC;
-	private handleidingController hdC;
-	private ExportController export = new ExportController();
+	private ApprovalController approvalController;
+	private ManualController manualController;
+	private ExportController exportController = new ExportController();
 	private Label name;
 
 	/**
@@ -38,12 +38,12 @@ public class AdministratieViewController {
 	 * @author rezanaser
 	 * @throws IOException
 	 */
-	public void startAManager(EmployeeModel em) throws IOException
+	public void startAdministrationManager(EmployeeModel em) throws IOException
 	{
 		Stage primaryStage = new Stage();
-		FXMLLoader administratieScherm = new FXMLLoader(getClass().getResource("/view/beginScherm/administratieView.fxml"));	
-		BorderPane View  = (BorderPane)administratieScherm.load();
-		AdministratieViewController administratieController = administratieScherm.getController();
+		FXMLLoader administrationScreen = new FXMLLoader(getClass().getResource("/view/beginScherm/administratieView.fxml"));	
+		BorderPane View  = (BorderPane)administrationScreen.load();
+		AdministratieViewController administratieController = administrationScreen.getController();
 		FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("/view/home/home.fxml"));			//get xml file
 	    Pane homeView = homeLoader.load();
 	    homeController homeController = homeLoader.getController();
@@ -51,19 +51,19 @@ public class AdministratieViewController {
 	    homeController.setUserName(em.getEmployeeFirstname());
 	    
 	    
-	    FXMLLoader goedkeurenLoader = new FXMLLoader(getClass().getResource("/view/goedkeurenView/goedkeurenView.fxml"));			//get xml file
-	    Pane goedkeurenView = goedkeurenLoader.load();	
-	    GoedkeurenController goedkeurenController = goedkeurenLoader.getController();
+	    FXMLLoader approvalLoader = new FXMLLoader(getClass().getResource("/view/goedkeurenView/goedkeurenView.fxml"));			//get xml file
+	    Pane approvalView = approvalLoader.load();	
+	    ApprovalController approvalController = approvalLoader.getController();
 	    
 	    FXMLLoader handleidingLoader = new FXMLLoader(getClass().getResource("/view/handleiding/handleiding.fxml"));			//get xml file
 	    Pane handleidingView = handleidingLoader.load();	
-	    handleidingController handleidingController = handleidingLoader.getController();
+	    ManualController manualController = handleidingLoader.getController();
 
-	    administratieController.setControllerGoedkeuren(goedkeurenController);
-	    administratieController.setControllerHandleiding(handleidingController);
+	    administratieController.setControllerGoedkeuren(approvalController);
+	    administratieController.setControllerHandleiding(manualController);
 	    
-	    Pane tabPane = (Pane)administratieScherm.getNamespace().get("pane"); 						//get stackPane from fieldView
-        tabPane.getChildren().addAll(goedkeurenView,handleidingView);
+	    Pane tabPane = (Pane)administrationScreen.getNamespace().get("pane"); 						//get stackPane from fieldView
+        tabPane.getChildren().addAll(approvalView,handleidingView);
         
 		Scene scene = new Scene(View);
 		primaryStage.setScene(scene);
@@ -73,24 +73,24 @@ public class AdministratieViewController {
 	 * Deze methode krijgt de controller van andere views.
 	 * @param gk
 	 */
-	public void setControllerGoedkeuren(GoedkeurenController gk)
+	public void setControllerGoedkeuren(ApprovalController gk)
 	{
-		this.gkC = gk;
+		this.approvalController = gk;
 	}
-	public void setControllerHandleiding(handleidingController gk)
+	public void setControllerHandleiding(ManualController gk)
 	{
-		this.hdC = gk;
+		this.manualController = gk;
 	}
 	public void toonHanleiding()
 	{
-		this.hdC.openHandleidingMenu();
+		this.manualController.openHandleidingMenu();
 	}
 	public void toonGoedkeurenMenu()
 	{
-		this.gkC.openGoedkeurenMenu();
+		this.approvalController.openApprovalMenu();
 	}
 	public void downloadCSV()
 	{
-		this.export.exportCSV();
+		this.exportController.exportCSV();
 	}
 }

@@ -11,8 +11,6 @@ import view.LoginView;
 public class Run extends Application{
 
 	
-
-    DeclareEntryController dce = new DeclareEntryController();
 	
 	public static void main(String[] args) {
 		Application.launch(args);

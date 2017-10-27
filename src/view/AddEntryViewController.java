@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-import controller.AddHoursController;
+import controller.EntryController;
 import dao.ProjectDAO;
 import dao.SprintDAO;
 import javafx.collections.FXCollections;
@@ -35,20 +35,20 @@ import model.UserStoryModel;
 public class AddEntryViewController implements Initializable {
 	
 	@FXML ComboBox<ProjectModel> projectCombo;
-	@FXML ComboBox userStorysCombo;
+	@FXML ComboBox userStoryCombo;
 	@FXML ComboBox<SprintModel> sprintCombo;
-	@FXML Button btnAddEntry;
+	@FXML Button addEntryButton;
 	@FXML Pane pane;
-	private AddHoursController addHoursController;
+	private EntryController entryController;
 	
 	/**
 	 * Deze methode krijgt huidige AddHoursController van de GebruikerViewController mee 
 	 * @param ac -> is van type AddHoursController
 	 * @author rezanaser
 	 */
-	public void setController(AddHoursController ac)
+	public void setController(EntryController ac)
 	{
-		this.addHoursController = ac;
+		this.entryController = ac;
 	}
 	
 	/**
@@ -58,7 +58,7 @@ public class AddEntryViewController implements Initializable {
 	public void showAddHoursView()
 	{
 		this.pane.setVisible(false);
-		this.addHoursController.showView();
+		this.entryController.showView();
 	}
 	
 	/**
@@ -96,7 +96,7 @@ public class AddEntryViewController implements Initializable {
 			
 			//Met de onderstaande regel stuurt de combobox het geselecteerde sprintmodel mee naar AddHoursController
 
-			addHoursController.setChoosenSprint(sprintCombo.getSelectionModel().getSelectedItem());
+			entryController.setChosenSprint(sprintCombo.getSelectionModel().getSelectedItem());
 		});
 	}
 	
@@ -127,14 +127,14 @@ public class AddEntryViewController implements Initializable {
 
 		};
 		
-		this.userStorysCombo.setItems(data);
-		this.userStorysCombo.setCellFactory(factory);
-		this.userStorysCombo.setButtonCell(factory.call(null));
+		this.userStoryCombo.setItems(data);
+		this.userStoryCombo.setCellFactory(factory);
+		this.userStoryCombo.setButtonCell(factory.call(null));
 		
-		this.userStorysCombo.setOnAction(e-> {
+		this.userStoryCombo.setOnAction(e-> {
 			//Met de onderstaande regel stuurt de combobox het geselecteerde userstorymodel mee naar AddHoursController
 			
-			addHoursController.setChoosenUserstory((UserStoryModel) userStorysCombo.getSelectionModel().getSelectedItem());
+			entryController.setChosenUserStory((UserStoryModel) userStoryCombo.getSelectionModel().getSelectedItem());
 		});
 		
 	}
@@ -173,7 +173,7 @@ public class AddEntryViewController implements Initializable {
 			this.fillSprintsBox(projectCombo.getSelectionModel().getSelectedItem().getProjectId());
 
 			//Met de onderstaande regel stuurt de combobox het geselecteerde projectmodel mee naar AddHoursController
-			addHoursController.setChoosenProject(projectCombo.getSelectionModel().getSelectedItem());
+			entryController.setChosenProject(projectCombo.getSelectionModel().getSelectedItem());
 		});
 	}
 

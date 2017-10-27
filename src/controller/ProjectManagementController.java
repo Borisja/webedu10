@@ -98,9 +98,9 @@ public class ProjectManagementController {
 			customerStage.setScene(scene);
 			System.out.println(this.getClass().toString()+": geinstancieerd");
 			customerStage.show();
-			ProjectManagementCustomerController projectBeheerKlantController = loader.getController();
-			projectBeheerKlantController.setProjectBeheerController(this);
-			projectBeheerKlantController.setViewStage(customerStage);
+			ProjectManagementCustomerController projectManagementCustomerController = loader.getController();
+			projectManagementCustomerController.setProjectBeheerController(this);
+			projectManagementCustomerController.setViewStage(customerStage);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -115,14 +115,14 @@ public class ProjectManagementController {
 			customerStage.setScene(scene);
 			System.out.println(this.getClass().toString()+": geinstancieerd");
 			customerStage.show();
-			ProjectManagementProjectController projectBeheerProjectController = loader.getController();
-			projectBeheerProjectController.setProjectBeheerController(this);
-			projectBeheerProjectController.setViewStage(customerStage);
+			ProjectManagementProjectController projectManagementProjectController = loader.getController();
+			projectManagementProjectController.setProjectBeheerController(this);
+			projectManagementProjectController.setViewStage(customerStage);
 			if(this.selectedCustomer!=null&&this.selectedCustomer.getCustomer_id()!=this.CUSTOMER_ID_DEFAULT) {
-				projectBeheerProjectController.setCustomer(selectedCustomer);
+				projectManagementProjectController.setCustomer(selectedCustomer);
 			}
 			if(this.selectedProject!=null&&this.selectedProject.getProjectId()==this.PROJECT_ID_DEFAULT){
-				projectBeheerProjectController.setValuesTo(selectedProject);
+				projectManagementProjectController.setValuesTo(selectedProject);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
