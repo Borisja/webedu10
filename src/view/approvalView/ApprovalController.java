@@ -24,14 +24,21 @@ public class ApprovalController implements Initializable{
 	@FXML Button approveButton;
 	@FXML Button rejectButton;
 	@FXML Button refreshButton;
-	@FXML TableView<EntryModel> tableView;
+	@FXML TableView<EntryModel> tableViewToBeApproved;
 	@FXML TableColumn<EntryModel, Integer> iId;
 	@FXML TableColumn<EntryModel, String> iDescription;
+	
+	@FXML TableView<EntryModel> tableViewAllEntries;
+	@FXML TableColumn<EntryModel, Integer> idEntry;
+	@FXML TableColumn<EntryModel, String> entryStatus;
+	
+	
 	@FXML TableColumn<EntryModel, String> iStartTime;
 	@FXML TableColumn<EntryModel, String> iEndTime;
 	@FXML Label notSelected;
 	
-	private ObservableList<EntryModel> data = FXCollections.observableArrayList();
+	private ObservableList<EntryModel> dataToBeApproved = FXCollections.observableArrayList();
+	private ObservableList<EntryModel> allData = FXCollections.observableArrayList();
 	
 	private AdministratorDAO adminDao = new AdministratorDAO();
 	
@@ -43,7 +50,7 @@ public class ApprovalController implements Initializable{
 	{
 		
 		try{
-			EntryModel selected_item = tableView.getSelectionModel().getSelectedItem();
+			EntryModel selected_item = tableViewToBeApproved.getSelectionModel().getSelectedItem();
 			adminDao.approveHours(selected_item.getEntryId());
 			refreshTable();
 		}catch(NullPointerException e)
@@ -59,7 +66,7 @@ public class ApprovalController implements Initializable{
 	public void rejectSelectedHour()
 	{
 		try{
-			EntryModel selected_item = tableView.getSelectionModel().getSelectedItem();
+			EntryModel selected_item = tableViewToBeApproved.getSelectionModel().getSelectedItem();
 			adminDao.rejectHours(selected_item.getEntryId());
 			refreshTable();
 		}catch(NullPointerException e)
@@ -94,24 +101,33 @@ public class ApprovalController implements Initializable{
 	
 	public void refreshTable()
 	{
-		tableView.getItems().clear();
+		tableViewToBeApproved.getItems().clear();
 		iId.setCellValueFactory(new PropertyValueFactory<EntryModel, Integer>("entry_id"));
 		iDescription.setCellValueFactory(new PropertyValueFactory<EntryModel, String>("entryDescription"));
 		iStartTime.setCellValueFactory(new PropertyValueFactory<EntryModel, String>("entryStartTime"));
 		iEndTime.setCellValueFactory(new PropertyValueFactory<EntryModel, String>("entryEndTime"));
-		data.addAll(adminDao.entry_queued_list(0));
-		tableView.setItems(data);
-		tableView.refresh();
+		
+		idEntry.setCellValueFactory(new PropertyValueFactory<EntryModel, Integer>("entryId"));
+		entryStatus.setCellValueFactory(new PropertyValueFactory<EntryModel, String>("entryStatus"));
+		allData.addAll(adminDao.entry_all_list());
+		dataToBeApproved.addAll(adminDao.entry_queued_list(0));
+		tableViewToBeApproved.setItems(dataToBeApproved);
+		tableViewToBeApproved.refresh();
 	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-		iId.setCellValueFactory(new PropertyValueFactory<EntryModel, Integer>("entry_id"));
+		iId.setCellValueFactory(new PropertyValueFactory<EntryModel, Integer>("entryId"));
 		iDescription.setCellValueFactory(new PropertyValueFactory<EntryModel, String>("entryDescription"));
 		iStartTime.setCellValueFactory(new PropertyValueFactory<EntryModel, String>("entryStartTime"));
 		iEndTime.setCellValueFactory(new PropertyValueFactory<EntryModel, String>("entryEndTime"));
 		
-		data.addAll(adminDao.entry_queued_list(0));
-		tableView.setItems(data);
+		idEntry.setCellValueFactory(new PropertyValueFactory<EntryModel, Integer>("entryId"));
+		entryStatus.setCellValueFactory(new PropertyValueFactory<EntryModel, String>("entryStatus"));
+		
+		dataToBeApproved.addAll(adminDao.entry_queued_list(0));
+		allData.addAll(adminDao.entry_all_list());
+		tableViewAllEntries.setItems(allData);
+		tableViewToBeApproved.setItems(dataToBeApproved);
 	}
 }
