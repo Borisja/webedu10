@@ -34,19 +34,19 @@ public class EmployeeModel {
 		return employeeFirstName;
 	}
 
-	public String getEmployeeAchternaam() {
+	public String getEmployeeLastName() {
 		return employeeLastName;
 	}
 	public void setEmployeeFirstname(String employeeFirstName) {
 		this.employeeFirstName = employeeFirstName;
 	}
-	public void setEmployeeAchternaam(String employeeLastName) {
+	public void setEmployeeLastname(String employeeLastName) {
 		this.employeeLastName = employeeLastName;
 	}
-	public String getEmployeeWachtwoord() {
+	public String getEmployeePassword() {
 		return employeePassword;
 	}
-	public void setEmployeeWachtwoord(String employeePassword) {
+	public void setEmployeePassword(String employeePassword) {
 		this.employeePassword = employeePassword;
 	}
 	public String getEmployeeEmail() {
@@ -56,10 +56,10 @@ public class EmployeeModel {
 		this.employeeEmail = employeeEmail;
 	}
 
-	public String getEmployeeRol() {
+	public String getEmployeeRole() {
 		return employeeRole;
 	}
-	public void setEmployeeRol(String employeeRol) {
+	public void setEmployeeRole(String employeeRol) {
 		this.employeeRole = employeeRol;
 	}
 	

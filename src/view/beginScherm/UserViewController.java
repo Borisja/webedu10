@@ -3,7 +3,7 @@ package view.beginScherm;
 import java.io.IOException;
 
 import controller.EntryController;
-import controller.GebruikerGegevensController;
+import controller.UserInformationController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,7 +19,7 @@ import view.home.homeController;
 import view.projectView.ProjectController;
 import view.sprintView.SprintController;
 
-public class GebruikerViewController {
+public class UserViewController {
 	@FXML Button btn;
 	@FXML Button btn1;
 	@FXML Pane pane;
@@ -27,7 +27,7 @@ public class GebruikerViewController {
 	private ProjectController pjC;
 	private AddEntryViewController entryController;
 	private EntryController addHours;
-	private GebruikerGegevensController gebruikerGegevensController;
+	private UserInformationController userInformationController;
 	private EmployeeModel user;
 	
 	public void startGebruiker(EmployeeModel em) throws IOException
@@ -36,7 +36,7 @@ public class GebruikerViewController {
 		Stage primaryStage = new Stage();
 		FXMLLoader gebruikerView = new FXMLLoader(getClass().getResource("/view/beginScherm/GebruikerView.fxml"));
 		BorderPane view =(BorderPane) gebruikerView.load();
-		GebruikerViewController gebruikerController = gebruikerView.getController();
+		UserViewController gebruikerController = gebruikerView.getController();
 		
 		
 		FXMLLoader sprintLoader = new FXMLLoader(getClass().getResource("/view/sprintView/SprintOverzichtView.fxml"));
@@ -58,7 +58,7 @@ public class GebruikerViewController {
 		
 		FXMLLoader employeeGegevensLoader = new FXMLLoader(getClass().getResource("/controller/GebruikerGegevensView.fxml"));
 		Pane gebruikerGegevensView = employeeGegevensLoader.load();
-		GebruikerGegevensController gebruikerGegevensController = employeeGegevensLoader.getController();
+		UserInformationController userInformationController = employeeGegevensLoader.getController();
 		
 		FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("/view/home/home.fxml"));			//get xml file
 	    Pane homeView = homeLoader.load();
@@ -69,12 +69,12 @@ public class GebruikerViewController {
 	    
 	    view.setTop(homeView);
 	    homeController.setUserName(em.getEmployeeFirstname());  
-	    gebruikerGegevensController.fillUserData(em);
+	    userInformationController.fillUserData(em);
 		gebruikerController.setControllerSprint(sprintController);
 		gebruikerController.setControllerProject(projectController);
 		gebruikerController.setControllerAddEntryHours(addEntryController);
 		addEntryController.setController(addHoursController);
-		gebruikerController.setControllerGebruikerGegevens(gebruikerGegevensController);
+		gebruikerController.setControllerGebruikerGegevens(userInformationController);
 		
 		
 		Pane thePane = (Pane)gebruikerView.getNamespace().get("pane");
@@ -88,8 +88,8 @@ public class GebruikerViewController {
 	}
 	
 	
-	private void setControllerGebruikerGegevens(GebruikerGegevensController gebruikerGegevensController) {
-		this.gebruikerGegevensController = gebruikerGegevensController;
+	private void setControllerGebruikerGegevens(UserInformationController gebruikerGegevensController) {
+		this.userInformationController = gebruikerGegevensController;
 		
 	}
 
@@ -100,7 +100,7 @@ public class GebruikerViewController {
 	}
 	public void openGebruikerGegevensView()
 	{
-		this.gebruikerGegevensController.showView();
+		this.userInformationController.showView();
 	}
 
 	public void openAddEntryView()

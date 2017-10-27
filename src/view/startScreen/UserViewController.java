@@ -23,26 +23,24 @@ import view.projectView.ProjectController;
 import view.sprintView.SprintController;
 
 public class UserViewController {
-	@FXML Button btn;
-	@FXML Button btn1;
 	@FXML Pane pane;
-	private SprintController scC;
-	private ProjectController pjC;
+	private SprintController sprintController;
+	private ProjectController projectController;
 	private AddEntryViewController entryController;
 	private EntryController addHours;
-	private UserInformationController gebruikerGegevensController;
+	private UserInformationController userInformationController;
 	private EmployeeModel user;
 	
-	public void startGebruiker(EmployeeModel em) throws IOException
+	public void startUser(EmployeeModel employee) throws IOException
 	{
-		this.user = em;
+		this.user = employee;
 		Stage primaryStage = new Stage();
-		FXMLLoader gebruikerView = new FXMLLoader(getClass().getResource("/view/beginScherm/GebruikerView.fxml"));
-		BorderPane view =(BorderPane) gebruikerView.load();
-		UserViewController gebruikerController = gebruikerView.getController();
+		FXMLLoader userView = new FXMLLoader(getClass().getResource("/view/startScreen/UserView.fxml"));
+		BorderPane view = (BorderPane) userView.load();
+		UserViewController gebruikerController = userView.getController();
 		
 		
-		FXMLLoader sprintLoader = new FXMLLoader(getClass().getResource("/view/sprintView/SprintOverzichtView.fxml"));
+		FXMLLoader sprintLoader = new FXMLLoader(getClass().getResource("/view/sprintView/SprintOverviewView.fxml"));
 		Pane sprintView = sprintLoader.load();
 		SprintController sprintController = sprintLoader.getController();
 		
@@ -50,7 +48,7 @@ public class UserViewController {
 		Pane projectView = projectLoader.load();
 		ProjectController projectController = projectLoader.getController();
 		
-		FXMLLoader addHoursLoader = new FXMLLoader(getClass().getResource("/controller/AddHours.fxml"));
+		FXMLLoader addHoursLoader = new FXMLLoader(getClass().getResource("/view/AddHours.fxml"));
 		Pane addHoursView = addHoursLoader.load();
 		EntryController addHoursController = addHoursLoader.getController();
 		
@@ -59,7 +57,7 @@ public class UserViewController {
 		AddEntryViewController addEntryController = addEntryLoader.getController();
 		
 		
-		FXMLLoader employeeGegevensLoader = new FXMLLoader(getClass().getResource("/controller/GebruikerGegevensView.fxml"));
+		FXMLLoader employeeGegevensLoader = new FXMLLoader(getClass().getResource("/controller/UserInformationView.fxml"));
 		Pane gebruikerGegevensView = employeeGegevensLoader.load();
 		UserInformationController gebruikerGegevensController = employeeGegevensLoader.getController();
 		
@@ -67,12 +65,12 @@ public class UserViewController {
 	    Pane homeView = homeLoader.load();
 	    homeController homeController = homeLoader.getController();
 	    
-	    homeController.setUserPane((Pane)gebruikerView.getNamespace().get("pane"));
+	    homeController.setUserPane((Pane)userView.getNamespace().get("pane"));
 	    
 	    
 	    view.setTop(homeView);
-	    homeController.setUserName(em.getEmployeeVoornaam());  
-	    gebruikerGegevensController.fillUserData(em);
+	    homeController.setUserName(employee.getEmployeeFirstname());  
+	    gebruikerGegevensController.fillUserData(employee);
 		gebruikerController.setControllerSprint(sprintController);
 		gebruikerController.setControllerProject(projectController);
 		gebruikerController.setControllerAddEntryHours(addEntryController);
@@ -80,7 +78,7 @@ public class UserViewController {
 		gebruikerController.setControllerGebruikerGegevens(gebruikerGegevensController);
 		
 		
-		Pane thePane = (Pane)gebruikerView.getNamespace().get("pane");
+		Pane thePane = (Pane)userView.getNamespace().get("pane");
 		thePane.getChildren().addAll(sprintView,projectView,addHoursView, addEntryView,gebruikerGegevensView);
 		
 		
@@ -92,7 +90,7 @@ public class UserViewController {
 	
 	
 	private void setControllerGebruikerGegevens(UserInformationController gebruikerGegevensController) {
-		this.gebruikerGegevensController = gebruikerGegevensController;
+		this.userInformationController = gebruikerGegevensController;
 		
 	}
 
@@ -101,9 +99,9 @@ public class UserViewController {
 		this.entryController = addEntryController;
 		
 	}
-	public void openGebruikerGegevensView()
+	public void openUserInformationView()
 	{
-		this.gebruikerGegevensController.showView();
+		this.userInformationController.showView();
 	}
 
 	public void openAddEntryView()
@@ -112,21 +110,21 @@ public class UserViewController {
 	}
 
 	public void setControllerSprint (SprintController sc){
-		this.scC = sc;
+		this.sprintController = sc;
 	}
 	
 	public void setControllerProject (ProjectController pc){
-		this.pjC = pc;
+		this.projectController = pc;
 	}
 	
-	public void toonSprintscherm()
+	public void showSprintScreen()
 	{
-		this.scC.openSprintmenu();
+		this.sprintController.openSprintmenu();
 	}
 
-	public void toonProjectScherm()
+	public void showProjectScreen()
 	{
-		this.pjC.openProjectScherm();
+		this.projectController.openProjectScherm();
 		System.out.println("hola");
 	}
 		

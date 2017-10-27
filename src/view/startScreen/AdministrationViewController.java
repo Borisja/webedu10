@@ -48,7 +48,7 @@ public class AdministrationViewController {
 	    Pane homeView = homeLoader.load();
 	    homeController homeController = homeLoader.getController();
 	    View.setTop(homeView);
-	    homeController.setUserName(em.getEmployeeVoornaam());
+	    homeController.setUserName(em.getEmployeeFirstname());
 	    
 	    
 	    FXMLLoader goedkeurenLoader = new FXMLLoader(getClass().getResource("/view/goedkeurenView/goedkeurenView.fxml"));			//get xml file

@@ -24,7 +24,7 @@ import view.manual.ManualController;
  * @throws IOException
  */
 
-public class AdministratieViewController {
+public class ManagerViewController {
 	
 	@FXML private Button approvalButton;
 	@FXML private Pane pane;
@@ -43,7 +43,7 @@ public class AdministratieViewController {
 		Stage primaryStage = new Stage();
 		FXMLLoader administrationScreen = new FXMLLoader(getClass().getResource("/view/beginScherm/administratieView.fxml"));	
 		BorderPane View  = (BorderPane)administrationScreen.load();
-		AdministratieViewController administrationController = administrationScreen.getController();
+		ManagerViewController managerViewController = administrationScreen.getController();
 		FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("/view/home/home.fxml"));			//get xml file
 	    Pane homeView = homeLoader.load();
 	    homeController homeController = homeLoader.getController();
@@ -59,8 +59,8 @@ public class AdministratieViewController {
 	    Pane manualView = manualLoader.load();	
 	    ManualController manualController = manualLoader.getController();
 
-	    administrationController.setApprovalController(approvalController);
-	    administrationController.setManualController(manualController);
+	    managerViewController.setApprovalController(approvalController);
+	    managerViewController.setManualController(manualController);
 	    
 	    Pane tabPane = (Pane)administrationScreen.getNamespace().get("pane"); 						//get stackPane from fieldView
         tabPane.getChildren().addAll(approvalView,manualView);

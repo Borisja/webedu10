@@ -13,9 +13,9 @@ import model.EmployeeModel;
 
 public class UserInformationController implements Initializable{
 	@FXML Button close;
-	@FXML TextField txt_firstName;
-	@FXML TextField txt_lastName;
-	@FXML TextField txt_email;
+	@FXML TextField textfieldFirstName;
+	@FXML TextField textfieldLastName;
+	@FXML TextField textFieldEmail;
 	@FXML Pane pane;
 	
 	public void showView()
@@ -30,23 +30,23 @@ public class UserInformationController implements Initializable{
 	
 	public void updateInformation()
 	{
-		this.txt_lastName.setEditable(true);
-		this.txt_firstName.setEditable(true);
-		this.txt_email.setEditable(true);
+		this.textfieldLastName.setEditable(true);
+		this.textfieldFirstName.setEditable(true);
+		this.textFieldEmail.setEditable(true);
 	}
 	
 	public void fillUserData(EmployeeModel em)
 	{
-		this.txt_firstName.setText(em.getEmployeeFirstname());
-		this.txt_lastName.setText(em.getEmployeeAchternaam());
-		this.txt_email.setText(em.getEmployeeEmail());
+		this.textfieldFirstName.setText(em.getEmployeeFirstname());
+		this.textfieldLastName.setText(em.getEmployeeLastName());
+		this.textFieldEmail.setText(em.getEmployeeEmail());
 	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		this.txt_lastName.setEditable(false);
-		this.txt_firstName.setEditable(false);
-		this.txt_email.setEditable(false);
+		this.textfieldLastName.setEditable(false);
+		this.textfieldFirstName.setEditable(false);
+		this.textFieldEmail.setEditable(false);
 		
 	}
 	

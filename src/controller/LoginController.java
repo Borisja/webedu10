@@ -31,13 +31,13 @@ public class LoginController {
 	 * Method to verify login.
 	 * Take the administrator dao class to assign a user if login is successful.
 	 * @param email - users email to verify login
-	 * @param pw - users password to verify login
+	 * @param password - users password to verify login
 	 * @return a user model if login was successful
 	 * @throws ParseException 
 	 */
-	public void loginRequest(String email, String pw) throws ParseException{
+	public void loginRequest(String email, String password) throws ParseException{
 		AdministratorDAO admin = new AdministratorDAO();
-		EmployeeModel user = admin.loginAssignment(email, pw);
+		EmployeeModel user = admin.loginAssignment(email, password);
 		
 		//If null login failed. This should be displayed to the user.
 		if(user == null){
@@ -50,16 +50,16 @@ public class LoginController {
 		} else {
 			//Here we open the screen after login, use user.getEmployeeRol() to get users rol and then load correct view. 
 
-			if(user.getEmployeeRol().equals("employee")){
-				UserViewController view = new UserViewController();
+			if(user.getEmployeeRole().equals("employee")){
+				UserViewController userViewController = new UserViewController();
 				try {
-					view.startGebruiker(user);
+					userViewController.startUser(user);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
-			if(user.getEmployeeRol().equals("manager"))
+			if(user.getEmployeeRole().equals("manager"))
 			{
 				try {
 					new AdministrationViewController().startAManager(user);
