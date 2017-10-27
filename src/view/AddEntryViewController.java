@@ -6,17 +6,25 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+import controller.AddHoursController;
 import dao.ProjectDAO;
 import dao.SprintDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
 import model.EntryModel;
@@ -33,9 +41,15 @@ import model.UserStoryModel;
 public class AddEntryViewController implements Initializable {
 	
 	@FXML ComboBox<ProjectModel> projectCombo;
-	@FXML ComboBox userStorysCombo;
+	@FXML ComboBox<UserStoryModel> userStorysCombo;
 	@FXML ComboBox<SprintModel> sprintCombo;
 	@FXML Button btnAddEntry;
+	@FXML Pane pane;
+	
+	public void showAddEntryView()
+	{
+		this.pane.setVisible(true);
+	}
 	
 	/**
 	 * Fill the sprint box when project box onaction is called
@@ -142,6 +156,21 @@ public class AddEntryViewController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		this.fillProjectsBox();
+		this.btnAddEntry.setOnAction(e->{
+			try{
+	            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("controller/AddHours.fxml"));
+	            Parent root1 = (Parent) fxmlLoader.load();
+	            Stage stage = new Stage();
+	            stage.initModality(Modality.APPLICATION_MODAL);
+	            stage.initStyle(StageStyle.UNDECORATED);
+	            stage.setTitle("ABC");
+	            stage.setScene(new Scene(root1));  
+	            stage.show();
+	          }
+			catch(Exception h) {
+				h.printStackTrace();
+			}
+		});
 	}
 
 }

@@ -28,10 +28,10 @@ public class Run extends Application{
 //		GebruikerViewController view = new GebruikerViewController();
 //		view.startGebruiker();
 
-		 Parent root = FXMLLoader.load(getClass().getResource("/view/AddEntryView.fxml"));
-	       Scene scene = new Scene(root);
-	       primaryStage.setScene(scene);
-	       primaryStage.show();
+		Parent root = FXMLLoader.load(getClass().getResource("/view/AddEntryView.fxml"));
+		Scene scene = new Scene(root);
+		primaryStage.setScene(scene);
+		primaryStage.show();
 
 		// TODO Auto-generated method stub
 		//new LoginView().show_login_view();
