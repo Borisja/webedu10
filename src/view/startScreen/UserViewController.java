@@ -2,7 +2,7 @@ package view.startScreen;
 
 import java.io.IOException;
 
-import controller.EntryController;
+
 import controller.UserInformationController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +15,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.EmployeeModel;
 import view.AddEntryViewController;
+import view.EntryController;
 import view.home.homeController;
 import view.projectView.ProjectController;
 import view.sprintView.SprintController;
