@@ -74,7 +74,7 @@ public class LoginController {
 			else if(user.getEmployeeRole().equals("administration"))
 			{
 				try {
-					new AdministratorViewController().startAManager(user);
+					new AdministratorViewController().startAdministrator(user);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

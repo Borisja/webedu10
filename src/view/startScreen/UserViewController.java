@@ -15,6 +15,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.EmployeeModel;
 import view.AddEntryViewController;
+import view.EntryController;
 import view.home.homeController;
 import view.projectView.ProjectController;
 import view.sprintView.SprintController;
