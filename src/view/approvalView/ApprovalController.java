@@ -102,7 +102,7 @@ public class ApprovalController implements Initializable{
 	public void refreshTable()
 	{
 		tableViewToBeApproved.getItems().clear();
-		allData.getItems().clear();
+		tableViewAllEntries.getItems().clear();
 		iId.setCellValueFactory(new PropertyValueFactory<EntryModel, Integer>("entry_id"));
 		iDescription.setCellValueFactory(new PropertyValueFactory<EntryModel, String>("entryDescription"));
 		iStartTime.setCellValueFactory(new PropertyValueFactory<EntryModel, String>("entryStartTime"));
