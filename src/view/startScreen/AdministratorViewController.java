@@ -5,6 +5,7 @@ import java.io.IOException;
 import controller.AccountManagementController;
 import controller.CreateUserController;
 import controller.EmployeeManagementController;
+import controller.ProjectManagementViewController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -26,9 +27,10 @@ public class AdministratorViewController {
 	private @FXML Button btnAccounts;
 	
 	private @FXML Pane pane;
-	private AccountManagementController accountController;
 
-	private EmployeeManagementController medewerkerBeheren;
+	private EmployeeManagementController employeeManagement;
+	private ProjectManagementViewController projectManagementController;
+	private AccountManagementController accountManagement;
 	
 
 	
@@ -45,7 +47,7 @@ public class AdministratorViewController {
 		Stage primaryStage = new Stage();
 		FXMLLoader beheerderScherm = new FXMLLoader(getClass().getResource("/view/startScreen/AdministratorView.fxml"));	
 		BorderPane View  = (BorderPane)beheerderScherm.load();
-		AdministratorViewController beheerderController = beheerderScherm.getController();
+		AdministratorViewController adminController = beheerderScherm.getController();
 		FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("/view/home/home.fxml"));			//get xml file
 	    Pane homeView = homeLoader.load();
 	    homeController homeController = homeLoader.getController();
@@ -63,41 +65,50 @@ public class AdministratorViewController {
 	    Pane createUserView = addEmployeeLoader.load();	
 	    CreateUserController createUserController = addEmployeeLoader.getController();
 	    
-//	    FXMLLoader handleidingLoader = new FXMLLoader(getClass().getResource("/view/handleiding/handleiding.fxml"));			//get xml file
-//	    Pane handleidingView = handleidingLoader.load();	
-//	    handleidingController handleidingController = handleidingLoader.getController();
+	    FXMLLoader projectManagementLoader = new FXMLLoader(getClass().getResource("/view/ProjectsManagementView.fxml"));			//get xml file
+	     Pane projectManagementView = projectManagementLoader.load();	
+	     ProjectManagementViewController projectManagementController = projectManagementLoader.getController();
 
-	    beheerderController.setControllerAccount(accountController);
-	    beheerderController.setControllerMedewerkerBeheren(medewerkerBeherenController);
-	    medewerkerBeherenController.setControllerCreateUserController(createUserController);
+	     adminController.setControllerAccount(accountController);
+	     adminController.setControllerMedewerkerBeheren(medewerkerBeherenController);
+	     adminController.setControllerProjectManagement(projectManagementController);
+	     medewerkerBeherenController.setControllerCreateUserController(createUserController);
 	   // beheerderController.setControllerHandleiding(handleidingController);
 	    
 	    Pane tabPane = (Pane)beheerderScherm.getNamespace().get("pane"); 						//get stackPane from fieldView
-        tabPane.getChildren().addAll(accountBeherenView, homeView, medewerkerBeherenView, createUserView);
+        tabPane.getChildren().addAll(accountBeherenView, homeView, medewerkerBeherenView, createUserView, projectManagementView);
         
 		Scene scene = new Scene(View);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
 
+	private void setControllerProjectManagement(ProjectManagementViewController projectManagementController) {
+		this.projectManagementController = projectManagementController;
+		
+	}
+
 	private void setControllerAccount(AccountManagementController accountController) {
-		this.accountController = accountController;
+		this.accountManagement = accountController;
 		
 	}
 	private void setControllerMedewerkerBeheren(EmployeeManagementController medewerkerBeherenController) {
-		this.medewerkerBeheren = medewerkerBeherenController;
+		this.employeeManagement = medewerkerBeherenController;
 		
 	}
-
+	public void openAccountView()
+	{
+		this.accountManagement.showAccountView();
+	}
+	public void openProjectsManagement()
+	{
+		this.projectManagementController.showView();
+	}
 	public void openMedewerkerView()
 	{
-		this.medewerkerBeheren.showView();
+		this.employeeManagement.showView();
 	}
+	
 
-
-	private void openAccountView()
-	{
-		this.accountController.showAccountView();
-	}
 
 }

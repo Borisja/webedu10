@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: e3e4e5;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProjectManagementViewController">
+   <children>
+      <TableView fx:id="tableViewProjects" prefHeight="400.0" prefWidth="409.0">
+        <columns>
+          <TableColumn fx:id="id" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="projectName" prefWidth="75.0" text="Naam" />
+            <TableColumn fx:id="projectDes" prefWidth="119.0" text="Beschrijving" />
+            <TableColumn fx:id="projectIsdeleted" prefWidth="119.0" text="Verwijder_status" />
+        </columns>
+      </TableView>
+      <Button fx:id="addProject" layoutX="415.0" layoutY="105.0" mnemonicParsing="false" text="Project toevoegen" />
+      <Button fx:id="removeProject" layoutX="415.0" layoutY="150.0" mnemonicParsing="false" onAction="#removeSelectedProject" text="Project verwijderen" />
+      <Button fx:id="modifyProject" layoutX="423.0" layoutY="194.0" mnemonicParsing="false" text="Project wijzigen" />
+      <Button fx:id="close" layoutX="448.0" layoutY="279.0" mnemonicParsing="false" onAction="#closeView" prefHeight="27.0" prefWidth="64.0" text="Sluit" />
+   </children>
+</Pane>

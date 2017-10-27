@@ -136,4 +136,23 @@ public class ProjectDAO {
 			e.printStackTrace();
 		}
 	}
+	/**
+	 * Deze methode zet het project op inactive
+	 * @param projectId > meegekregen van ProjectBeherenViewController
+	 * @author rezanaser
+	 */
+
+	public void removeProject(int projectId) {
+		String remove_project = "UPDATE project "
+				+ "SET project_isdeleted = true "
+				+ "WHERE project_id = ?";
+		try {
+			PreparedStatement lock_statement = connect.connectToDB().prepareStatement(remove_project);
+			lock_statement.setInt(1, projectId);
+			lock_statement.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
 }

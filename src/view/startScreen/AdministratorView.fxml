@@ -8,12 +8,12 @@
    <left>
       <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="208.0" layoutY="82.0" mnemonicParsing="false" prefHeight="93.0" prefWidth="145.0" style="-fx-background-size: 110 90; -fx-background-repeat: no-repeat;" text="Projecten Beheren" />
+            <Button layoutX="208.0" layoutY="82.0" mnemonicParsing="false" onAction="#openProjectsManagement" prefHeight="93.0" prefWidth="145.0" style="-fx-background-size: 110 90; -fx-background-repeat: no-repeat;" text="Projecten Beheren" />
             <Button layoutX="400.0" layoutY="83.0" mnemonicParsing="false" prefHeight="91.0" prefWidth="136.0" style="-fx-background-repeat: no-repeat; -fx-background-size: 105 90;" text="Sprints Beheren" />
             <Button layoutX="24.0" layoutY="240.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="142.0" style="-fx-background-repeat: no-repeat; -fx-background-size: 110 90;" text="Overzichten" />
             <Button layoutX="208.0" layoutY="241.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="147.0" text="Entry's beheren" />
             <Button layoutX="400.0" layoutY="241.0" mnemonicParsing="false" onAction="#openMedewerkerView" prefHeight="97.0" prefWidth="141.0" text="Medewerkers Beheren" />
-            <Button fx:id="btnAccounts" layoutX="21.0" layoutY="82.0" mnemonicParsing="false" prefHeight="93.0" prefWidth="148.0" text="Accounts Beheren" />
+            <Button fx:id="btnAccounts" layoutX="21.0" layoutY="82.0" mnemonicParsing="false" onAction="#openAccountView" prefHeight="93.0" prefWidth="148.0" text="Accounts Beheren" />
          </children>
       </Pane>
    </left>
