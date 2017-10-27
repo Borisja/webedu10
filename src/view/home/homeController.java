@@ -33,7 +33,7 @@ public class homeController {
 	 */
 	public void setUserPane(Pane pane)
 	{
-		this.mainPane.getChildren().add(pane);
+		//this.mainPane.getChildren().add(pane);
 	}
 	
 	/**
