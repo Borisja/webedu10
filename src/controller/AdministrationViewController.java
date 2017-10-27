@@ -38,7 +38,7 @@ public class AdministrationViewController {
 	 * @author rezanaser
 	 * @throws IOException
 	 */
-	public void startAdministrationManager(EmployeeModel em) throws IOException
+	public void startAdministrationManager(EmployeeModel employeeModel) throws IOException
 	{
 		Stage primaryStage = new Stage();
 		FXMLLoader administrationScreen = new FXMLLoader(getClass().getResource("/view/beginScherm/administratieView.fxml"));	
@@ -48,7 +48,7 @@ public class AdministrationViewController {
 	    Pane homeView = homeLoader.load();
 	    homeController homeController = homeLoader.getController();
 	    View.setTop(homeView);
-	    homeController.setUserName(em.getEmployeeFirstname());
+	    homeController.setUserName(employeeModel.getEmployeeFirstname());
 	    
 	    
 	    FXMLLoader approvalLoader = new FXMLLoader(getClass().getResource("/view/goedkeurenView/goedkeurenView.fxml"));			//get xml file
