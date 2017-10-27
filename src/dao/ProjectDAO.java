@@ -30,7 +30,7 @@ public class ProjectDAO {
 		try {
 			PreparedStatement project_statement = connect.connectToDB().prepareStatement(project_list_sql);
 			project_statement.executeUpdate();
-			System.out.println(this.getClass().toString()+": constructor: FUNCTION add_project(name, description, customer) has been created!");
+			//System.out.println(this.getClass().toString()+": constructor: FUNCTION add_project(name, description, customer) has been created!");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -40,41 +40,12 @@ public class ProjectDAO {
 		}
 	}
 	
-//	public ProjectDAO(){
-//		System.out.println("test");
-//		ConnectDAO connect = new ConnectDAO();
-//		try {
-//			Statement statement = connect.connectToDB().createStatement();
-//			ResultSet resultSet = statement.executeQuery("select * from project");
-//			ResultSetMetaData metaData = resultSet.getMetaData();
-//			System.out.println("test");
-//			int numberOfColumns = metaData.getColumnCount();
-//			
-//			while (resultSet.next())
-//			{ 
-//				for(int kolom = 1; kolom <= numberOfColumns; kolom++)
-//					System.out.println(resultSet.getString(kolom)+"\t\t\t");
-//				System.out.println("\n=====");
-//			}
-//			
-//			statement.close();
-//			connect.connectToDB().close();
-//			
-//			
-//		} catch (SQLException e) {
-//		
-//			e.printStackTrace();
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		
-//	}
 
 	public ArrayList<ProjectModel> project_list(){
 		ArrayList<ProjectModel> proj_list = new ArrayList<ProjectModel>();
 		String project_list_sql = "SELECT * FROM project_version "
-				+ "INNER JOIN project ON (project_id = project_version_project_fk) "
+				+ "INNER JOIN project ON (project_id = project_version_project_fk)"
+				+ "AND project_version_current = true "
 				+ "ORDER BY project_version.project_version_name ASC";
 		try {
 			PreparedStatement project_statement = connect.connectToDB().prepareStatement(project_list_sql);
@@ -136,6 +107,35 @@ public class ProjectDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * Deze methode wijzigt het geselcteerde project project
+	 * @author rezanaser
+	 */
+
+	public void modifyProject(int pId, String name, String description) {
+		String changePreviousVersion = "UPDATE project_version set project_version_current = 'n' "
+				+ "WHERE project_version_project_fk = ?";
+		String change_project = "INSERT INTO project_version(project_version_project_fk, project_version_name, project_version_description, project_version_current)"
+				+ "VALUES(?, ?, ?, true)";
+		try {
+			PreparedStatement changeVersions= connect.connectToDB().prepareStatement(changePreviousVersion);
+			changeVersions.setInt(1, pId);
+			changeVersions.executeUpdate();
+			changeVersions.close();
+			PreparedStatement changeProject = connect.connectToDB().prepareStatement(change_project);
+			changeProject.setInt(1, pId);
+			changeProject.setString(2, name);
+			changeProject.setString(3, description);
+			changeProject.executeQuery();
+			
+			changeProject.close();
+		} catch (Exception e) {
+			e.getMessage();
+		}
+		
+	}
+	
 	/**
 	 * Deze methode zet het project op inactive
 	 * @param projectId > meegekregen van ProjectBeherenViewController
@@ -154,5 +154,65 @@ public class ProjectDAO {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	/**
+	 * De volgende voegt een nieuwe project toe aan de project_version tabel
+	 * @param pId Project ID
+	 * @param projectName De naam van het project
+	 * @param projectDes De beschrijving van het project
+	 * @author rezanaser
+	 */
+	public void addProject(String projectName, String projectDes){
+		PreparedStatement insertProject;
+		String insertUser_sql = "insert into project_version (project_version_project_fk, project_version_name, project_version_description, project_version_current) "
+				+ "VALUES (?, ?, ?, ?)";
+		try {
+			insertProject = connect.connectToDB().prepareStatement(insertUser_sql);
+			
+			insertProject.setInt(1, createNewProject());
+			insertProject.setString(2, projectName);
+			insertProject.setString(3, projectDes);
+			insertProject.setBoolean(4, true);
+			insertProject.executeQuery();
+
+			insertProject.close();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+			//e.printStackTrace();
+		}
+		
+	}
+	/**
+	 * De volgende voegt een nieuwe project toe aan de project tabel
+	 * @param pId Project ID
+	 * @param projectName De naam van het project
+	 * @param projectDes De beschrijving van het project
+	 * @author rezanaser
+	 */
+	public int createNewProject() {
+		int id = 0;
+		PreparedStatement createProject;
+		ResultSet projectId = null;
+		String insertProject_sql = "insert into project (project_isdeleted) values (?)";
+		
+		try {
+			
+			createProject = connect.connectToDB().prepareStatement(insertProject_sql, Statement.RETURN_GENERATED_KEYS);
+			
+			createProject.setBoolean(1, false);
+			createProject.executeUpdate();
+			createProject.getGeneratedKeys();
+			projectId = createProject.getGeneratedKeys();
+			
+			while (projectId.next()) {
+				id = projectId.getInt(1);
+			}
+		} catch (Exception e) {
+			
+		}
+		
+		return id;
 	}
 }
