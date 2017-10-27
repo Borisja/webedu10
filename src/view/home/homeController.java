@@ -28,12 +28,12 @@ public class homeController {
 	/**
 	 * Deze methode wordt aangeropen door de gebruikerViewController en geeft de pane mee
 	 * 
-	 * @param name: Dit is de maonPane dat  meekegregen is van  de hoofd controller
+	 * @param name: Dit is de mainPane dat  meegekregen is van  de hoofd controller
 	 * @author rezanaser
 	 */
 	public void setUserPane(Pane pane)
 	{
-		this.mainPane = pane;
+		this.mainPane.getChildren().add(pane);
 	}
 	
 	/**

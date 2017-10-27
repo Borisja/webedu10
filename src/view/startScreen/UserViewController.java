@@ -23,19 +23,18 @@ public class UserViewController {
 	@FXML Pane pane;
 	private SprintController sprintController;
 	private ProjectController projectController;
-	private AddEntryViewController entryController;
-	private EntryController addHours;
+	private EntryController entryController;
 	private UserInformationController userInformationController;
 	private EmployeeModel user;
+	private AddEntryViewController addEntryViewController;
 	
 	public void startUser(EmployeeModel employee) throws IOException
 	{
 		this.user = employee;
 		Stage primaryStage = new Stage();
-		FXMLLoader userView = new FXMLLoader(getClass().getResource("/view/startScreen/UserView.fxml"));
-		BorderPane view = (BorderPane) userView.load();
-		UserViewController gebruikerController = userView.getController();
-		
+		FXMLLoader userViewLoader = new FXMLLoader(getClass().getResource("/view/startScreen/UserView.fxml"));
+		BorderPane userView = (BorderPane) userViewLoader.load();
+		UserViewController userViewController = userViewLoader.getController();
 		
 		FXMLLoader sprintLoader = new FXMLLoader(getClass().getResource("/view/sprintView/SprintOverviewView.fxml"));
 		Pane sprintView = sprintLoader.load();
@@ -55,31 +54,31 @@ public class UserViewController {
 		
 		
 		FXMLLoader employeeGegevensLoader = new FXMLLoader(getClass().getResource("/controller/UserInformationView.fxml"));
-		Pane gebruikerGegevensView = employeeGegevensLoader.load();
-		UserInformationController gebruikerGegevensController = employeeGegevensLoader.getController();
+		Pane userInformationView = employeeGegevensLoader.load();
+		UserInformationController userInformationController = employeeGegevensLoader.getController();
 		
 		FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("/view/home/home.fxml"));			//get xml file
 	    Pane homeView = homeLoader.load();
 	    homeController homeController = homeLoader.getController();
 	    
-	    homeController.setUserPane((Pane)userView.getNamespace().get("pane"));
+	    homeController.setUserPane((Pane)userViewLoader.getNamespace().get("pane"));
 	    
 	    
-	    view.setTop(homeView);
+	    userView.setTop(homeView);
 	    homeController.setUserName(employee.getEmployeeFirstname());  
-	    gebruikerGegevensController.fillUserData(employee);
-		gebruikerController.setControllerSprint(sprintController);
-		gebruikerController.setControllerProject(projectController);
-		gebruikerController.setControllerAddEntryHours(addEntryController);
+	    userInformationController.fillUserData(employee);
+		userViewController.setControllerSprint(sprintController);
+		userViewController.setControllerProject(projectController);
+		userViewController.setControllerAddEntryHours(addEntryController);
 		addEntryController.setController(addHoursController);
-		gebruikerController.setControllerGebruikerGegevens(gebruikerGegevensController);
+		userViewController.setControllerGebruikerGegevens(userInformationController);
 		
 		
-		Pane thePane = (Pane)userView.getNamespace().get("pane");
-		thePane.getChildren().addAll(sprintView,projectView,addHoursView, addEntryView,gebruikerGegevensView);
+		Pane thePane = (Pane)userViewLoader.getNamespace().get("pane");
+		thePane.getChildren().addAll(sprintView,projectView,addHoursView, addEntryView,userInformationView);
 		
 		
-		Scene scene = new Scene(view);
+		Scene scene = new Scene(userView);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		
@@ -92,8 +91,8 @@ public class UserViewController {
 	}
 
 
-	private void setControllerAddEntryHours(AddEntryViewController addEntryController) {
-		this.entryController = addEntryController;
+	private void setControllerAddEntryHours(AddEntryViewController addEntryViewController) {
+		this.addEntryViewController = addEntryViewController;
 		
 	}
 	public void openUserInformationView()

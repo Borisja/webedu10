@@ -29,10 +29,9 @@ public class ProjectManagementProjectController {
     @FXML
     ComboBox<CustomerModel> projectCustomers;
     @FXML
-    Button projectAddBtn;
+    Button addProjectButton;
     @FXML Button cancelProjectButton;
-    @FXML
-    Label errorLabel;
+    @FXML Label errorLabel;
 
     @FXML
     private void initialize(){
