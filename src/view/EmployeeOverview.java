@@ -15,7 +15,7 @@ public class EmployeeOverview {
 		VBox customer_vbox = new VBox();
 		
 		lbl_customer_id.setText(Integer.toString(em.getEmployeeId()));
-		lbl_customer_name.setText(em.getEmployeeVoornaam());
+		lbl_customer_name.setText(em.getEmployeeFirstname());
 		lbl_customer_description.setText(em.getEmployeeEmail());
 		
 		customer_vbox.getChildren().addAll(lbl_customer_id, lbl_customer_name, lbl_customer_description);

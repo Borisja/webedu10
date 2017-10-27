@@ -42,7 +42,7 @@ public class SprintDAO {
 
 
 /**
- * Deze methode vult de combobox de sprints van het gevraagde project
+ * Deze methode vult de combobox met de sprints van het gevraagde project
  * @author rezanaser
  * @return
  */

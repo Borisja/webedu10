@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" visible="false" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AccountManagementController">
+   <children>
+      <Button fx:id="addAccount" layoutX="14.0" layoutY="107.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="151.0" text="Account Toevoegen" />
+      <Button fx:id="deleteAccount" layoutX="200.0" layoutY="107.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="151.0" text="Account Verwijderen" />
+      <Button fx:id="modifyAccount" layoutX="416.0" layoutY="107.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="137.0" text="Account Wijzigen" />
+      <Button fx:id="closeButton" layoutX="25.0" layoutY="332.0" mnemonicParsing="false" onAction="#closeView" text="Sluit" />
+   </children>
+</Pane>

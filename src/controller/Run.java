@@ -1,6 +1,5 @@
 package controller;
 
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,12 +7,11 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.Stage;
 import view.LoginView;
-import view.beginScherm.AdministratieViewController;
-import view.beginScherm.GebruikerViewController;
-import dao.ProjectDAO;
 
 public class Run extends Application{
 
+	
+	
 	public static void main(String[] args) {
 		Application.launch(args);
 	}
@@ -21,6 +19,7 @@ public class Run extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 
+<<<<<<< HEAD
 //		 Parent root = FXMLLoader.load(getClass().getResource("/view/beginScherm/GebruikerView.fxml"));
 //	       Scene scene = new Scene(root);
 //	       primaryStage.setScene(scene);
@@ -32,8 +31,9 @@ public class Run extends Application{
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
 		primaryStage.show();
+=======
+		new LoginView().show_login_view();
+>>>>>>> c8756436279a975e89f7d71d1bae94aceb0a0b73
 
-		// TODO Auto-generated method stub
-		//new LoginView().show_login_view();
 	}
 }

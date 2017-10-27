@@ -2,8 +2,6 @@ package view;
 
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.ResourceBundle;
 
 import controller.AddHoursController;
@@ -20,14 +18,16 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+<<<<<<< HEAD
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+=======
+import javafx.scene.layout.Pane;
+>>>>>>> c8756436279a975e89f7d71d1bae94aceb0a0b73
 import javafx.util.Callback;
-import javafx.util.StringConverter;
-import model.EntryModel;
 import model.ProjectModel;
 import model.SprintModel;
 import model.UserStoryModel;
@@ -41,6 +41,7 @@ import model.UserStoryModel;
 public class AddEntryViewController implements Initializable {
 	
 	@FXML ComboBox<ProjectModel> projectCombo;
+<<<<<<< HEAD
 	@FXML ComboBox<UserStoryModel> userStorysCombo;
 	@FXML ComboBox<SprintModel> sprintCombo;
 	@FXML Button btnAddEntry;
@@ -49,6 +50,32 @@ public class AddEntryViewController implements Initializable {
 	public void showAddEntryView()
 	{
 		this.pane.setVisible(true);
+=======
+	@FXML ComboBox userStoryCombo;
+	@FXML ComboBox<SprintModel> sprintCombo;
+	@FXML Button addEntryButton;
+	@FXML Pane pane;
+	private EntryController entryController;
+	
+	/**
+	 * Deze methode krijgt huidige AddHoursController van de GebruikerViewController mee 
+	 * @param ac -> is van type AddHoursController
+	 * @author rezanaser
+	 */
+	public void setController(EntryController ac)
+	{
+		this.entryController = ac;
+	}
+	
+	/**
+	 * Deze methode toont het volgende scherm(AddHours) nadat er geklikt wordt op toevoegen knop
+	 * @author rezanaser
+	 */
+	public void showAddHoursView()
+	{
+		this.pane.setVisible(false);
+		this.entryController.showView();
+>>>>>>> c8756436279a975e89f7d71d1bae94aceb0a0b73
 	}
 	
 	/**
@@ -81,6 +108,13 @@ public class AddEntryViewController implements Initializable {
 		this.sprintCombo.setItems(data);
 		this.sprintCombo.setCellFactory(factory);
 		this.sprintCombo.setButtonCell(factory.call(null));
+		
+		this.sprintCombo.setOnAction(e-> {
+			
+			//Met de onderstaande regel stuurt de combobox het geselecteerde sprintmodel mee naar AddHoursController
+
+			entryController.setChosenSprint(sprintCombo.getSelectionModel().getSelectedItem());
+		});
 	}
 	
 	/**
@@ -110,9 +144,15 @@ public class AddEntryViewController implements Initializable {
 
 		};
 		
-		this.userStorysCombo.setItems(data);
-		this.userStorysCombo.setCellFactory(factory);
-		this.userStorysCombo.setButtonCell(factory.call(null));
+		this.userStoryCombo.setItems(data);
+		this.userStoryCombo.setCellFactory(factory);
+		this.userStoryCombo.setButtonCell(factory.call(null));
+		
+		this.userStoryCombo.setOnAction(e-> {
+			//Met de onderstaande regel stuurt de combobox het geselecteerde userstorymodel mee naar AddHoursController
+			
+			entryController.setChosenUserStory((UserStoryModel) userStoryCombo.getSelectionModel().getSelectedItem());
+		});
 		
 	}
 	
@@ -148,6 +188,9 @@ public class AddEntryViewController implements Initializable {
 		
 		this.projectCombo.setOnAction(e-> {
 			this.fillSprintsBox(projectCombo.getSelectionModel().getSelectedItem().getProjectId());
+
+			//Met de onderstaande regel stuurt de combobox het geselecteerde projectmodel mee naar AddHoursController
+			entryController.setChosenProject(projectCombo.getSelectionModel().getSelectedItem());
 		});
 	}
 
@@ -171,6 +214,22 @@ public class AddEntryViewController implements Initializable {
 				h.printStackTrace();
 			}
 		});
+	}
+	/**
+	 * Deze methode opent de view van AddEntryView
+	 * @author rezanaser
+	 */
+	public void showView() {
+		this.pane.setVisible(true);
+
+	}
+	/**
+	 * Deze methode sluit de view van AddEntryView als er op sluit button geklikt wordt
+	 * @author rezanaser
+	 */
+	public void closeView()
+	{
+		this.pane.setVisible(false);
 	}
 
 }

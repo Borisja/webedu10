@@ -37,5 +37,10 @@ public class CustomerModel {
 	public void setCustomer_isdeleted(boolean customer_isdeleted) {
 		this.customer_isdeleted = customer_isdeleted;
 	}
+
+	@Override
+	public String toString(){
+		return this.customer_name;
+	}
 	
 }

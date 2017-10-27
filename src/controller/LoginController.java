@@ -12,9 +12,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import model.EmployeeModel;
-import view.AgendaView;
-import view.beginScherm.GebruikerViewController;
-import view.beginScherm.AdministratieViewController;
+import view.CalenderView;
+import view.startScreen.AdministratorViewController;
+import view.startScreen.ManagerViewController;
+import view.startScreen.UserViewController;
 
 public class LoginController {
 	/**
@@ -24,8 +25,8 @@ public class LoginController {
 	 */
 
 	@FXML private TextField txtEmail;
-	@FXML private TextField txtWachtwoord;
-	@FXML private Button inlogBtn;
+	@FXML private TextField txtPassword;
+	@FXML private Button loginButton;
 	
 	/**
 	 * Method to verify login.
@@ -51,7 +52,7 @@ public class LoginController {
 			//Here we open the screen after login, use user.getEmployeeRol() to get users rol and then load correct view. 
 
 			if(user.getEmployeeRol().equals("employee")){
-				GebruikerViewController view = new GebruikerViewController();
+				UserViewController view = new UserViewController();
 				try {
 					view.startGebruiker(user);
 				} catch (IOException e) {
@@ -59,10 +60,21 @@ public class LoginController {
 					e.printStackTrace();
 				}
 			}
-			if(user.getEmployeeRol().equals("manager"))
+			else if(user.getEmployeeRol().equals("manager"))
 			{
 				try {
-					new AdministratieViewController().startAManager(user);
+					new ManagerViewController().startManager(user);
+					
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			
+			} 
+			else if(user.getEmployeeRol().equals("administration"))
+			{
+				try {
+					new AdministratorViewController().startAdministrator(user);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
