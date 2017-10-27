@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" style="-fx-padding: 10;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProjectManagementCustomerController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" style="-fx-padding: 10;" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProjectManagementCustomerController">
    <top>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -23,7 +23,7 @@
                         <Font size="32.0" />
                      </font>
                   </Label>
-                  <Label fx:id="errorLbl" alignment="CENTER" prefHeight="17.0" prefWidth="694.0" style="-fx-border-color: rgb(255,110,100); -fx-background-color: rgb(255,220,210); -fx-border-radius: 10px; -fx-opacity: 0;" text="Vul alstublieft alle gegevens in">
+                  <Label fx:id="errorLabel" alignment="CENTER" prefHeight="17.0" prefWidth="694.0" style="-fx-border-color: rgb(255,110,100); -fx-background-color: rgb(255,220,210); -fx-border-radius: 10px; -fx-opacity: 0;" text="Vul alstublieft alle gegevens in">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -37,8 +37,8 @@
          <children>
             <HBox prefHeight="100.0" prefWidth="656.0">
                <children>
-                  <Button fx:id="custAddBtn" mnemonicParsing="false" onAction="#addCustomer" text="Opslaan" />
-                  <Button fx:id="custCancelBtn" mnemonicParsing="false" onAction="#close" text="Annuleren" />
+                  <Button fx:id="addCustomerButton" mnemonicParsing="false" onAction="#addCustomer" text="Opslaan" />
+                  <Button fx:id="cancelCustomerButton" mnemonicParsing="false" onAction="#close" text="Annuleren" />
                </children>
             </HBox>
          </children></HBox>
@@ -65,8 +65,8 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="custName" GridPane.columnIndex="1" />
-            <TextArea fx:id="custDescription" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="customerName" GridPane.columnIndex="1" />
+            <TextArea fx:id="customerDescription" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </center>
