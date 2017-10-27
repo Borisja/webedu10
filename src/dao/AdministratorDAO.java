@@ -71,6 +71,33 @@ public class AdministratorDAO {
 		}
 	}
 	
+		/**
+	 * Deze methode laat een lijst zien van entries die de status queued hebben.
+	 * @author rezanaser
+	 * @param e_id
+	 * @return
+	 */
+	public ArrayList<EntryModel> entry_all_list(){
+		ArrayList<EntryModel> entry_alist = new ArrayList<EntryModel>();
+		String employee_entry_sql = "SELECT  * from entry ";
+				//+ "AND entry_version_current = 'y' ";
+		try {
+			PreparedStatement entries_statement = connect.connectToDB().prepareStatement(employee_entry_sql);
+			
+			ResultSet entry_set = entries_statement.executeQuery();
+			while(entry_set.next()) {
+				EntryModel dummy = new EntryModel();
+				dummy.setEntryId(entry_set.getInt("entry_id"));
+				dummy.setEntryStatus(entry_set.getString("entry_status"));
+				entry_alist.add(dummy);
+			}
+			entries_statement.close();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return entry_alist;
+	}
 	/**
 	 * Unlock an employee
 	 * @param - employee id to lock
