@@ -2,95 +2,102 @@ package view.startScreen;
 
 import java.io.IOException;
 
+import controller.AccountManagementController;
+import controller.CreateUserController;
+import controller.EmployeeManagementController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.EmployeeModel;
-import view.ExportController;
 import view.approvalView.ApprovalController;
 import view.home.homeController;
 import view.manual.ManualController;
-
 /**
- * Deze klasse is bestemd voor de administratie. 
- * 
+ * Deze klasse is de controller van de beheerderview
  * @author rezanaser
- * 
- * @throws IOException
+ *
  */
-
-public class AdministrationViewController {
+public class AdministratorViewController {
 	
-	@FXML private Button btnGoedkeuren;
-	@FXML private Pane pane;
-	private ApprovalController gkC;
-	private ManualController hdC;
-	private ExportController export = new ExportController();
-	private Label name;
+	private @FXML Button btnAccounts;
+	
+	private @FXML Pane pane;
+	private AccountManagementController accountController;
 
+	private EmployeeManagementController medewerkerBeheren;
+	
+
+	
 	/**
-	 * Deze methode geeft de administratieView  na succesvol inloggen.
-	 * @author rezanaser
+	 * 
+	 * Deze methode start het beheerder scherm. 
+	 * @param beheerder_id Hier krijg hij de employee id mee
 	 * @throws IOException
+	 * @author rezanaser
+	 * @param user 
 	 */
-	public void startAManager(EmployeeModel em) throws IOException
+	public void startAdministrator(EmployeeModel user) throws IOException
 	{
 		Stage primaryStage = new Stage();
-		FXMLLoader administratieScherm = new FXMLLoader(getClass().getResource("/view/beginScherm/administratieView.fxml"));	
-		BorderPane View  = (BorderPane)administratieScherm.load();
-		AdministrationViewController administratieController = administratieScherm.getController();
+		FXMLLoader beheerderScherm = new FXMLLoader(getClass().getResource("/view/startScreen/AdministratorView.fxml"));	
+		BorderPane View  = (BorderPane)beheerderScherm.load();
+		AdministratorViewController beheerderController = beheerderScherm.getController();
 		FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("/view/home/home.fxml"));			//get xml file
 	    Pane homeView = homeLoader.load();
 	    homeController homeController = homeLoader.getController();
 	    View.setTop(homeView);
-	    homeController.setUserName(em.getEmployeeFirstname());
 	    
+	    FXMLLoader accountbeheren = new FXMLLoader(getClass().getResource("/controller/AccountManagement.fxml"));			//get xml file
+	    Pane accountBeherenView = accountbeheren.load();	
+	    AccountManagementController accountController = accountbeheren.getController();
 	    
-	    FXMLLoader goedkeurenLoader = new FXMLLoader(getClass().getResource("/view/goedkeurenView/goedkeurenView.fxml"));			//get xml file
-	    Pane goedkeurenView = goedkeurenLoader.load();	
-	    ApprovalController goedkeurenController = goedkeurenLoader.getController();
+	    FXMLLoader medewerkerBeheren = new FXMLLoader(getClass().getResource("/controller/EmployeeManagement.fxml"));			//get xml file
+	    Pane medewerkerBeherenView = medewerkerBeheren.load();	
+	    EmployeeManagementController medewerkerBeherenController = medewerkerBeheren.getController();
 	    
-	    FXMLLoader handleidingLoader = new FXMLLoader(getClass().getResource("/view/handleiding/handleiding.fxml"));			//get xml file
-	    Pane handleidingView = handleidingLoader.load();	
-	    ManualController handleidingController = handleidingLoader.getController();
+	    FXMLLoader addEmployeeLoader = new FXMLLoader(getClass().getResource("/controller/CreateUser.fxml"));			//get xml file
+	    Pane createUserView = addEmployeeLoader.load();	
+	    CreateUserController createUserController = addEmployeeLoader.getController();
+	    
+//	    FXMLLoader handleidingLoader = new FXMLLoader(getClass().getResource("/view/handleiding/handleiding.fxml"));			//get xml file
+//	    Pane handleidingView = handleidingLoader.load();	
+//	    handleidingController handleidingController = handleidingLoader.getController();
 
-	    administratieController.setControllerGoedkeuren(goedkeurenController);
-	    administratieController.setControllerHandleiding(handleidingController);
+	    beheerderController.setControllerAccount(accountController);
+	    beheerderController.setControllerMedewerkerBeheren(medewerkerBeherenController);
+	    medewerkerBeherenController.setControllerCreateUserController(createUserController);
+	   // beheerderController.setControllerHandleiding(handleidingController);
 	    
-	    Pane tabPane = (Pane)administratieScherm.getNamespace().get("pane"); 						//get stackPane from fieldView
-        tabPane.getChildren().addAll(goedkeurenView,handleidingView);
+	    Pane tabPane = (Pane)beheerderScherm.getNamespace().get("pane"); 						//get stackPane from fieldView
+        tabPane.getChildren().addAll(accountBeherenView, homeView, medewerkerBeherenView, createUserView);
         
 		Scene scene = new Scene(View);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
-	/**
-	 * Deze methode krijgt de controller van andere views.
-	 * @param gk
-	 */
-	public void setControllerGoedkeuren(ApprovalController gk)
-	{
-		this.gkC = gk;
+
+	private void setControllerAccount(AccountManagementController accountController) {
+		this.accountController = accountController;
+		
 	}
-	public void setControllerHandleiding(ManualController gk)
-	{
-		this.hdC = gk;
+	private void setControllerMedewerkerBeheren(EmployeeManagementController medewerkerBeherenController) {
+		this.medewerkerBeheren = medewerkerBeherenController;
+		
 	}
-	public void toonHanleiding()
+
+	public void openMedewerkerView()
 	{
-		this.hdC.openHandleidingMenu();
+		this.medewerkerBeheren.showView();
 	}
-	public void toonGoedkeurenMenu()
+
+
+	private void openAccountView()
 	{
-		this.gkC.openApprovalMenu();
+		this.accountController.showAccountView();
 	}
-	public void downloadCSV()
-	{
-		this.export.exportCSV();
-	}
+
 }
