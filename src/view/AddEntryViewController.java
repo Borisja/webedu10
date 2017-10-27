@@ -18,15 +18,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-<<<<<<< HEAD
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-=======
 import javafx.scene.layout.Pane;
->>>>>>> c8756436279a975e89f7d71d1bae94aceb0a0b73
 import javafx.util.Callback;
 import model.ProjectModel;
 import model.SprintModel;
@@ -41,21 +38,19 @@ import model.UserStoryModel;
 public class AddEntryViewController implements Initializable {
 	
 	@FXML ComboBox<ProjectModel> projectCombo;
-<<<<<<< HEAD
 	@FXML ComboBox<UserStoryModel> userStorysCombo;
 	@FXML ComboBox<SprintModel> sprintCombo;
 	@FXML Button btnAddEntry;
 	@FXML Pane pane;
+	@FXML ComboBox userStoryCombo;
+	@FXML Button addEntryButton;
+	private EntryController entryController;
 	
 	public void showAddEntryView()
 	{
 		this.pane.setVisible(true);
-=======
-	@FXML ComboBox userStoryCombo;
-	@FXML ComboBox<SprintModel> sprintCombo;
-	@FXML Button addEntryButton;
-	@FXML Pane pane;
-	private EntryController entryController;
+	}
+	
 	
 	/**
 	 * Deze methode krijgt huidige AddHoursController van de GebruikerViewController mee 
@@ -75,7 +70,6 @@ public class AddEntryViewController implements Initializable {
 	{
 		this.pane.setVisible(false);
 		this.entryController.showView();
->>>>>>> c8756436279a975e89f7d71d1bae94aceb0a0b73
 	}
 	
 	/**

@@ -51,7 +51,7 @@ public class LoginController {
 		} else {
 			//Here we open the screen after login, use user.getEmployeeRol() to get users rol and then load correct view. 
 
-			if(user.getEmployeeRol().equals("employee")){
+			if(user.getEmployeeRole().equals("employee")){
 				UserViewController view = new UserViewController();
 				try {
 					view.startGebruiker(user);
@@ -60,7 +60,7 @@ public class LoginController {
 					e.printStackTrace();
 				}
 			}
-			else if(user.getEmployeeRol().equals("manager"))
+			else if(user.getEmployeeRole().equals("manager"))
 			{
 				try {
 					new ManagerViewController().startManager(user);
@@ -71,10 +71,10 @@ public class LoginController {
 				}
 			
 			} 
-			else if(user.getEmployeeRol().equals("administration"))
+			else if(user.getEmployeeRole().equals("administration"))
 			{
 				try {
-					new AdministratorViewController().startAdministrator(user);
+					new AdministratorViewController().startAManager(user);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

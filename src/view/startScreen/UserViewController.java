@@ -2,7 +2,7 @@ package view.startScreen;
 
 import java.io.IOException;
 
-import controller.EntryController;
+import view.EntryController;
 import controller.UserInformationController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

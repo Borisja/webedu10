@@ -24,7 +24,7 @@ import view.manual.ManualController;
  * @throws IOException
  */
 
-public class AdministrationViewController {
+public class AdministratorViewController {
 	
 	@FXML private Button btnGoedkeuren;
 	@FXML private Pane pane;
@@ -43,7 +43,7 @@ public class AdministrationViewController {
 		Stage primaryStage = new Stage();
 		FXMLLoader administratieScherm = new FXMLLoader(getClass().getResource("/view/beginScherm/administratieView.fxml"));	
 		BorderPane View  = (BorderPane)administratieScherm.load();
-		AdministrationViewController administratieController = administratieScherm.getController();
+		AdministratorViewController administratieController = administratieScherm.getController();
 		FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("/view/home/home.fxml"));			//get xml file
 	    Pane homeView = homeLoader.load();
 	    homeController homeController = homeLoader.getController();
