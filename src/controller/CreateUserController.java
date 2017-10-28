@@ -47,6 +47,11 @@ public class CreateUserController {
 	{
 		this.pane.setVisible(true);
 	}
+	
+	public void closeView()
+	{
+		this.pane.setVisible(false);
+	}
 	public void createUser() {
 		
 		String firstName = firstNameText.getText();

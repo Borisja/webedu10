@@ -3,7 +3,11 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
-
+/**
+ * Deze klasse is verantwoordelijk voor de EmployeeManagementView
+ * @author rezanaser
+ *
+ */
 public class EmployeeManagementController {
 	
 	@FXML Pane pane;

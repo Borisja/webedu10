@@ -145,7 +145,7 @@ public class ProjectManagementViewController implements Initializable{
 	 */
 	public void closeView()
 	{
-		this.pane.setVisible(true);
+		this.pane.setVisible(false);
 	}
 	
 	/**
