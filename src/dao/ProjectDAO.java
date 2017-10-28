@@ -40,6 +40,11 @@ public class ProjectDAO {
 		}
 	}
 	
+	/**
+	 * Met deze methode krijg je een lijst van huidige project versies terug
+	 * @return Een lijst van laatste project versies
+	 * @author rezanaser
+	 */
 
 	public ArrayList<ProjectModel> project_list(){
 		ArrayList<ProjectModel> proj_list = new ArrayList<ProjectModel>();

@@ -58,6 +58,7 @@ public class ProjectManagementViewController implements Initializable{
 	{
 		projectDAO.addProject(projectNewName.getText(), projectNewDescription.getText());
 		refreshTable();
+		closePopupAdd();
 	}
 	
 	/**
@@ -70,6 +71,7 @@ public class ProjectManagementViewController implements Initializable{
 		int projectID = Integer.parseInt(lblProjectId.getText());
 		projectDAO.modifyProject(projectID, projectChangeName.getText(), projectDescription.getText());
 		refreshTable();
+		closePopup();
 	}
 	
 	

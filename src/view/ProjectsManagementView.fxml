@@ -20,7 +20,7 @@
       <Button layoutX="415.0" layoutY="105.0" mnemonicParsing="false" onAction="#showPopUpAdd" text="Project toevoegen" />
       <Button layoutX="415.0" layoutY="150.0" mnemonicParsing="false" onAction="#removeSelectedProject" text="Project verwijderen" />
       <Button fx:id="changeProject" layoutX="423.0" layoutY="194.0" mnemonicParsing="false" onAction="#showPopUpChange" text="Project wijzigen" />
-      <Button fx:id="close" layoutX="448.0" layoutY="279.0" mnemonicParsing="false" onAction="#closeView" prefHeight="27.0" prefWidth="64.0" text="Sluit" />
+      <Button layoutX="448.0" layoutY="279.0" mnemonicParsing="false" onAction="#closeView" prefHeight="27.0" prefWidth="64.0" text="Sluit" />
       <Pane fx:id="popUp" layoutX="371.0" layoutY="11.0" prefHeight="374.0" prefWidth="216.0" style="-fx-background-color: e3e4e5;" visible="false">
          <children>
             <Label fx:id="lblProjectId" layoutX="90.0" layoutY="23.0" prefHeight="17.0" prefWidth="36.0" />

@@ -48,12 +48,9 @@ public class AdministratorViewController {
 		FXMLLoader beheerderScherm = new FXMLLoader(getClass().getResource("/view/startScreen/AdministratorView.fxml"));	
 		BorderPane View  = (BorderPane)beheerderScherm.load();
 		AdministratorViewController adminController = beheerderScherm.getController();
-		FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("/view/home/home.fxml"));			//get xml file
-	    Pane homeView = homeLoader.load();
-	    homeController homeController = homeLoader.getController();
-	    View.setTop(homeView);
+
 	    
-	    FXMLLoader accountbeheren = new FXMLLoader(getClass().getResource("/controller/AccountManagement.fxml"));			//get xml file
+	    FXMLLoader accountbeheren = new FXMLLoader(getClass().getResource("/view/AccountManagement.fxml"));			//get xml file
 	    Pane accountBeherenView = accountbeheren.load();	
 	    AccountManagementController accountController = accountbeheren.getController();
 	    
@@ -69,6 +66,11 @@ public class AdministratorViewController {
 	     Pane projectManagementView = projectManagementLoader.load();	
 	     ProjectManagementViewController projectManagementController = projectManagementLoader.getController();
 
+			FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("/view/home/home.fxml"));			//get xml file
+		    Pane homeView = homeLoader.load();
+		    homeController homeController = homeLoader.getController();
+		    homeController.setUserName(user.getEmployeeFirstname());
+		    View.setTop(homeView);
 	     adminController.setControllerAccount(accountController);
 	     adminController.setControllerMedewerkerBeheren(medewerkerBeherenController);
 	     adminController.setControllerProjectManagement(projectManagementController);
@@ -76,7 +78,7 @@ public class AdministratorViewController {
 	   // beheerderController.setControllerHandleiding(handleidingController);
 	    
 	    Pane tabPane = (Pane)beheerderScherm.getNamespace().get("pane"); 						//get stackPane from fieldView
-        tabPane.getChildren().addAll(accountBeherenView, homeView, medewerkerBeherenView, createUserView, projectManagementView);
+        tabPane.getChildren().addAll(accountBeherenView, medewerkerBeherenView, createUserView, projectManagementView);
         
 		Scene scene = new Scene(View);
 		primaryStage.setScene(scene);
