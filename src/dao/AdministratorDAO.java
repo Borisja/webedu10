@@ -7,6 +7,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Time;
 import java.util.ArrayList;
 
 import model.EmployeeModel;
@@ -27,7 +28,8 @@ public class AdministratorDAO {
 
 		String login_sql = "SELECT * "
 				+ "FROM employee, employee_version "
-				+ "WHERE employee_version_email = ? AND employee_version_password = ?";
+				+ "WHERE employee_version_email = ? AND employee_version_password = ?"
+				+ "AND employee_id = employee_version_employee_fk";
 		PreparedStatement login_statement;
 		
 		try {
@@ -182,6 +184,64 @@ public class AdministratorDAO {
 			}
 			
 	}
+	/**
+	 * Deze methode voegt een nieuwe entry toe
+	 */
+	
+	public void addEntry(int employeeId, int pId, int spId, String description){
+		PreparedStatement insertProject;
+		String insertUser_sql = "insert into entry_version (entry_version_entry_fk, entry_version_project_fk,entry_version_sprint_fk, entry_version_description, entry_version_current) "
+				+ "VALUES (?, ?, ?, ?, ?)";
+		try {
+			insertProject = connect.connectToDB().prepareStatement(insertUser_sql);
+			
+			insertProject.setInt(1, createNewEntry(employeeId));
+			insertProject.setInt(2, pId);
+//			insertProject.setInt(3, 0);
+			insertProject.setInt(3, spId);
+//			insertProject.setTime(5, starttime); 
+//			insertProject.setTime(6, endtime);
+//			insertProject.setDate(7, date);
+			insertProject.setString(4, description);
+			insertProject.setBoolean(5, true);
+			insertProject.executeQuery();
+
+			insertProject.close();
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
+	
+	/**
+	 * De volgende voegt een nieuwe entry toe aan de entry tabel
+	 * @author rezanaser
+	 */
+	public int createNewEntry(int employeeId) {
+		int id = 0;
+		PreparedStatement createEntry;
+		ResultSet projectId = null;
+		String insertEntry_sql = "insert into entry(entry_employee_fk, entry_status, entry_islocked, entry_isdeleted) values (?,'queued',false,false)";
+		
+		try {
+			
+			createEntry = connect.connectToDB().prepareStatement(insertEntry_sql, Statement.RETURN_GENERATED_KEYS);
+			
+			createEntry.setInt(1, employeeId);
+			createEntry.executeUpdate();
+			createEntry.getGeneratedKeys();
+			projectId = createEntry.getGeneratedKeys();
+			
+			while (projectId.next()) {
+				id = projectId.getInt(1);
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return id;
+	}
 	
 	/**
 	 * Deze methode maakt een csv bestand van de database.
@@ -195,8 +255,8 @@ public class AdministratorDAO {
 	        FileWriter fw = new FileWriter(filename);
 	        String query = "SELECT entry_version_date, entry_version_starttime, entry_version_endtime, entry_version_description, project_version_name, (entry_version_endtime - entry_version_starttime) AS Uren "
 	        		+ "FROM entry_version, project_version "
-	        		+ "WHERE entry_version_project_fk = project_version_project_fk ";
-	        		//+"AND entry_version_current = 'y'";
+	        		+ "WHERE entry_version_project_fk = project_version_project_fk "
+	        		+"AND project_version_current = 'y'";
 	        Statement stmt = connect.connectToDB().createStatement();
 	        fw.append("Datum");
             fw.append(';');

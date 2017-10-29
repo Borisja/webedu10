@@ -8,6 +8,7 @@ import java.util.ArrayList;
  * @date 9-10-2017
  */
 public class SprintModel {
+	private int sprintId;
 	private String sprintName;
 	private String sprintStartDate;
 	private String sprintEndDate;
@@ -43,5 +44,11 @@ public class SprintModel {
 	}
 	public void setEntries(ArrayList<EntryModel> entries) {
 		this.entries = entries;
+	}
+	public int getSprintId() {
+		return sprintId;
+	}
+	public void setSprintId(int sprintId) {
+		this.sprintId = sprintId;
 	}
 }

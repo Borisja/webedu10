@@ -4,6 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import javafx.collections.ObservableList;
 import model.CustomerModel;
+import model.EmployeeModel;
 import model.ProjectModel;
 
 public class ProjectDAO {
@@ -191,9 +192,6 @@ public class ProjectDAO {
 	}
 	/**
 	 * De volgende voegt een nieuwe project toe aan de project tabel
-	 * @param pId Project ID
-	 * @param projectName De naam van het project
-	 * @param projectDes De beschrijving van het project
 	 * @author rezanaser
 	 */
 	public int createNewProject() {
@@ -220,4 +218,35 @@ public class ProjectDAO {
 		
 		return id;
 	}
+	/**
+	 * Deze methode geeft een overzicht van alle projecten die de employee aan deelneemt
+	 * @param customerModel
+	 * @return
+	 */
+	public ArrayList<ProjectModel> project_list_employee(int employeeId){
+		ArrayList<ProjectModel> proj_list = new ArrayList<ProjectModel>();
+		String project_list_sql = "SELECT * FROM project_version";
+		try {
+			PreparedStatement project_statement = connect.connectToDB().prepareStatement(project_list_sql);
+			project_statement.setInt(1, employeeId);
+			ResultSet project_set = project_statement.executeQuery();
+			
+			while(project_set.next()) {
+				ProjectModel pm_container = new ProjectModel();
+				
+				pm_container.setProjectId(project_set.getInt("project_version_project_fk"));
+				pm_container.setProjectDescription(project_set.getString("project_version_description"));
+				pm_container.setProjectName(project_set.getString("project_version_name"));
+				proj_list.add(pm_container);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return proj_list;
+	}
+	
 }

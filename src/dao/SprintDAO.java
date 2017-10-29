@@ -20,7 +20,8 @@ public class SprintDAO {
 	
 	public ArrayList <SprintModel> toonUserSprint (int e_id){
 		ArrayList<SprintModel> sprintLijst = new ArrayList <SprintModel>();
-		String sprintQuery = "";
+		String sprintQuery = "SELECT * FROM sprint_version, sprint "
+				+ "WHERE sprint_version_sprint_fk = sprint_id";
 		
 		try {
 			PreparedStatement sprintStatement = connect.connectToDB().prepareStatement(sprintQuery);
@@ -56,6 +57,7 @@ public ArrayList<SprintModel> sprintsProjects(int p_id){
 		ResultSet sprints_sets = sprints_statement.executeQuery();
 		while(sprints_sets.next()) {
 			SprintModel sprint = new SprintModel();
+			sprint.setSprintId(sprints_sets.getInt("sprint_version_sprint_fk"));
 			sprint.setSprintName(sprints_sets.getString("sprint_version_name"));
 			sprint.setSprintStartDate(sprints_sets.getString("sprint_version_startdate"));
 			sprint.setSprintEndDate(sprints_sets.getString("sprint_version_enddate"));
