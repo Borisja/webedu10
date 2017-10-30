@@ -1,4 +1,4 @@
-package view;
+package controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,7 +21,7 @@ import model.EmployeeModel;
  *
  */
 
-public class RemoveUserController implements Initializable {
+public class LockUserController implements Initializable {
 	private ObservableList<EmployeeModel> data = FXCollections.observableArrayList();
 	private EmployeeDAO employeeDao = new EmployeeDAO();
 	private AdministratorDAO administratorDao = new AdministratorDAO();
@@ -55,20 +55,17 @@ public class RemoveUserController implements Initializable {
 		lastName.setCellValueFactory(new PropertyValueFactory<EmployeeModel, String>("employeeLastName"));
 		email.setCellValueFactory(new PropertyValueFactory<EmployeeModel, String>("employeeEmail"));
 		role.setCellValueFactory(new PropertyValueFactory<EmployeeModel, String>("employeeRole"));
-		//employeeDao.activeAccountsList().forEach(e-> System.out.println(e.getEmployeeFirstname()));
-	
-		//employeeDao.activeAccountsList().forEach(e -> data.add(e));
+		
 		data.addAll(employeeDao.activeAccountsList());
 		
-		activeAccountList.setItems(data);;
+		activeAccountList.setItems(data);
 		
 	}
 	
 
-	public void LockUser() {
-		//administratorDao.lockEmployee(emp_id);
-		
-		System.out.println();
+	public void lockUser() {
+		int id = activeAccountList.getSelectionModel().getSelectedItem().getEmployeeId();
+		administratorDao.lockEmployee(id);
 	}
 
 }
