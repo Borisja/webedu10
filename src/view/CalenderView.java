@@ -53,6 +53,11 @@ public class CalenderView {
 		EntrySprintCol.setCellValueFactory(
 	    		new PropertyValueFactory<EntryModel, String>("entrySprintDescription"));
 		EntrySprintCol.setMinWidth(150);
+		
+		TableColumn<EntryModel, String> EntryUserStoryCol = new TableColumn<EntryModel, String>("Entry User Story");
+		EntryUserStoryCol.setCellValueFactory(
+	    		new PropertyValueFactory<EntryModel, String>("entryUserStoryDescription"));
+		EntryUserStoryCol.setMinWidth(150);
         
 		TableColumn<EntryModel, String> EntryNameCol = new TableColumn<EntryModel, String>("Entry Description");
 		EntryNameCol.setCellValueFactory(
@@ -77,6 +82,7 @@ public class CalenderView {
 //		table.setPrefSize(600, 600);
 		EntryIdCol.prefWidthProperty().bind(table.widthProperty().divide(12));
 		EntryProjectCol.prefWidthProperty().bind(table.widthProperty().divide(8));
+		EntryUserStoryCol.prefWidthProperty().bind(table.widthProperty().divide(6));
 		EntrySprintCol.prefWidthProperty().bind(table.widthProperty().divide(8));
 		EntryNameCol.prefWidthProperty().bind(table.widthProperty().divide(7));
 		EntryStartCol.prefWidthProperty().bind(table.widthProperty().divide(10));
@@ -84,11 +90,12 @@ public class CalenderView {
 		EntryStatusCol.prefWidthProperty().bind(table.widthProperty().divide(7));
 		
 		//add columns to table
-        table.getColumns().addAll(EntryIdCol, EntryProjectCol, EntrySprintCol,EntryNameCol, EntryStartCol, EntryStopCol, EntryStatusCol);
+        table.getColumns().addAll(EntryIdCol, EntryProjectCol, EntryUserStoryCol, EntrySprintCol,EntryNameCol, EntryStartCol, EntryStopCol, EntryStatusCol);
         
         //For each entry in entry_list add to data
         EmployeeDAO edao = new EmployeeDAO();
         edao.entry_list(em.getEmployeeId()).forEach(entry-> data.add(entry));
+        edao.entry_list(em.getEmployeeId()).forEach(entry-> System.out.println(entry.getEntryUserStoryDescription()));
         
         //Set data into the table items.
         table.setItems(data);

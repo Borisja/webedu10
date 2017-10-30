@@ -17,7 +17,14 @@ public class EntryModel {
 	private Boolean entryIsLocked;
 	private String entryProjectDescription;
 	private String entrySprintDescription;
+	private String entryUserStoryDescription;
 	
+	public String getEntryUserStoryDescription() {
+		return entryUserStoryDescription;
+	}
+	public void setEntryUserStoryDescription(String entryUserStoryDescription) {
+		this.entryUserStoryDescription = entryUserStoryDescription;
+	}
 	public String getEntryProjectDescription() {
 		return entryProjectDescription;
 	}

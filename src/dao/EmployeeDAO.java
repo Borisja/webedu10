@@ -113,11 +113,12 @@ public class EmployeeDAO {
 		//Empty list to return
 		ArrayList<EntryModel> entry_alist = new ArrayList<EntryModel>();
 		
-		String employee_entry_sql = "SELECT sprint_version_description, project_version_description, entry_id, entry_status, entry_version_description, entry_version_starttime, entry_version_endtime, entry_version_creationtime\r\n" + 
+		String employee_entry_sql = "SELECT sprint_version_description, userstory_version_description, project_version_description, entry_id, entry_status, entry_version_description, entry_version_starttime, entry_version_endtime, entry_version_creationtime\r\n" + 
 				"FROM entry_version \r\n" + 
 				"INNER JOIN entry ON(entry_id = entry_version_entry_fk)\r\n" + 
 				"INNER JOIN project_version ON(project_version_project_fk=entry_version_project_fk)\r\n" + 
 				"INNER JOIN sprint_version ON(sprint_version_project_fk=project_version_project_fk)\r\n" + 
+				"INNER JOIN userstory_version ON(userstory_version_project_fk=project_version_project_fk)\r\n" +
 				"WHERE entry_employee_fk = ?";
 		try {
 			PreparedStatement entries_statement = connect.connectToDB().prepareStatement(employee_entry_sql);
@@ -128,6 +129,7 @@ public class EmployeeDAO {
 				EntryModel entry_container = new EntryModel();
 				entry_container.setEntryProjectDescription(entry_set.getString("project_version_description"));
 				entry_container.setEntrySprintDescription(entry_set.getString("sprint_version_description"));
+				entry_container.setEntryUserStoryDescription(entry_set.getString("userstory_version_description"));
 				entry_container.setEntryId(entry_set.getInt("entry_id"));
 				entry_container.setEntryDescription(entry_set.getString("entry_version_description"));
 				entry_container.setEntryStatus(entry_set.getString("entry_status"));
