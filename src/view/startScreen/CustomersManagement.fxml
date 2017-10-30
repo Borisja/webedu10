@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: e3e4e5;" visible="false" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProjectManagementViewController">
+   <children>
+      <TableView fx:id="tableViewProjects" layoutX="3.0" layoutY="10.0" prefHeight="374.0" prefWidth="356.0">
+        <columns>
+          <TableColumn fx:id="id" prefWidth="45.0" text="ID" />
+          <TableColumn fx:id="projectName" prefWidth="62.0" text="Naam" />
+            <TableColumn fx:id="projectDes" prefWidth="112.0" text="Beschrijving" />
+            <TableColumn fx:id="projectIsdeleted" prefWidth="129.0" text="Verwijder_status" />
+        </columns>
+      </TableView>
+      <Button layoutX="415.0" layoutY="105.0" mnemonicParsing="false" onAction="#showPopUpAdd" text="Project toevoegen" />
+      <Button layoutX="415.0" layoutY="150.0" mnemonicParsing="false" onAction="#removeSelectedProject" text="Project verwijderen" />
+      <Button fx:id="changeProject" layoutX="423.0" layoutY="194.0" mnemonicParsing="false" onAction="#showPopUpChange" text="Project wijzigen" />
+      <Button layoutX="448.0" layoutY="279.0" mnemonicParsing="false" onAction="#closeView" prefHeight="27.0" prefWidth="64.0" text="Sluit" />
+      <Pane fx:id="popUp" layoutX="371.0" layoutY="11.0" prefHeight="374.0" prefWidth="216.0" style="-fx-background-color: e3e4e5;" visible="false">
+         <children>
+            <Label fx:id="lblProjectId" layoutX="90.0" layoutY="23.0" prefHeight="17.0" prefWidth="36.0" />
+            <Label layoutX="14.0" layoutY="23.0" text="Project ID:" />
+            <Label layoutX="68.0" layoutY="81.0" text="Project naam" />
+            <Label layoutX="59.0" layoutY="148.0" text="Project beschrijving" />
+            <TextField fx:id="projectChangeName" layoutX="25.0" layoutY="107.0" />
+            <TextField fx:id="projectDescription" layoutX="25.0" layoutY="174.0" />
+            <Button layoutX="73.0" layoutY="219.0" mnemonicParsing="false" onAction="#modifyProject" text="Wijzigen" />
+            <Button layoutX="68.0" layoutY="267.0" mnemonicParsing="false" onAction="#closePopup" text="Annuleren" />
+         </children>
+      </Pane>
+      <Pane fx:id="popUpAdd" layoutX="371.0" layoutY="7.0" prefHeight="374.0" prefWidth="216.0" style="-fx-background-color: e3e4e5;" visible="false">
+         <children>
+            <Label layoutX="14.0" layoutY="23.0" text="ProjectToevoegen" />
+            <Label layoutX="68.0" layoutY="81.0" text="Project naam" />
+            <Label layoutX="59.0" layoutY="148.0" text="Project beschrijving" />
+            <TextField fx:id="projectNewName" layoutX="25.0" layoutY="107.0" />
+            <TextField fx:id="projectNewDescription" layoutX="25.0" layoutY="174.0" />
+            <Button layoutX="65.0" layoutY="286.0" mnemonicParsing="false" onAction="#addProject" text="Toevoegen" />
+            <Button layoutX="68.0" layoutY="321.0" mnemonicParsing="false" onAction="#closePopupAdd" text="Annuleren" />
+            <Label layoutX="57.0" layoutY="212.0" text="Voor welke klant" />
+            <ComboBox fx:id="customerCombo" layoutX="33.0" layoutY="239.0" prefWidth="150.0" />
+         </children>
+      </Pane>
+   </children>
+</Pane>

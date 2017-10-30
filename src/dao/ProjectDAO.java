@@ -223,6 +223,7 @@ public class ProjectDAO {
 	 * Deze methode geeft een overzicht van alle projecten die de employee aan deelneemt
 	 * @param customerModel
 	 * @return
+	 * @author rezanaser
 	 */
 	public ArrayList<ProjectModel> project_list_employee(int employeeId){
 		ArrayList<ProjectModel> proj_list = new ArrayList<ProjectModel>();
