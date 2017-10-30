@@ -76,7 +76,7 @@ public class LockUserController implements Initializable {
 	{
 		this.pane.setVisible(true);
 	}
-	
+	//
 	public void closeView()
 	{
 		this.pane.setVisible(false);

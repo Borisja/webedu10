@@ -70,7 +70,7 @@ public class UnlockUserController implements Initializable {
 		int id = activeAccountList.getSelectionModel().getSelectedItem().getEmployeeId();
 		administratorDao.unlockEmployee(id);
 	}
-
+//
 	
 	public void showView()
 	{
