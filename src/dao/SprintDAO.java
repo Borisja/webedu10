@@ -1,8 +1,10 @@
 package dao;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import model.EntryModel;
@@ -70,4 +72,84 @@ public ArrayList<SprintModel> sprintsProjects(int p_id){
 	}
 	return sprint_alist;
   }
+
+
+
+	public int createSprint()
+	{
+		int generatedID = 0;
+		PreparedStatement createSprint;
+		ResultSet sprintID = null;
+		String insertSprintStatement = "INSERT INTO sprint(is_deleted) VALUES(?)";
+		
+		try 
+		{
+			createSprint = connect.connectToDB().prepareStatement(insertSprintStatement, Statement.RETURN_GENERATED_KEYS);
+			
+			createSprint.setBoolean(1, false);
+			createSprint.executeUpdate();
+//			createSprint.getGeneratedKeys();
+			sprintID = createSprint.getGeneratedKeys();
+			
+			
+			while(sprintID.next())
+			{
+				generatedID = sprintID.getInt(1);
+			}
+		
+		} catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+			return generatedID;
+	}
+
+
+	public void addSprint(String sprintName, int projectID, String sprintDescription, Date sprintStartDate, Date sprintEndDate)
+	{
+		PreparedStatement addSprint;
+		String insertStatement = "INSERT INTO sprint_version(sprint_version_sprint_fk, sprint_version_project_fk, sprint_version_name, sprint_version_description, sprint_version_startdate, sprint_version_enddate) " 
+				+ "VALUES(?,?,?,?,?,?)";
+		
+		
+		try 
+		{
+			addSprint = connect.connectToDB().prepareStatement(insertStatement);
+			
+			addSprint.setInt(1, createSprint());
+			addSprint.setInt(2,  projectID);
+			addSprint.setString(3, sprintName);
+			addSprint.setString(4, sprintDescription);
+			
+			addSprint.setDate(5, sprintStartDate);
+			addSprint.setDate(6, sprintEndDate);
+			
+//			start
+//			end
+			
+			
+		}  catch (Exception e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public void removeSprint(int sprintID) 
+	{
+		String deleteSprint = "UPDATE project "
+			+ "SET project_isdeleted = true "
+			+ "WHERE project_id = ?";
+		try 
+		{
+			PreparedStatement lockStatement = connect.connectToDB().prepareStatement(deleteSprint);
+			lockStatement.setInt(1, sprintID);
+			lockStatement.executeUpdate();
+		} catch (Exception e) 
+		{
+		e.printStackTrace();
+		}
+	}
+
+
 }

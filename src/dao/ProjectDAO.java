@@ -182,7 +182,6 @@ public class ProjectDAO {
 			insertProject.setBoolean(4, true);
 			insertProject.setInt(5, customerId);
 			insertProject.executeQuery();
-
 			insertProject.close();
 			
 		} catch (Exception e) {

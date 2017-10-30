@@ -76,7 +76,7 @@ public class ProjectManagementViewController implements Initializable{
 		pList.forEach(e -> data.add(e));
 
 		/**
-		 * Change what you see in the combobox, to the omschrijving rather then the object address.
+		 * Change what you see in the combobox, to the description rather then the object address.
 		 * Must study this to understand. works for now.
 		 */
 		Callback<ListView<CustomerModel>, ListCell<CustomerModel>> factory = lv -> new ListCell<CustomerModel>() {
