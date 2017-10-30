@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
 import model.EmployeeModel;
 
 /**
@@ -46,6 +47,9 @@ public class LockUserController implements Initializable {
 	
 	@FXML
 	TableColumn<EmployeeModel, String> role;
+	
+	@FXML 
+	Pane pane;
 
 
 	@Override
@@ -66,6 +70,16 @@ public class LockUserController implements Initializable {
 	public void lockUser() {
 		int id = activeAccountList.getSelectionModel().getSelectedItem().getEmployeeId();
 		administratorDao.lockEmployee(id);
+	}
+	
+	public void showView()
+	{
+		this.pane.setVisible(true);
+	}
+	//
+	public void closeView()
+	{
+		this.pane.setVisible(false);
 	}
 
 }
