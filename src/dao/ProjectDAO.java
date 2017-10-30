@@ -25,8 +25,8 @@ public class ProjectDAO {
 				"BEGIN " +
 				" INSERT INTO project(project_isdeleted) VALUES(false) " +
 				"    RETURNING project_id INTO pk; " +
-				"    INSERT INTO project_version(project_version_project_fk, project_version_name, project_version_description, project_version_customer_fk) " +
-				"    VALUES(pk,name,description, customer); " +
+				"    INSERT INTO project_version(project_version_project_fk, project_version_name, project_version_description, project_version_customer_fk,project_version_iscurrent) " +
+				"    VALUES(pk,name,description, customer,true); " +
 				"END $$ LANGUAGE plpgsql;";
 		try {
 			PreparedStatement project_statement = connect.connectToDB().prepareStatement(project_list_sql);

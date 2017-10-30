@@ -24,8 +24,8 @@ public class CustomerDAO {
 				"BEGIN " +
 				" INSERT INTO customer(customer_isdeleted) VALUES(false) " +
 				"    RETURNING customer_id INTO pk; " +
-				"    INSERT INTO customer_version(customer_version_customer_fk, customer_version_name, customer_version_description) " +
-				"    VALUES(pk,name,description); " +
+				"    INSERT INTO customer_version(customer_version_customer_fk, customer_version_name, customer_version_description,customer_version_iscurrent) " +
+				"    VALUES(pk,name,description,true); " +
 				"END $$ LANGUAGE plpgsql; ";
 		try {
 			PreparedStatement project_statement = connect.connectToDB().prepareStatement(project_list_sql);
