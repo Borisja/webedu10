@@ -213,10 +213,16 @@ public class AddEntryViewController implements Initializable {
 	    java.sql.Time convertedStartTime = new java.sql.Time(d1.getTime());
 	    java.sql.Time convertedEndTime = new java.sql.Time(d2.getTime());
 
-		adminDao.addEntry(currentEmployee.getEmployeeId(), projectCombo.getSelectionModel().getSelectedItem().getProjectId(), 
-				 sprintCombo.getSelectionModel().getSelectedItem().getSprintId()
-				,date1, entryDescription.getText(), convertedStartTime, convertedEndTime,
+		adminDao.addEntry(
+				currentEmployee.getEmployeeId(),
+				projectCombo.getSelectionModel().getSelectedItem().getProjectId(),
+				sprintCombo.getSelectionModel().getSelectedItem().getSprintId(),
+				date1,
+				entryDescription.getText(),
+				convertedStartTime,
+				convertedEndTime,
 				userStorysCombo.getSelectionModel().getSelectedItem().getUserStoryId());
+
 		Alert showMessage = new Alert(AlertType.INFORMATION);
 		showMessage.setContentText("Nieuwe entry is toegevoegd aan de database");
 		showMessage.showAndWait();
