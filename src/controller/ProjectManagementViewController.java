@@ -61,6 +61,9 @@ public class ProjectManagementViewController implements Initializable{
 	private ProjectDAO projectDAO = new ProjectDAO();
 	private CustomerDAO customerDAO = new CustomerDAO();
 
+	public ProjectManagementViewController(){
+		System.out.println(this.getClass().toString()+": constructor");
+	}
 	
 	/**
 	 * Fill the project box, when item is selected load the rest.
@@ -100,7 +103,11 @@ public class ProjectManagementViewController implements Initializable{
 	 */
 	public void addProject() 
 	{
-		projectDAO.addProjectToDatabase(projectNewName.getText(), projectNewDescription.getText(), customerCombo.getSelectionModel().getSelectedItem().getCustomer_id());
+		// DIt is aangepast door Robert, als het neit werkt dan haal je het weg.
+		// Ik kon het zelf niet testen want dan had ik pas een uur later kunnen pushen ofzo
+		projectDAO.createAddProjectFunction();
+//		projectDAO.addProjectToDatabase(projectNewName.getText(), projectNewDescription.getText(), customerCombo.getSelectionModel().getSelectedItem().getCustomer_id());
+		projectDAO.addProject(projectNewName.getText(), projectNewDescription.getText(), customerCombo.getSelectionModel().getSelectedItem().getCustomer_id());
 		refreshTable();
 		projectNewName.setText(null);
 		projectNewDescription.setText(null);

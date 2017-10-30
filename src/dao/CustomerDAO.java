@@ -12,20 +12,28 @@ public class CustomerDAO {
 	ConnectDAO connect = new ConnectDAO();
 
 	/**
-	 * Deze constructor maakt een stored procedure aan die een nieuwe klant kan toevoegen zonder onderbroken te worden
-	 * door een andere gebruiker (atomicity).
-	 *
 	 * @author Robert den Blaauwen
 	 * @date 25-10-2017
 	 */
 	public CustomerDAO(){
+
+	}
+
+	/**
+	 * Deze methode maakt een stored procedure aan die een nieuwe klant kan toevoegen zonder onderbroken te worden
+	 * door een andere gebruiker (atomicity).
+	 *
+	 * @author Robert den Blaauwen
+	 * @date 30-10-2017
+	 */
+	public void createAddCustomerFunction(){
 		String project_list_sql = "CREATE OR REPLACE FUNCTION add_customer(name TEXT, description TEXT) " +
 				"RETURNS void AS $$ " +
 				"DECLARE pk INT; " +
 				"BEGIN " +
 				" INSERT INTO customer(customer_isdeleted) VALUES(false) " +
 				"    RETURNING customer_id INTO pk; " +
-				"    INSERT INTO customer_version(customer_version_customer_fk, customer_version_name, customer_version_description,customer_version_iscurrent) " +
+				"    INSERT INTO customer_version(customer_version_customer_fk, customer_version_name, customer_version_description,customer_version_current) " +
 				"    VALUES(pk,name,description,true); " +
 				"END $$ LANGUAGE plpgsql; ";
 		try {
@@ -48,7 +56,7 @@ public class CustomerDAO {
 	 * @return CustomerModel with specific customer information
 	 */
 	public CustomerModel customerInformation(int c_id) {
-		String login_sql = "SELECT * FROM customer, customer_version WHERE customer_id = ?";
+		String login_sql = "SELECT * FROM customer c INNER JOIN customer_version cv ON c.customer_id=cv.customer_version_customer_fk WHERE customer_id = ? AND customer_version_current=true";
 		PreparedStatement customer_statement;
 		
 		try {
@@ -178,7 +186,7 @@ public class CustomerDAO {
 	 */
 	public void addCustomerToDatabase(String customerName, String customerDes){
 		PreparedStatement insertProject;
-		String insertUser_sql = "insert into customer_version (customer_version_customer_fk, customer_version_name, customer_version_description, project_version_current) "
+		String insertUser_sql = "insert into customer_version (customer_version_customer_fk, customer_version_name, customer_version_description, customer_version_current) "
 				+ "VALUES (?, ?, ?, ?, ?)";
 		try {
 			insertProject = connect.connectToDB().prepareStatement(insertUser_sql);
