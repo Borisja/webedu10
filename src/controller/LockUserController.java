@@ -69,8 +69,33 @@ public class LockUserController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+		fillTable();
+	}
 	
+
+	public void lockUser() {
+		int id = activeAccountList.getSelectionModel().getSelectedItem().getEmployeeId();
+		
+		if(id >=0) {
+			administratorDao.lockEmployee(id);
+			fillTable();
+		}
+	}
+	
+	public void unLockUser() {
+		int id = lockedAccountsList.getSelectionModel().getSelectedItem().getEmployeeId();
+
+		if(id >=0) {
+			administratorDao.unlockEmployee(id);
+			fillTable();
+		}
+	}
+	
+	public void fillTable() {
+		
+		activeAccountList.getItems().clear();
+		lockedAccountsList.getItems().clear();
+		
 		idUnlocked.setCellValueFactory(new PropertyValueFactory<EmployeeModel, Integer>("employeeId"));
 		firstNameUnlocked.setCellValueFactory(new PropertyValueFactory<EmployeeModel, String>("employeeFirstName"));
 		lastNameUnlocked.setCellValueFactory(new PropertyValueFactory<EmployeeModel, String>("employeeLastName"));
@@ -91,31 +116,6 @@ public class LockUserController implements Initializable {
 		lockedAccounts.addAll(employeeDao.lockedAccountsList());
 		
 		lockedAccountsList.setItems(lockedAccounts);
-	}
-	
-
-	public void lockUser() {
-		int id = activeAccountList.getSelectionModel().getSelectedItem().getEmployeeId();
-		
-		if(id >=0) {
-			administratorDao.lockEmployee(id);
-			lockedAccountsList.refresh();
-			activeAccountList.refresh();
-		}
-	}
-	
-	public void unLockUser() {
-		int id = lockedAccountsList.getSelectionModel().getSelectedItem().getEmployeeId();
-
-		if(id >=0) {
-			administratorDao.unlockEmployee(id);
-			lockedAccountsList.refresh();
-			activeAccountList.refresh();
-		}
-	}
-	
-	public void tableRefresh() {
-				
 	}
 	
 	public void showView()
