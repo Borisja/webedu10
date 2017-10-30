@@ -6,6 +6,8 @@ import controller.AccountManagementController;
 import controller.CreateUserController;
 import controller.CustomerManagementViewController;
 import controller.EmployeeManagementController;
+import controller.EmployeesOverviewController;
+import controller.LockUserController;
 import controller.ProjectManagementViewController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,8 +33,8 @@ public class AdministratorViewController {
 
 	private EmployeeManagementController employeeManagement;
 	private ProjectManagementViewController projectManagementController;
-	private AccountManagementController accountManagement;
 	private CustomerManagementViewController customerManagement;
+	private LockUserController lockEmployee;
 	
 
 	
@@ -52,10 +54,6 @@ public class AdministratorViewController {
 		AdministratorViewController adminController = beheerderScherm.getController();
 
 	    
-	    FXMLLoader accountbeheren = new FXMLLoader(getClass().getResource("/view/AccountManagement.fxml"));			//get xml file
-	    Pane accountBeherenView = accountbeheren.load();	
-	    AccountManagementController accountController = accountbeheren.getController();
-	    
 	    FXMLLoader medewerkerBeheren = new FXMLLoader(getClass().getResource("/controller/EmployeeManagement.fxml"));			//get xml file
 	    Pane medewerkerBeherenView = medewerkerBeheren.load();	
 	    EmployeeManagementController medewerkerBeherenController = medewerkerBeheren.getController();
@@ -71,26 +69,40 @@ public class AdministratorViewController {
 	    FXMLLoader projectManagementLoader = new FXMLLoader(getClass().getResource("/view/ProjectsManagementView.fxml"));			//get xml file
 	    Pane projectManagementView = projectManagementLoader.load();	
 	    ProjectManagementViewController projectManagementController = projectManagementLoader.getController();
+	    
+	    FXMLLoader lockUnclockEmployeesLoader = new FXMLLoader(getClass().getResource("/view/LockUser.fxml"));			//get xml file
+	    Pane unlockView = lockUnclockEmployeesLoader.load();	
+	    LockUserController lockController = lockUnclockEmployeesLoader.getController();
+	    
+	    FXMLLoader employeeLoader = new FXMLLoader(getClass().getResource("/view/EmployeesOverview.fxml"));			//get xml file
+	    Pane allEmployeeView = employeeLoader.load();	
+	    EmployeesOverviewController allEmployeeController = employeeLoader.getController();
 
 		FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("/view/home/home.fxml"));			//get xml file
 		Pane homeView = homeLoader.load();
 		homeController homeController = homeLoader.getController();
 		homeController.setUserName(user.getEmployeeFirstname());
 		View.setTop(homeView);
-		
-	    adminController.setControllerAccount(accountController);
 	    adminController.setControllerMedewerkerBeheren(medewerkerBeherenController);
 	    adminController.setControllerProjectManagement(projectManagementController);
 	    adminController.setControllerCustomerManagement(customerController);
+	    adminController.setControllerLockEmployee(lockController);
+	    medewerkerBeherenController.setControllerEmployee(allEmployeeController);
 	    medewerkerBeherenController.setControllerCreateUserController(createUserController);
+	    medewerkerBeherenController.setControllerLockUserController(lockController);
 	   // beheerderController.setControllerHandleiding(handleidingController);
 	    
 	    Pane tabPane = (Pane)beheerderScherm.getNamespace().get("pane"); 						//get stackPane from fieldView
-        tabPane.getChildren().addAll(accountBeherenView, medewerkerBeherenView, createUserView, projectManagementView,customerView);
+        tabPane.getChildren().addAll(allEmployeeView, unlockView, medewerkerBeherenView, createUserView, projectManagementView,customerView);
         
 		Scene scene = new Scene(View);
 		primaryStage.setScene(scene);
 		primaryStage.show();
+	}
+
+	private void setControllerLockEmployee(LockUserController lockController) {
+		this.lockEmployee = lockController;
+		
 	}
 
 	private void setControllerCustomerManagement(CustomerManagementViewController customerController) {
@@ -102,18 +114,9 @@ public class AdministratorViewController {
 		this.projectManagementController = projectManagementController;
 		
 	}
-
-	private void setControllerAccount(AccountManagementController accountController) {
-		this.accountManagement = accountController;
-		
-	}
 	private void setControllerMedewerkerBeheren(EmployeeManagementController medewerkerBeherenController) {
 		this.employeeManagement = medewerkerBeherenController;
 		
-	}
-	public void openAccountView()
-	{
-		this.accountManagement.showAccountView();
 	}
 	public void openProjectsManagement()
 	{

@@ -13,6 +13,36 @@ public class EmployeeDAO {
 	
 	ConnectDAO connect = new ConnectDAO();
 	
+	public ArrayList<EmployeeModel> getAllEmployees(){
+		//Empty list to return
+		ArrayList<EmployeeModel> employee_alist = new ArrayList<EmployeeModel>();
+		
+		String employee_entry_sql = "SELECT * FROM employee, employee_version "
+				+ "WHERE  employee_id = employee_version_employee_fk "
+				+ "AND employee_version_current = true";
+		try {
+			PreparedStatement user_statement = connect.connectToDB().prepareStatement(employee_entry_sql);
+			//entries_statement.setInt(1, e_id);
+			
+			ResultSet userSet = user_statement.executeQuery();
+			while(userSet.next()) {
+				EmployeeModel employee_container = new EmployeeModel(
+				userSet.getInt("employee_id"), userSet.getBoolean("employee_isdeleted"), 
+				userSet.getString("employee_version_firstname"), userSet.getString("employee_version_lastname"), 
+				userSet.getString("employee_version_password"), userSet.getString("employee_version_email"), 
+				userSet.getString("employee_version_role")
+						
+				);	
+				employee_alist.add(employee_container);
+			}
+			user_statement.close();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return employee_alist;
+	}
+	
 	public ArrayList<EmployeeModel> activeAccountsList(){
 		//Empty list to return
 		ArrayList<EmployeeModel> employee_alist = new ArrayList<EmployeeModel>();

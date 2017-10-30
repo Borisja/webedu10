@@ -2,7 +2,11 @@ package view;
 
 import java.net.URL;
 import java.sql.Date;
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -22,6 +26,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -50,7 +55,6 @@ public class AddEntryViewController implements Initializable {
 	@FXML ComboBox<SprintModel> sprintCombo;
 	@FXML Button btnAddEntry;
 	@FXML Pane pane;
-	@FXML ComboBox userStoryCombo;
 	@FXML Button addEntryButton;
 	private EntryController entryController;
 	
@@ -79,12 +83,11 @@ public class AddEntryViewController implements Initializable {
 		this.pane.setVisible(false);
 		this.entryController.showView();
 	}
-
-	@FXML TextField entryDate;
 	@FXML TextField entryStartTime;
 	@FXML TextField entryEndTime;
 	@FXML TextField entryDescription;
-	Date entryDateConverted;
+	@FXML DatePicker entryDate;
+	
 	private AdministratorDAO adminDao = new AdministratorDAO();
 	EmployeeModel currentEmployee;
 	
@@ -148,9 +151,9 @@ public class AddEntryViewController implements Initializable {
 
 		};
 		
-		this.userStoryCombo.setItems(data);
-		this.userStoryCombo.setCellFactory(factory);
-		this.userStoryCombo.setButtonCell(factory.call(null));
+		this.userStorysCombo.setItems(data);
+		this.userStorysCombo.setCellFactory(factory);
+		this.userStorysCombo.setButtonCell(factory.call(null));
 	
 		
 	}
@@ -191,13 +194,29 @@ public class AddEntryViewController implements Initializable {
 
 		});
 	}
+	/**
+	 * Deze methode converteert de tijd van string naar time en localdate naar date en maakt een nieuwe entry
+	 * in de tabel entry_version
+	 * @throws ParseException
+	 * @author rezanaser
+	 */
 	
-	public void addEntryToDatabase()
+	public void addEntryToDatabase() throws ParseException
 	{
+		Date date1 = Date.valueOf(entryDate.getValue());
+		String startTime = entryStartTime.getText();
+		String endTime = entryEndTime.getText();
+		SimpleDateFormat formatStartTime = new SimpleDateFormat("hh:mm:ss");
+		SimpleDateFormat formatEndTime = new SimpleDateFormat("hh:mm:ss");
+	    java.util.Date d1 =(java.util.Date)formatStartTime.parse(startTime);
+	    java.util.Date d2 =(java.util.Date)formatEndTime.parse(endTime);
+	    java.sql.Time convertedStartTime = new java.sql.Time(d1.getTime());
+	    java.sql.Time convertedEndTime = new java.sql.Time(d2.getTime());
+
 		adminDao.addEntry(currentEmployee.getEmployeeId(), projectCombo.getSelectionModel().getSelectedItem().getProjectId(), 
-				//userStoryCombo.getSelectionModel().getSelectedItem().getUserStoryId(), 
 				 sprintCombo.getSelectionModel().getSelectedItem().getSprintId()
-				, entryDescription.getText());
+				,date1, entryDescription.getText(), convertedStartTime, convertedEndTime,
+				userStorysCombo.getSelectionModel().getSelectedItem().getUserStoryId());
 		Alert showMessage = new Alert(AlertType.INFORMATION);
 		showMessage.setContentText("Nieuwe entry is toegevoegd aan de database");
 		showMessage.showAndWait();
