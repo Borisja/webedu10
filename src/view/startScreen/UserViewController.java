@@ -72,12 +72,11 @@ public class UserViewController {
 	    
 	    
 	    view.setTop(homeView);
-	    homeController.setUserName(em.getEmployeeFirstname());  
+	    homeController.setUserName(em.getEmployeeFirstname()); 
 	    userInformationController.fillUserData(em);
 	    userController.setControllerSprint(sprintController);
 	    userController.setControllerProject(projectController);
 	    userController.setControllerAddEntryHours(addEntryController);
-		addEntryController.setController(addHoursController);
 		userController.setControllerGebruikerGegevens(userInformationController);
 		
 		

@@ -5,9 +5,9 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.RemoveUserController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UnlockUserController">
    <children>
-      <Button fx:id="lockButton" layoutX="493.0" layoutY="326.0" mnemonicParsing="false" onMouseClicked="#LockUser" text="Lock user" />
+      <Button fx:id="lockButton" layoutX="439.0" layoutY="328.0" mnemonicParsing="false" onMouseClicked="#unlockUser" text="Ontgrendel gebruiker" />
       <TableView fx:id="activeAccountList" layoutX="72.0" layoutY="36.0" prefHeight="278.0" prefWidth="431.0">
         <columns>
           <TableColumn fx:id="id" prefWidth="75.0" text="ID" />
