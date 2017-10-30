@@ -12,20 +12,28 @@ public class ProjectDAO {
 	ObservableList<ProjectModel> arrProjecten;
 
 	/**
-	 * Deze constructor maakt een stored procedure aan die een nieuw project kan toevoegen zonder onderbroken te worden
-	 * door een andere gebruiker (atomicity).
-	 *
 	 * @author Robert den Blaauwen
 	 * @date 25-10-2017
 	 */
 	public ProjectDAO(){
+
+	}
+
+	/**
+	 * Deze methode maakt een stored procedure aan die een nieuw project kan toevoegen zonder onderbroken te worden
+	 * door een andere gebruiker (atomicity).
+	 *
+	 * @author Robert den Blaauwen
+	 * @date 30-10-2017
+	 */
+	public void createAddProjectFunction(){
 		String project_list_sql = "CREATE OR REPLACE FUNCTION add_project(name TEXT, description TEXT, customer INT4) " +
 				"RETURNS void AS $$ " +
 				"DECLARE pk INT; " +
 				"BEGIN " +
 				" INSERT INTO project(project_isdeleted) VALUES(false) " +
 				"    RETURNING project_id INTO pk; " +
-				"    INSERT INTO project_version(project_version_project_fk, project_version_name, project_version_description, project_version_customer_fk,project_version_iscurrent) " +
+				"    INSERT INTO project_version(project_version_project_fk, project_version_name, project_version_description, project_version_customer_fk,project_version_current) " +
 				"    VALUES(pk,name,description, customer,true); " +
 				"END $$ LANGUAGE plpgsql;";
 		try {
@@ -73,6 +81,13 @@ public class ProjectDAO {
 		} 
 		return proj_list;
 	}
+
+	/**
+	 * Geeft een lijst van projecten
+	 *
+	 * @param customerModel
+	 * @return
+	 */
 	public ArrayList<ProjectModel> project_list(CustomerModel customerModel){
 		ArrayList<ProjectModel> proj_list = new ArrayList<ProjectModel>();
 		String project_list_sql = "SELECT * FROM project_version "
@@ -100,6 +115,14 @@ public class ProjectDAO {
 		return proj_list;
 	}
 
+	/**
+	 * Voegt een nieuw project toe, maakt gebruik van de stored procedure die gemaakt wordt in createAddProjectFunction()
+	 *
+	 * @author Robert den Blaauwen
+	 * @param name
+	 * @param description
+	 * @param customerID
+	 */
 	public void addProject(String name, String description, int customerID) {
 		String login_sql = "SELECT add_project('"+name+"','"+description+"','"+customerID+"')";
 		PreparedStatement project_statement;
@@ -121,7 +144,7 @@ public class ProjectDAO {
 
 	public void modifyProject(int pId, String name, String description) {
 		String changePreviousVersion = "UPDATE project_version set project_version_current = 'n' "
-				+ "WHERE project_version_project_fk = ?";
+				+ "WHERE project_version_project_fk = ? AND project_version_current= true";
 		String change_project = "INSERT INTO project_version(project_version_project_fk, project_version_name, project_version_description, project_version_current)"
 				+ "VALUES(?, ?, ?, true)";
 		try {
@@ -189,7 +212,6 @@ public class ProjectDAO {
 			System.out.println(e);
 			//e.printStackTrace();
 		}
-		
 	}
 	/**
 	 * De volgende voegt een nieuwe project toe aan de project tabel
