@@ -4,10 +4,8 @@ import java.io.IOException;
 
 import view.EntryController;
 import controller.UserInformationController;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
@@ -19,6 +17,8 @@ import view.EntryController;
 import view.home.homeController;
 import view.projectView.ProjectController;
 import view.sprintView.SprintController;
+
+
 
 /**
  * This class loads fxml files of the employeesceen and initializes their respective controllers.

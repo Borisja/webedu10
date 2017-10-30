@@ -1,12 +1,16 @@
 package view;
 
 import java.net.URL;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.ResourceBundle;
-
 import controller.AddHoursController;
+import dao.AdministratorDAO;
 import dao.ProjectDAO;
 import dao.SprintDAO;
+import dao.UserStoryDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -14,6 +18,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListCell;
@@ -23,8 +29,10 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.util.Callback;
+import model.EmployeeModel;
 import model.ProjectModel;
 import model.SprintModel;
 import model.UserStoryModel;
@@ -71,6 +79,14 @@ public class AddEntryViewController implements Initializable {
 		this.pane.setVisible(false);
 		this.entryController.showView();
 	}
+
+	@FXML TextField entryDate;
+	@FXML TextField entryStartTime;
+	@FXML TextField entryEndTime;
+	@FXML TextField entryDescription;
+	Date entryDateConverted;
+	private AdministratorDAO adminDao = new AdministratorDAO();
+	EmployeeModel currentEmployee;
 	
 	/**
 	 * Fill the sprint box when project box onaction is called
@@ -80,9 +96,7 @@ public class AddEntryViewController implements Initializable {
 	{
 		ArrayList<SprintModel> sprint_list = new SprintDAO().sprintsProjects(p_id);
 		
-		ObservableList<SprintModel> data;
-		
-		data = FXCollections.observableArrayList();
+		ObservableList<SprintModel> data = FXCollections.observableArrayList();
 		
 		sprint_list.forEach(e -> data.add(e));
 
@@ -104,10 +118,6 @@ public class AddEntryViewController implements Initializable {
 		this.sprintCombo.setButtonCell(factory.call(null));
 		
 		this.sprintCombo.setOnAction(e-> {
-			
-			//Met de onderstaande regel stuurt de combobox het geselecteerde sprintmodel mee naar AddHoursController
-
-			entryController.setChosenSprint(sprintCombo.getSelectionModel().getSelectedItem());
 		});
 	}
 	
@@ -117,13 +127,13 @@ public class AddEntryViewController implements Initializable {
 	 */	
 	public void fillUserStoriesBox(int p_id)
 	{	
-//		ArrayList<UserStoryModel> pList = new ProjectDAO().project_list();
+		ArrayList<UserStoryModel> pList = new UserStoryDAO().userstoriesProjects(p_id);
 		
 		ObservableList<UserStoryModel> data;
 		
 		data = FXCollections.observableArrayList();
 		
-//		pList.forEach(e -> data.add(e));
+		pList.forEach(e -> data.add(e));
 
 		/**
 		 * Change what you see in the combobox, to the omschrijving rather then the object address.
@@ -141,12 +151,7 @@ public class AddEntryViewController implements Initializable {
 		this.userStoryCombo.setItems(data);
 		this.userStoryCombo.setCellFactory(factory);
 		this.userStoryCombo.setButtonCell(factory.call(null));
-		
-		this.userStoryCombo.setOnAction(e-> {
-			//Met de onderstaande regel stuurt de combobox het geselecteerde userstorymodel mee naar AddHoursController
-			
-			entryController.setChosenUserStory((UserStoryModel) userStoryCombo.getSelectionModel().getSelectedItem());
-		});
+	
 		
 	}
 	
@@ -182,10 +187,20 @@ public class AddEntryViewController implements Initializable {
 		
 		this.projectCombo.setOnAction(e-> {
 			this.fillSprintsBox(projectCombo.getSelectionModel().getSelectedItem().getProjectId());
+			this.fillUserStoriesBox(projectCombo.getSelectionModel().getSelectedItem().getProjectId());
 
-			//Met de onderstaande regel stuurt de combobox het geselecteerde projectmodel mee naar AddHoursController
-			entryController.setChosenProject(projectCombo.getSelectionModel().getSelectedItem());
 		});
+	}
+	
+	public void addEntryToDatabase()
+	{
+		adminDao.addEntry(currentEmployee.getEmployeeId(), projectCombo.getSelectionModel().getSelectedItem().getProjectId(), 
+				//userStoryCombo.getSelectionModel().getSelectedItem().getUserStoryId(), 
+				 sprintCombo.getSelectionModel().getSelectedItem().getSprintId()
+				, entryDescription.getText());
+		Alert showMessage = new Alert(AlertType.INFORMATION);
+		showMessage.setContentText("Nieuwe entry is toegevoegd aan de database");
+		showMessage.showAndWait();
 	}
 
 	
@@ -224,6 +239,14 @@ public class AddEntryViewController implements Initializable {
 	public void closeView()
 	{
 		this.pane.setVisible(false);
+	}
+	/**
+	 * Deze methode krijgt het huidige employee model  van de UserViewController
+	 * @param em - > het model van ingelogde employee
+	 */
+	public void setCurrentUser(EmployeeModel em) {
+		this.currentEmployee =em;
+		
 	}
 
 }
