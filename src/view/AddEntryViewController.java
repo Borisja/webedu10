@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.ResourceBundle;
-
+import controller.AddHoursController;
 import dao.AdministratorDAO;
 import dao.ProjectDAO;
 import dao.SprintDAO;
@@ -14,13 +14,21 @@ import dao.UserStoryDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.util.Callback;
@@ -38,10 +46,40 @@ import model.UserStoryModel;
 public class AddEntryViewController implements Initializable {
 	
 	@FXML ComboBox<ProjectModel> projectCombo;
-	@FXML ComboBox<UserStoryModel>userStoryCombo;
+	@FXML ComboBox<UserStoryModel> userStorysCombo;
 	@FXML ComboBox<SprintModel> sprintCombo;
-	@FXML Button addEntryButton;
+	@FXML Button btnAddEntry;
 	@FXML Pane pane;
+	@FXML ComboBox userStoryCombo;
+	@FXML Button addEntryButton;
+	private EntryController entryController;
+	
+	public void showAddEntryView()
+	{
+		this.pane.setVisible(true);
+	}
+	
+	
+	/**
+	 * Deze methode krijgt huidige AddHoursController van de GebruikerViewController mee 
+	 * @param ac -> is van type AddHoursController
+	 * @author rezanaser
+	 */
+	public void setController(EntryController ac)
+	{
+		this.entryController = ac;
+	}
+	
+	/**
+	 * Deze methode toont het volgende scherm(AddHours) nadat er geklikt wordt op toevoegen knop
+	 * @author rezanaser
+	 */
+	public void showAddHoursView()
+	{
+		this.pane.setVisible(false);
+		this.entryController.showView();
+	}
+
 	@FXML TextField entryDate;
 	@FXML TextField entryStartTime;
 	@FXML TextField entryEndTime;
@@ -49,7 +87,6 @@ public class AddEntryViewController implements Initializable {
 	Date entryDateConverted;
 	private AdministratorDAO adminDao = new AdministratorDAO();
 	EmployeeModel currentEmployee;
-	
 	
 	/**
 	 * Fill the sprint box when project box onaction is called

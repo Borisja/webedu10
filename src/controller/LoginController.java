@@ -64,8 +64,9 @@ public class LoginController {
 			{
 				try {
 					new ManagerViewController().startManager(user);
+//					new CalenderView().agendaShow(user);
 					
-				} catch (IOException e) {
+				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}

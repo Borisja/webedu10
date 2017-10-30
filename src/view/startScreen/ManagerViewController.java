@@ -93,5 +93,9 @@ public class ManagerViewController {
 	{
 		this.export.exportCSV();
 	}
+	public void projectManagement(){
+		Stage stage = new Stage();
+		FXMLLoader loader = new FXMLLoader();
+	}
 }
 

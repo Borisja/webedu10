@@ -2,6 +2,7 @@ package view.startScreen;
 
 import java.io.IOException;
 
+import view.EntryController;
 import controller.UserInformationController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +13,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.EmployeeModel;
 import view.AddEntryViewController;
+import view.CalenderView;
 import view.EntryController;
 import view.home.homeController;
 import view.projectView.ProjectController;
@@ -33,6 +35,7 @@ public class UserViewController {
 	private EntryController addHours;
 	private UserInformationController userInformationController;
 	private EmployeeModel user;
+	private CalenderView calenderView;
 	
 	public void startGebruiker(EmployeeModel em) throws IOException
 	{
@@ -59,6 +62,9 @@ public class UserViewController {
 		Pane addEntryView = addEntryLoader.load();
 		AddEntryViewController addEntryController = addEntryLoader.getController();
 		
+		FXMLLoader entriesLoader = new FXMLLoader(getClass().getResource("/view/CalenderView.fxml"));
+		Pane entriesView = entriesLoader.load();
+		CalenderView calenderController = entriesLoader.getController();
 		
 		FXMLLoader employeeGegevensLoader = new FXMLLoader(getClass().getResource("/controller/UserInformationView.fxml"));
 		Pane userInformationView = employeeGegevensLoader.load();
@@ -77,12 +83,14 @@ public class UserViewController {
 	    userController.setControllerSprint(sprintController);
 	    userController.setControllerProject(projectController);
 	    userController.setControllerAddEntryHours(addEntryController);
+	    calenderController.fillCalender(em);
+	    userController.setControllerCalender(calenderController);
 //		addEntryController.setController(addHoursController);
 		userController.setControllerGebruikerGegevens(userInformationController);
 		
 		
 		Pane thePane = (Pane)userView.getNamespace().get("pane");
-		thePane.getChildren().addAll(sprintView,projectView,addHoursView, addEntryView,userInformationView);
+		thePane.getChildren().addAll(sprintView,projectView,userInformationView,entriesView,addEntryView);
 		
 		
 		Scene scene = new Scene(view);
@@ -92,6 +100,12 @@ public class UserViewController {
 	}
 	
 	
+	private void setControllerCalender(CalenderView calenderController) {
+		this.calenderView = calenderController;
+		
+	}
+
+
 	private void setControllerGebruikerGegevens(UserInformationController userInformationController) {
 		this.userInformationController = userInformationController;
 		
@@ -129,6 +143,10 @@ public class UserViewController {
 	{
 		this.pjC.openProjectScherm();
 		System.out.println("hola");
+	}
+	public void showCalender()
+	{
+		this.calenderView.showCalenderView();
 	}
 		
 }

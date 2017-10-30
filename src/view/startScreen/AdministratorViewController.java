@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import controller.AccountManagementController;
 import controller.CreateUserController;
+import controller.CustomerManagementViewController;
 import controller.EmployeeManagementController;
 import controller.ProjectManagementViewController;
 import javafx.fxml.FXML;
@@ -31,6 +32,7 @@ public class AdministratorViewController {
 	private EmployeeManagementController employeeManagement;
 	private ProjectManagementViewController projectManagementController;
 	private AccountManagementController accountManagement;
+	private CustomerManagementViewController customerManagement;
 	
 
 	
@@ -62,27 +64,38 @@ public class AdministratorViewController {
 	    Pane createUserView = addEmployeeLoader.load();	
 	    CreateUserController createUserController = addEmployeeLoader.getController();
 	    
+	    FXMLLoader customerLoader = new FXMLLoader(getClass().getResource("/controller/CustomersManagement.fxml"));			//get xml file
+	    Pane customerView = customerLoader.load();	
+	    CustomerManagementViewController customerController = customerLoader.getController();
+	    
 	    FXMLLoader projectManagementLoader = new FXMLLoader(getClass().getResource("/view/ProjectsManagementView.fxml"));			//get xml file
-	     Pane projectManagementView = projectManagementLoader.load();	
-	     ProjectManagementViewController projectManagementController = projectManagementLoader.getController();
+	    Pane projectManagementView = projectManagementLoader.load();	
+	    ProjectManagementViewController projectManagementController = projectManagementLoader.getController();
 
-			FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("/view/home/home.fxml"));			//get xml file
-		    Pane homeView = homeLoader.load();
-		    homeController homeController = homeLoader.getController();
-		    homeController.setUserName(user.getEmployeeFirstname());
-		    View.setTop(homeView);
-	     adminController.setControllerAccount(accountController);
-	     adminController.setControllerMedewerkerBeheren(medewerkerBeherenController);
-	     adminController.setControllerProjectManagement(projectManagementController);
-	     medewerkerBeherenController.setControllerCreateUserController(createUserController);
+		FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("/view/home/home.fxml"));			//get xml file
+		Pane homeView = homeLoader.load();
+		homeController homeController = homeLoader.getController();
+		homeController.setUserName(user.getEmployeeFirstname());
+		View.setTop(homeView);
+		
+	    adminController.setControllerAccount(accountController);
+	    adminController.setControllerMedewerkerBeheren(medewerkerBeherenController);
+	    adminController.setControllerProjectManagement(projectManagementController);
+	    adminController.setControllerCustomerManagement(customerController);
+	    medewerkerBeherenController.setControllerCreateUserController(createUserController);
 	   // beheerderController.setControllerHandleiding(handleidingController);
 	    
 	    Pane tabPane = (Pane)beheerderScherm.getNamespace().get("pane"); 						//get stackPane from fieldView
-        tabPane.getChildren().addAll(accountBeherenView, medewerkerBeherenView, createUserView, projectManagementView);
+        tabPane.getChildren().addAll(accountBeherenView, medewerkerBeherenView, createUserView, projectManagementView,customerView);
         
 		Scene scene = new Scene(View);
 		primaryStage.setScene(scene);
 		primaryStage.show();
+	}
+
+	private void setControllerCustomerManagement(CustomerManagementViewController customerController) {
+		this.customerManagement = customerController;
+		
 	}
 
 	private void setControllerProjectManagement(ProjectManagementViewController projectManagementController) {
@@ -109,6 +122,10 @@ public class AdministratorViewController {
 	public void openMedewerkerView()
 	{
 		this.employeeManagement.showView();
+	}
+	public void openCustomerView()
+	{
+		this.customerManagement.showView();
 	}
 	
 
