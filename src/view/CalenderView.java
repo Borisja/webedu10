@@ -11,8 +11,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -20,6 +22,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.EmployeeModel;
 import model.EntryModel;
+import model.ProjectModel;
 
 public class CalenderView implements Initializable{
 	/**
@@ -27,17 +30,20 @@ public class CalenderView implements Initializable{
 	 * Allow user to submit new entries.
 	 */
 	private ObservableList<EntryModel> data;
-    @FXML private Button btn_edit, btn_submit;
-	@FXML TableView<EntryModel> allEntries;
-	@FXML TableColumn<EntryModel, String> EntryIdCol;
-	@FXML TableColumn<EntryModel, String> EntryProjectCol;
-	@FXML TableColumn<EntryModel, String> EntrySprintCol;
-	@FXML TableColumn<EntryModel, String> EntryUserStoryCol;
-	@FXML TableColumn<EntryModel, String> EntryNameCol;
-	@FXML TableColumn<EntryModel, String> EntryStartCol;
-	@FXML TableColumn<EntryModel, String> EntryStopCol;
-	@FXML TableColumn<EntryModel, String> EntryStatusCol;
-	@FXML Pane pane;
+	private @FXML TableView<EntryModel> allEntries;
+	private @FXML TableColumn<EntryModel, String> EntryIdCol;
+	private @FXML TableColumn<EntryModel, String> EntryProjectCol;
+	private @FXML TableColumn<EntryModel, String> EntrySprintCol;
+	private @FXML TableColumn<EntryModel, String> EntryUserStoryCol;
+	private @FXML TableColumn<EntryModel, String> EntryNameCol;
+	private @FXML TableColumn<EntryModel, String> EntryStartCol;
+	private @FXML TableColumn<EntryModel, String> EntryStopCol;
+	private @FXML TableColumn<EntryModel, String> EntryStatusCol;
+	private @FXML Pane pane;
+	private @FXML Pane entryChangePane;
+	private @FXML TextField txtEntryStartTime;
+	private @FXML TextField txtEntryEndTime;
+	private @FXML Label lblId;
 	
     /**
 	 * Show table containing entries from user that is currently logged in.
@@ -73,7 +79,23 @@ public class CalenderView implements Initializable{
         
 		
 	}
+	public void showModifyEntry()
+	{
+		EntryModel selectedItem = allEntries.getSelectionModel().getSelectedItem();
+		lblId.setText(String.valueOf(selectedItem.getEntryId()));
+		txtEntryStartTime.setText(selectedItem.getEntryStartTime());
+		txtEntryEndTime.setText(selectedItem.getEntryEndTime());
+		this.entryChangePane.setVisible(true);
+	}
 	
+	public void modifyEntry()
+	{
+		
+	}
+	public void hideModifyEntry()
+	{
+		this.entryChangePane.setVisible(false);
+	}
 	public void closeView()
 	{
 		this.pane.setVisible(false);
