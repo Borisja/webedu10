@@ -23,30 +23,45 @@ import model.EmployeeModel;
  */
 
 public class LockUserController implements Initializable {
-	private ObservableList<EmployeeModel> data = FXCollections.observableArrayList();
+	private ObservableList<EmployeeModel> lockedAccounts = FXCollections.observableArrayList();
+	private ObservableList<EmployeeModel> unlockedAccounts = FXCollections.observableArrayList();
 	private EmployeeDAO employeeDao = new EmployeeDAO();
 	private AdministratorDAO administratorDao = new AdministratorDAO();
 	
 	@FXML
-	Button lockButton;
+	Button lockButton;	
+	@FXML
+	Button unlockButton;
 	
 	@FXML 
-	TableView<EmployeeModel> activeAccountList;
+	TableView<EmployeeModel> activeAccountList;	
+	@FXML
+	TableView<EmployeeModel> lockedAccountsList;
 	
 	@FXML
-	TableColumn<EmployeeModel, Integer> id;
+	TableColumn<EmployeeModel, Integer> idUnlocked;
+	@FXML
+	TableColumn<EmployeeModel, Integer> idLocked;	
 	
 	@FXML
-	TableColumn<EmployeeModel, String> firstName;
+	TableColumn<EmployeeModel, String> firstNameUnlocked;
+	@FXML
+	TableColumn<EmployeeModel, String> firstNameLocked;
 
 	@FXML
-	TableColumn<EmployeeModel, String> lastName;
+	TableColumn<EmployeeModel, String> lastNameUnlocked;
+	@FXML
+	TableColumn<EmployeeModel, String> lastNameLocked;
 
 	@FXML
-	TableColumn<EmployeeModel, String> email;
+	TableColumn<EmployeeModel, String> emailUnlocked;
+	@FXML
+	TableColumn<EmployeeModel, String> emailLocked;	
 	
 	@FXML
-	TableColumn<EmployeeModel, String> role;
+	TableColumn<EmployeeModel, String> roleUnlocked;
+	@FXML
+	TableColumn<EmployeeModel, String> roleLocked;
 	
 	@FXML 
 	Pane pane;
@@ -54,29 +69,60 @@ public class LockUserController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		id.setCellValueFactory(new PropertyValueFactory<EmployeeModel, Integer>("employeeId"));
-		firstName.setCellValueFactory(new PropertyValueFactory<EmployeeModel, String>("employeeFirstName"));
-		lastName.setCellValueFactory(new PropertyValueFactory<EmployeeModel, String>("employeeLastName"));
-		email.setCellValueFactory(new PropertyValueFactory<EmployeeModel, String>("employeeEmail"));
-		role.setCellValueFactory(new PropertyValueFactory<EmployeeModel, String>("employeeRole"));
 		
-		data.addAll(employeeDao.activeAccountsList());
+	
+		idUnlocked.setCellValueFactory(new PropertyValueFactory<EmployeeModel, Integer>("employeeId"));
+		firstNameUnlocked.setCellValueFactory(new PropertyValueFactory<EmployeeModel, String>("employeeFirstName"));
+		lastNameUnlocked.setCellValueFactory(new PropertyValueFactory<EmployeeModel, String>("employeeLastName"));
+		emailUnlocked.setCellValueFactory(new PropertyValueFactory<EmployeeModel, String>("employeeEmail"));
+		roleUnlocked.setCellValueFactory(new PropertyValueFactory<EmployeeModel, String>("employeeRole"));
 		
-		activeAccountList.setItems(data);
+		unlockedAccounts.addAll(employeeDao.activeAccountsList());
 		
+		activeAccountList.setItems(unlockedAccounts);
+		
+
+		idLocked.setCellValueFactory(new PropertyValueFactory<EmployeeModel, Integer>("employeeId"));
+		firstNameLocked.setCellValueFactory(new PropertyValueFactory<EmployeeModel, String>("employeeFirstName"));
+		lastNameLocked.setCellValueFactory(new PropertyValueFactory<EmployeeModel, String>("employeeLastName"));
+		emailLocked.setCellValueFactory(new PropertyValueFactory<EmployeeModel, String>("employeeEmail"));
+		roleLocked.setCellValueFactory(new PropertyValueFactory<EmployeeModel, String>("employeeRole"));
+		
+		lockedAccounts.addAll(employeeDao.lockedAccountsList());
+		
+		lockedAccountsList.setItems(lockedAccounts);
 	}
 	
 
 	public void lockUser() {
 		int id = activeAccountList.getSelectionModel().getSelectedItem().getEmployeeId();
-		administratorDao.lockEmployee(id);
+		
+		if(id >=0) {
+			administratorDao.lockEmployee(id);
+			lockedAccountsList.refresh();
+			activeAccountList.refresh();
+		}
+	}
+	
+	public void unLockUser() {
+		int id = lockedAccountsList.getSelectionModel().getSelectedItem().getEmployeeId();
+
+		if(id >=0) {
+			administratorDao.unlockEmployee(id);
+			lockedAccountsList.refresh();
+			activeAccountList.refresh();
+		}
+	}
+	
+	public void tableRefresh() {
+				
 	}
 	
 	public void showView()
 	{
 		this.pane.setVisible(true);
 	}
-	//
+	
 	public void closeView()
 	{
 		this.pane.setVisible(false);

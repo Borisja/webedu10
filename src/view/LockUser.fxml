@@ -5,17 +5,27 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LockUserController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="805.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LockUserController">
    <children>
-      <Button fx:id="lockButton" layoutX="438.0" layoutY="326.0" mnemonicParsing="false" onMouseClicked="#lockUser" text="Vertgrendel gebruiker" />
-      <TableView fx:id="activeAccountList" layoutX="72.0" layoutY="36.0" prefHeight="278.0" prefWidth="431.0">
+      <Button fx:id="lockButton" layoutX="259.0" layoutY="334.0" mnemonicParsing="false" onMouseClicked="#lockUser" text="Vertgrendel gebruiker" />
+      <TableView fx:id="activeAccountList" layoutX="14.0" layoutY="41.0" prefHeight="278.0" prefWidth="378.0">
         <columns>
-          <TableColumn fx:id="id" prefWidth="75.0" text="ID" />
-          <TableColumn fx:id="firstName" prefWidth="75.0" text="Voornaam" />
-            <TableColumn fx:id="lastName" prefWidth="75.0" text="Achternaam" />
-            <TableColumn fx:id="email" prefWidth="75.0" text="Email" />
-            <TableColumn fx:id="role" prefWidth="75.0" text="Role" />
+          <TableColumn fx:id="idUnlocked" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="firstNameUnlocked" prefWidth="75.0" text="Voornaam" />
+            <TableColumn fx:id="lastNameUnlocked" prefWidth="75.0" text="Achternaam" />
+            <TableColumn fx:id="emailUnlocked" prefWidth="75.0" text="Email" />
+            <TableColumn fx:id="roleUnlocked" prefWidth="75.0" text="Role" />
         </columns>
       </TableView>
+      <TableView fx:id="lockedAccountsList" layoutX="409.0" layoutY="41.0" prefHeight="278.0" prefWidth="378.0">
+        <columns>
+      <TableColumn fx:id="idLocked" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="firstNameLocked" prefWidth="75.0" text="Voornaam" />
+            <TableColumn fx:id="lastNameLocked" prefWidth="75.0" text="Achternaam" />
+            <TableColumn fx:id="emailLocked" prefWidth="75.0" text="Email" />
+            <TableColumn fx:id="roleLocked" prefWidth="75.0" text="Role" />
+        </columns>
+      </TableView>
+      <Button fx:id="unlockButton" layoutX="656.0" layoutY="334.0" mnemonicParsing="false" onMouseClicked="#unLockUser" text="Ontgrendel gebruiker" />
    </children>
 </Pane>
