@@ -166,13 +166,13 @@ public class ProjectDAO {
 	 * De volgende voegt een nieuwe project toe aan de project_version tabel
 	 * @param pId Project ID
 	 * @param projectName De naam van het project
-	 * @param projectDes De beschrijving van het project
+	 * @param projectDes beschrijving van het project
 	 * @author rezanaser
 	 */
-	public void addProject(String projectName, String projectDes){
+	public void addProjectToDatabase(String projectName, String projectDes, int customerId){
 		PreparedStatement insertProject;
-		String insertUser_sql = "insert into project_version (project_version_project_fk, project_version_name, project_version_description, project_version_current) "
-				+ "VALUES (?, ?, ?, ?)";
+		String insertUser_sql = "insert into project_version (project_version_project_fk, project_version_name, project_version_description, project_version_current, project_version_customer_fk) "
+				+ "VALUES (?, ?, ?, ?, ?)";
 		try {
 			insertProject = connect.connectToDB().prepareStatement(insertUser_sql);
 			
@@ -180,6 +180,7 @@ public class ProjectDAO {
 			insertProject.setString(2, projectName);
 			insertProject.setString(3, projectDes);
 			insertProject.setBoolean(4, true);
+			insertProject.setInt(5, customerId);
 			insertProject.executeQuery();
 
 			insertProject.close();

@@ -197,6 +197,7 @@ public class AdministratorDAO {
 			
 			insertProject.setInt(1, createNewEntry(employeeId));
 			insertProject.setInt(2, pId);
+			
 //			insertProject.setInt(3, 0);
 			insertProject.setInt(3, spId);
 //			insertProject.setTime(5, starttime); 

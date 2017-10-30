@@ -77,6 +77,7 @@ public class UserViewController {
 	    userController.setControllerSprint(sprintController);
 	    userController.setControllerProject(projectController);
 	    userController.setControllerAddEntryHours(addEntryController);
+//		addEntryController.setController(addHoursController);
 		userController.setControllerGebruikerGegevens(userInformationController);
 		
 		

@@ -2,8 +2,12 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import javax.swing.JOptionPane;
+
+import dao.CustomerDAO;
 import dao.ProjectDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,7 +18,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -22,6 +29,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.util.Callback;
+import model.CustomerModel;
 import model.EntryModel;
 import model.ProjectModel;
 /**
@@ -36,6 +45,7 @@ public class ProjectManagementViewController implements Initializable{
 	@FXML TableColumn<ProjectModel, String> projectName;
 	@FXML TableColumn<ProjectModel, String> projectDes;
 	@FXML TableColumn<ProjectModel, String> projectIsdeleted;
+	@FXML ComboBox<CustomerModel> customerCombo;
 	@FXML Pane pane;
 	@FXML Pane popUp;
 	@FXML Pane popUpAdd;
@@ -45,10 +55,44 @@ public class ProjectManagementViewController implements Initializable{
 	@FXML TextField projectNewName;
 	@FXML TextField projectNewDescription;
 	@FXML Button changeProject;
+	@FXML Label lblWarning;
 	
 	private ObservableList<ProjectModel> allProjects = FXCollections.observableArrayList(); 
 	private ProjectDAO projectDAO = new ProjectDAO();
+	private CustomerDAO customerDAO = new CustomerDAO();
+
 	
+	/**
+	 * Fill the project box, when item is selected load the rest.
+	 */
+	public void fillCustomerBox()
+	{	
+		ArrayList<CustomerModel> pList = new CustomerDAO().getCustomerList();
+		
+		ObservableList<CustomerModel> data;
+		
+		data = FXCollections.observableArrayList();
+		
+		pList.forEach(e -> data.add(e));
+
+		/**
+		 * Change what you see in the combobox, to the omschrijving rather then the object address.
+		 * Must study this to understand. works for now.
+		 */
+		Callback<ListView<CustomerModel>, ListCell<CustomerModel>> factory = lv -> new ListCell<CustomerModel>() {
+		    @Override
+		    protected void updateItem(CustomerModel item, boolean empty) {
+		        super.updateItem(item, empty);
+		        setText(empty ? "" :item.getCustomer_name());
+		    }
+
+		};
+		
+		this.customerCombo.setItems(data);
+		this.customerCombo.setCellFactory(factory);
+		this.customerCombo.setButtonCell(factory.call(null));
+		
+	}
 	/**
 	 * Wanneer deze methode voegt een nieuwe project toe
 	 * @author rezanaser
@@ -56,8 +100,10 @@ public class ProjectManagementViewController implements Initializable{
 	 */
 	public void addProject() 
 	{
-		projectDAO.addProject(projectNewName.getText(), projectNewDescription.getText());
+		projectDAO.addProjectToDatabase(projectNewName.getText(), projectNewDescription.getText(), customerCombo.getSelectionModel().getSelectedItem().getCustomer_id());
 		refreshTable();
+		projectNewName.setText(null);
+		projectNewDescription.setText(null);
 		closePopupAdd();
 	}
 	
@@ -69,9 +115,16 @@ public class ProjectManagementViewController implements Initializable{
 	public void modifyProject() 
 	{
 		int projectID = Integer.parseInt(lblProjectId.getText());
-		projectDAO.modifyProject(projectID, projectChangeName.getText(), projectDescription.getText());
-		refreshTable();
-		closePopup();
+		try{
+			projectDAO.modifyProject(projectID, projectChangeName.getText(), projectDescription.getText());
+			refreshTable();
+			closePopup();
+		}
+		
+		catch(NullPointerException e)
+		{
+			lblWarning.setText("Selecteer een entry ");
+		}
 	}
 	
 	
@@ -82,11 +135,20 @@ public class ProjectManagementViewController implements Initializable{
 	 */
 	public void showPopUpChange() 
 	{
-		ProjectModel selectedItem = tableViewProjects.getSelectionModel().getSelectedItem();
-		lblProjectId.setText(String.valueOf(selectedItem.getProjectId()));
-		projectChangeName.setText(selectedItem.getProjectName());
-		projectDescription.setText(selectedItem.getProjectDescription());
-		popUp.setVisible(true);
+		try{
+			ProjectModel selectedItem = tableViewProjects.getSelectionModel().getSelectedItem();
+			lblProjectId.setText(String.valueOf(selectedItem.getProjectId()));
+			projectChangeName.setText(selectedItem.getProjectName());
+			projectDescription.setText(selectedItem.getProjectDescription());
+			popUp.setVisible(true);
+		}
+		catch(NullPointerException e)
+		{
+			Alert showMessage = new Alert(AlertType.INFORMATION);
+			showMessage.setTitle("Geen Entry geselecteerd");
+			showMessage.setContentText("Selecteer een entry om verder te gaan ");
+			showMessage.showAndWait();
+		}
 		
 	}
 	
@@ -162,6 +224,7 @@ public class ProjectManagementViewController implements Initializable{
 	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		this.fillCustomerBox();//Vult customer box in met klantnamen
 		id.setCellValueFactory(new PropertyValueFactory<ProjectModel, Integer>("projectId"));
 		projectName.setCellValueFactory(new PropertyValueFactory<ProjectModel, String>("projectName"));
 		projectDes.setCellValueFactory(new PropertyValueFactory<ProjectModel, String>("projectDescription"));
@@ -169,6 +232,8 @@ public class ProjectManagementViewController implements Initializable{
 		
 		allProjects.addAll(projectDAO.project_list());
 		tableViewProjects.setItems(allProjects);
+		
+		
 		
 	}
 	

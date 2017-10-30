@@ -9,7 +9,8 @@ public class ProjectModel {
 	private int projectEntryFk;
 	private int projectUserStoryFk;
 	private int projectSprintFk;
-	
+	private int projectCustomerFk
+;	
 	public int getProjectId() {
 		return projectId;
 	}
@@ -38,6 +39,12 @@ public class ProjectModel {
 	@Override
 	public String toString(){
 		return this.projectName;
+	}
+	public int getProjectCustomerFk() {
+		return projectCustomerFk;
+	}
+	public void setProjectCustomerFk(int projectCustomerFk) {
+		this.projectCustomerFk = projectCustomerFk;
 	}
 
 }
