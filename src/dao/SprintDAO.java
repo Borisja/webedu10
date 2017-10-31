@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import org.postgresql.util.PSQLException;
+
 import model.CustomerModel;
 import model.EntryModel;
 import model.ProjectModel;
@@ -162,7 +164,7 @@ public class SprintDAO {
 			int generatedID = 0;
 			PreparedStatement createSprint;
 			ResultSet sprintID = null;
-			String insertSprintStatement = "INSERT INTO sprint(is_deleted) VALUES(?)";
+			String insertSprintStatement = "INSERT INTO sprint(sprint_isdeleted) VALUES(?)";
 			
 			try 
 			{
@@ -196,12 +198,11 @@ public class SprintDAO {
 	 * @param sprintStartDate
 	 * @param sprintEndDate
 	 */
-	public void addSprintToDatabase(String sprintName, int projectID, String sprintDescription, Date sprintStartDate, Date sprintEndDate)
+	public void addSprintToDatabase(int projectID, String sprintName, String sprintDescription, Date sprintStartDate, Date sprintEndDate)
 	{
 		PreparedStatement addSprint;
-		String insertStatement = "INSERT INTO sprint_version(sprint_version_sprint_fk, sprint_version_project_fk, sprint_version_name, sprint_version_description, sprint_version_startdate, sprint_version_enddate) " 
-				+ "VALUES(?,?,?,?,?,?)";
-		
+		String insertStatement = "INSERT INTO sprint_version(sprint_version_sprint_fk, sprint_version_project_fk, sprint_version_name, sprint_version_description, sprint_version_startdate, sprint_version_enddate, sprint_version_current) " 
+				+ "VALUES(?,?,?,?,?,?, true)";
 		
 		try 
 		{
@@ -217,11 +218,14 @@ public class SprintDAO {
 			addSprint.executeQuery();
 			addSprint.close();			
 			
-		}  catch (Exception e) 
-		{
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			System.out.println(e.getMessage());
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			
+		} 
+		
 	}
 	
 	

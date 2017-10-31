@@ -2,6 +2,7 @@ package controller;
 
 import java.net.URL;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -15,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -37,20 +39,20 @@ public class SprintManagementViewController implements Initializable
 	@FXML TableColumn<SprintModel, String> sprintName;
 	@FXML TableColumn<SprintModel, String> sprintDescription;
 	@FXML TableColumn<SprintModel, String> sprintIsDeleted;
-	@FXML ComboBox<ProjectModel> projectComboBox;
-	@FXML ComboBox<ProjectModel> projectComboBox1;
+	@FXML ComboBox<ProjectModel> addProjectComboBox;
+	@FXML ComboBox<ProjectModel> changeProjectComboBox;
 	@FXML Pane pane;
 	@FXML Pane popUp;
 	@FXML Pane popUpAdd;
 	@FXML Label projectIDLabel;
 	@FXML TextField changeSprintNameTextField;
 	@FXML TextField changeSprintDescriptionTextField;
-	@FXML TextField changeSprintStartDateTextField;
-	@FXML TextField changeSprintEndDateTextField;	
+	@FXML DatePicker changeSprintStartDateDatePicker;
+	@FXML DatePicker changeSprintEndDateDatePicker;
 	@FXML TextField newSprintNameTextField;
 	@FXML TextField newSprintDescriptionTextField;
-	@FXML TextField sprintStartDateTextField;
-	@FXML TextField sprintEndDateTextField;
+	@FXML DatePicker newSprintStartDateDatePicker;
+	@FXML DatePicker newSprintEndDateDatePicker;
 	@FXML Button changeSprintButton;
 	@FXML Button addSprintButton;
 	@FXML Button deleteSprintButton;
@@ -86,12 +88,12 @@ public class SprintManagementViewController implements Initializable
 
 		};
 		
-		this.projectComboBox.setItems(data);
-		this.projectComboBox.setCellFactory(factory);
-		this.projectComboBox.setButtonCell(factory.call(null));
-		this.projectComboBox1.setItems(data);
-		this.projectComboBox1.setCellFactory(factory);
-		this.projectComboBox1.setButtonCell(factory.call(null));
+		this.addProjectComboBox.setItems(data);
+		this.addProjectComboBox.setCellFactory(factory);
+		this.addProjectComboBox.setButtonCell(factory.call(null));
+		this.changeProjectComboBox.setItems(data);
+		this.changeProjectComboBox.setCellFactory(factory);
+		this.changeProjectComboBox.setButtonCell(factory.call(null));
 		
 	}
 
@@ -115,11 +117,12 @@ public class SprintManagementViewController implements Initializable
 		
 	}
 	
-	public void addSprint()
+	public void addSprint() throws SQLException
 	{
-		Date sprintStartDate = Date.valueOf(sprintStartDateTextField.getText());
-		Date sprintEndDate = Date.valueOf(sprintEndDateTextField.getText());
-		new SprintDAO().addSprintToDatabase(newSprintNameTextField.getText(), projectComboBox.getSelectionModel().getSelectedItem().getProjectId(), newSprintDescriptionTextField.getText(), sprintStartDate , sprintEndDate);
+		Date sprintStartDate = Date.valueOf(newSprintStartDateDatePicker.getValue());
+		Date sprintEndDate = Date.valueOf(newSprintEndDateDatePicker.getValue());
+		new SprintDAO().addSprintToDatabase(addProjectComboBox.getSelectionModel().getSelectedItem().getProjectId(), newSprintNameTextField.getText(), newSprintDescriptionTextField.getText(), sprintStartDate , sprintEndDate);
+		refreshTable();
 	}
 	
 	
@@ -137,6 +140,8 @@ public class SprintManagementViewController implements Initializable
 	//		{
 	//			lblWarning.setText("Selecteer iets ");
 	//		}
+		
+		refreshTable();
 		}
 
 

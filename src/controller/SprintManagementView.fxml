@@ -2,13 +2,14 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: e3e4e5;" visible="false" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SprintManagementViewController">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: e3e4e5;" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SprintManagementViewController">
    <children>
       <TableView fx:id="sprintTableView" layoutX="3.0" layoutY="10.0" prefHeight="374.0" prefWidth="356.0">
         <columns>
@@ -16,6 +17,7 @@
           <TableColumn fx:id="sprintName" prefWidth="62.0" text="Naam" />
             <TableColumn fx:id="sprintDescription" prefWidth="112.0" text="Beschrijving" />
             <TableColumn fx:id="sprintIsDeleted" prefWidth="129.0" text="Verwijder_status" />
+            <TableColumn fx:id="sprintIsDeleted1" prefWidth="129.0" text="Verwijder_status" />
         </columns>
       </TableView>
       <Button fx:id="addSprintButton" layoutX="415.0" layoutY="105.0" mnemonicParsing="false" onAction="#showPopUpAdd" text="Sprint toevoegen" />
@@ -29,15 +31,15 @@
             <Label layoutX="71.0" layoutY="40.0" text="Sprint naam" />
             <Label layoutX="54.0" layoutY="142.0" text="Sprint beschrijving" />
             <TextField fx:id="changeSprintNameTextField" layoutX="33.0" layoutY="57.0" />
-            <TextField fx:id="sprintDescriptionTextField" layoutX="28.0" layoutY="159.0" />
+            <TextField fx:id="changeSprintDescriptionTextField" layoutX="28.0" layoutY="159.0" />
             <Button layoutX="72.0" layoutY="288.0" mnemonicParsing="false" onAction="#modifySprint" text="Wijzigen" />
             <Button layoutX="68.0" layoutY="324.0" mnemonicParsing="false" onAction="#closePopup" text="Annuleren" />
-            <ComboBox fx:id="projectComboBox1" layoutX="32.0" layoutY="105.0" prefWidth="150.0" />
+            <ComboBox fx:id="changeProjectComboBox" layoutX="32.0" layoutY="105.0" prefWidth="150.0" />
             <Label layoutX="74.0" layoutY="88.0" text="Projectnaam" />
-            <TextField fx:id="sprintStartDateTextField" layoutX="29.0" layoutY="204.0" />
             <Label layoutX="75.0" layoutY="187.0" text="Begindatum" />
             <Label layoutX="76.0" layoutY="229.0" prefHeight="0.0" prefWidth="64.0" text="Einddatum" />
-            <TextField fx:id="sprintEndDateTextField" layoutX="28.0" layoutY="255.0" />
+            <DatePicker fx:id="changeSprintStartDateDatePicker" layoutX="20.0" layoutY="204.0" />
+            <DatePicker fx:id="changeSprintEndDateDatePicker" layoutX="21.0" layoutY="246.0" />
          </children>
       </Pane>
       <Pane fx:id="popUpAdd" layoutX="371.0" layoutY="7.0" prefHeight="374.0" prefWidth="216.0" style="-fx-background-color: e3e4e5;" visible="false">
@@ -50,11 +52,11 @@
             <Button layoutX="65.0" layoutY="286.0" mnemonicParsing="false" onAction="#addSprint" text="Toevoegen" />
             <Button layoutX="68.0" layoutY="321.0" mnemonicParsing="false" onAction="#closePopupAdd" text="Annuleren" />
             <Label layoutX="66.0" layoutY="82.0" text="Projectnaam" />
-            <ComboBox fx:id="projectComboBox" layoutX="24.0" layoutY="99.0" prefWidth="150.0" />
-            <TextField fx:id="newSprintDescriptionTextField1" layoutX="25.0" layoutY="196.0" />
+            <ComboBox fx:id="addProjectComboBox" layoutX="24.0" layoutY="99.0" prefWidth="150.0" />
             <Label layoutX="67.0" layoutY="179.0" text="Begindatum" />
             <Label layoutX="67.0" layoutY="221.0" text="Einddatum" />
-            <TextField fx:id="newSprintDescriptionTextField11" layoutX="29.0" layoutY="238.0" />
+            <DatePicker fx:id="newSprintStartDateDatePicker" layoutX="12.0" layoutY="196.0" />
+            <DatePicker fx:id="newSprintEndDateDatePicker" layoutX="15.0" layoutY="238.0" />
          </children>
       </Pane>
    </children>
