@@ -2,6 +2,7 @@ package view;
 
 import java.net.URL;
 import java.sql.Date;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -22,6 +23,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -50,43 +52,18 @@ public class AddEntryViewController implements Initializable {
 	@FXML ComboBox<SprintModel> sprintCombo;
 	@FXML Button btnAddEntry;
 	@FXML Pane pane;
-	@FXML ComboBox userStoryCombo;
 	@FXML Button addEntryButton;
-	private EntryController entryController;
+	@FXML TextField entryStartTime;
+	@FXML TextField entryEndTime;
+	@FXML TextField entryDescription;
+	@FXML DatePicker entryDate;
+	private AdministratorDAO adminDao = new AdministratorDAO();
+	EmployeeModel currentEmployee;
 	
 	public void showAddEntryView()
 	{
 		this.pane.setVisible(true);
 	}
-	
-	
-	/**
-	 * Deze methode krijgt huidige AddHoursController van de GebruikerViewController mee 
-	 * @param ac -> is van type AddHoursController
-	 * @author rezanaser
-	 */
-	public void setController(EntryController ac)
-	{
-		this.entryController = ac;
-	}
-	
-	/**
-	 * Deze methode toont het volgende scherm(AddHours) nadat er geklikt wordt op toevoegen knop
-	 * @author rezanaser
-	 */
-	public void showAddHoursView()
-	{
-		this.pane.setVisible(false);
-		this.entryController.showView();
-	}
-
-	@FXML TextField entryDate;
-	@FXML TextField entryStartTime;
-	@FXML TextField entryEndTime;
-	@FXML TextField entryDescription;
-	Date entryDateConverted;
-	private AdministratorDAO adminDao = new AdministratorDAO();
-	EmployeeModel currentEmployee;
 	
 	/**
 	 * Fill the sprint box when project box onaction is called
@@ -148,9 +125,9 @@ public class AddEntryViewController implements Initializable {
 
 		};
 		
-		this.userStoryCombo.setItems(data);
-		this.userStoryCombo.setCellFactory(factory);
-		this.userStoryCombo.setButtonCell(factory.call(null));
+		this.userStorysCombo.setItems(data);
+		this.userStorysCombo.setCellFactory(factory);
+		this.userStorysCombo.setButtonCell(factory.call(null));
 	
 		
 	}
@@ -192,38 +169,33 @@ public class AddEntryViewController implements Initializable {
 		});
 	}
 	
-	public void addEntryToDatabase()
+	public void addEntryToDatabase() throws ParseException
 	{
-//<<<<<<< HEAD
 //		adminDao.addEntry(currentEmployee.getEmployeeId(), projectCombo.getSelectionModel().getSelectedItem().getProjectId(), 
 //				//userStoryCombo.getSelectionModel().getSelectedItem().getUserStoryId(), 
 //				 sprintCombo.getSelectionModel().getSelectedItem().getSprintId()
 //				, entryDescription.getText());
-//=======
-//		Date date1 = Date.valueOf(entryDate.getValue());
-//		String startTime = entryStartTime.getText();
-//		String endTime = entryEndTime.getText();
-//		SimpleDateFormat formatStartTime = new SimpleDateFormat("hh:mm:ss");
-//		SimpleDateFormat formatEndTime = new SimpleDateFormat("hh:mm:ss");
-//	    java.util.Date d1 =(java.util.Date)formatStartTime.parse(startTime);
-//	    java.util.Date d2 =(java.util.Date)formatEndTime.parse(endTime);
-//	    java.sql.Time convertedStartTime = new java.sql.Time(d1.getTime());
-//	    java.sql.Time convertedEndTime = new java.sql.Time(d2.getTime());
-//
-//		adminDao.addEntry(
-//				currentEmployee.getEmployeeId(),
-//				projectCombo.getSelectionModel().getSelectedItem().getProjectId(),
-//				sprintCombo.getSelectionModel().getSelectedItem().getSprintId(),
-//				date1,
-//				entryDescription.getText(),
-//				convertedStartTime,
-//				convertedEndTime,
-//				userStorysCombo.getSelectionModel().getSelectedItem().getUserStoryId());
-//
-//>>>>>>> branch 'master' of https://github.com/Borisja/webedu10.git
-//		Alert showMessage = new Alert(AlertType.INFORMATION);
-//		showMessage.setContentText("Nieuwe entry is toegevoegd aan de database");
-//		showMessage.showAndWait();
+		Date date1 = Date.valueOf(entryDate.getValue());
+		String startTime = entryStartTime.getText();
+		String endTime = entryEndTime.getText();
+		SimpleDateFormat formatStartTime = new SimpleDateFormat("hh:mm:ss");
+		SimpleDateFormat formatEndTime = new SimpleDateFormat("hh:mm:ss");
+	    java.util.Date d1 =(java.util.Date)formatStartTime.parse(startTime);
+	    java.util.Date d2 =(java.util.Date)formatEndTime.parse(endTime);
+	    java.sql.Time convertedStartTime = new java.sql.Time(d1.getTime());
+	    java.sql.Time convertedEndTime = new java.sql.Time(d2.getTime());
+		adminDao.addEntry(
+				currentEmployee.getEmployeeId(),
+				projectCombo.getSelectionModel().getSelectedItem().getProjectId(),
+				sprintCombo.getSelectionModel().getSelectedItem().getSprintId(),
+				date1,
+				entryDescription.getText(),
+				convertedStartTime,
+				convertedEndTime,
+				userStorysCombo.getSelectionModel().getSelectedItem().getUserStoryId());
+		Alert showMessage = new Alert(AlertType.INFORMATION);
+		showMessage.setContentText("Nieuwe entry is toegevoegd aan de database");
+		showMessage.showAndWait();
 	}
 
 	
