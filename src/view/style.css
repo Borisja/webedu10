@@ -14,3 +14,7 @@
 #nav{
 	-fx-background-color: #737577;
 }
+
+#labels{
+	-fx-color: white;
+}
