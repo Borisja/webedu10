@@ -74,12 +74,14 @@ public class UserViewController {
 	    
 	    
 	    view.setTop(homeView);
-	    homeController.setUserName(em.getEmployeeFirstname()); 
+	    homeController.setUserName(em.getEmployeeFirstname());
 	    userInformationController.fillUserData(em);
 	    userController.setControllerSprint(sprintController);
 	    userController.setControllerProject(projectController);
 	    userController.setControllerAddEntryHours(addEntryController);
-	    calenderController.fillCalender(em);
+//	    calenderController.fillCalender(em); Is niet nodig. showCalender() heeft dit overgenomen
+// 											doordat showCalenderView in CalenderView fillCalender aanroept
+		calenderController.setEmployeeYou(em);
 	    addEntryController.setCurrentUser(em);
 	    sprintController.setCurrentUser(em);
 	    userController.setControllerCalender(calenderController);
@@ -144,6 +146,7 @@ public class UserViewController {
 	}
 	public void showCalender()
 	{
+		//Deze
 		this.calenderView.showCalenderView();
 	}
 		

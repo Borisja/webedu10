@@ -5,15 +5,15 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../style.css" visible="false" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.manual.ManualController">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="798.0" prefWidth="1024.0" stylesheets="@../style.css" visible="false" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.manual.ManualController">
    <children>
-      <ImageView fx:id="img" fitHeight="328.0" fitWidth="424.0" layoutX="84.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="img" fitHeight="583.0" fitWidth="622.0" layoutX="191.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/manual1.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="nextBtn" layoutX="515.0" layoutY="172.0" mnemonicParsing="false" onAction="#nextPage" text="Volgende" />
-      <Button fx:id="preBtn" layoutX="14.0" layoutY="172.0" mnemonicParsing="false" text="Vorige" />
-      <Button fx:id="sluit" layoutX="95.0" layoutY="365.0" mnemonicParsing="false" onAction="#sluitHandleidingMenu" text="Sluiten" />
+      <Button fx:id="nextBtn" layoutX="888.0" layoutY="372.0" mnemonicParsing="false" onAction="#nextPage" text="Volgende" />
+      <Button fx:id="preBtn" layoutX="44.0" layoutY="372.0" mnemonicParsing="false" text="Vorige" />
+      <Button fx:id="sluit" layoutX="84.0" layoutY="710.0" mnemonicParsing="false" onAction="#sluitHandleidingMenu" text="Sluiten" />
    </children>
 </Pane>
