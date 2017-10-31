@@ -25,7 +25,7 @@
       <Button layoutX="503.0" layoutY="105.0" mnemonicParsing="false" onAction="#closeView" text="Sluiten" />
       <Pane fx:id="entryChangePane" layoutX="440.0" layoutY="17.0" prefHeight="343.0" prefWidth="146.0" style="-fx-background-color: e3e4e5;" visible="false">
          <children>
-            <Button layoutX="37.0" layoutY="240.0" mnemonicParsing="false" text="Wijzigen" />
+            <Button layoutX="37.0" layoutY="240.0" mnemonicParsing="false" onAction="#modifyEntry" text="Wijzigen" />
             <Button layoutX="50.0" layoutY="282.0" mnemonicParsing="false" onAction="#hideModifyEntry" text="Sluit" />
             <Label layoutX="13.0" layoutY="28.0" text="EntryID:" />
             <Label fx:id="lblId" layoutX="72.0" layoutY="28.0" />

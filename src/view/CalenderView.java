@@ -1,6 +1,9 @@
 package view;
 
 import java.net.URL;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 
 import dao.AdministratorDAO;
@@ -44,7 +47,7 @@ public class CalenderView implements Initializable{
 	private @FXML TextField txtEntryStartTime;
 	private @FXML TextField txtEntryEndTime;
 	private @FXML Label lblId;
-	
+	private AdministratorDAO adminDao = new AdministratorDAO();
     /**
 	 * Show table containing entries from user that is currently logged in.
 	 * @param em - employee model to use throughout the flow.
@@ -88,9 +91,22 @@ public class CalenderView implements Initializable{
 		this.entryChangePane.setVisible(true);
 	}
 	
-	public void modifyEntry()
+	public void modifyEntry() throws ParseException
 	{
-		
+		EntryModel selectedItem = allEntries.getSelectionModel().getSelectedItem();
+		Date date1 = Date.valueOf(selectedItem.getEntryDate());
+		String startTime = txtEntryStartTime.getText();
+		String endTime = txtEntryEndTime.getText();
+		SimpleDateFormat formatStartTime = new SimpleDateFormat("hh:mm:ss");
+		SimpleDateFormat formatEndTime = new SimpleDateFormat("hh:mm:ss");
+	    java.util.Date d1 =(java.util.Date)formatStartTime.parse(startTime);
+	    java.util.Date d2 =(java.util.Date)formatEndTime.parse(endTime);
+	    java.sql.Time convertedStartTime = new java.sql.Time(d1.getTime());
+	    java.sql.Time convertedEndTime = new java.sql.Time(d2.getTime());
+	    
+		adminDao.modifyEntry(selectedItem.getEntryId(), selectedItem.getEntryProjectFk(), 
+				selectedItem.getEntrySprintFk(), date1, 
+				selectedItem.getEntryDescription(), convertedStartTime, convertedEndTime, selectedItem.getEntryUserstoryFk());
 	}
 	public void hideModifyEntry()
 	{

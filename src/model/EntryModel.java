@@ -18,6 +18,11 @@ public class EntryModel {
 	private String entryProjectDescription;
 	private String entrySprintDescription;
 	private String entryUserStoryDescription;
+	private int entryProjectFk;
+	private int entrySprintFk;
+	private int entryUserstoryFk;
+
+
 	
 	public String getEntryUserStoryDescription() {
 		return entryUserStoryDescription;
@@ -91,5 +96,23 @@ public class EntryModel {
 	}
 	public void setEntryIsLocked(Boolean entryIsLocked) {
 		this.entryIsLocked = entryIsLocked;
+	}
+	public int getEntryProjectFk() {
+		return entryProjectFk;
+	}
+	public void setEntryProjectFk(int entryProjectFk) {
+		this.entryProjectFk = entryProjectFk;
+	}
+	public int getEntrySprintFk() {
+		return entrySprintFk;
+	}
+	public void setEntrySprintFk(int entrySprintFk) {
+		this.entrySprintFk = entrySprintFk;
+	}
+	public int getEntryUserstoryFk() {
+		return entryUserstoryFk;
+	}
+	public void setEntryUserstoryFk(int entryUserstoryFk) {
+		this.entryUserstoryFk = entryUserstoryFk;
 	}
 }
