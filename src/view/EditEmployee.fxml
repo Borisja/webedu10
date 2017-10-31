@@ -20,7 +20,7 @@
          </columns>
       </TableView>
       <Button layoutX="21.0" layoutY="677.0" mnemonicParsing="false" onAction="#closeView" text="Sluiten" />
-      <Pane fx:id="fieldPane" layoutX="620.0" layoutY="25.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="605.0" prefWidth="403.0" style="-fx-background-color: e3e4e5;" visible="false">
+      <Pane id="pane" fx:id="fieldPane" layoutX="620.0" layoutY="25.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="605.0" prefWidth="403.0" stylesheets="@style.css" visible="false">
          <children>
             <Label fx:id="firstNameLabel" layoutX="42.0" layoutY="44.0" text="Voornaam:" />
             <Label fx:id="lastNameLabel" layoutX="37.0" layoutY="132.0" text="Achternaam:" />

@@ -93,10 +93,10 @@ public class ProjectDAO {
 	 */
 	public ArrayList<ProjectModel> project_list_employee(int employeeId){
 		ArrayList<ProjectModel> proj_list = new ArrayList<ProjectModel>();
-		String project_list_sql = "SELECT project_version_id, project_version_name, project_version_description FROM project_version"
-+ " inner join project_employee on(project_employee_project_fk=project_version_project_fk)"
-+ " inner join employee on(employee_id=project_employee_employee_fk)"
-+ " where employee_id = ?";
+		String project_list_sql = "select * from project_version "
+				+ "INNER JOIN project_employee "
+				+ "ON project_version_project_fk = project_employee_project_fk  AND project_version_current = true "
+				+ "AND project_employee_employee_fk = ?";
 		try {
 			PreparedStatement project_statement = connect.connectToDB().prepareStatement(project_list_sql);
 			project_statement.setInt(1, employeeId);

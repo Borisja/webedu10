@@ -85,7 +85,7 @@ public class UserViewController {
 	    sprintController.setCurrentUser(em);
 	    sprintController.fillTabel(em.getEmployeeId());
 	    userController.setControllerCalender(calenderController);
-//		addEntryController.setController(addHoursController);
+	    projectController.fillProjectsTable(em.getEmployeeId());
 		userController.setControllerGebruikerGegevens(userInformationController);
 		
 		
@@ -146,7 +146,6 @@ public class UserViewController {
 	}
 	public void showCalender()
 	{
-		//Deze
 		this.calenderView.showCalenderView();
 	}
 		
