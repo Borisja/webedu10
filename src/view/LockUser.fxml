@@ -5,10 +5,10 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="805.0" stylesheets="@style.css" visible="false" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LockUserController">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="798.0" prefWidth="1024.0" stylesheets="@style.css" visible="false" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LockUserController">
    <children>
-      <Button fx:id="lockButton" layoutX="259.0" layoutY="334.0" mnemonicParsing="false" onMouseClicked="#lockUser" text="Vertgrendel gebruiker" />
-      <TableView fx:id="activeAccountList" layoutX="14.0" layoutY="41.0" prefHeight="278.0" prefWidth="378.0">
+      <Button fx:id="lockButton" layoutX="357.0" layoutY="615.0" mnemonicParsing="false" onMouseClicked="#lockUser" text="Vertgrendel gebruiker" />
+      <TableView fx:id="activeAccountList" layoutX="14.0" layoutY="27.0" prefHeight="542.0" prefWidth="496.0">
         <columns>
           <TableColumn fx:id="idUnlocked" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="firstNameUnlocked" prefWidth="75.0" text="Voornaam" />
@@ -17,7 +17,7 @@
             <TableColumn fx:id="roleUnlocked" prefWidth="75.0" text="Role" />
         </columns>
       </TableView>
-      <TableView fx:id="lockedAccountsList" layoutX="409.0" layoutY="41.0" prefHeight="278.0" prefWidth="378.0">
+      <TableView fx:id="lockedAccountsList" layoutX="522.0" layoutY="27.0" prefHeight="542.0" prefWidth="462.0">
         <columns>
       <TableColumn fx:id="idLocked" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="firstNameLocked" prefWidth="75.0" text="Voornaam" />
@@ -26,7 +26,7 @@
             <TableColumn fx:id="roleLocked" prefWidth="75.0" text="Role" />
         </columns>
       </TableView>
-      <Button fx:id="unlockButton" layoutX="656.0" layoutY="334.0" mnemonicParsing="false" onMouseClicked="#unLockUser" text="Ontgrendel gebruiker" />
-      <Button layoutX="20.0" layoutY="334.0" mnemonicParsing="false" onAction="#closeView" text="Sluit" />
+      <Button fx:id="unlockButton" layoutX="834.0" layoutY="615.0" mnemonicParsing="false" onMouseClicked="#unLockUser" text="Ontgrendel gebruiker" />
+      <Button layoutX="27.0" layoutY="615.0" mnemonicParsing="false" onAction="#closeView" text="Sluit" />
    </children>
 </Pane>
