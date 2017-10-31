@@ -104,6 +104,7 @@ public class SprintDAO {
 				sprintModelContainer.setSprintIsDeleted(sprint_set.getBoolean("sprint_isdeleted"));
 				sprintModelContainer.setSprintStartDate(sprint_set.getString("sprint_version_startdate"));
 				sprintModelContainer.setSprintEndDate(sprint_set.getString("sprint_version_enddate"));
+				sprintModelContainer.setProjectFK(sprint_set.getInt("sprint_version_project_fk"));
 				sprintList.add(sprintModelContainer);
 			}
 		} catch (SQLException e) {

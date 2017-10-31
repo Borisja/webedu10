@@ -6,7 +6,7 @@
 
 <Pane id="nav" fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="51.0" prefWidth="600.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.home.homeController">
    <children>
-      <Button id="buttons" fx:id="homeButton" layoutX="524.0" mnemonicParsing="false" onAction="#backToHome" prefHeight="45.0" prefWidth="62.0" style="-fx-background-image: url('view/images/home.png'); -fx-background-size: 70 50; -fx-background-repeat: no-repeat;" stylesheets="@../style.css" />
+      <Button id="buttons" fx:id="homeButton" layoutX="524.0" layoutY="3.0" mnemonicParsing="false" onAction="#backToHome" prefHeight="42.0" prefWidth="62.0" style="-fx-background-image: url('view/images/loguit.png'); -fx-background-size: 50 40; -fx-background-repeat: no-repeat;" stylesheets="@../style.css" />
       <Label fx:id="userName" layoutX="14.0" layoutY="13.0" prefHeight="25.0" prefWidth="119.0" textFill="WHITE" />
    </children>
 </Pane>

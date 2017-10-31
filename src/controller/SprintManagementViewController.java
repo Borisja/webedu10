@@ -38,9 +38,7 @@ public class SprintManagementViewController implements Initializable
 	@FXML TableColumn<SprintModel, String> sprintDescription;
 	@FXML TableColumn<SprintModel, String> sprintStartDate;
 	@FXML TableColumn<SprintModel, String> sprintEndDate;
-	
-	
-	
+	@FXML TableColumn<SprintModel, String> projectName;
 	@FXML TableColumn<SprintModel, String> sprintIsDeleted;
 	
 	@FXML ComboBox<ProjectModel> addProjectComboBox;
@@ -125,7 +123,7 @@ public class SprintManagementViewController implements Initializable
 		{
 			Alert showMessage = new Alert(AlertType.INFORMATION);
 			showMessage.setTitle("Niets geselecteerd");
-			showMessage.setContentText("Selecteer iets om verder te gaan ");
+			showMessage.setContentText("Selecteer alles om verder te gaan ");
 			showMessage.showAndWait();
 		}
 		
@@ -138,6 +136,8 @@ public class SprintManagementViewController implements Initializable
 	 */
 	public void addSprint() throws SQLException
 	{
+		try
+		{
 		Date sprintStartDate = Date.valueOf(newSprintStartDateDatePicker.getValue());
 		Date sprintEndDate = Date.valueOf(newSprintEndDateDatePicker.getValue());
 		new SprintDAO().addSprintToDatabase(addProjectComboBox.getSelectionModel().getSelectedItem().getProjectId(), newSprintNameTextField.getText(), newSprintDescriptionTextField.getText(), sprintStartDate , sprintEndDate);
@@ -145,7 +145,18 @@ public class SprintManagementViewController implements Initializable
 		clearAllFields();
 		
 		closePopupAdd();
+		}
+		catch(NullPointerException e)
+		{
+			Alert showMessage = new Alert(AlertType.INFORMATION);
+			showMessage.setTitle("U heeft iets niet geselecteerd");
+			showMessage.setContentText("Selecteer iets om verder te gaan ");
+			showMessage.showAndWait();
+		}
+		
 	}
+	
+	
 	
 	/**
 	 * Deze methode roept de SprintDAO aan om een sprint in de database te modificeren.
@@ -207,6 +218,8 @@ public class SprintManagementViewController implements Initializable
 				
 		sprintStartDate.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("sprintStartDate"));
 		sprintEndDate.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("sprintEndDate"));
+		projectName.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("projectName"));
+		
 		
 		allSprints.addAll(sprintDAO.sprint_list());
 		sprintTableView.setItems(allSprints);
@@ -250,7 +263,7 @@ public class SprintManagementViewController implements Initializable
 		
 		sprintStartDate.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("sprintStartDate"));
 		sprintEndDate.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("sprintEndDate"));
-		
+		projectName.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("projectName"));
 		
 		allSprints.addAll(sprintDAO.sprint_list());
 		sprintTableView.setItems(allSprints);

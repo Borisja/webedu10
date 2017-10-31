@@ -44,6 +44,7 @@ public class ProjectManagementViewController implements Initializable{
 	@FXML TableColumn<ProjectModel, Integer> id;
 	@FXML TableColumn<ProjectModel, String> projectName;
 	@FXML TableColumn<ProjectModel, String> projectDes;
+	@FXML TableColumn<ProjectModel, String> customerName;
 	@FXML TableColumn<ProjectModel, String> projectIsdeleted;
 	@FXML ComboBox<CustomerModel> customerCombo;
 	@FXML Pane pane;

@@ -2,6 +2,8 @@ package model;
 
 import java.util.ArrayList;
 
+import dao.ProjectDAO;
+
 /**
  * 
  * @author Robert
@@ -14,6 +16,9 @@ public class SprintModel {
 	private String sprintStartDate;
 	private String sprintEndDate;
 	private String sprintDescription;
+	private int projectFK;
+	private String projectName;
+	private ProjectDAO projectDAO = new ProjectDAO();
 	private ArrayList<EntryModel> entries;
 	
 	public String getSprintName() {
@@ -57,5 +62,27 @@ public class SprintModel {
 	}
 	public void setSprintIsDeleted(boolean sprintIsDeleted) {
 		this.sprintIsDeleted = sprintIsDeleted;
+	}
+	public int getProjectFK() {
+		return projectFK;
+	}
+	public void setProjectFK(int projectFK) 
+	{
+		this.projectFK = projectFK;
+		
+		
+		for(int counter = 0; counter < projectDAO.project_list().size(); counter++)
+		{
+			if(projectFK == projectDAO.project_list().get(counter).getProjectId())
+			{
+				this.setProjectName(projectDAO.project_list().get(counter).getProjectName());
+			};
+		}
+	}
+	public String getProjectName() {
+		return projectName;
+	}
+	public void setProjectName(String projectName) {
+		this.projectName = projectName;
 	}
 }
