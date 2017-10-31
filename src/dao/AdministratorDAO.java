@@ -133,8 +133,8 @@ public class AdministratorDAO {
 		ArrayList<EntryModel> entry_alist = new ArrayList<EntryModel>();
 		String employee_entry_sql = "SELECT * "
 				+ " FROM entry_version, entry "
-				+ "WHERE entry_version.entry_version_entry_fk = entry.entry_id AND entry.entry_status = 'queued' ";
-				//+ "AND entry_version_current = 'y' ";
+				+ "WHERE entry_version.entry_version_entry_fk = entry.entry_id AND entry.entry_status = 'queued' "
+				+ "AND entry_version_current = true ";
 		try {
 			PreparedStatement entries_statement = connect.connectToDB().prepareStatement(employee_entry_sql);
 			
@@ -145,7 +145,6 @@ public class AdministratorDAO {
 				dummy.setEntryDescription(entry_set.getString("entry_version_description"));
 				dummy.setEntryStartTime(entry_set.getString("entry_version_starttime"));
 				dummy.setEntryEndTime(entry_set.getString("entry_version_endtime"));
-				dummy.setEntryDate(entry_set.getString("entry_version_creationtime"));
 				dummy.setEntryDate(entry_set.getString("entry_version_date"));
 				dummy.setEntryProjectFk(entry_set.getInt("entry_version_project_fk"));
 				dummy.setEntryIsLocked(entry_set.getBoolean("entry_islocked"));
@@ -207,16 +206,36 @@ public class AdministratorDAO {
 			insertProject = connect.connectToDB().prepareStatement(insertUser_sql);
 			
 			insertProject.setInt(1, createNewEntry(employeeId));
-			insertProject.setInt(2, pId);
-			insertProject.setInt(3, spId);
+			if(pId == 0)
+			{
+				insertProject.setNull(2, java.sql.Types.INTEGER);
+			}
+			else
+			{
+				insertProject.setInt(2, pId);
+			}
+			if(spId == 0)
+			{
+				insertProject.setNull(3, java.sql.Types.INTEGER);
+			}
+			else
+			{
+				insertProject.setInt(3, spId);
+			}
 			insertProject.setString(4, description);
 			insertProject.setBoolean(5, true);
 			insertProject.setDate(6, date);
 			insertProject.setTime(7, startTime);
 			insertProject.setTime(8, endTime);
-			insertProject.setInt(9, userId);
+			if(userId == 0)
+			{
+				insertProject.setNull(9, java.sql.Types.INTEGER);
+			}
+			else
+			{
+				insertProject.setInt(9, userId);
+			}
 			insertProject.executeQuery();
-
 			insertProject.close();
 			
 		} catch (Exception e) {
@@ -274,13 +293,34 @@ public class AdministratorDAO {
 			changeVersions.close();
 			PreparedStatement changeProject = connect.connectToDB().prepareStatement(changeEntry);
 			changeProject.setInt(1, entryId);
-			changeProject.setInt(2, spId);
-			changeProject.setInt(3, pId);
+			if(pId == 0)
+			{
+				changeProject.setNull(2, java.sql.Types.INTEGER);
+			}
+			else
+			{
+				changeProject.setInt(2, pId);
+			}
+			if(spId == 0)
+			{
+				changeProject.setNull(3, java.sql.Types.INTEGER);
+			}
+			else
+			{
+				changeProject.setInt(3, spId);
+			}
 			changeProject.setDate(4, date);
 			changeProject.setString(5, description);
 			changeProject.setTime(6, startTime);
 			changeProject.setTime(7, endTime);
-			changeProject.setInt(8, userId);
+			if(userId == 0)
+			{
+				changeProject.setNull(8, java.sql.Types.INTEGER);
+			}
+			else
+			{
+				changeProject.setInt(8, userId);
+			}
 			changeProject.executeQuery();
 			changeProject.close();
 		} catch (Exception e) {

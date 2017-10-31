@@ -35,13 +35,14 @@ public class CalenderView implements Initializable{
 	private ObservableList<EntryModel> data;
 	private @FXML TableView<EntryModel> allEntries;
 	private @FXML TableColumn<EntryModel, String> EntryIdCol;
-	private @FXML TableColumn<EntryModel, String> EntryProjectCol;
-	private @FXML TableColumn<EntryModel, String> EntrySprintCol;
-	private @FXML TableColumn<EntryModel, String> EntryUserStoryCol;
+	private @FXML TableColumn<EntryModel, Integer> EntryProjectCol;
+	private @FXML TableColumn<EntryModel, Integer> EntrySprintCol;
+	private @FXML TableColumn<EntryModel, Integer> EntryUserStoryCol;
 	private @FXML TableColumn<EntryModel, String> EntryNameCol;
 	private @FXML TableColumn<EntryModel, String> EntryStartCol;
 	private @FXML TableColumn<EntryModel, String> EntryStopCol;
 	private @FXML TableColumn<EntryModel, String> EntryStatusCol;
+	private @FXML TableColumn<EntryModel, String> EntryDateCol;
 	private @FXML Pane pane;
 	private @FXML Pane entryChangePane;
 	private @FXML TextField txtEntryStartTime;
@@ -62,12 +63,13 @@ public class CalenderView implements Initializable{
         AdministratorDAO edao = new AdministratorDAO();
         edao.entry_queued_list(em.getEmployeeId()).forEach(entry-> data.add(entry));
 		EntryIdCol.setCellValueFactory(
-	    		new PropertyValueFactory<EntryModel, String>("entryId"));EntryProjectCol.setCellValueFactory(
-	    		new PropertyValueFactory<EntryModel, String>("entryProjectDescription"));
+	    		new PropertyValueFactory<EntryModel, String>("entryId"));
+		EntryProjectCol.setCellValueFactory(
+	    		new PropertyValueFactory<EntryModel, Integer>("entryProjectFk"));
         EntrySprintCol.setCellValueFactory(
-	    		new PropertyValueFactory<EntryModel, String>("entrySprintDescription"));
+	    		new PropertyValueFactory<EntryModel, Integer>("entrySprintFk"));
 		EntryUserStoryCol.setCellValueFactory(
-	    		new PropertyValueFactory<EntryModel, String>("entryUserStoryDescription"));
+	    		new PropertyValueFactory<EntryModel, Integer>("entryUserstoryFk"));
         EntryNameCol.setCellValueFactory(
 	    		new PropertyValueFactory<EntryModel, String>("entryDescription"));
         EntryStartCol.setCellValueFactory(
@@ -75,7 +77,9 @@ public class CalenderView implements Initializable{
 		EntryStopCol.setCellValueFactory(
 	    		new PropertyValueFactory<EntryModel, String>("entryEndTime"));
 		EntryStatusCol.setCellValueFactory(
-	    		new PropertyValueFactory<EntryModel, String>("entryStatus"));
+	    		new PropertyValueFactory<EntryModel, String>("entryIsLocked"));
+		EntryDateCol.setCellValueFactory(
+	    		new PropertyValueFactory<EntryModel, String>("entryDate"));
         //Set data into the table items.
 		allEntries.setItems(data);
 
@@ -104,9 +108,38 @@ public class CalenderView implements Initializable{
 	    java.sql.Time convertedStartTime = new java.sql.Time(d1.getTime());
 	    java.sql.Time convertedEndTime = new java.sql.Time(d2.getTime());
 	    
-		adminDao.modifyEntry(selectedItem.getEntryId(), selectedItem.getEntryProjectFk(), 
-				selectedItem.getEntrySprintFk(), date1, 
-				selectedItem.getEntryDescription(), convertedStartTime, convertedEndTime, selectedItem.getEntryUserstoryFk());
+	    int projectId = 0;
+	    int sprintId = 0;
+	    int userId = 0;
+	    //De volgende try-catchs checken of er wel iets geselectreed is. Als niets geselecteerd dan wordt de id 0.
+	    //Dit wordt nog een een gecheckt in AdministratorDAO
+	    try{
+	    	
+	    	projectId = selectedItem.getEntryProjectFk();
+	    	
+	    }catch(NullPointerException e)
+	    {
+	    	projectId = 0;
+	    }
+	    
+	    try{
+	    	
+	    	sprintId = selectedItem.getEntrySprintFk();
+	    	
+	    }catch(NullPointerException e)
+	    {
+	    	sprintId = 0;
+	    }
+	    
+	    try{
+	    	userId = selectedItem.getEntryUserstoryFk();
+	    }catch(NullPointerException e)
+	    {
+	    	userId = 0;
+	    }
+		adminDao.modifyEntry(selectedItem.getEntryId(), projectId, 
+				sprintId, date1, 
+				selectedItem.getEntryDescription(), convertedStartTime, convertedEndTime, userId);
 	}
 	public void hideModifyEntry()
 	{
@@ -119,14 +152,6 @@ public class CalenderView implements Initializable{
 	public void showCalenderView()
 	{
 		this.pane.setVisible(true);
-	}
-	
-	public void refreshTable()
-	{
-		EntryModel selectedItem = allEntries.getSelectionModel().getSelectedItem();
-		lblId.setText(String.valueOf(selectedItem.getEntryId()));
-		txtEntryStartTime.setText(selectedItem.getEntryStartTime());
-		txtEntryEndTime.setText(selectedItem.getEntryEndTime());
 	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
