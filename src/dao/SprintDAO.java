@@ -30,7 +30,7 @@ public class SprintDAO {
 	 */
 	public ArrayList<SprintModel> sprintsProjects(int p_id){
 		ArrayList<SprintModel> sprint_alist = new ArrayList<SprintModel>();
-		String projects_sprints_sql = "SELECT *  FROM sprint_version where sprint_version_project_fk = ? ";
+		String projects_sprints_sql = "SELECT *  FROM ";
 				//+ "AND entry_version_current = 'y' ";
 		try {
 			PreparedStatement sprints_statement = connect.connectToDB().prepareStatement(projects_sprints_sql);

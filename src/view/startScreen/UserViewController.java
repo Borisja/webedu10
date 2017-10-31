@@ -85,6 +85,7 @@ public class UserViewController {
 	    userController.setControllerAddEntryHours(addEntryController);
 	    calenderController.fillCalender(em);
 	    addEntryController.setCurrentUser(em);
+	    sprintController.setCurrentUser(em);
 	    userController.setControllerCalender(calenderController);
 //		addEntryController.setController(addHoursController);
 		userController.setControllerGebruikerGegevens(userInformationController);
