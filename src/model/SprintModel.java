@@ -9,6 +9,7 @@ import java.util.ArrayList;
  */
 public class SprintModel {
 	private int sprintId;
+	private boolean sprintIsDeleted;
 	private String sprintName;
 	private String sprintStartDate;
 	private String sprintEndDate;
@@ -50,5 +51,11 @@ public class SprintModel {
 	}
 	public void setSprintId(int sprintId) {
 		this.sprintId = sprintId;
+	}
+	public boolean isSprintIsDeleted() {
+		return sprintIsDeleted;
+	}
+	public void setSprintIsDeleted(boolean sprintIsDeleted) {
+		this.sprintIsDeleted = sprintIsDeleted;
 	}
 }

@@ -9,6 +9,7 @@ import controller.EmployeeManagementController;
 import controller.EmployeesOverviewController;
 import controller.LockUserController;
 import controller.ProjectManagementViewController;
+import controller.SprintManagementViewController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -35,6 +36,7 @@ public class AdministratorViewController {
 	private ProjectManagementViewController projectManagementController;
 	private CustomerManagementViewController customerManagement;
 	private LockUserController lockEmployee;
+	private SprintManagementViewController sprintManagementViewController;
 	
 
 	
@@ -77,6 +79,11 @@ public class AdministratorViewController {
 	    FXMLLoader employeeLoader = new FXMLLoader(getClass().getResource("/view/EmployeesOverview.fxml"));			//get xml file
 	    Pane allEmployeeView = employeeLoader.load();	
 	    EmployeesOverviewController allEmployeeController = employeeLoader.getController();
+	    
+	    FXMLLoader sprintManagementLoader = new FXMLLoader(getClass().getResource("/controller/SprintManagementView.fxml"));			//get xml file
+	    Pane sprintManagementView = sprintManagementLoader.load();	
+	    SprintManagementViewController sprintManagementViewController = sprintManagementLoader.getController();
+	    
 
 		FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("/view/home/home.fxml"));			//get xml file
 		Pane homeView = homeLoader.load();
@@ -87,17 +94,22 @@ public class AdministratorViewController {
 	    adminController.setControllerProjectManagement(projectManagementController);
 	    adminController.setControllerCustomerManagement(customerController);
 	    adminController.setControllerLockEmployee(lockController);
+	    adminController.setControllerSprintManagement(sprintManagementViewController);
 	    medewerkerBeherenController.setControllerEmployee(allEmployeeController);
 	    medewerkerBeherenController.setControllerCreateUserController(createUserController);
 	    medewerkerBeherenController.setControllerLockUserController(lockController);
 	   // beheerderController.setControllerHandleiding(handleidingController);
 	    
 	    Pane tabPane = (Pane)beheerderScherm.getNamespace().get("pane"); 						//get stackPane from fieldView
-        tabPane.getChildren().addAll(allEmployeeView, unlockView, medewerkerBeherenView, createUserView, projectManagementView,customerView);
+        tabPane.getChildren().addAll(allEmployeeView, unlockView, medewerkerBeherenView, createUserView, projectManagementView,customerView, sprintManagementView);
         
 		Scene scene = new Scene(View);
 		primaryStage.setScene(scene);
 		primaryStage.show();
+	}
+
+	private void setControllerSprintManagement(SprintManagementViewController sprintManagementViewController) {
+		this.sprintManagementViewController = sprintManagementViewController;
 	}
 
 	private void setControllerLockEmployee(LockUserController lockController) {
@@ -131,6 +143,9 @@ public class AdministratorViewController {
 		this.customerManagement.showView();
 	}
 	
-
+	public void openSprintManagementView()
+	{
+		this.sprintManagementViewController.showView();
+	}
 
 }

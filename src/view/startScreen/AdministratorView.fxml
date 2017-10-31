@@ -5,12 +5,12 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.startScreen.AdministratorViewController">
+<BorderPane xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.startScreen.AdministratorViewController">
    <left>
       <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <Button layoutX="166.0" layoutY="84.0" mnemonicParsing="false" onAction="#openProjectsManagement" prefHeight="89.0" prefWidth="112.0" style="-fx-background-size: 120 100; -fx-background-repeat: no-repeat; -fx-background-image: url('view/images/projects.png');" />
-            <Button layoutX="312.0" layoutY="84.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="112.0" style="-fx-background-repeat: no-repeat; -fx-background-size: 105 90; -fx-background-image: url('view/images/sprints.png');" />
+            <Button layoutX="312.0" layoutY="84.0" mnemonicParsing="false" onAction="#openSprintManagementView" prefHeight="90.0" prefWidth="112.0" style="-fx-background-repeat: no-repeat; -fx-background-size: 105 90; -fx-background-image: url('view/images/sprints.png');" />
             <Button layoutX="21.0" layoutY="240.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="108.0" style="-fx-background-image: url('/view/images/entry.png'); -fx-background-repeat: no-repeat; -fx-background-size: 110 90;" />
             <Button layoutX="165.0" layoutY="238.0" mnemonicParsing="false" onAction="#openMedewerkerView" prefHeight="94.0" prefWidth="106.0" style="-fx-background-image: url('view/images/employees.png'); -fx-background-repeat: no-repeat; -fx-background-size: 110 90;" />
             <Button fx:id="btnAccounts" layoutX="21.0" layoutY="82.0" mnemonicParsing="false" onAction="#openCustomerView" prefHeight="93.0" prefWidth="116.0" style="-fx-background-image: url('view/images/customer.jpg'); -fx-background-repeat: no-repeat; -fx-background-size: 120 100;" />
