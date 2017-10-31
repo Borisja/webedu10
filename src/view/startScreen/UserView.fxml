@@ -9,7 +9,7 @@
    <bottom>
       <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="54.0" layoutY="43.0" mnemonicParsing="false" onAction="#toonSprintscherm" prefHeight="90.0" prefWidth="123.0" style="-fx-background-image: url('view/images/sprint.png'); -fx-background-repeat: no-repeat; -fx-background-size: 110 90;" />
+            <Button layoutX="54.0" layoutY="43.0" mnemonicParsing="false" onAction="#toonSprintscherm" prefHeight="90.0" prefWidth="123.0" style="-fx-background-image: url('view/images/sprint.png'); -fx-background-repeat: no-repeat; -fx-background-size: 110 90; -fx-border-color: transparent; -fx-background-color: transparent;" />
             <Button layoutX="246.0" layoutY="43.0" mnemonicParsing="false" onAction="#toonProjectScherm" prefHeight="90.0" prefWidth="123.0" style="-fx-background-image: url('view/images/projects.png'); -fx-background-repeat: no-repeat; -fx-background-size: 110 90;" />
             <Button layoutX="449.0" layoutY="43.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="123.0" />
             <Label layoutX="86.0" layoutY="153.0" text="Sprints" />
