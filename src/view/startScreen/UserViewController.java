@@ -39,7 +39,6 @@ public class UserViewController {
 	
 	public void startGebruiker(EmployeeModel em) throws IOException
 	{
-		this.user = em;
 		Stage primaryStage = new Stage();
 		FXMLLoader userView = new FXMLLoader(getClass().getResource("/view/startScreen/UserView.fxml"));
 		BorderPane view =(BorderPane) userView.load();
@@ -84,6 +83,7 @@ public class UserViewController {
 		calenderController.setEmployeeYou(em);
 	    addEntryController.setCurrentUser(em);
 	    sprintController.setCurrentUser(em);
+	    sprintController.fillTabel(em.getEmployeeId());
 	    userController.setControllerCalender(calenderController);
 //		addEntryController.setController(addHoursController);
 		userController.setControllerGebruikerGegevens(userInformationController);

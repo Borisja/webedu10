@@ -12,7 +12,7 @@ public class ProjectDAO {
 	ObservableList<ProjectModel> arrProjecten;
 
 	/**
-	 * @author Robert den Blaauwen
+	 * @author Fardin Samandar
 	 * @date 25-10-2017
 	 */
 	public ProjectDAO(){
@@ -93,13 +93,10 @@ public class ProjectDAO {
 	 */
 	public ArrayList<ProjectModel> project_list_employee(int employeeId){
 		ArrayList<ProjectModel> proj_list = new ArrayList<ProjectModel>();
-		String project_list_sql = "SELECT * FROM project_version";
-		System.out.println("hierbenik");
-				
-/*			"SELECT project_version_id, project_version_name, project_version_description FROM project_version"
+		String project_list_sql = "SELECT project_version_id, project_version_name, project_version_description FROM project_version"
 + " inner join project_employee on(project_employee_project_fk=project_version_project_fk)"
 + " inner join employee on(employee_id=project_employee_employee_fk)"
-+ " where employee_id = ?";*/
++ " where employee_id = ?";
 		try {
 			PreparedStatement project_statement = connect.connectToDB().prepareStatement(project_list_sql);
 			project_statement.setInt(1, employeeId);
