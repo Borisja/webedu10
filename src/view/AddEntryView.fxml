@@ -7,23 +7,23 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" visible="false" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AddEntryViewController">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="798.0" prefWidth="1024.0" stylesheets="@style.css" visible="false" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AddEntryViewController">
      <children>
-     <ComboBox fx:id="projectCombo" layoutX="22.0" layoutY="66.0" prefWidth="150.0" />
-     <ComboBox fx:id="userStorysCombo" layoutX="210.0" layoutY="66.0" prefWidth="150.0" />
-     <ComboBox fx:id="sprintCombo" layoutX="399.0" layoutY="66.0" prefWidth="150.0" />
-    <Button fx:id="addEntryButton" layoutX="235.0" layoutY="309.0" mnemonicParsing="false" onAction="#addEntryToDatabase" prefHeight="42.0" prefWidth="100.0" text="Add Entry" />
-     <Label layoutX="72.0" layoutY="32.0" text="Projects" />
-     <Label layoutX="249.0" layoutY="32.0" text="UserStory's" />
-     <Label layoutX="452.0" layoutY="32.0" text="Sprints" />
-    <TextField fx:id="entryStartTime" layoutX="210.0" layoutY="158.0" />
-     <TextField fx:id="entryEndTime" layoutX="412.0" layoutY="158.0" />
-    <Label layoutX="72.0" layoutY="141.0" text="Datum" />
-    <Label layoutX="470.0" layoutY="141.0" text="Eind tijd" />
-    <Label layoutX="267.0" layoutY="141.0" text="Start tijd" />
-     <Label layoutX="55.0" layoutY="215.0" text="Beschrijving" />
-     <TextField fx:id="entryDescription" layoutX="14.0" layoutY="240.0" />
-      <DatePicker fx:id="entryDate" layoutX="6.0" layoutY="158.0" />
-      <Button layoutX="26.0" layoutY="338.0" mnemonicParsing="false" onAction="#closeView" text="Sluit" />
+     <ComboBox fx:id="projectCombo" layoutX="80.0" layoutY="315.0" prefWidth="150.0" />
+     <ComboBox fx:id="userStorysCombo" layoutX="419.0" layoutY="315.0" prefWidth="150.0" />
+     <ComboBox fx:id="sprintCombo" layoutX="773.0" layoutY="315.0" prefWidth="150.0" />
+    <Button fx:id="addEntryButton" layoutX="469.0" layoutY="610.0" mnemonicParsing="false" onAction="#addEntryToDatabase" prefHeight="42.0" prefWidth="100.0" text="Add Entry" />
+     <Label layoutX="130.0" layoutY="267.0" text="Projects" />
+     <Label layoutX="458.0" layoutY="267.0" text="UserStory's" />
+     <Label layoutX="820.0" layoutY="267.0" text="Sprints" />
+    <TextField fx:id="entryStartTime" layoutX="550.0" layoutY="519.0" />
+     <TextField fx:id="entryEndTime" layoutX="773.0" layoutY="519.0" />
+    <Label layoutX="121.0" layoutY="481.0" text="Datum" />
+    <Label layoutX="831.0" layoutY="481.0" text="Eind tijd" />
+    <Label layoutX="607.0" layoutY="481.0" text="Start tijd" />
+     <Label layoutX="373.0" layoutY="481.0" text="Beschrijving" />
+     <TextField fx:id="entryDescription" layoutX="327.0" layoutY="519.0" />
+      <DatePicker fx:id="entryDate" layoutX="45.0" layoutY="519.0" />
+      <Button layoutX="57.0" layoutY="689.0" mnemonicParsing="false" onAction="#closeView" text="Sluit" />
      </children>
   </Pane>
