@@ -38,11 +38,6 @@ public class ProjectController implements Initializable{
 		pane.setVisible(false);
 	}
 
-	public void fillTabelView()
-	{
-		projectsData.addAll(projectDao.project_list_employee(currentEmployee));
-		projectTabelView.setItems(projectsData);
-	}
 
 	public void setCurrentUser(int  em) {
 		this.currentEmployee = em;
@@ -55,6 +50,9 @@ public class ProjectController implements Initializable{
 		projectName.setCellValueFactory(new PropertyValueFactory<ProjectModel, String>("projectName"));
 		projectDes.setCellValueFactory(new PropertyValueFactory<ProjectModel, String>("projectDescription"));
 		
+		
+		projectsData.addAll(projectDao.project_list());
+		projectTabelView.setItems(projectsData);
 	}
 
 }

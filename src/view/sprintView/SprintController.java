@@ -43,6 +43,7 @@ public class SprintController  implements Initializable {
 	sprintName.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("sprintName"));		
 	sprintStartDate.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("sprintStartDate"));		
 	sprintEndDate.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("sprintEndDate"));
+	
 	sprintData.addAll(sprintDAO.allSprints());
 	sprintTabelView.setItems(sprintData);
 	}
