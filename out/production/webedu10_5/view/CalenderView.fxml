@@ -9,7 +9,7 @@
 
 <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #e3e4e5;" visible="false" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.CalenderView">
    <children>
-      <TableView fx:id="allEntries" prefHeight="400.0" prefWidth="431.0">
+      <TableView fx:id="allEntries" prefHeight="400.0" prefWidth="439.0">
         <columns>
           <TableColumn fx:id="EntryIdCol" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="EntryProjectCol" prefWidth="75.0" text="Project" />
@@ -18,7 +18,8 @@
             <TableColumn fx:id="EntryNameCol" prefWidth="75.0" text="Naam" />
             <TableColumn fx:id="EntryStartCol" prefWidth="75.0" text="StartTijd" />
             <TableColumn fx:id="EntryStopCol" prefWidth="75.0" text="EindTijd" />
-            <TableColumn fx:id="EntryStatusCol" prefWidth="75.0" text="Status" />
+            <TableColumn fx:id="EntryStatusCol" prefWidth="59.0" text="Status" />
+            <TableColumn fx:id="EntryDateCol" prefWidth="91.0" text="Datum" />
         </columns>
       </TableView>
       <Button layoutX="503.0" layoutY="55.0" mnemonicParsing="false" onAction="#showModifyEntry" text="Wijzigen" />

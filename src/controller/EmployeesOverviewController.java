@@ -31,6 +31,11 @@ public class EmployeesOverviewController implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+//		refresh();
+	}
+
+	public void refresh(){
+		allEmployees.getItems().clear();
 		iId.setCellValueFactory(new PropertyValueFactory<EmployeeModel, Integer>("employeeId"));
 		firstName.setCellValueFactory(new PropertyValueFactory<EmployeeModel, String>("employeeFirstName"));
 		lastName.setCellValueFactory(new PropertyValueFactory<EmployeeModel, String>("employeeLastName"));
@@ -38,16 +43,14 @@ public class EmployeesOverviewController implements Initializable{
 		password.setCellValueFactory(new PropertyValueFactory<EmployeeModel, String>("employeePassword"));
 		role.setCellValueFactory(new PropertyValueFactory<EmployeeModel, String>("employeeRole"));
 		status.setCellValueFactory(new PropertyValueFactory<EmployeeModel, String>("employeeIsDeleted"));
-		
+
 		data.addAll(employeeDao.getAllEmployees());
 		allEmployees.setItems(data);
-
-
-		
 	}
 	
 	public void showEmployeeOverview()
 	{
+		refresh();
 		this.pane.setVisible(true);
 	}
 	

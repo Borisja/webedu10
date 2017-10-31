@@ -167,6 +167,7 @@ public class ProjectManagementViewController implements Initializable{
 	 */
 	public void showPopUpAdd() 
 	{
+		refreshTable();
 		popUpAdd.setVisible(true);
 		
 	}
@@ -206,6 +207,7 @@ public class ProjectManagementViewController implements Initializable{
 	 */
 	public void showView()
 	{
+		refreshTable();
 		this.pane.setVisible(true);
 	}
 	

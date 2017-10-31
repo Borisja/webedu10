@@ -30,6 +30,7 @@ public class AdministratorViewController {
 	private CustomerManagementViewController customerManagement;
 	private LockUserController lockEmployee;
 	private SprintManagementViewController sprintManagementViewController;
+	private ApprovalController approveController;
 	
 
 	
@@ -82,7 +83,10 @@ public class AdministratorViewController {
 
 		EditEmployeeController editEmployeeController = new EditEmployeeController();
 		Pane editEmployeeView = editEmployeeController.getEditPane();
-
+		
+	    FXMLLoader approveManagementLoader = new FXMLLoader(getClass().getResource("/view/approvalView/approvalView.fxml"));			//get xml file
+	    Pane approvalview = approveManagementLoader.load();	
+	    ApprovalController approvalController = approveManagementLoader.getController();
 	    
 
 		FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("/view/home/home.fxml"));			//get xml file
@@ -95,6 +99,7 @@ public class AdministratorViewController {
 	    adminController.setControllerCustomerManagement(customerController);
 	    adminController.setControllerLockEmployee(lockController);
 	    adminController.setControllerSprintManagement(sprintManagementViewController);
+	    adminController.setControllerApproval(approvalController);
 	    medewerkerBeherenController.setControllerEmployee(allEmployeeController);
 	    medewerkerBeherenController.setControllerCreateUserController(createUserController);
 	    medewerkerBeherenController.setControllerLockUserController(lockController);
@@ -102,11 +107,16 @@ public class AdministratorViewController {
 	   // beheerderController.setControllerHandleiding(handleidingController);
 	    
 	    Pane tabPane = (Pane)beheerderScherm.getNamespace().get("pane"); 						//get stackPane from fieldView
-        tabPane.getChildren().addAll(editEmployeeView,allEmployeeView, unlockView, medewerkerBeherenView, createUserView, projectManagementView,customerView, sprintManagementView);
+        tabPane.getChildren().addAll(approvalview, editEmployeeView,allEmployeeView, unlockView, medewerkerBeherenView, createUserView, projectManagementView,customerView, sprintManagementView);
         
 		Scene scene = new Scene(View);
 		primaryStage.setScene(scene);
 		primaryStage.show();
+	}
+
+	private void setControllerApproval(ApprovalController approvalController) {
+		this.approveController = approvalController;
+		
 	}
 
 	private void setControllerSprintManagement(SprintManagementViewController sprintManagementViewController) {
@@ -147,6 +157,10 @@ public class AdministratorViewController {
 	public void openSprintManagementView()
 	{
 		this.sprintManagementViewController.showView();
+	}
+	public void showApprovalMenu()
+	{
+		this.approveController.openApprovalMenu();
 	}
 
 }
