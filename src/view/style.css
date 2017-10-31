@@ -6,3 +6,11 @@
 #buttons:hover{
 	-fx-border-color: black;
 }
+
+#pane{
+	-fx-background-color: #a6a9ad;
+}
+
+#nav{
+	-fx-background-color: #737577;
+}
