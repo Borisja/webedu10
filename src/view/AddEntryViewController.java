@@ -173,58 +173,61 @@ public class AddEntryViewController implements Initializable {
 	
 	public void addEntryToDatabase() throws ParseException
 	{
-		Date date1 = Date.valueOf(entryDate.getValue());
-		String startTime = entryStartTime.getText();
-		String endTime = entryEndTime.getText();
-		SimpleDateFormat formatStartTime = new SimpleDateFormat("hh:mm:ss");
-		SimpleDateFormat formatEndTime = new SimpleDateFormat("hh:mm:ss");
-	    java.util.Date d1 =(java.util.Date)formatStartTime.parse(startTime);
-	    java.util.Date d2 =(java.util.Date)formatEndTime.parse(endTime);
-	    java.sql.Time convertedStartTime = new java.sql.Time(d1.getTime());
-	    java.sql.Time convertedEndTime = new java.sql.Time(d2.getTime());
-	    
-	    int projectId = 0;
-	    int sprintId = 0;
-	    int userId = 0;
-	    //De volgende try-catchs checken of er wel iets geselectreed is. Als niets geselecteerd dan wordt de id 0.
-	    //Dit wordt nog een een gecheckt in AdministratorDAO
-	    try{
-	    	
-	    	projectId = projectCombo.getSelectionModel().getSelectedItem().getProjectId();
-	    	
-	    }catch(NullPointerException e)
-	    {
-	    	projectId = 0;
-	    }
-	    
-	    try{
-	    	
-	    	sprintId = sprintCombo.getSelectionModel().getSelectedItem().getSprintId();
-	    	
-	    }catch(NullPointerException e)
-	    {
-	    	sprintId = 0;
-	    }
-	    
-	    try{
-	    	userId = userStorysCombo.getSelectionModel().getSelectedItem().getUserStoryId();
-	    }catch(NullPointerException e)
-	    {
-	    	userId = 0;
-	    }
-	    
-		adminDao.addEntry(
-				currentEmployee.getEmployeeId(),
-				projectId,
-				sprintId,
-				date1,
-				entryDescription.getText(),
-				convertedStartTime,
-				convertedEndTime,
-				userId);
-		Alert showMessage = new Alert(AlertType.INFORMATION);
-		showMessage.setContentText("Nieuwe entry is toegevoegd aan de database");
-		showMessage.showAndWait();
+		try {
+			Date date1 = Date.valueOf(entryDate.getValue());
+			String startTime = entryStartTime.getText().trim();
+			String endTime = entryEndTime.getText().trim();
+			SimpleDateFormat formatStartTime = new SimpleDateFormat("hh:mm");
+			SimpleDateFormat formatEndTime = new SimpleDateFormat("hh:mm");
+			java.util.Date d1 = (java.util.Date) formatStartTime.parse(startTime);
+			java.util.Date d2 = (java.util.Date) formatEndTime.parse(endTime);
+			java.sql.Time convertedStartTime = new java.sql.Time(d1.getTime());
+			java.sql.Time convertedEndTime = new java.sql.Time(d2.getTime());
+
+			int projectId = 0;
+			int sprintId = 0;
+			int userId = 0;
+			//De volgende try-catchs checken of er wel iets geselectreed is. Als niets geselecteerd dan wordt de id 0.
+			//Dit wordt nog een een gecheckt in AdministratorDAO
+			try {
+
+				projectId = projectCombo.getSelectionModel().getSelectedItem().getProjectId();
+
+			} catch (NullPointerException e) {
+				projectId = 0;
+			}
+
+			try {
+
+				sprintId = sprintCombo.getSelectionModel().getSelectedItem().getSprintId();
+
+			} catch (NullPointerException e) {
+				sprintId = 0;
+			}
+
+			try {
+				userId = userStorysCombo.getSelectionModel().getSelectedItem().getUserStoryId();
+			} catch (NullPointerException e) {
+				userId = 0;
+			}
+
+			adminDao.addEntry(
+					currentEmployee.getEmployeeId(),
+					projectId,
+					sprintId,
+					date1,
+					entryDescription.getText(),
+					convertedStartTime,
+					convertedEndTime,
+					userId);
+			Alert showMessage = new Alert(AlertType.INFORMATION);
+			showMessage.setContentText("Nieuwe entry is toegevoegd aan de database");
+			showMessage.showAndWait();
+		} catch (ParseException ex){
+			Alert parseErrorMessage = new Alert(AlertType.INFORMATION);
+			parseErrorMessage.setContentText("Vul de begin en eind tijd op de volgende manier in: UU:MM ");
+			parseErrorMessage.showAndWait();
+		}
 	}
 
 	
