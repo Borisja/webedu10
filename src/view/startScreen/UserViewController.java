@@ -69,7 +69,7 @@ public class UserViewController {
 	    Pane homeView = homeLoader.load();
 	    homeController homeController = homeLoader.getController();
 	    
-	    homeController.setUserPane((Pane)userView.getNamespace().get("pane"));
+	    homeController.setUserStage(primaryStage);
 	    
 	    
 	    view.setTop(homeView);
