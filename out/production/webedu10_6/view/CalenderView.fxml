@@ -7,9 +7,9 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #e3e4e5;" stylesheets="@style.css" visible="false" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.CalenderView">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #e3e4e5;" stylesheets="@style.css" visible="false" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.CalenderView">
    <children>
-      <TableView fx:id="allEntries" onMouseClicked="#showModifyEntry" prefHeight="400.0" prefWidth="439.0">
+      <TableView fx:id="allEntries" onMouseClicked="#showModifyEntry" prefHeight="768.0" prefWidth="800.0">
         <columns>
           <TableColumn fx:id="EntryIdCol" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="EntryProjectCol" prefWidth="75.0" text="Project" />
@@ -22,9 +22,9 @@
             <TableColumn fx:id="EntryDateCol" prefWidth="91.0" text="Datum" />
         </columns>
       </TableView>
-      <Button layoutX="503.0" layoutY="55.0" mnemonicParsing="false" onAction="#showModifyEntry" text="Wijzigen" />
-      <Button layoutX="503.0" layoutY="105.0" mnemonicParsing="false" onAction="#closeView" text="Sluiten" />
-      <Pane fx:id="entryChangePane" layoutX="440.0" layoutY="17.0" prefHeight="343.0" prefWidth="146.0" style="-fx-background-color: e3e4e5;" visible="false">
+      <Button layoutX="900.0" layoutY="55.0" mnemonicParsing="false" onAction="#showModifyEntry" text="Wijzigen" />
+      <Button layoutX="900.0" layoutY="105.0" mnemonicParsing="false" onAction="#closeView" text="Sluiten" />
+      <Pane fx:id="entryChangePane" layoutX="850.0" layoutY="17.0" prefHeight="343.0" prefWidth="146.0" style="-fx-background-color: e3e4e5;" visible="false">
          <children>
             <Button layoutX="37.0" layoutY="240.0" mnemonicParsing="false" onAction="#modifyEntry" text="Wijzigen" />
             <Button layoutX="50.0" layoutY="282.0" mnemonicParsing="false" onAction="#hideModifyEntry" text="Sluit" />
