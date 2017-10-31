@@ -16,6 +16,7 @@ public class EmployeeManagementController {
 	private CreateUserController createUserController;
 	private LockUserController lockUserController;
 	private EmployeesOverviewController employeeOverviewController;
+	private EditEmployeeController editEmployeeController;
 	
 	public void showView()
 	{
@@ -45,6 +46,10 @@ public class EmployeeManagementController {
 		this.employeeOverviewController.showEmployeeOverview();
 		
 	}
+	public void showEditEmployee(){
+		this.pane.setVisible(false);
+		this.editEmployeeController.showEditEmployee();
+	}
 	/**
 	 * Deze methode krijgt de createusercontroller van de administratorviewcontrooler
 	 * @param createUserController - > Controller meegekregen van administratorviewcontrooler
@@ -73,4 +78,12 @@ public class EmployeeManagementController {
 		this.employeeOverviewController = emController;
 	}
 
+	/**
+	 * Deze methode krijgt de employeeOverviewController van de administratorviewcontroller
+	 * @param editEmployeeController
+	 * @author Robert den Blaauwen
+	 */
+	public void setControllerEditEmployeeController(EditEmployeeController editEmployeeController){
+		this.editEmployeeController=editEmployeeController;
+	}
 }

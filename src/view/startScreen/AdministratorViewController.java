@@ -2,14 +2,7 @@ package view.startScreen;
 
 import java.io.IOException;
 
-import controller.AccountManagementController;
-import controller.CreateUserController;
-import controller.CustomerManagementViewController;
-import controller.EmployeeManagementController;
-import controller.EmployeesOverviewController;
-import controller.LockUserController;
-import controller.ProjectManagementViewController;
-import controller.SprintManagementViewController;
+import controller.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -42,8 +35,7 @@ public class AdministratorViewController {
 	
 	/**
 	 * 
-	 * Deze methode start het beheerder scherm. 
-	 * @param beheerder_id Hier krijg hij de employee id mee
+	 * Deze methode start het beheerder scherm.
 	 * @throws IOException
 	 * @author rezanaser
 	 * @param user 
@@ -83,6 +75,14 @@ public class AdministratorViewController {
 	    FXMLLoader sprintManagementLoader = new FXMLLoader(getClass().getResource("/controller/SprintManagementView.fxml"));			//get xml file
 	    Pane sprintManagementView = sprintManagementLoader.load();	
 	    SprintManagementViewController sprintManagementViewController = sprintManagementLoader.getController();
+
+//		FXMLLoader editEmployeeLoader = new FXMLLoader(getClass().getResource("/view/EditEmployee.fxml"));			//get xml file
+//		Pane editEmployeeView = editEmployeeLoader.load();
+//		EditEmployeeController editEmployeeController = editEmployeeLoader.getController();
+
+		EditEmployeeController editEmployeeController = new EditEmployeeController();
+		Pane editEmployeeView = editEmployeeController.getEditPane();
+
 	    
 
 		FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("/view/home/home.fxml"));			//get xml file
@@ -98,10 +98,11 @@ public class AdministratorViewController {
 	    medewerkerBeherenController.setControllerEmployee(allEmployeeController);
 	    medewerkerBeherenController.setControllerCreateUserController(createUserController);
 	    medewerkerBeherenController.setControllerLockUserController(lockController);
+	    medewerkerBeherenController.setControllerEditEmployeeController(editEmployeeController);
 	   // beheerderController.setControllerHandleiding(handleidingController);
 	    
 	    Pane tabPane = (Pane)beheerderScherm.getNamespace().get("pane"); 						//get stackPane from fieldView
-        tabPane.getChildren().addAll(allEmployeeView, unlockView, medewerkerBeherenView, createUserView, projectManagementView,customerView, sprintManagementView);
+        tabPane.getChildren().addAll(editEmployeeView,allEmployeeView, unlockView, medewerkerBeherenView, createUserView, projectManagementView,customerView, sprintManagementView);
         
 		Scene scene = new Scene(View);
 		primaryStage.setScene(scene);

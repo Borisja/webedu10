@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import model.EntryModel;
 import model.EmployeeModel;
+import model.Role;
 
 /**
  * Employee DAO to be used to access database to get employee information
@@ -49,7 +50,7 @@ public class EmployeeDAO {
 		
 		String employee_entry_sql = "SELECT * FROM employee, employee_version "
 				+ "WHERE  employee_id = employee_version_employee_fk "
-				+ "AND employee_isdeleted = false";
+				+ "AND employee_isdeleted = false AND employee_version_current=TRUE";
 		try {
 			PreparedStatement user_statement = connect.connectToDB().prepareStatement(employee_entry_sql);
 			//entries_statement.setInt(1, e_id);
@@ -134,6 +135,35 @@ public class EmployeeDAO {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	public void editEmployee(EmployeeModel employeeModel){
+		String oldVersionDisableSql = "UPDATE employee_version SET employee_version_current=false" +
+				" WHERE employee_version_employee_fk = ? AND employee_version_current = true";
+		String addNewVersionSql = "INSERT INTO employee_version(employee_version_employee_fk," +
+				"employee_version_firstname,employee_version_lastname,employee_version_role,employee_version_email," +
+				"employee_version_password,employee_version_current)" +
+				"VALUES(?,?,?,?::enum_role,?,?,?)";
+		try {
+			PreparedStatement changeVersions= connect.connectToDB().prepareStatement(oldVersionDisableSql);
+			changeVersions.setInt(1, employeeModel.getEmployeeId());
+			changeVersions.executeUpdate();
+			changeVersions.close();
+
+
+			PreparedStatement addVersionStatement = connect.connectToDB().prepareStatement(addNewVersionSql);
+			addVersionStatement.setInt(1,employeeModel.getEmployeeId());
+			addVersionStatement.setString(2,employeeModel.getEmployeeFirstname());
+			addVersionStatement.setString(3,employeeModel.getEmployeeLastName());
+			addVersionStatement.setString(4,employeeModel.getEmployeeRole());
+			addVersionStatement.setString(5,employeeModel.getEmployeeEmail());
+			addVersionStatement.setString(6,employeeModel.getEmployeePassword());
+			addVersionStatement.setBoolean(7,true);
+			addVersionStatement.executeQuery();
+			addVersionStatement.close();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 	/**
