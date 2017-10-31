@@ -194,13 +194,36 @@ public class AddEntryViewController implements Initializable {
 	
 	public void addEntryToDatabase()
 	{
-		adminDao.addEntry(currentEmployee.getEmployeeId(), projectCombo.getSelectionModel().getSelectedItem().getProjectId(), 
-				//userStoryCombo.getSelectionModel().getSelectedItem().getUserStoryId(), 
-				 sprintCombo.getSelectionModel().getSelectedItem().getSprintId()
-				, entryDescription.getText());
-		Alert showMessage = new Alert(AlertType.INFORMATION);
-		showMessage.setContentText("Nieuwe entry is toegevoegd aan de database");
-		showMessage.showAndWait();
+//<<<<<<< HEAD
+//		adminDao.addEntry(currentEmployee.getEmployeeId(), projectCombo.getSelectionModel().getSelectedItem().getProjectId(), 
+//				//userStoryCombo.getSelectionModel().getSelectedItem().getUserStoryId(), 
+//				 sprintCombo.getSelectionModel().getSelectedItem().getSprintId()
+//				, entryDescription.getText());
+//=======
+//		Date date1 = Date.valueOf(entryDate.getValue());
+//		String startTime = entryStartTime.getText();
+//		String endTime = entryEndTime.getText();
+//		SimpleDateFormat formatStartTime = new SimpleDateFormat("hh:mm:ss");
+//		SimpleDateFormat formatEndTime = new SimpleDateFormat("hh:mm:ss");
+//	    java.util.Date d1 =(java.util.Date)formatStartTime.parse(startTime);
+//	    java.util.Date d2 =(java.util.Date)formatEndTime.parse(endTime);
+//	    java.sql.Time convertedStartTime = new java.sql.Time(d1.getTime());
+//	    java.sql.Time convertedEndTime = new java.sql.Time(d2.getTime());
+//
+//		adminDao.addEntry(
+//				currentEmployee.getEmployeeId(),
+//				projectCombo.getSelectionModel().getSelectedItem().getProjectId(),
+//				sprintCombo.getSelectionModel().getSelectedItem().getSprintId(),
+//				date1,
+//				entryDescription.getText(),
+//				convertedStartTime,
+//				convertedEndTime,
+//				userStorysCombo.getSelectionModel().getSelectedItem().getUserStoryId());
+//
+//>>>>>>> branch 'master' of https://github.com/Borisja/webedu10.git
+//		Alert showMessage = new Alert(AlertType.INFORMATION);
+//		showMessage.setContentText("Nieuwe entry is toegevoegd aan de database");
+//		showMessage.showAndWait();
 	}
 
 	

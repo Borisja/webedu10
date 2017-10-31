@@ -51,8 +51,10 @@
             <Button layoutX="68.0" layoutY="321.0" mnemonicParsing="false" onAction="#closePopupAdd" text="Annuleren" />
             <Label layoutX="66.0" layoutY="82.0" text="Projectnaam" />
             <ComboBox fx:id="projectComboBox" layoutX="24.0" layoutY="99.0" prefWidth="150.0" />
-            <TextField fx:id="newSprintDescriptionTextField1" layoutX="25.0" layoutY="211.0" />
-            <Label layoutX="52.0" layoutY="179.0" text="Begindatum" />
+            <TextField fx:id="newSprintDescriptionTextField1" layoutX="25.0" layoutY="196.0" />
+            <Label layoutX="67.0" layoutY="179.0" text="Begindatum" />
+            <Label layoutX="67.0" layoutY="221.0" text="Einddatum" />
+            <TextField fx:id="newSprintDescriptionTextField11" layoutX="29.0" layoutY="238.0" />
          </children>
       </Pane>
    </children>

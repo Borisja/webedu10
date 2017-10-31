@@ -188,23 +188,26 @@ public class AdministratorDAO {
 	 * Deze methode voegt een nieuwe entry toe
 	 */
 	
-	public void addEntry(int employeeId, int pId, int spId, String description){
+	public void addEntry(int employeeId, int projectId, int sprintId, Date date, String description, Time startTime, Time endTime, int userStoryId){
 		PreparedStatement insertProject;
-		String insertUser_sql = "insert into entry_version (entry_version_entry_fk, entry_version_project_fk,entry_version_sprint_fk, entry_version_description, entry_version_current) "
-				+ "VALUES (?, ?, ?, ?, ?)";
+		String insertUser_sql = "insert into entry_version (entry_version_entry_fk, entry_version_project_fk, entry_version_userstory_fk," +
+				"entry_version_sprint_fk, entry_version_starttime,entry_version_endtime," +
+				"entry_version_date, entry_version_description, entry_version_current) "
+				+ "VALUES (?, ?,?,?, ?, ?,?,?,?,?)";
 		try {
 			insertProject = connect.connectToDB().prepareStatement(insertUser_sql);
 			
 			insertProject.setInt(1, createNewEntry(employeeId));
-			insertProject.setInt(2, pId);
-			
+			insertProject.setInt(2, projectId);
+			insertProject.setInt(3, userStoryId);
 //			insertProject.setInt(3, 0);
-			insertProject.setInt(3, spId);
-//			insertProject.setTime(5, starttime); 
-//			insertProject.setTime(6, endtime);
-//			insertProject.setDate(7, date);
-			insertProject.setString(4, description);
-			insertProject.setBoolean(5, true);
+			insertProject.setInt(4, sprintId);
+			insertProject.setTime(5, startTime);
+			insertProject.setTime(6, endTime);
+			insertProject.setDate(7, date);
+			insertProject.setString(8, description);
+			insertProject.setBoolean(9, true);
+
 			insertProject.executeQuery();
 
 			insertProject.close();

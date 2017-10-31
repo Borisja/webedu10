@@ -7,13 +7,13 @@
 <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: e3e4e5;" visible="false" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployeeManagementController">
    <children>
       <Button fx:id="addEmployee" layoutX="33.0" layoutY="62.0" mnemonicParsing="false" onAction="#showAddEmployee" prefHeight="81.0" prefWidth="109.0" style="-fx-background-image: url('view/images/addEmployee.png'); -fx-background-repeat: no-repeat; -fx-background-size: 110 90;" />
-      <Button fx:id="deleteEmployee" layoutX="228.0" layoutY="62.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="109.0" style="-fx-background-image: url('view/images/removeEmployee.png'); -fx-background-repeat: no-repeat; -fx-background-size: 110 90;" />
+      <Button fx:id="deleteEmployee" layoutX="228.0" layoutY="62.0" mnemonicParsing="false" onAction="#showLockEmployee" prefHeight="81.0" prefWidth="109.0" style="-fx-background-image: url('view/images/removeEmployee.png'); -fx-background-repeat: no-repeat; -fx-background-size: 110 90;" />
       <Button layoutX="33.0" layoutY="332.0" mnemonicParsing="false" onAction="#closeView" text="Sluiten" />
       <Button fx:id="deleteEmployee1" layoutX="412.0" layoutY="62.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="109.0" style="-fx-background-image: url('view/images/modifyEmployee.png'); -fx-background-repeat: no-repeat; -fx-background-size: 110 90;" />
       <Label layoutX="15.0" layoutY="157.0" text="Medewerker toevoegen" />
       <Label layoutX="207.0" layoutY="157.0" text="Medewerker verwijderen" />
       <Label layoutX="402.0" layoutY="157.0" text="Medewerker wijzigen" />
       <Label layoutX="25.0" layoutY="287.0" text="Lijst alle medewerkers" />
-      <Button fx:id="deleteEmployee11" layoutX="33.0" layoutY="194.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="109.0" style="-fx-background-image: url('view/images/employees.png'); -fx-background-repeat: no-repeat; -fx-background-size: 110 90;" />
+      <Button layoutX="33.0" layoutY="194.0" mnemonicParsing="false" onAction="#showAllEmployee" prefHeight="81.0" prefWidth="109.0" style="-fx-background-image: url('view/images/employees.png'); -fx-background-repeat: no-repeat; -fx-background-size: 110 90;" />
    </children>
 </Pane>
