@@ -9,7 +9,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="454.0" prefWidth="890.0" style="-fx-background-color: e3e4e5;" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SprintManagementViewController">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="454.0" prefWidth="890.0" style="-fx-background-color: e3e4e5;" visible="false" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SprintManagementViewController">
    <children>
       <TableView fx:id="sprintTableView" layoutX="3.0" layoutY="10.0" prefHeight="374.0" prefWidth="599.0">
         <columns>
@@ -22,7 +22,7 @@
         </columns>
       </TableView>
       <Button fx:id="addSprintButton" layoutX="626.0" layoutY="101.0" mnemonicParsing="false" onAction="#showPopUpAdd" text="Sprint toevoegen" />
-      <Button fx:id="deleteSprintButton" layoutX="624.0" layoutY="146.0" mnemonicParsing="false" onAction="#removeSelectedProject" text="Sprint verwijderen" />
+      <Button fx:id="deleteSprintButton" layoutX="624.0" layoutY="146.0" mnemonicParsing="false" onAction="#removeSelectedSprint" text="Sprint verwijderen" />
       <Button fx:id="changeSprintButton" layoutX="633.0" layoutY="194.0" mnemonicParsing="false" onAction="#showPopUpChange" text="Sprint wijzigen" />
       <Button layoutX="648.0" layoutY="269.0" mnemonicParsing="false" onAction="#closeView" prefHeight="27.0" prefWidth="64.0" text="Sluit" />
       <Pane fx:id="popUp" layoutX="597.0" layoutY="10.0" prefHeight="374.0" prefWidth="216.0" style="-fx-background-color: e3e4e5;" visible="false">

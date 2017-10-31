@@ -65,10 +65,13 @@ public class SprintManagementViewController implements Initializable
 	
 	private ObservableList<SprintModel> allSprints = FXCollections.observableArrayList(); 
 	private SprintDAO sprintDAO = new SprintDAO();
-	private ProjectDAO projectDAO = new ProjectDAO();
 	private int selectedSprintID;
 	
-	
+	/**
+	 * Deze methode zorgt ervoor dat er in de combobox de naam van het project komt te staan
+	 * in plaats van het volledige object.
+	 * @author Jeroen Zandvliet
+	 */
 
 	public void fillProjectBox()
 	{	
@@ -80,10 +83,7 @@ public class SprintManagementViewController implements Initializable
 		
 		pList.forEach(e -> data.add(e));
 
-		/**
-		 * Change what you see in the combobox, to the description rather then the object address.
-		 * Must study this to understand. works for now.
-		 */
+		
 		Callback<ListView<ProjectModel>, ListCell<ProjectModel>> factory = lv -> new ListCell<ProjectModel>() {
 		    @Override
 		    protected void updateItem(ProjectModel item, boolean empty) {
@@ -103,6 +103,10 @@ public class SprintManagementViewController implements Initializable
 	}
 
 
+	/**
+	 * Deze methode toont de popup waar de gebruiker een Sprint kan veranderen.
+	 * @author Jeroen Zandvliet
+	 */
 	public void showPopUpChange() 
 	{
 		try{
@@ -127,23 +131,26 @@ public class SprintManagementViewController implements Initializable
 		
 	}
 	
+	/**
+	 * Deze methode roept de SprintDAO aan om een sprint in de database toe te voegen.
+	 * @author Jeroen Zandvliet
+	 * @throws SQLException
+	 */
 	public void addSprint() throws SQLException
 	{
 		Date sprintStartDate = Date.valueOf(newSprintStartDateDatePicker.getValue());
 		Date sprintEndDate = Date.valueOf(newSprintEndDateDatePicker.getValue());
 		new SprintDAO().addSprintToDatabase(addProjectComboBox.getSelectionModel().getSelectedItem().getProjectId(), newSprintNameTextField.getText(), newSprintDescriptionTextField.getText(), sprintStartDate , sprintEndDate);
 		refreshTable();
+		clearAllFields();
 		
-		newSprintNameTextField.setText("");
-		newSprintDescriptionTextField.setText("");
-		newSprintStartDateDatePicker.setValue(null);
-		newSprintEndDateDatePicker.setValue(null);
-		addProjectComboBox.setValue(null);
 		closePopupAdd();
 	}
 	
-	
-	
+	/**
+	 * Deze methode roept de SprintDAO aan om een sprint in de database te modificeren.
+	 * @author Jeroen Zandvliet
+	 */
 	public void modifySprint() 
 	{		
 		
@@ -153,7 +160,7 @@ public class SprintManagementViewController implements Initializable
 				Date endDate = Date.valueOf(changeSprintEndDateDatePicker.getValue());
 				
 				sprintDAO.modifySprint(this.selectedSprintID, changeSprintNameTextField.getText(), changeProjectComboBox.getSelectionModel().getSelectedItem().getProjectId(), changeSprintDescriptionTextField.getText(), startDate, endDate);
-				refreshTable();
+				
 				closePopup();
 			}
 			
@@ -161,11 +168,15 @@ public class SprintManagementViewController implements Initializable
 			{
 				warningLabel.setText("Selecteer iets ");
 			}
-		
+		clearAllFields();
 		refreshTable();
 		}
 
 
+	/**
+	 * Deze methode opent de popup die de gebruiker Sprints laat toevoegen.
+	 * @author Jeroen Zandvliet
+	 */
 	public void showPopUpAdd() 
 	{
 		popUpAdd.setVisible(true);
@@ -175,10 +186,11 @@ public class SprintManagementViewController implements Initializable
 	 * Deze methode verwijderd de sprint dat op dit moment geselecteerd is.
 	 * @author Jeroen Zandvliet
 	 */
-	public void removeSelectedProject()
+	public void removeSelectedSprint()
 	{
 		SprintModel selected_item = sprintTableView.getSelectionModel().getSelectedItem();
 		sprintDAO.removeSprint(selected_item.getSprintId());
+		clearAllFields();
 		refreshTable();
 	}
 	
@@ -224,6 +236,10 @@ public class SprintManagementViewController implements Initializable
 	
 	
 
+	/**
+	 * Deze methode initialiseert de TableView
+	 * @author Jeroen Zandvliet
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		this.fillProjectBox();//Vult customer box in met klantnamen
@@ -238,5 +254,24 @@ public class SprintManagementViewController implements Initializable
 		
 		allSprints.addAll(sprintDAO.sprint_list());
 		sprintTableView.setItems(allSprints);
+	}
+	
+	/**
+	 * Deze methode maakt alle invulbare velden leeg.
+	 * @author Jeroen Zandvliet
+	 */
+	public void clearAllFields()
+	{
+		changeSprintNameTextField.setText("");
+		changeSprintDescriptionTextField.setText("");
+		changeSprintStartDateDatePicker.setValue(null);
+		changeSprintEndDateDatePicker.setValue(null);
+		changeProjectComboBox.setValue(null);
+		
+		newSprintNameTextField.setText("");
+		newSprintDescriptionTextField.setText("");
+		newSprintStartDateDatePicker.setValue(null);
+		newSprintEndDateDatePicker.setValue(null);
+		addProjectComboBox.setValue(null);
 	}
 }

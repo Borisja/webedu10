@@ -272,8 +272,8 @@ public class SprintDAO {
 	{
 		String changePreviousVersion = "UPDATE sprint_version SET sprint_version_current = 'n' "
 				+ "WHERE sprint_version_sprint_fk = ? AND sprint_version_current= true";
-		String change_sprint = "INSERT INTO sprint_version(sprint_version_sprint_fk, sprint_version_name, sprint_version_description, sprint_version_current)"
-				+ "VALUES(?, ?, ?, true)";
+		String change_sprint = "INSERT INTO sprint_version(sprint_version_sprint_fk, sprint_version_name, sprint_version_project_fk, sprint_version_description, sprint_version_startdate, sprint_version_enddate, sprint_version_current)"
+				+ "VALUES(?, ?, ?, ?, ?, ?, true)";
 		
 		
 		try {
