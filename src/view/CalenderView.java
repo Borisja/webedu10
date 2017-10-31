@@ -98,10 +98,12 @@ public class CalenderView implements Initializable{
 	public void showModifyEntry()
 	{
 		this.selectedEntry = allEntries.getSelectionModel().getSelectedItem();
-		lblId.setText(String.valueOf(selectedEntry.getEntryId()));
-		txtEntryStartTime.setText(selectedEntry.getEntryStartTime());
-		txtEntryEndTime.setText(selectedEntry.getEntryEndTime());
-		this.entryChangePane.setVisible(true);
+		if(selectedEntry!=null){
+			lblId.setText(String.valueOf(selectedEntry.getEntryId()));
+			txtEntryStartTime.setText(selectedEntry.getEntryStartTime());
+			txtEntryEndTime.setText(selectedEntry.getEntryEndTime());
+			this.entryChangePane.setVisible(true);
+		}
 	}
 	
 	public void modifyEntry() throws ParseException
