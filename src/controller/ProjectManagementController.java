@@ -79,7 +79,7 @@ public class ProjectManagementController {
 
 		ArrayList<ProjectModel> projects = new ArrayList<ProjectModel>();
 		if(this.selectedCustomer!=null&&this.selectedCustomer.getCustomer_id()!=this.PROJECT_ID_DEFAULT){
-			projects = projectDAO.project_list(this.selectedCustomer);
+			projects = projectDAO.project_list();
 		}else{
 			projects = projectDAO.project_list();
 		}

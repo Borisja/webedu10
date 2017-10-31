@@ -40,10 +40,11 @@ public class SprintController  implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 	//sId.setCellValueFactory(new PropertyValueFactory<SprintModel, Integer>("projectID"));	
-	sprintName.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("sprintname"));		
-	sprintStartDate.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("SprintStart"));		
-	sprintEndDate.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("SprintEind"));
-	sprintData.addAll(sprintDAO.sprint_list());
+	sprintName.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("sprintName"));		
+	sprintStartDate.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("sprintStartDate"));		
+	sprintEndDate.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("sprintEndDate"));
+	
+	sprintData.addAll(sprintDAO.allSprints());
 	sprintTabelView.setItems(sprintData);
 	}
 
