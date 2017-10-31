@@ -38,9 +38,7 @@ public class SprintManagementViewController implements Initializable
 	@FXML TableColumn<SprintModel, String> sprintDescription;
 	@FXML TableColumn<SprintModel, String> sprintStartDate;
 	@FXML TableColumn<SprintModel, String> sprintEndDate;
-	
-	
-	
+	@FXML TableColumn<SprintModel, String> projectName;
 	@FXML TableColumn<SprintModel, String> sprintIsDeleted;
 	
 	@FXML ComboBox<ProjectModel> addProjectComboBox;
@@ -207,6 +205,8 @@ public class SprintManagementViewController implements Initializable
 				
 		sprintStartDate.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("sprintStartDate"));
 		sprintEndDate.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("sprintEndDate"));
+		projectName.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("projectName"));
+		
 		
 		allSprints.addAll(sprintDAO.sprint_list());
 		sprintTableView.setItems(allSprints);
@@ -250,7 +250,7 @@ public class SprintManagementViewController implements Initializable
 		
 		sprintStartDate.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("sprintStartDate"));
 		sprintEndDate.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("sprintEndDate"));
-		
+		projectName.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("projectName"));
 		
 		allSprints.addAll(sprintDAO.sprint_list());
 		sprintTableView.setItems(allSprints);
