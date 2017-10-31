@@ -41,6 +41,7 @@ public class EditEmployeeController {
 //        primaryStage.hide();
 //    }
     public void showEditEmployee(){
+        editEmployeeView.fillTable(employeeDao.activeAccountsList());
         editEmployeeView.getMainPane().setVisible(true);
     }
     public void closeEditEmployee(){

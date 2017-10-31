@@ -54,6 +54,7 @@ public class CustomerManagementViewController implements Initializable{
 	 */
 	public void addCustomer() 
 	{
+		customerDAO.createAddCustomerFunction();
 		customerDAO.addCustomer(customerNewName.getText(), customerNewDescription.getText());
 		refreshTable();
 		customerNewName.setText(null);
@@ -146,6 +147,7 @@ public class CustomerManagementViewController implements Initializable{
 	 */
 	public void showView()
 	{
+		refreshTable();
 		this.pane.setVisible(true);
 	}
 	
