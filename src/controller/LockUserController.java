@@ -69,7 +69,7 @@ public class LockUserController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		fillTable();
+//		fillTable();
 	}
 	
 
@@ -120,6 +120,7 @@ public class LockUserController implements Initializable {
 	
 	public void showView()
 	{
+		fillTable();
 		this.pane.setVisible(true);
 	}
 	
