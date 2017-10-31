@@ -80,9 +80,6 @@ public class AdministratorViewController {
 	    Pane sprintManagementView = sprintManagementLoader.load();	
 	    SprintManagementViewController sprintManagementViewController = sprintManagementLoader.getController();
 
-//		FXMLLoader editEmployeeLoader = new FXMLLoader(getClass().getResource("/view/EditEmployee.fxml"));			//get xml file
-//		Pane editEmployeeView = editEmployeeLoader.load();
-//		EditEmployeeController editEmployeeController = editEmployeeLoader.getController();
 
 		EditEmployeeController editEmployeeController = new EditEmployeeController();
 		Pane editEmployeeView = editEmployeeController.getEditPane();
@@ -101,6 +98,7 @@ public class AdministratorViewController {
 		Pane homeView = homeLoader.load();
 		homeController homeController = homeLoader.getController();
 		homeController.setUserName(user.getEmployeeFirstname());
+	    homeController.setUserStage(primaryStage);
 		View.setTop(homeView);
 	    adminController.setControllerMedewerkerBeheren(medewerkerBeherenController);
 	    adminController.setControllerProjectManagement(projectManagementController);

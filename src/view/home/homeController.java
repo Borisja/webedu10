@@ -13,7 +13,6 @@ import view.LoginView;
  */
 public class homeController {
 	@FXML Button homeButton;
-	@FXML Label userName;
 	private Stage primaryStage;
 	
 	/**
@@ -38,6 +37,8 @@ public class homeController {
 		this.primaryStage = primaryStage;
 	}
 	
+	@FXML Label userName;
+
 	/**
 	 * Deze methode wordt aangeropen wanneer er gklikt wordt op de HOME button en gaat terug naar de mainPane
 	 * @author rezanaser

@@ -6,7 +6,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import controller.AddHoursController;
 import dao.AdministratorDAO;
 import dao.ProjectDAO;
 import dao.SprintDAO;
