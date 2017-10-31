@@ -58,7 +58,10 @@ public class SprintDAO {
 	 */
 	public ArrayList<SprintModel> sprintsProjects(int p_id){
 		ArrayList<SprintModel> sprint_alist = new ArrayList<SprintModel>();
-		String projects_sprints_sql = "SELECT *  FROM sprint_version";
+		String projects_sprints_sql = "SELECT *  FROM sprint_version sv INNER JOIN project_version pv " +
+				"ON sv.sprint_version_project_fk=pv.project_version_project_fk INNER JOIN project p " +
+				"ON p.project_id=pv.project_version_project_fk WHERE pv.project_version_project_fk= ?" +
+				"AND sv.sprint_version_current=TRUE AND project_isdeleted=FALSE";
 				//+ "AND entry_version_current = 'y' ";
 		try {
 			PreparedStatement sprints_statement = connect.connectToDB().prepareStatement(projects_sprints_sql);
