@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import dao.CustomerDAO;
 import dao.ProjectDAO;
 import dao.SprintDAO;
 import javafx.collections.FXCollections;
@@ -27,7 +26,6 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.util.Callback;
-import model.CustomerModel;
 import model.ProjectModel;
 import model.SprintModel;
 
@@ -38,7 +36,13 @@ public class SprintManagementViewController implements Initializable
 	@FXML TableColumn<SprintModel, Integer> sprintID;
 	@FXML TableColumn<SprintModel, String> sprintName;
 	@FXML TableColumn<SprintModel, String> sprintDescription;
+	@FXML TableColumn<SprintModel, String> sprintStartDate;
+	@FXML TableColumn<SprintModel, String> sprintEndDate;
+	
+	
+	
 	@FXML TableColumn<SprintModel, String> sprintIsDeleted;
+	
 	@FXML ComboBox<ProjectModel> addProjectComboBox;
 	@FXML ComboBox<ProjectModel> changeProjectComboBox;
 	@FXML Pane pane;
@@ -62,6 +66,7 @@ public class SprintManagementViewController implements Initializable
 	private ObservableList<SprintModel> allSprints = FXCollections.observableArrayList(); 
 	private SprintDAO sprintDAO = new SprintDAO();
 	private ProjectDAO projectDAO = new ProjectDAO();
+	private int selectedSprintID;
 	
 	
 
@@ -101,11 +106,16 @@ public class SprintManagementViewController implements Initializable
 	public void showPopUpChange() 
 	{
 		try{
-			SprintModel selectedItem = sprintTableView.getSelectionModel().getSelectedItem();
-			projectIDLabel.setText(String.valueOf(selectedItem.getSprintId()));
-			newSprintNameTextField.setText(selectedItem.getSprintName());
-			newSprintDescriptionTextField.setText(selectedItem.getSprintDescription());
 			popUp.setVisible(true);
+			
+			SprintModel selectedItem = sprintTableView.getSelectionModel().getSelectedItem();
+			this.selectedSprintID = selectedItem.getSprintId();
+//			changeProjectComboBox.setValue();
+			changeSprintNameTextField.setText(selectedItem.getSprintName());
+			changeSprintDescriptionTextField.setText(selectedItem.getSprintDescription());
+//			changeSprintEndDateDatePicker.setValue(String.valueOf(selectedItem.getSprintStartDate()));
+			changeSprintEndDateDatePicker.setValue(null);
+			
 		}
 		catch(NullPointerException e)
 		{
@@ -123,23 +133,34 @@ public class SprintManagementViewController implements Initializable
 		Date sprintEndDate = Date.valueOf(newSprintEndDateDatePicker.getValue());
 		new SprintDAO().addSprintToDatabase(addProjectComboBox.getSelectionModel().getSelectedItem().getProjectId(), newSprintNameTextField.getText(), newSprintDescriptionTextField.getText(), sprintStartDate , sprintEndDate);
 		refreshTable();
+		
+		newSprintNameTextField.setText("");
+		newSprintDescriptionTextField.setText("");
+		newSprintStartDateDatePicker.setValue(null);
+		newSprintEndDateDatePicker.setValue(null);
+		addProjectComboBox.setValue(null);
+		closePopupAdd();
 	}
 	
 	
 	
 	public void modifySprint() 
-		{
-	//		int sprintID = Integer.parseInt(projectIDLabel.getText());
-	//		try{
-	//			sprintDAO.modifySprint(sprintID, changeSprintNameTextField.getText(), projectComboBox1.getSelectionModel().getSelectedItem().getProjectId(), sprintDescriptionTextField.getText(), sprintStartDateTextField.getText(), sprintEndDateTextField.getText());
-	//			refreshTable();
-	//			closePopup();
-	//		}
-	//		
-	//		catch(NullPointerException e)
-	//		{
-	//			lblWarning.setText("Selecteer iets ");
-	//		}
+	{		
+		
+			try{
+				
+				Date startDate = Date.valueOf(changeSprintStartDateDatePicker.getValue());
+				Date endDate = Date.valueOf(changeSprintEndDateDatePicker.getValue());
+				
+				sprintDAO.modifySprint(this.selectedSprintID, changeSprintNameTextField.getText(), changeProjectComboBox.getSelectionModel().getSelectedItem().getProjectId(), changeSprintDescriptionTextField.getText(), startDate, endDate);
+				refreshTable();
+				closePopup();
+			}
+			
+			catch(NullPointerException e)
+			{
+				warningLabel.setText("Selecteer iets ");
+			}
 		
 		refreshTable();
 		}
@@ -171,7 +192,9 @@ public class SprintManagementViewController implements Initializable
 		sprintID.setCellValueFactory(new PropertyValueFactory<SprintModel, Integer>("sprintId"));
 		sprintName.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("sprintName"));
 		sprintDescription.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("sprintDescription"));
-		sprintIsDeleted.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("sprintIsDeleted"));
+				
+		sprintStartDate.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("sprintStartDate"));
+		sprintEndDate.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("sprintEndDate"));
 		
 		allSprints.addAll(sprintDAO.sprint_list());
 		sprintTableView.setItems(allSprints);
@@ -208,6 +231,10 @@ public class SprintManagementViewController implements Initializable
 		sprintName.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("sprintName"));
 		sprintDescription.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("sprintDescription"));
 		sprintIsDeleted.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("sprintIsDeleted"));
+		
+		sprintStartDate.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("sprintStartDate"));
+		sprintEndDate.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("sprintEndDate"));
+		
 		
 		allSprints.addAll(sprintDAO.sprint_list());
 		sprintTableView.setItems(allSprints);

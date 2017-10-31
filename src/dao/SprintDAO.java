@@ -64,7 +64,7 @@ public class SprintDAO {
 		String sprintListSQL = "SELECT * FROM sprint_version "
 				+ "INNER JOIN sprint ON (sprint_id = sprint_version_sprint_fk)"
 				+ "AND sprint_version_current = true "
-				+ "ORDER BY sprint_version.sprint_version_name ASC";
+				+ "ORDER BY sprint_version.sprint_version_sprint_fk ASC";
 		try {
 			PreparedStatement sprint_statement = connect.connectToDB().prepareStatement(sprintListSQL);
 			ResultSet sprint_set = sprint_statement.executeQuery();
@@ -74,6 +74,8 @@ public class SprintDAO {
 				sprintModelContainer.setSprintDescription(sprint_set.getString("sprint_version_description"));
 				sprintModelContainer.setSprintName(sprint_set.getString("sprint_version_name"));
 				sprintModelContainer.setSprintIsDeleted(sprint_set.getBoolean("sprint_isdeleted"));
+				sprintModelContainer.setSprintStartDate(sprint_set.getString("sprint_version_startdate"));
+				sprintModelContainer.setSprintEndDate(sprint_set.getString("sprint_version_enddate"));
 				sprintList.add(sprintModelContainer);
 			}
 		} catch (SQLException e) {
