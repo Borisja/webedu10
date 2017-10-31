@@ -22,6 +22,34 @@ import model.SprintModel;
  */
 public class SprintDAO {
 	ConnectDAO connect = new ConnectDAO();
+	/**
+	 * Deze methode vult de combobox met de sprints van het gevraagde project
+	 * @author rezanaser
+	 * @return
+	 */
+	public ArrayList<SprintModel> allSprints(){
+		ArrayList<SprintModel> sprint_alist = new ArrayList<SprintModel>();
+		String projects_sprints_sql = "SELECT *  FROM sprint_version";
+				//+ "AND entry_version_current = 'y' ";
+		try {
+			PreparedStatement sprints_statement = connect.connectToDB().prepareStatement(projects_sprints_sql);
+			
+			ResultSet sprints_sets = sprints_statement.executeQuery();
+			while(sprints_sets.next()) {
+				SprintModel sprint = new SprintModel();
+				sprint.setSprintId(sprints_sets.getInt("sprint_version_sprint_fk"));
+				sprint.setSprintName(sprints_sets.getString("sprint_version_name"));
+				sprint.setSprintStartDate(sprints_sets.getString("sprint_version_startdate"));
+				sprint.setSprintEndDate(sprints_sets.getString("sprint_version_enddate"));
+				sprint_alist.add(sprint);
+			}
+			sprints_statement.close();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return sprint_alist;
+	  }
 	
 	/**
 	 * Deze methode vult de combobox met de sprints van het gevraagde project
@@ -30,7 +58,7 @@ public class SprintDAO {
 	 */
 	public ArrayList<SprintModel> sprintsProjects(int p_id){
 		ArrayList<SprintModel> sprint_alist = new ArrayList<SprintModel>();
-		String projects_sprints_sql = "SELECT *  FROM ";
+		String projects_sprints_sql = "SELECT *  FROM sprint_version";
 				//+ "AND entry_version_current = 'y' ";
 		try {
 			PreparedStatement sprints_statement = connect.connectToDB().prepareStatement(projects_sprints_sql);
