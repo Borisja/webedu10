@@ -11,6 +11,8 @@ import java.sql.Time;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
+
 import javafx.scene.control.TextField;
 import model.EmployeeModel;
 import model.EntryModel;
@@ -264,7 +266,7 @@ public class AdministratorDAO {
 		String changeEntry = "INSERT INTO entry_version(entry_version_entry_fk, entry_version_project_fk, entry_version_sprint_fk, "
 				+ "entry_version_date, entry_version_description, entry_version_starttime, "
 				+ "entry_version_endtime, entry_version_userstory_fk, entry_version_current)"
-				+ "VALUES(?, ?, ?, ?, ?, ?, ?, true)";
+				+ "VALUES(?, ?, ?, ?, ?, ?, ?,?, true)";
 		try {
 			PreparedStatement changeVersions= connect.connectToDB().prepareStatement(changePreviousVersion);
 			changeVersions.setInt(1, entryId);
@@ -273,16 +275,16 @@ public class AdministratorDAO {
 			PreparedStatement changeProject = connect.connectToDB().prepareStatement(changeEntry);
 			changeProject.setInt(1, entryId);
 			changeProject.setInt(2, spId);
-			changeProject.setDate(3, date);
-			changeProject.setString(4, description);
-			changeProject.setTime(5, startTime);
-			changeProject.setTime(6, endTime);
+			changeProject.setInt(3, pId);
+			changeProject.setDate(4, date);
+			changeProject.setString(5, description);
+			changeProject.setTime(6, startTime);
+			changeProject.setTime(7, endTime);
 			changeProject.setInt(8, userId);
 			changeProject.executeQuery();
-			
 			changeProject.close();
 		} catch (Exception e) {
-			e.getMessage();
+			System.out.println(e.getMessage());
 		}
 		
 	}

@@ -120,6 +120,14 @@ public class CalenderView implements Initializable{
 	{
 		this.pane.setVisible(true);
 	}
+	
+	public void refreshTable()
+	{
+		EntryModel selectedItem = allEntries.getSelectionModel().getSelectedItem();
+		lblId.setText(String.valueOf(selectedItem.getEntryId()));
+		txtEntryStartTime.setText(selectedItem.getEntryStartTime());
+		txtEntryEndTime.setText(selectedItem.getEntryEndTime());
+	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
