@@ -2,24 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb89fa24-5b71-4455-b30a-c738a0a6f2a5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/webedu10_5/controller/CustomerManagementViewController.class" afterPath="$PROJECT_DIR$/out/production/webedu10_5/controller/CustomerManagementViewController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/webedu10_5/controller/EditEmployeeController.class" afterPath="$PROJECT_DIR$/out/production/webedu10_5/controller/EditEmployeeController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/webedu10_5/controller/EmployeesOverviewController.class" afterPath="$PROJECT_DIR$/out/production/webedu10_5/controller/EmployeesOverviewController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/webedu10_5/controller/LockUserController.class" afterPath="$PROJECT_DIR$/out/production/webedu10_5/controller/LockUserController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/webedu10_5/dao/AdministratorDAO.class" afterPath="$PROJECT_DIR$/out/production/webedu10_5/dao/AdministratorDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/webedu10_5/view/AddEntryViewController$3.class" afterPath="$PROJECT_DIR$/out/production/webedu10_5/view/AddEntryViewController$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/webedu10_5/view/AddEntryViewController.class" afterPath="$PROJECT_DIR$/out/production/webedu10_5/view/AddEntryViewController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/webedu10_5/view/CalenderView.class" afterPath="$PROJECT_DIR$/out/production/webedu10_5/view/CalenderView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/webedu10_5/view/startScreen/AdministratorViewController.class" afterPath="$PROJECT_DIR$/out/production/webedu10_5/view/startScreen/AdministratorViewController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/webedu10_5/view/CalenderView.fxml" afterPath="$PROJECT_DIR$/out/production/webedu10_5/view/CalenderView.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/webedu10_5/view/EditEmployee.fxml" afterPath="$PROJECT_DIR$/out/production/webedu10_5/view/EditEmployee.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/webedu10_5/view/startScreen/AdministratorView.fxml" afterPath="$PROJECT_DIR$/out/production/webedu10_5/view/startScreen/AdministratorView.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/webedu10_5/view/startScreen/UserView.fxml" afterPath="$PROJECT_DIR$/out/production/webedu10_5/view/startScreen/UserView.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/CustomerManagementViewController.java" afterPath="$PROJECT_DIR$/src/controller/CustomerManagementViewController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/EditEmployeeController.java" afterPath="$PROJECT_DIR$/src/controller/EditEmployeeController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/EmployeesOverviewController.java" afterPath="$PROJECT_DIR$/src/controller/EmployeesOverviewController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/LockUserController.java" afterPath="$PROJECT_DIR$/src/controller/LockUserController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/ProjectManagementViewController.java" afterPath="$PROJECT_DIR$/src/controller/ProjectManagementViewController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/approvalView/ApprovalController.java" afterPath="$PROJECT_DIR$/src/view/approvalView/ApprovalController.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,71 +16,48 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="EmployeeManagementController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/EmployeeManagementController.java">
+      <file leaf-file-name="ManagerViewController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/view/startScreen/ManagerViewController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="45" column="63" lean-forward="false" selection-start-line="45" selection-start-column="63" selection-end-line="45" selection-end-column="63" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CustomerModel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/CustomerModel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CustomerDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/dao/CustomerDAO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="37" column="44" lean-forward="true" selection-start-line="37" selection-start-column="44" selection-end-line="37" selection-end-column="44" />
+            <state relative-caret-position="255">
+              <caret line="59" column="41" lean-forward="false" selection-start-line="59" selection-start-column="25" selection-end-line="59" selection-end-column="41" />
               <folding>
-                <marker date="1509442145332" expanded="true" signature="902:1084" ph="INSERT INTO customer_version... " />
-                <marker date="1509442145332" expanded="true" signature="1939:2099" ph="SELECT * FRO... customer" />
-                <marker date="1509442145332" expanded="true" signature="3172:3379" ph="SELECT * FRO... customer" />
-                <marker date="1509442145332" expanded="true" signature="4407:4456" ph="SELECT add_c... " />
-                <marker date="1509442145332" expanded="true" signature="4961:5069" ph="UPDATE custo... " />
-                <marker date="1509442145332" expanded="true" signature="5100:5267" ph="INSERT INTO customer_version... " />
-                <marker date="1509442145332" expanded="true" signature="6018:6103" ph="UPDATE custo... " />
-                <marker date="1509442145332" expanded="true" signature="6635:6805" ph="insert into customer_version... " />
-                <marker date="1509442145332" expanded="true" signature="7462:7514" ph="insert into customer... " />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LockUserController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/LockUserController.java">
+      <file leaf-file-name="UserViewController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/view/startScreen/UserViewController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="72" column="5" lean-forward="true" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
-              <folding />
+            <state relative-caret-position="34">
+              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CustomerManagementViewController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/CustomerManagementViewController.java">
+      <file leaf-file-name="CalenderView.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/view/CalenderView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="148" column="5" lean-forward="false" selection-start-line="148" selection-start-column="5" selection-end-line="148" selection-end-column="5" />
-              <folding />
+            <state relative-caret-position="319">
+              <caret line="153" column="8" lean-forward="false" selection-start-line="153" selection-start-column="8" selection-end-line="153" selection-end-column="8" />
+              <folding>
+                <element signature="e#5697#5698#0" expanded="true" />
+                <element signature="e#5730#5731#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EmployeesOverviewController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/controller/EmployeesOverviewController.java">
+      <file leaf-file-name="ApprovalController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/view/approvalView/ApprovalController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="25" column="28" lean-forward="true" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
+            <state relative-caret-position="91">
+              <caret line="83" column="23" lean-forward="false" selection-start-line="83" selection-start-column="23" selection-end-line="83" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -132,6 +93,10 @@
         <option value="$PROJECT_DIR$/src/controller/EditEmployeeController.java" />
         <option value="$PROJECT_DIR$/src/controller/LockUserController.java" />
         <option value="$PROJECT_DIR$/src/controller/EmployeesOverviewController.java" />
+        <option value="$PROJECT_DIR$/src/view/approvalView/ApprovalController.java" />
+        <option value="$PROJECT_DIR$/src/controller/ProjectManagementViewController.java" />
+        <option value="$PROJECT_DIR$/src/controller/CreateUserController.java" />
+        <option value="$PROJECT_DIR$/src/view/CalenderView.java" />
       </list>
     </option>
   </component>
@@ -235,6 +200,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="startScreen" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webedu10_5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webedu10_5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="approvalView" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -749,7 +736,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11354000" />
+    <option name="totallyTimeSpent" value="12273000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="56" y="-8" width="1872" height="1096" extended-state="6" />
@@ -774,7 +761,7 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35598376" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35598376" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29107505" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -900,7 +887,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="434">
           <caret line="69" column="41" lean-forward="true" selection-start-line="69" selection-start-column="41" selection-end-line="69" selection-end-column="41" />
-          <folding />
+          <folding>
+            <element signature="e#1073#1074#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -945,7 +934,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="501">
           <caret line="96" column="58" lean-forward="false" selection-start-line="96" selection-start-column="58" selection-end-line="96" selection-end-column="58" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -977,6 +968,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1010,14 +1002,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/CreateUserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="69" column="41" lean-forward="true" selection-start-line="69" selection-start-column="41" selection-end-line="69" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/dao/EmployeeDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -1047,22 +1031,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/startScreen/AdministratorViewController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="96" column="58" lean-forward="false" selection-start-line="96" selection-start-column="58" selection-end-line="96" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/EmployeeManagementController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="45" column="63" lean-forward="false" selection-start-line="45" selection-start-column="63" selection-end-line="45" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/AccountManagementController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1071,13 +1039,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/EditEmployeeController.java">
+    <entry file="file://$PROJECT_DIR$/src/view/CustomerOverview.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="40" column="30" lean-forward="true" selection-start-line="40" selection-start-column="30" selection-end-line="40" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="68">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1099,35 +1065,120 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/CustomerOverview.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/LockUserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
+        <state relative-caret-position="-487">
           <caret line="72" column="5" lean-forward="true" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/CustomerManagementViewController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="148" column="5" lean-forward="false" selection-start-line="148" selection-start-column="5" selection-end-line="148" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/EmployeesOverviewController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
+        <state relative-caret-position="-96">
           <caret line="25" column="28" lean-forward="true" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/EditEmployeeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="40" column="30" lean-forward="true" selection-start-line="40" selection-start-column="30" selection-end-line="40" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/EmployeeManagementController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="45" column="63" lean-forward="false" selection-start-line="45" selection-start-column="63" selection-end-line="45" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/SprintManagementViewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="181" column="8" lean-forward="false" selection-start-line="181" selection-start-column="8" selection-end-line="181" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/ProjectManagementViewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1547">
+          <caret line="208" column="23" lean-forward="false" selection-start-line="208" selection-start-column="23" selection-end-line="208" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/CustomerManagementViewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1139">
+          <caret line="148" column="5" lean-forward="false" selection-start-line="148" selection-start-column="5" selection-end-line="148" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/CreateUserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="46" column="5" lean-forward="false" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
+          <folding>
+            <element signature="e#1073#1074#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/startScreen/AdministratorViewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="53" column="36" lean-forward="false" selection-start-line="53" selection-start-column="8" selection-end-line="53" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/approvalView/ApprovalController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="83" column="23" lean-forward="false" selection-start-line="83" selection-start-column="23" selection-end-line="83" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/startScreen/ManagerViewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="59" column="41" lean-forward="false" selection-start-line="59" selection-start-column="25" selection-end-line="59" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/startScreen/UserViewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/CalenderView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="153" column="8" lean-forward="false" selection-start-line="153" selection-start-column="8" selection-end-line="153" selection-end-column="8" />
+          <folding>
+            <element signature="e#5697#5698#0" expanded="true" />
+            <element signature="e#5730#5731#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

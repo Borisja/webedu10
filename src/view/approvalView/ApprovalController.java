@@ -81,6 +81,7 @@ public class ApprovalController implements Initializable{
 	 */
 	public void openApprovalMenu()
 	{
+		refreshTable();
 		pane.setVisible(true);
 	}
 	
