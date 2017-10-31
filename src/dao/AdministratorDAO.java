@@ -8,8 +8,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.Time;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
+import javafx.scene.control.TextField;
 import model.EmployeeModel;
 import model.EntryModel;
 
@@ -127,7 +129,7 @@ public class AdministratorDAO {
 	 */
 	public ArrayList<EntryModel> entry_queued_list(int e_id){
 		ArrayList<EntryModel> entry_alist = new ArrayList<EntryModel>();
-		String employee_entry_sql = "SELECT  entry_id, entry_version_starttime, entry_version_endtime, entry_version_creationtime, entry_version_description"
+		String employee_entry_sql = "SELECT * "
 				+ " FROM entry_version, entry "
 				+ "WHERE entry_version.entry_version_entry_fk = entry.entry_id AND entry.entry_status = 'queued' ";
 				//+ "AND entry_version_current = 'y' ";
@@ -142,6 +144,11 @@ public class AdministratorDAO {
 				dummy.setEntryStartTime(entry_set.getString("entry_version_starttime"));
 				dummy.setEntryEndTime(entry_set.getString("entry_version_endtime"));
 				dummy.setEntryDate(entry_set.getString("entry_version_creationtime"));
+				dummy.setEntryDate(entry_set.getString("entry_version_date"));
+				dummy.setEntryProjectFk(entry_set.getInt("entry_version_project_fk"));
+				dummy.setEntryIsLocked(entry_set.getBoolean("entry_islocked"));
+				dummy.setEntrySprintFk(entry_set.getInt("entry_version_sprint_fk"));
+				dummy.setEntryUserstoryFk(entry_set.getInt("entry_version_userstory_fk"));
 				entry_alist.add(dummy);
 			}
 			entries_statement.close();
@@ -186,28 +193,26 @@ public class AdministratorDAO {
 	}
 	/**
 	 * Deze methode voegt een nieuwe entry toe
+	 * @param entryStartTime 
 	 */
 	
-	public void addEntry(int employeeId, int projectId, int sprintId, Date date, String description, Time startTime, Time endTime, int userStoryId){
+	public void addEntry(int employeeId, int pId, int spId, Date date, String description, Time startTime, Time endTime, int userId){
 		PreparedStatement insertProject;
-		String insertUser_sql = "insert into entry_version (entry_version_entry_fk, entry_version_project_fk, entry_version_userstory_fk," +
-				"entry_version_sprint_fk, entry_version_starttime,entry_version_endtime," +
-				"entry_version_date, entry_version_description, entry_version_current) "
-				+ "VALUES (?, ?,?,?, ?, ?,?,?,?,?)";
+		String insertUser_sql = "insert into entry_version (entry_version_entry_fk, entry_version_project_fk,entry_version_sprint_fk, entry_version_description, entry_version_current, entry_version_date"
+				+ ",entry_version_starttime, entry_version_endtime, entry_version_userstory_fk) "
+				+ "VALUES (?, ?, ?, ?, ?, ?,?,?,?)";
 		try {
 			insertProject = connect.connectToDB().prepareStatement(insertUser_sql);
 			
 			insertProject.setInt(1, createNewEntry(employeeId));
-			insertProject.setInt(2, projectId);
-			insertProject.setInt(3, userStoryId);
-//			insertProject.setInt(3, 0);
-			insertProject.setInt(4, sprintId);
-			insertProject.setTime(5, startTime);
-			insertProject.setTime(6, endTime);
-			insertProject.setDate(7, date);
-			insertProject.setString(8, description);
-			insertProject.setBoolean(9, true);
-
+			insertProject.setInt(2, pId);
+			insertProject.setInt(3, spId);
+			insertProject.setString(4, description);
+			insertProject.setBoolean(5, true);
+			insertProject.setDate(6, date);
+			insertProject.setTime(7, startTime);
+			insertProject.setTime(8, endTime);
+			insertProject.setInt(9, userId);
 			insertProject.executeQuery();
 
 			insertProject.close();
@@ -247,6 +252,40 @@ public class AdministratorDAO {
 		return id;
 	}
 	
+	/**
+	 * Deze methode wijzigt de geselcteerde entry
+	 * @param eId > Entry ID
+	 * @author rezanaser
+	 */
+
+	public void modifyEntry(int entryId, int pId, int spId, Date date, String description, Time startTime, Time endTime, int userId) {
+		String changePreviousVersion = "UPDATE entry_version set entry_version_current = false "
+				+ "WHERE entry_version_entry_fk = ? ";
+		String changeEntry = "INSERT INTO entry_version(entry_version_entry_fk, entry_version_project_fk, entry_version_sprint_fk, "
+				+ "entry_version_date, entry_version_description, entry_version_starttime, "
+				+ "entry_version_endtime, entry_version_userstory_fk, entry_version_current)"
+				+ "VALUES(?, ?, ?, ?, ?, ?, ?, true)";
+		try {
+			PreparedStatement changeVersions= connect.connectToDB().prepareStatement(changePreviousVersion);
+			changeVersions.setInt(1, entryId);
+			changeVersions.executeUpdate();
+			changeVersions.close();
+			PreparedStatement changeProject = connect.connectToDB().prepareStatement(changeEntry);
+			changeProject.setInt(1, entryId);
+			changeProject.setInt(2, spId);
+			changeProject.setDate(3, date);
+			changeProject.setString(4, description);
+			changeProject.setTime(5, startTime);
+			changeProject.setTime(6, endTime);
+			changeProject.setInt(8, userId);
+			changeProject.executeQuery();
+			
+			changeProject.close();
+		} catch (Exception e) {
+			e.getMessage();
+		}
+		
+	}
 	/**
 	 * Deze methode maakt een csv bestand van de database.
 	 * @author rezanaser
