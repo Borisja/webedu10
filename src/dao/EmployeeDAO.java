@@ -20,7 +20,7 @@ public class EmployeeDAO {
 		
 		String employee_entry_sql = "SELECT * FROM employee, employee_version "
 				+ "WHERE  employee_id = employee_version_employee_fk "
-				+ "AND employee_version_current = true";
+				+ "AND employee_version_current = true AND employee_isdeleted = FALSE ";
 		try {
 			PreparedStatement user_statement = connect.connectToDB().prepareStatement(employee_entry_sql);
 			//entries_statement.setInt(1, e_id);

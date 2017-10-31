@@ -18,7 +18,7 @@ public class CreateUserDOA {
 	public CreateUserDOA(String firstName, String lastName, String role, String email, String password){
 		PreparedStatement insertNewUser;
 		String insertUser_sql = "insert into employee_version (employee_version_employee_fk, employee_version_firstname, employee_version_lastname, employee_version_role, "
-				+ "employee_version_email, employee_version_password) values (?, ?, ?, ?::enum_role, ?, ?)";
+				+ "employee_version_email, employee_version_password, employee_version_current) values (?, ?, ?, ?::enum_role, ?, ?,?)";
 		try {
 			insertNewUser = connect.connectToDB().prepareStatement(insertUser_sql);
 			
@@ -28,6 +28,7 @@ public class CreateUserDOA {
 			insertNewUser.setString(4, role);
 			insertNewUser.setString(5, email);
 			insertNewUser.setString(6, password);
+			insertNewUser.setBoolean(7,true);
 			insertNewUser.executeUpdate();
 
 			insertNewUser.close();

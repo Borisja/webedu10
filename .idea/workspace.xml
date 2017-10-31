@@ -2,24 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb89fa24-5b71-4455-b30a-c738a0a6f2a5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/webedu10_5/controller/EditEmployeeController.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/webedu10_5/view/EditEmployeeView.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/webedu10_5/view/EditEmployee.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/controller/EditEmployeeController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/view/EditEmployee.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/view/EditEmployeeView.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/controller/EditEmployee.fxml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/webedu10_5/controller/EmployeeManagementController.class" afterPath="$PROJECT_DIR$/out/production/webedu10_5/controller/EmployeeManagementController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/webedu10_5/controller/Run.class" afterPath="$PROJECT_DIR$/out/production/webedu10_5/controller/Run.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/webedu10_5/dao/EmployeeDAO.class" afterPath="$PROJECT_DIR$/out/production/webedu10_5/dao/EmployeeDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/webedu10_5/view/startScreen/AdministratorViewController.class" afterPath="$PROJECT_DIR$/out/production/webedu10_5/view/startScreen/AdministratorViewController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/webedu10_5/dao/CreateUserDOA.class" afterPath="$PROJECT_DIR$/out/production/webedu10_5/dao/CreateUserDOA.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/webedu10_5/controller/EmployeeManagement.fxml" afterPath="$PROJECT_DIR$/out/production/webedu10_5/controller/EmployeeManagement.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/EmployeeManagement.fxml" afterPath="$PROJECT_DIR$/src/controller/EmployeeManagement.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/EmployeeManagementController.java" afterPath="$PROJECT_DIR$/src/controller/EmployeeManagementController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/Run.java" afterPath="$PROJECT_DIR$/src/controller/Run.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dao/CreateUserDOA.java" afterPath="$PROJECT_DIR$/src/dao/CreateUserDOA.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dao/EmployeeDAO.java" afterPath="$PROJECT_DIR$/src/dao/EmployeeDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/startScreen/AdministratorViewController.java" afterPath="$PROJECT_DIR$/src/view/startScreen/AdministratorViewController.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,120 +18,12 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="AdministratorViewController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/view/startScreen/AdministratorViewController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="501">
-              <caret line="96" column="58" lean-forward="false" selection-start-line="96" selection-start-column="58" selection-end-line="96" selection-end-column="58" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EmployeeManagementController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="EmployeeManagementController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/controller/EmployeeManagementController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="399">
               <caret line="45" column="63" lean-forward="false" selection-start-line="45" selection-start-column="63" selection-end-line="45" selection-end-column="63" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EditEmployeeView.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/view/EditEmployeeView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="562">
-              <caret line="113" column="33" lean-forward="false" selection-start-line="113" selection-start-column="33" selection-end-line="113" selection-end-column="33" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1900#1901#0" expanded="true" />
-                <element signature="e#1931#1932#0" expanded="true" />
-                <element signature="e#3726#3727#0" expanded="true" />
-                <element signature="e#3768#3769#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EditEmployeeController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/controller/EditEmployeeController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="29" column="39" lean-forward="false" selection-start-line="29" selection-start-column="39" selection-end-line="29" selection-end-column="39" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1440#1441#0" expanded="true" />
-                <element signature="e#1503#1504#0" expanded="true" />
-                <element signature="e#1540#1541#0" expanded="true" />
-                <element signature="e#1604#1605#0" expanded="true" />
-                <element signature="e#1637#1638#0" expanded="true" />
-                <element signature="e#1668#1669#0" expanded="true" />
-                <element signature="e#1720#1721#0" expanded="true" />
-                <element signature="e#1759#1760#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AdministratorDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/dao/AdministratorDAO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="275" column="45" lean-forward="false" selection-start-line="275" selection-start-column="45" selection-end-line="275" selection-end-column="45" />
-              <folding>
-                <marker date="1509442145328" expanded="true" signature="922:1102" ph="SELECT * FRO... employee" />
-                <marker date="1509442145328" expanded="true" signature="2041:2126" ph="UPDATE emplo... " />
-                <marker date="1509442145328" expanded="true" signature="2643:2663" ph="SELECT * fro... entry" />
-                <marker date="1509442145328" expanded="true" signature="3379:3465" ph="UPDATE emplo... " />
-                <marker date="1509442145328" expanded="true" signature="4032:4179" ph="SELECT * FRO... entry_version" />
-                <marker date="1509442145328" expanded="true" signature="5619:5680" ph="UPDATE entry... " />
-                <marker date="1509442145328" expanded="true" signature="6027:6088" ph="UPDATE entry... " />
-                <marker date="1509442145328" expanded="true" signature="6642:6937" ph="insert into entry_version... " />
-                <marker date="1509442145328" expanded="true" signature="7766:7881" ph="insert into entry... " />
-                <marker date="1509442145328" expanded="true" signature="8593:8689" ph="UPDATE entry... " />
-                <marker date="1509442145328" expanded="true" signature="8717:9025" ph="INSERT INTO entry_version... " />
-                <marker date="1509442145328" expanded="true" signature="10024:10382" ph="SELECT entry... entry_version" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LockUserController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/LockUserController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-356">
-              <caret line="66" column="13" lean-forward="false" selection-start-line="66" selection-start-column="9" selection-end-line="66" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CreateUserController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/CreateUserController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-204">
-              <caret line="30" column="5" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="30" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EmployeeDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/dao/EmployeeDAO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1071">
-              <caret line="63" column="58" lean-forward="false" selection-start-line="63" selection-start-column="58" selection-end-line="63" selection-end-column="58" />
-              <folding>
-                <marker date="1509451299593" expanded="true" signature="517:661" ph="SELECT * FRO... employee" />
-                <marker date="1509451299593" expanded="true" signature="1681:1820" ph="SELECT * FRO... employee" />
-                <marker date="1509451299593" expanded="true" signature="1681:1854" ph="SELECT * FRO... employee" />
-                <marker date="1509451299593" expanded="true" signature="2874:3012" ph="SELECT * FRO... employee" />
-                <marker date="1509451299593" expanded="true" signature="4124:4186" ph="SELECT * FRO... employee" />
-                <marker date="1509451299593" expanded="true" signature="5101:5243" ph="UPDATE emplo... " />
-                <marker date="1509451299593" expanded="true" signature="5275:5541" ph="INSERT INTO employee_version... " />
-                <marker date="1509451299593" expanded="true" signature="6722:7377" ph="SELECT sprin... entry_version" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -170,12 +48,13 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/dao/EmployeeDAO.java" />
         <option value="$PROJECT_DIR$/src/controller/Run.java" />
         <option value="$PROJECT_DIR$/src/controller/EmployeeManagementController.java" />
         <option value="$PROJECT_DIR$/src/view/startScreen/AdministratorViewController.java" />
         <option value="$PROJECT_DIR$/src/view/EditEmployeeView.java" />
         <option value="$PROJECT_DIR$/src/controller/EditEmployeeController.java" />
+        <option value="$PROJECT_DIR$/src/dao/EmployeeDAO.java" />
+        <option value="$PROJECT_DIR$/src/dao/CreateUserDOA.java" />
       </list>
     </option>
   </component>
@@ -793,7 +672,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8298000" />
+    <option name="totallyTimeSpent" value="9799000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="56" y="-8" width="1872" height="1096" extended-state="6" />
@@ -806,7 +685,7 @@
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21336207" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.014008621" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -876,23 +755,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/dao/EmployeeDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1071">
-          <caret line="63" column="58" lean-forward="false" selection-start-line="63" selection-start-column="58" selection-end-line="63" selection-end-column="58" />
-          <folding>
-            <marker date="1509451299593" expanded="true" signature="517:661" ph="SELECT * FRO... employee" />
-            <marker date="1509451299593" expanded="true" signature="1681:1820" ph="SELECT * FRO... employee" />
-            <marker date="1509451299593" expanded="true" signature="1681:1854" ph="SELECT * FRO... employee" />
-            <marker date="1509451299593" expanded="true" signature="2874:3012" ph="SELECT * FRO... employee" />
-            <marker date="1509451299593" expanded="true" signature="4124:4186" ph="SELECT * FRO... employee" />
-            <marker date="1509451299593" expanded="true" signature="5101:5243" ph="UPDATE emplo... " />
-            <marker date="1509451299593" expanded="true" signature="5275:5541" ph="INSERT INTO employee_version... " />
-            <marker date="1509451299593" expanded="true" signature="6722:7377" ph="SELECT sprin... entry_version" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="918">
@@ -906,59 +768,6 @@
         <state relative-caret-position="221">
           <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/CreateUserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-204">
-          <caret line="30" column="5" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="30" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/LockUserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-356">
-          <caret line="66" column="13" lean-forward="false" selection-start-line="66" selection-start-column="9" selection-end-line="66" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/EmployeeManagementController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="45" column="63" lean-forward="false" selection-start-line="45" selection-start-column="63" selection-end-line="45" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/startScreen/AdministratorViewController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="96" column="58" lean-forward="false" selection-start-line="96" selection-start-column="58" selection-end-line="96" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/AdministratorDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="275" column="45" lean-forward="false" selection-start-line="275" selection-start-column="45" selection-end-line="275" selection-end-column="45" />
-          <folding>
-            <marker date="1509442145328" expanded="true" signature="922:1102" ph="SELECT * FRO... employee" />
-            <marker date="1509442145328" expanded="true" signature="2041:2126" ph="UPDATE emplo... " />
-            <marker date="1509442145328" expanded="true" signature="2643:2663" ph="SELECT * fro... entry" />
-            <marker date="1509442145328" expanded="true" signature="3379:3465" ph="UPDATE emplo... " />
-            <marker date="1509442145328" expanded="true" signature="4032:4179" ph="SELECT * FRO... entry_version" />
-            <marker date="1509442145328" expanded="true" signature="5619:5680" ph="UPDATE entry... " />
-            <marker date="1509442145328" expanded="true" signature="6027:6088" ph="UPDATE entry... " />
-            <marker date="1509442145328" expanded="true" signature="6642:6937" ph="insert into entry_version... " />
-            <marker date="1509442145328" expanded="true" signature="7766:7881" ph="insert into entry... " />
-            <marker date="1509442145328" expanded="true" signature="8593:8689" ph="UPDATE entry... " />
-            <marker date="1509442145328" expanded="true" signature="8717:9025" ph="INSERT INTO entry_version... " />
-            <marker date="1509442145328" expanded="true" signature="10024:10382" ph="SELECT entry... entry_version" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -991,6 +800,116 @@
             <element signature="e#1720#1721#0" expanded="true" />
             <element signature="e#1759#1760#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/AdministratorDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="275" column="45" lean-forward="false" selection-start-line="275" selection-start-column="45" selection-end-line="275" selection-end-column="45" />
+          <folding>
+            <marker date="1509442145328" expanded="true" signature="922:1102" ph="SELECT * FRO... employee" />
+            <marker date="1509442145328" expanded="true" signature="2041:2126" ph="UPDATE emplo... " />
+            <marker date="1509442145328" expanded="true" signature="2643:2663" ph="SELECT * fro... entry" />
+            <marker date="1509442145328" expanded="true" signature="3379:3465" ph="UPDATE emplo... " />
+            <marker date="1509442145328" expanded="true" signature="4032:4179" ph="SELECT * FRO... entry_version" />
+            <marker date="1509442145328" expanded="true" signature="5619:5680" ph="UPDATE entry... " />
+            <marker date="1509442145328" expanded="true" signature="6027:6088" ph="UPDATE entry... " />
+            <marker date="1509442145328" expanded="true" signature="6642:6937" ph="insert into entry_version... " />
+            <marker date="1509442145328" expanded="true" signature="7766:7881" ph="insert into entry... " />
+            <marker date="1509442145328" expanded="true" signature="8593:8689" ph="UPDATE entry... " />
+            <marker date="1509442145328" expanded="true" signature="8717:9025" ph="INSERT INTO entry_version... " />
+            <marker date="1509442145328" expanded="true" signature="10024:10382" ph="SELECT entry... entry_version" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/LockUserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-356">
+          <caret line="66" column="13" lean-forward="false" selection-start-line="66" selection-start-column="9" selection-end-line="66" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/CreateUserModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="71" column="26" lean-forward="false" selection-start-line="71" selection-start-column="16" selection-end-line="71" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/CreateUserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="434">
+          <caret line="69" column="41" lean-forward="true" selection-start-line="69" selection-start-column="41" selection-end-line="69" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/EmployeeDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="18" column="63" lean-forward="true" selection-start-line="18" selection-start-column="63" selection-end-line="18" selection-end-column="63" />
+          <folding>
+            <element signature="e#464#479#0" expanded="true" />
+            <marker date="1509451727048" expanded="true" signature="517:661" ph="SELECT * FRO... employee" />
+            <marker date="1509451727048" expanded="true" signature="517:692" ph="SELECT * FRO... employee" />
+            <marker date="1509451727048" expanded="true" signature="1713:1852" ph="SELECT * FRO... employee" />
+            <marker date="1509451727048" expanded="true" signature="1713:1886" ph="SELECT * FRO... employee" />
+            <marker date="1509451727048" expanded="true" signature="2906:3044" ph="SELECT * FRO... employee" />
+            <marker date="1509451727048" expanded="true" signature="4156:4218" ph="SELECT * FRO... employee" />
+            <marker date="1509451727048" expanded="true" signature="5133:5275" ph="UPDATE emplo... " />
+            <marker date="1509451727048" expanded="true" signature="5307:5573" ph="INSERT INTO employee_version... " />
+            <marker date="1509451727048" expanded="true" signature="6754:7409" ph="SELECT sprin... entry_version" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/startScreen/AdministratorView.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/CreateUserDOA.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="25" column="50" lean-forward="true" selection-start-line="25" selection-start-column="50" selection-end-line="25" selection-end-column="50" />
+          <folding>
+            <marker date="1509452177899" expanded="true" signature="407:669" ph="insert into employee_version... " />
+            <marker date="1509452177899" expanded="true" signature="1339:1391" ph="insert into employee... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/EmployeesOverviewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-16">
+          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/startScreen/AdministratorViewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="501">
+          <caret line="96" column="58" lean-forward="false" selection-start-line="96" selection-start-column="58" selection-end-line="96" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/EmployeeManagementController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="45" column="63" lean-forward="false" selection-start-line="45" selection-start-column="63" selection-end-line="45" selection-end-column="63" />
+          <folding />
         </state>
       </provider>
     </entry>

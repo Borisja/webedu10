@@ -144,6 +144,8 @@ public class AddEntryViewController implements Initializable {
 		data = FXCollections.observableArrayList();
 		
 		pList.forEach(e -> data.add(e));
+		
+		
 
 		/**
 		 * Change what you see in the combobox, to the omschrijving rather then the object address.
@@ -157,7 +159,7 @@ public class AddEntryViewController implements Initializable {
 		    }
 
 		};
-		
+
 		this.projectCombo.setItems(data);
 		this.projectCombo.setCellFactory(factory);
 		this.projectCombo.setButtonCell(factory.call(null));
@@ -171,10 +173,6 @@ public class AddEntryViewController implements Initializable {
 	
 	public void addEntryToDatabase() throws ParseException
 	{
-//		adminDao.addEntry(currentEmployee.getEmployeeId(), projectCombo.getSelectionModel().getSelectedItem().getProjectId(), 
-//				//userStoryCombo.getSelectionModel().getSelectedItem().getUserStoryId(), 
-//				 sprintCombo.getSelectionModel().getSelectedItem().getSprintId()
-//				, entryDescription.getText());
 		Date date1 = Date.valueOf(entryDate.getValue());
 		String startTime = entryStartTime.getText();
 		String endTime = entryEndTime.getText();
@@ -184,15 +182,46 @@ public class AddEntryViewController implements Initializable {
 	    java.util.Date d2 =(java.util.Date)formatEndTime.parse(endTime);
 	    java.sql.Time convertedStartTime = new java.sql.Time(d1.getTime());
 	    java.sql.Time convertedEndTime = new java.sql.Time(d2.getTime());
+	    
+	    int projectId = 0;
+	    int sprintId = 0;
+	    int userId = 0;
+	    //De volgende try-catchs checken of er wel iets geselectreed is. Als niets geselecteerd dan wordt de id 0.
+	    //Dit wordt nog een een gecheckt in AdministratorDAO
+	    try{
+	    	
+	    	projectId = projectCombo.getSelectionModel().getSelectedItem().getProjectId();
+	    	
+	    }catch(NullPointerException e)
+	    {
+	    	projectId = 0;
+	    }
+	    
+	    try{
+	    	
+	    	sprintId = sprintCombo.getSelectionModel().getSelectedItem().getSprintId();
+	    	
+	    }catch(NullPointerException e)
+	    {
+	    	sprintId = 0;
+	    }
+	    
+	    try{
+	    	userId = userStorysCombo.getSelectionModel().getSelectedItem().getUserStoryId();
+	    }catch(NullPointerException e)
+	    {
+	    	userId = 0;
+	    }
+	    
 		adminDao.addEntry(
 				currentEmployee.getEmployeeId(),
-				projectCombo.getSelectionModel().getSelectedItem().getProjectId(),
-				sprintCombo.getSelectionModel().getSelectedItem().getSprintId(),
+				projectId,
+				sprintId,
 				date1,
 				entryDescription.getText(),
 				convertedStartTime,
 				convertedEndTime,
-				userStorysCombo.getSelectionModel().getSelectedItem().getUserStoryId());
+				userId);
 		Alert showMessage = new Alert(AlertType.INFORMATION);
 		showMessage.setContentText("Nieuwe entry is toegevoegd aan de database");
 		showMessage.showAndWait();
@@ -201,7 +230,7 @@ public class AddEntryViewController implements Initializable {
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
+		
 		this.fillProjectsBox();
 	}
 	/**
