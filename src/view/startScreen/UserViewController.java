@@ -54,10 +54,6 @@ public class UserViewController {
 		Pane projectView = projectLoader.load();
 		ProjectController projectController = projectLoader.getController();
 		
-		FXMLLoader addHoursLoader = new FXMLLoader(getClass().getResource("/view/AddHours.fxml"));
-		Pane addHoursView = addHoursLoader.load();
-		EntryController addHoursController = addHoursLoader.getController();
-		
 		FXMLLoader addEntryLoader = new FXMLLoader(getClass().getResource("/view/AddEntryView.fxml"));
 		Pane addEntryView = addEntryLoader.load();
 		AddEntryViewController addEntryController = addEntryLoader.getController();
