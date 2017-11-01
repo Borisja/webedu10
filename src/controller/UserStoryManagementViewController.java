@@ -46,15 +46,12 @@ public class UserStoryManagementViewController implements Initializable
 	@FXML Pane pane;
 	@FXML Pane popUp;
 	@FXML Pane popUpAdd;
-	@FXML Label projectIDLabel;
 	@FXML TextField changeUserStoryNameTextField;
 	@FXML TextField changeUserStoryDescriptionTextField;
 	@FXML DatePicker changeUserStoryStartDateDatePicker;
 	@FXML DatePicker changeUserStoryEndDateDatePicker;
 	@FXML TextField newUserStoryNameTextField;
 	@FXML TextField newUserStoryDescriptionTextField;
-	@FXML DatePicker newUserStoryStartDateDatePicker;
-	@FXML DatePicker newUserStoryEndDateDatePicker;
 	@FXML Button changeUserStoryButton;
 	@FXML Button addUserStoryButton;
 	@FXML Button deleteUserStoryButton;
@@ -138,8 +135,7 @@ public class UserStoryManagementViewController implements Initializable
 	{
 		try
 		{
-		Date userStoryStartDate = Date.valueOf(newUserStoryStartDateDatePicker.getValue());
-		Date userStoryEndDate = Date.valueOf(newUserStoryEndDateDatePicker.getValue());
+
 //		new UserStoryDAO().addUserStoryToDatabase(addProjectComboBox.getSelectionModel().getSelectedItem().getProjectId(), newUserStoryNameTextField.getText(), newUserStoryDescriptionTextField.getText(), userStoryStartDate , userStoryEndDate);
 		refreshTable();
 		clearAllFields();
@@ -283,8 +279,6 @@ public class UserStoryManagementViewController implements Initializable
 		
 		newUserStoryNameTextField.setText("");
 		newUserStoryDescriptionTextField.setText("");
-		newUserStoryStartDateDatePicker.setValue(null);
-		newUserStoryEndDateDatePicker.setValue(null);
 		addProjectComboBox.setValue(null);
 	}
 }
