@@ -6,7 +6,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import dao.ProjectDAO;
+import dao.SprintDAO;
+import dao.SprintDAO;
 import dao.UserStoryDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,7 +27,8 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.util.Callback;
-import model.ProjectModel;
+import model.SprintModel;
+import model.SprintModel;
 import model.UserStoryModel;
 
 public class UserStoryManagementViewController implements Initializable
@@ -38,11 +40,11 @@ public class UserStoryManagementViewController implements Initializable
 	@FXML TableColumn<UserStoryModel, String> userStoryDescription;
 	@FXML TableColumn<UserStoryModel, String> userStoryStartDate;
 	@FXML TableColumn<UserStoryModel, String> userStoryEndDate;
-	@FXML TableColumn<UserStoryModel, String> projectName;
+	@FXML TableColumn<UserStoryModel, String> sprintName;
 	@FXML TableColumn<UserStoryModel, String> userStoryIsDeleted;
 	
-	@FXML ComboBox<ProjectModel> addProjectComboBox;
-	@FXML ComboBox<ProjectModel> changeProjectComboBox;
+	@FXML ComboBox<SprintModel> addSprintComboBox;
+	@FXML ComboBox<SprintModel> changeSprintComboBox;
 	@FXML Pane pane;
 	@FXML Pane popUp;
 	@FXML Pane popUpAdd;
@@ -63,37 +65,37 @@ public class UserStoryManagementViewController implements Initializable
 	private int selectedUserStoryID;
 	
 	/**
-	 * Deze methode zorgt ervoor dat er in de combobox de naam van het project komt te staan
+	 * Deze methode zorgt ervoor dat er in de combobox de naam van het sprint komt te staan
 	 * in plaats van het volledige object.
 	 * @author Jeroen Zandvliet
 	 */
 
-	public void fillProjectBox()
+	public void fillSprintBox()
 	{	
-		ArrayList<ProjectModel> pList = new ProjectDAO().project_list();
+		ArrayList<SprintModel> sprintList = new SprintDAO().sprint_list();
 		
-		ObservableList<ProjectModel> data;
+		ObservableList<SprintModel> data;
 		
 		data = FXCollections.observableArrayList();
 		
-		pList.forEach(e -> data.add(e));
+		sprintList.forEach(e -> data.add(e));
 
 		
-		Callback<ListView<ProjectModel>, ListCell<ProjectModel>> factory = lv -> new ListCell<ProjectModel>() {
+		Callback<ListView<SprintModel>, ListCell<SprintModel>> factory = lv -> new ListCell<SprintModel>() {
 		    @Override
-		    protected void updateItem(ProjectModel item, boolean empty) {
+		    protected void updateItem(SprintModel item, boolean empty) {
 		        super.updateItem(item, empty);
-		        setText(empty ? "" :item.getProjectName());
+		        setText(empty ? "" :item.getSprintName());
 		    }
 
 		};
 		
-		this.addProjectComboBox.setItems(data);
-		this.addProjectComboBox.setCellFactory(factory);
-		this.addProjectComboBox.setButtonCell(factory.call(null));
-		this.changeProjectComboBox.setItems(data);
-		this.changeProjectComboBox.setCellFactory(factory);
-		this.changeProjectComboBox.setButtonCell(factory.call(null));
+		this.addSprintComboBox.setItems(data);
+		this.addSprintComboBox.setCellFactory(factory);
+		this.addSprintComboBox.setButtonCell(factory.call(null));
+		this.changeSprintComboBox.setItems(data);
+		this.changeSprintComboBox.setCellFactory(factory);
+		this.changeSprintComboBox.setButtonCell(factory.call(null));
 		
 	}
 
@@ -109,7 +111,7 @@ public class UserStoryManagementViewController implements Initializable
 			
 			UserStoryModel selectedItem = userStoryTableView.getSelectionModel().getSelectedItem();
 			this.selectedUserStoryID = selectedItem.getUserStoryId();
-//			changeProjectComboBox.setValue();
+//			changeSprintComboBox.setValue();
 			changeUserStoryNameTextField.setText(selectedItem.getUserStoryName());
 			changeUserStoryDescriptionTextField.setText(selectedItem.getUserStoryDescription());
 //			changeUserStoryEndDateDatePicker.setValue(String.valueOf(selectedItem.getUserStoryStartDate()));
@@ -136,7 +138,7 @@ public class UserStoryManagementViewController implements Initializable
 		try
 		{
 
-//		new UserStoryDAO().addUserStoryToDatabase(addProjectComboBox.getSelectionModel().getSelectedItem().getProjectId(), newUserStoryNameTextField.getText(), newUserStoryDescriptionTextField.getText(), userStoryStartDate , userStoryEndDate);
+		new UserStoryDAO().addUserStoryToDatabase(addSprintComboBox.getSelectionModel().getSelectedItem().getSprintId(), newUserStoryNameTextField.getText(), newUserStoryDescriptionTextField.getText());
 		refreshTable();
 		clearAllFields();
 		
@@ -166,7 +168,7 @@ public class UserStoryManagementViewController implements Initializable
 				Date startDate = Date.valueOf(changeUserStoryStartDateDatePicker.getValue());
 				Date endDate = Date.valueOf(changeUserStoryEndDateDatePicker.getValue());
 				
-//				userStoryDAO.modifyUserStory(this.selectedUserStoryID, changeUserStoryNameTextField.getText(), changeProjectComboBox.getSelectionModel().getSelectedItem().getProjectId(), changeUserStoryDescriptionTextField.getText(), startDate, endDate);
+//				userStoryDAO.modifyUserStory(this.selectedUserStoryID, changeUserStoryNameTextField.getText(), changeSprintComboBox.getSelectionModel().getSelectedItem().getSprintId(), changeUserStoryDescriptionTextField.getText(), startDate, endDate);
 				
 				closePopup();
 			}
@@ -214,7 +216,7 @@ public class UserStoryManagementViewController implements Initializable
 				
 		userStoryStartDate.setCellValueFactory(new PropertyValueFactory<UserStoryModel, String>("userStoryStartDate"));
 		userStoryEndDate.setCellValueFactory(new PropertyValueFactory<UserStoryModel, String>("userStoryEndDate"));
-		projectName.setCellValueFactory(new PropertyValueFactory<UserStoryModel, String>("projectName"));
+		sprintName.setCellValueFactory(new PropertyValueFactory<UserStoryModel, String>("sprintName"));
 		
 		
 		allUserStorys.addAll(userStoryDAO.userStory_list());
@@ -251,15 +253,13 @@ public class UserStoryManagementViewController implements Initializable
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		this.fillProjectBox();//Vult customer box in met klantnamen
+		this.fillSprintBox();//Vult customer box in met klantnamen
 		userStoryID.setCellValueFactory(new PropertyValueFactory<UserStoryModel, Integer>("userStoryId"));
 		userStoryName.setCellValueFactory(new PropertyValueFactory<UserStoryModel, String>("userStoryName"));
 		userStoryDescription.setCellValueFactory(new PropertyValueFactory<UserStoryModel, String>("userStoryDescription"));
 		userStoryIsDeleted.setCellValueFactory(new PropertyValueFactory<UserStoryModel, String>("userStoryIsDeleted"));
 		
-		userStoryStartDate.setCellValueFactory(new PropertyValueFactory<UserStoryModel, String>("userStoryStartDate"));
-		userStoryEndDate.setCellValueFactory(new PropertyValueFactory<UserStoryModel, String>("userStoryEndDate"));
-		projectName.setCellValueFactory(new PropertyValueFactory<UserStoryModel, String>("projectName"));
+		sprintName.setCellValueFactory(new PropertyValueFactory<UserStoryModel, String>("sprintName"));
 		
 		allUserStorys.addAll(userStoryDAO.userStory_list());
 		userStoryTableView.setItems(allUserStorys);
@@ -275,10 +275,10 @@ public class UserStoryManagementViewController implements Initializable
 		changeUserStoryDescriptionTextField.setText("");
 		changeUserStoryStartDateDatePicker.setValue(null);
 		changeUserStoryEndDateDatePicker.setValue(null);
-		changeProjectComboBox.setValue(null);
+		changeSprintComboBox.setValue(null);
 		
 		newUserStoryNameTextField.setText("");
 		newUserStoryDescriptionTextField.setText("");
-		addProjectComboBox.setValue(null);
+		addSprintComboBox.setValue(null);
 	}
 }

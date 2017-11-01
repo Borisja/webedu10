@@ -31,6 +31,7 @@ public class AdministratorViewController {
 	private ProjectManagementViewController projectManagementController;
 	private CustomerManagementViewController customerManagement;
 	private LockUserController lockEmployee;
+	private UserStoryManagementViewController userStoryManagementViewController;
 	private SprintManagementViewController sprintManagementViewController;
 	private ApprovalController approveController;
 	private AddEntryViewController addEntryController;
@@ -80,6 +81,10 @@ public class AdministratorViewController {
 	    Pane sprintManagementView = sprintManagementLoader.load();	
 	    SprintManagementViewController sprintManagementViewController = sprintManagementLoader.getController();
 
+	    FXMLLoader userStoryManagementLoader = new FXMLLoader(getClass().getResource("/controller/UserStoryManagementView.fxml"));			//get xml file
+	    Pane userStoryManagementView = userStoryManagementLoader.load();	
+	    UserStoryManagementViewController userStoryManagementViewController = userStoryManagementLoader.getController();
+
 
 		EditEmployeeController editEmployeeController = new EditEmployeeController();
 		Pane editEmployeeView = editEmployeeController.getEditPane();
@@ -106,6 +111,8 @@ public class AdministratorViewController {
 	    adminController.setControllerLockEmployee(lockController);
 	    adminController.setControllerSprintManagement(sprintManagementViewController);
 	    adminController.setControllerApproval(approvalController);
+	    adminController.setControllerUserStoryManagement(userStoryManagementViewController);
+	    
 	    addEntryController.setCurrentUser(user);
 	    adminController.setControllerAddEntryHours(addEntryController);
 	    medewerkerBeherenController.setControllerEmployee(allEmployeeController);
@@ -115,7 +122,7 @@ public class AdministratorViewController {
 	   // beheerderController.setControllerHandleiding(handleidingController);
 	    
 	    Pane tabPane = (Pane)beheerderScherm.getNamespace().get("pane"); 						//get stackPane from fieldView
-        tabPane.getChildren().addAll(addEntryView,approvalview, editEmployeeView,allEmployeeView, unlockView, medewerkerBeherenView, createUserView, projectManagementView,customerView, sprintManagementView);
+        tabPane.getChildren().addAll(addEntryView,approvalview, editEmployeeView,allEmployeeView, unlockView, medewerkerBeherenView, createUserView, projectManagementView,customerView, sprintManagementView, userStoryManagementView);
         
 		Scene scene = new Scene(View);
 		primaryStage.setScene(scene);
@@ -154,6 +161,10 @@ public class AdministratorViewController {
 		this.employeeManagement = medewerkerBeherenController;
 		
 	}
+	private void setControllerUserStoryManagement(UserStoryManagementViewController userStoryManagementViewController)
+	{
+		this.userStoryManagementViewController = userStoryManagementViewController;
+	}
 	public void openProjectsManagement()
 	{
 		this.projectManagementController.showView();
@@ -179,6 +190,11 @@ public class AdministratorViewController {
 	public void openAddEntryView()
 	{
 		this.addEntryController.showView();
+	}
+	
+	public void openUserStoryManagementView()
+	{
+		this.userStoryManagementViewController.showView();
 	}
 
 }

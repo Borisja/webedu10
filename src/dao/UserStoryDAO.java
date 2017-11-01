@@ -57,13 +57,13 @@ public class UserStoryDAO {
 		 * @author rezanaser
 		 * @return
 		 */
-		public ArrayList<SprintModel> sprintsProjects(int p_id){
+		public ArrayList<SprintModel> sprintsProjects(int sprintID){
 			ArrayList<SprintModel> sprint_alist = new ArrayList<SprintModel>();
 			String projects_sprints_sql = "SELECT *  FROM sprint_version where sprint_version_project_fk = ? ";
 					//+ "AND entry_version_current = 'y' ";
 			try {
 				PreparedStatement sprints_statement = connect.connectToDB().prepareStatement(projects_sprints_sql);
-				sprints_statement.setInt(1, p_id);
+				sprints_statement.setInt(1, sprintID);
 				ResultSet sprints_sets = sprints_statement.executeQuery();
 				while(sprints_sets.next()) {
 					SprintModel sprint = new SprintModel();
@@ -84,18 +84,47 @@ public class UserStoryDAO {
 //--------------------------------------------------------------------------------------
 		
 
+		/**
+		 * Deze methode vult de combobox met de userStorys van het gevraagde sprint
+		 * @author rezanaser
+		 * @return
+		 */
+		public ArrayList<UserStoryModel> userStorysSprints(int userStoryID){
+			ArrayList<UserStoryModel> userStory_alist = new ArrayList<UserStoryModel>();
+			String sprints_userStorys_sql = "SELECT *  FROM userStory_version where userStory_version_sprint_fk = ? ";
+					//+ "AND entry_version_current = 'y' ";
+			try {
+				PreparedStatement userStorys_statement = connect.connectToDB().prepareStatement(sprints_userStorys_sql);
+				userStorys_statement.setInt(1, userStoryID);
+				ResultSet userStorys_sets = userStorys_statement.executeQuery();
+				while(userStorys_sets.next()) {
+					UserStoryModel userStory = new UserStoryModel();
+					userStory.setUserStoryId(userStorys_sets.getInt("userStory_version_userStory_fk"));
+					userStory.setUserStoryName(userStorys_sets.getString("userStory_version_name"));
+					userStory_alist.add(userStory);
+				}
+				userStorys_statement.close();
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
+			return userStory_alist;
+		  }
+
+		
+
 			
 			/**
-			 * Deze methode vult de combobox met de userStorys van het gevraagde sprint
+			 * Deze methode vult de combobox met de userStorys van het gevraagde userStory
 			 * @author rezanaser
 			 * @return
 			 */
-			public ArrayList<UserStoryModel> userStorysSprints(int p_id){
+			public ArrayList<UserStoryModel> userStorysUserStorys(int p_id){
 				ArrayList<UserStoryModel> userStory_alist = new ArrayList<UserStoryModel>();
-				String sprints_userStorys_sql = "SELECT *  FROM userStory_version where userStory_version_sprint_fk = ? ";
+				String userStorys_userStorys_sql = "SELECT *  FROM userStory_version where userStory_version_userStory_fk = ? ";
 						//+ "AND entry_version_current = 'y' ";
 				try {
-					PreparedStatement userStorys_statement = connect.connectToDB().prepareStatement(sprints_userStorys_sql);
+					PreparedStatement userStorys_statement = connect.connectToDB().prepareStatement(userStorys_userStorys_sql);
 					userStorys_statement.setInt(1, p_id);
 					ResultSet userStorys_sets = userStorys_statement.executeQuery();
 					while(userStorys_sets.next()) {
@@ -134,7 +163,6 @@ public class UserStoryDAO {
 						userStoryModelContainer.setUserStoryDescription(userStory_set.getString("userStory_version_description"));
 						userStoryModelContainer.setUserStoryName(userStory_set.getString("userStory_version_name"));
 						userStoryModelContainer.setDeleted(userStory_set.getBoolean("userStory_isdeleted"));
-						userStoryModelContainer.setSprintFK(userStory_set.getInt("userStory_version_sprint_fk"));
 						userStoryList.add(userStoryModelContainer);
 					}
 				} catch (SQLException e) {
@@ -149,16 +177,16 @@ public class UserStoryDAO {
 
 
 			/**
-			 * Deze methode geeft een lijst van userStorys die bij een sprint horen
-			 * @param sprintModel
+			 * Deze methode geeft een lijst van userStorys die bij een userStory horen
+			 * @param userStoryModel
 			 * @return
 			 */
 			
-			public ArrayList<UserStoryModel> userStory_list(SprintModel sprintModel){
+			public ArrayList<UserStoryModel> userStory_list(UserStoryModel userStoryModel){
 				ArrayList<UserStoryModel> userStory_list = new ArrayList<UserStoryModel>();
 				String userStory_list_sql = "SELECT * FROM userStory_version "
 						+ "INNER JOIN userStory ON (userStory.userStory_id = userStory_version.userStory_version_userStory_fk) "
-						+ "WHERE userStory_version.userStory_version_sprint_fk="+sprintModel.getSprintId()
+						+ "WHERE userStory_version.userStory_version_userStory_fk="+userStoryModel.getUserStoryId()
 						+ " ORDER BY userStory_version.userStory_version_name ASC";
 				try {
 					PreparedStatement userStory_statement = connect.connectToDB().prepareStatement(userStory_list_sql);
@@ -197,7 +225,7 @@ public class UserStoryDAO {
 					while(userStory_set.next()) {
 						UserStoryModel userStoryModelContainer = new UserStoryModel();
 						
-						userStoryModelContainer.setUserStoryId(userStory_set.getInt("userStory_version_sprint_fk"));
+						userStoryModelContainer.setUserStoryId(userStory_set.getInt("userStory_version_userStory_fk"));
 						userStoryModelContainer.setUserStoryDescription(userStory_set.getString("userStory_version_description"));
 						userStoryModelContainer.setUserStoryName(userStory_set.getString("userStory_version_name"));
 						userStory_list.add(userStoryModelContainer);
@@ -252,7 +280,7 @@ public class UserStoryDAO {
 			 * Deze methode voegt een gekozen userStory aan de database toe.
 			 * @author Jeroen Zandvliet
 			 * @param userStoryName
-			 * @param sprintID
+			 * @param userStoryID
 			 * @param userStoryDescription
 			 * @param userStoryStartDate
 			 * @param userStoryEndDate
@@ -260,8 +288,8 @@ public class UserStoryDAO {
 			public void addUserStoryToDatabase(int sprintID, String userStoryName, String userStoryDescription)
 			{
 				PreparedStatement addUserStory;
-				String insertStatement = "INSERT INTO userStory_version(userStory_version_userStory_fk, userStory_version_sprint_fk, userStory_version_name, userStory_version_description, userStory_version_startdate, userStory_version_enddate, userStory_version_current) " 
-						+ "VALUES(?,?,?,?,?,?, true)";
+				String insertStatement = "INSERT INTO userstory_version(userstory_version_userstory_fk, userstory_version_userstory_fk, userstory_version_name, userstory_version_description, userstory_version_current) " 
+						+ "VALUES(?,?,?,?, true)";
 				
 				try 
 				{
@@ -288,26 +316,32 @@ public class UserStoryDAO {
 			
 
 
-			public ArrayList <UserStoryModel> toonUserUserStory (int e_id){
+			public ArrayList <UserStoryModel> toonUserUserStory (int e_id)
+			{
 				ArrayList<UserStoryModel> userStoryList = new ArrayList <UserStoryModel>();
 				String userStoryQuery = "SELECT * FROM userStory_version, userStory "
 						+ "WHERE userStory_version_userStory_fk = userStory_id";
 				
-				try {
+				try 
+				{
 					PreparedStatement userStoryStatement = connect.connectToDB().prepareStatement(userStoryQuery);
 					ResultSet userStory_set = userStoryStatement.executeQuery();
-					while(userStory_set.next()){
+					while(userStory_set.next())
+					{
 						UserStoryModel model = new UserStoryModel();
 						model.setUserStoryName(userStory_set.getString("userStory_version_name"));
 						userStoryList.add(model);
 					}
 					userStoryStatement.close();
-				} catch (Exception e) {
+				} catch (Exception e) 
+				{
 
 					e.printStackTrace();
 				}
 				return userStoryList;
-		}
+			}
+		
+			
 
 
 		/**
@@ -315,7 +349,7 @@ public class UserStoryDAO {
 			 * @author Jeroen Zandvliet
 			 * @param userStoryID
 			 * @param userStoryName
-			 * @param sprintID
+			 * @param userStoryID
 			 * @param userStoryDescription
 			 * @param userStoryStartDate
 			 * @param userStoryEndDate
@@ -325,7 +359,7 @@ public class UserStoryDAO {
 			{
 				String changePreviousVersion = "UPDATE userStory_version SET userStory_version_current = 'n' "
 						+ "WHERE userStory_version_userStory_fk = ? AND userStory_version_current= true";
-				String change_userStory = "INSERT INTO userStory_version(userStory_version_userStory_fk, userStory_version_name, userStory_version_sprint_fk, userStory_version_description, userStory_version_startdate, userStory_version_enddate, userStory_version_current)"
+				String change_userStory = "INSERT INTO userStory_version(userStory_version_userStory_fk, userStory_version_name, userStory_version_userStory_fk, userStory_version_description, userStory_version_startdate, userStory_version_enddate, userStory_version_current)"
 						+ "VALUES(?, ?, ?, ?, ?, ?, true)";
 				
 				
@@ -337,7 +371,7 @@ public class UserStoryDAO {
 					PreparedStatement changeUserStory = connect.connectToDB().prepareStatement(change_userStory);
 					changeUserStory.setInt(1, userStoryID);
 					changeUserStory.setString(2, userStoryName);
-					changeUserStory.setInt(3, sprintID);
+					changeUserStory.setInt(3, userStoryID);
 					changeUserStory.setString(4, userStoryDescription);
 					changeUserStory.executeQuery();
 					
@@ -346,9 +380,9 @@ public class UserStoryDAO {
 					e.getMessage();
 				}
 				
+				
 			}
 			
-
 			public void removeUserStory(int userStoryID) 
 			{
 				String deleteUserStory = "UPDATE userStory "
@@ -368,3 +402,4 @@ public class UserStoryDAO {
 
 
 		}
+

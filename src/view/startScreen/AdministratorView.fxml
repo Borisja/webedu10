@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.startScreen.AdministratorViewController">
+<BorderPane xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.startScreen.AdministratorViewController">
    <left>
       <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="798.0" prefWidth="1024.0" stylesheets="@../style.css" BorderPane.alignment="CENTER">
          <children>
@@ -19,7 +19,7 @@
             <Label layoutX="359.0" layoutY="322.0" text="Sprints Beheren" textFill="WHITE" />
             <Label layoutX="821.0" layoutY="568.0" text="Medewerkers Beheren" textFill="WHITE" />
             <Label id="labels" layoutX="150.0" layoutY="577.0" stylesheets="@../style.css" text="Klanten beheren" textFill="WHITE" />
-            <Button id="buttons" layoutX="596.0" layoutY="193.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="112.0" style="-fx-background-repeat: no-repeat; -fx-background-size: 115 90; -fx-background-image: url('view/images/userstory.jpg');" stylesheets="@../style.css" />
+            <Button id="buttons" layoutX="596.0" layoutY="193.0" mnemonicParsing="false" onAction="#openUserStoryManagementView" prefHeight="90.0" prefWidth="112.0" style="-fx-background-repeat: no-repeat; -fx-background-size: 115 90; -fx-background-image: url('view/images/userstory.jpg');" stylesheets="@../style.css" />
             <Label layoutX="589.0" layoutY="322.0" text="UserStories Beheren" textFill="WHITE" />
             <Button id="buttons" layoutX="814.0" layoutY="193.0" mnemonicParsing="false" onAction="#openAddEntryView" prefHeight="90.0" prefWidth="112.0" style="-fx-background-repeat: no-repeat; -fx-background-size: 115 90; -fx-background-image: url('view/images/entry.png');" stylesheets="@../style.css" />
             <Label layoutX="820.0" layoutY="322.0" text="Entry toevoegen" textFill="WHITE" />
