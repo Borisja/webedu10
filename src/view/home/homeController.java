@@ -1,5 +1,7 @@
 package view.home;
 
+import java.io.IOException;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -42,8 +44,9 @@ public class homeController {
 	/**
 	 * Deze methode wordt aangeropen wanneer er gklikt wordt op de HOME button en gaat terug naar de mainPane
 	 * @author rezanaser
+	 * @throws IOException 
 	 */
-	public void backToHome()
+	public void backToHome() throws IOException
 	{
 		this.primaryStage.close();
 		new LoginView().show_login_view();

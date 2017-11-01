@@ -341,7 +341,7 @@ public class AdministratorDAO {
 	        String query = "SELECT entry_version_date, entry_version_starttime, entry_version_endtime, entry_version_description, project_version_name, (entry_version_endtime - entry_version_starttime) AS Uren "
 	        		+ "FROM entry_version, project_version "
 	        		+ "WHERE entry_version_project_fk = project_version_project_fk "
-	        		+"AND project_version_current = 'y'";
+	        		+"AND entry_version_current = true";
 	        Statement stmt = connect.connectToDB().createStatement();
 	        fw.append("Datum");
             fw.append(';');

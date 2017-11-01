@@ -24,7 +24,10 @@ public class UserStoryDAO {
 	 */
 	public ArrayList<UserStoryModel> userstoriesProjects(int p_id){
 		ArrayList<UserStoryModel> userstory_alist = new ArrayList<UserStoryModel>();
-		String projects_userstories_sql = "SELECT *  FROM userstory_version where userstory_version_project_fk = ? ";
+		String projects_userstories_sql = "SELECT *  "
+				+ "FROM userstory_version "
+				+ "WHERE userstory_version_project_fk = ? "
+				+ "AND userstory_version_current = true";
 				//+ "AND entry_version_current = 'y' ";
 		try {
 			PreparedStatement userstories_statement = connect.connectToDB().prepareStatement(projects_userstories_sql);

@@ -2,7 +2,6 @@ package view.startScreen;
 
 import java.io.IOException;
 
-import view.EntryController;
 import controller.UserInformationController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +13,6 @@ import javafx.stage.Stage;
 import model.EmployeeModel;
 import view.AddEntryViewController;
 import view.CalenderView;
-import view.EntryController;
 import view.home.homeController;
 import view.projectView.ProjectController;
 import view.sprintView.SprintController;
@@ -32,7 +30,6 @@ public class UserViewController {
 	private SprintController scC;
 	private ProjectController pjC;
 	private AddEntryViewController entryController;
-	private EntryController addHours;
 	private UserInformationController userInformationController;
 	private EmployeeModel user;
 	private CalenderView calenderView;
