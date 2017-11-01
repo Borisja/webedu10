@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import view.LoginView;
 /**
  * Deze klasse is de controller van HomeView
  * @author rezanaser
@@ -11,8 +13,7 @@ import javafx.scene.layout.Pane;
  */
 public class homeController {
 	@FXML Button homeButton;
-	@FXML Label userName;
-	@FXML Pane mainPane;
+	private Stage primaryStage;
 	
 	/**
 	 * Deze methode wordt aangeropen door de gebruikerViewController en geeft een string van gebruikersnaam mee 
@@ -31,18 +32,21 @@ public class homeController {
 	 * @param name: Dit is de mainPane dat  meegekregen is van  de hoofd controller
 	 * @author rezanaser
 	 */
-	public void setUserPane(Pane pane)
+	public void setUserStage(Stage primaryStage)
 	{
-		//this.mainPane.getChildren().add(pane);
+		this.primaryStage = primaryStage;
 	}
 	
+	@FXML Label userName;
+
 	/**
 	 * Deze methode wordt aangeropen wanneer er gklikt wordt op de HOME button en gaat terug naar de mainPane
 	 * @author rezanaser
 	 */
 	public void backToHome()
 	{
-		this.mainPane.setVisible(true);
+		this.primaryStage.close();
+		new LoginView().show_login_view();
 	}
 	
 }

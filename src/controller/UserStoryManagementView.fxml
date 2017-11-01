@@ -8,9 +8,10 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="848.0" stylesheets="@../view/style.css" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserStoryManagementViewController">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="798.0" prefWidth="1024.0" stylesheets="@../view/style.css" visible="false" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProjectManagementViewController">
    <children>
-      <TableView fx:id="tableViewProjects" layoutX="3.0" layoutY="10.0" prefHeight="374.0" prefWidth="406.0">
+
+      <TableView fx:id="tableViewProjects" layoutX="34.0" layoutY="21.0" prefHeight="659.0" prefWidth="696.0">
         <columns>
           <TableColumn fx:id="userStoryID" prefWidth="45.0" text="ID" />
           <TableColumn fx:id="userStoryName" prefWidth="62.0" text="Naam" />
@@ -35,8 +36,8 @@
             <Button layoutX="68.0" layoutY="267.0" mnemonicParsing="false" onAction="#closePopup" text="Annuleren" />
          </children>
       </Pane>
-      <Pane fx:id="popUpAdd" layoutX="512.0" layoutY="7.0" prefHeight="374.0" prefWidth="216.0" style="-fx-background-color: e3e4e5;" visible="false">
-         <children>
+      <Pane fx:id="popUpAdd" layoutX="787.0" layoutY="21.0" prefHeight="374.0" prefWidth="216.0" style="-fx-background-color: e3e4e5;" visible="false">
+       <children>
             <Label layoutX="14.0" layoutY="23.0" text="ProjectToevoegen" />
             <Label layoutX="58.0" layoutY="80.0" text="Userstory naam" />
             <Label layoutX="45.0" layoutY="147.0" text="Userstory beschrijving" />

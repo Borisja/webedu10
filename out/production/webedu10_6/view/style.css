@@ -1,0 +1,20 @@
+#buttons{
+	-fx-background-color: transparent;
+	-fx-border-color: transparent;
+}
+
+#buttons:hover{
+	-fx-border-color: black;
+}
+
+#pane{
+	-fx-background-color: #a6a9ad;
+}
+
+#nav{
+	-fx-background-color: #737577;
+}
+
+#labels{
+	-fx-color: white;
+}

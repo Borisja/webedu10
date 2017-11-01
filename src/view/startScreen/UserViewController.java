@@ -39,7 +39,6 @@ public class UserViewController {
 	
 	public void startGebruiker(EmployeeModel em) throws IOException
 	{
-		this.user = em;
 		Stage primaryStage = new Stage();
 		FXMLLoader userView = new FXMLLoader(getClass().getResource("/view/startScreen/UserView.fxml"));
 		BorderPane view =(BorderPane) userView.load();
@@ -70,20 +69,23 @@ public class UserViewController {
 	    Pane homeView = homeLoader.load();
 	    homeController homeController = homeLoader.getController();
 	    
-	    homeController.setUserPane((Pane)userView.getNamespace().get("pane"));
+	    homeController.setUserStage(primaryStage);
 	    
 	    
 	    view.setTop(homeView);
-	    homeController.setUserName(em.getEmployeeFirstname()); 
+	    homeController.setUserName(em.getEmployeeFirstname());
 	    userInformationController.fillUserData(em);
 	    userController.setControllerSprint(sprintController);
 	    userController.setControllerProject(projectController);
 	    userController.setControllerAddEntryHours(addEntryController);
-	    calenderController.fillCalender(em);
+//	    calenderController.fillCalender(em); Is niet nodig. showCalender() heeft dit overgenomen
+// 											doordat showCalenderView in CalenderView fillCalender aanroept
+		calenderController.setEmployeeYou(em);
 	    addEntryController.setCurrentUser(em);
 	    sprintController.setCurrentUser(em);
+	    sprintController.fillTabel(em.getEmployeeId());
 	    userController.setControllerCalender(calenderController);
-//		addEntryController.setController(addHoursController);
+	    projectController.fillProjectsTable(em.getEmployeeId());
 		userController.setControllerGebruikerGegevens(userInformationController);
 		
 		

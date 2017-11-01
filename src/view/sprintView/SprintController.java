@@ -24,7 +24,7 @@ public class SprintController  implements Initializable {
 	@FXML TableColumn<SprintModel, String> sprintStartDate;
 	@FXML TableColumn<SprintModel, String> sprintEndDate;
 	private SprintDAO sprintDAO = new SprintDAO();
-	private EmployeeModel emModel;
+	EmployeeModel emModel;
 	private ObservableList<SprintModel>sprintData = FXCollections.observableArrayList();
 	
 	
@@ -36,15 +36,29 @@ public class SprintController  implements Initializable {
 	public void sluitSprintmenu(){
 		pane.setVisible(false);
 	}
+	
+	public void fillTabel(int id)
+	{
+		//sId.setCellValueFactory(new PropertyValueFactory<SprintModel, Integer>("projectID"));	
+		sprintName.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("sprintName"));		
+		sprintStartDate.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("sprintStartDate"));		
+		sprintEndDate.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("sprintEndDate"));
+		
+		sprintData.addAll(sprintDAO.allSprintsEmployee(id));
+		System.out.println(id);
+		sprintTabelView.setItems(sprintData);
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-	//sId.setCellValueFactory(new PropertyValueFactory<SprintModel, Integer>("projectID"));	
-	sprintName.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("sprintName"));		
-	sprintStartDate.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("sprintStartDate"));		
-	sprintEndDate.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("sprintEndDate"));
-	sprintData.addAll(sprintDAO.allSprints());
-	sprintTabelView.setItems(sprintData);
+//	//sId.setCellValueFactory(new PropertyValueFactory<SprintModel, Integer>("projectID"));	
+//	sprintName.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("sprintName"));		
+//	sprintStartDate.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("sprintStartDate"));		
+//	sprintEndDate.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("sprintEndDate"));
+//	
+//	//sprintData.addAll(sprintDAO.sprint_list_employee());
+//	System.out.println(emModel.getEmployeeFirstname());
+//	sprintTabelView.setItems(sprintData);
 	}
 
 	public void setCurrentUser(EmployeeModel em) {

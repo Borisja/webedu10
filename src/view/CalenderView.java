@@ -49,19 +49,31 @@ public class CalenderView implements Initializable{
 	private @FXML TextField txtEntryEndTime;
 	private @FXML Label lblId;
 	private AdministratorDAO adminDao = new AdministratorDAO();
+
+	private EmployeeModel employeeYou;
+	private EntryModel selectedEntry;
+
+	/**
+	 * Vetelt CalenderView welke EmployeeModel de huidig ingelogde gebruiker voorstelt.
+	 *
+	 * @param employeeYou
+	 * @author Robert den Blaauwen
+	 */
+	public void setEmployeeYou(EmployeeModel employeeYou){
+		this.employeeYou=employeeYou;
+	}
     /**
 	 * Show table containing entries from user that is currently logged in.
-	 * @param em - employee model to use throughout the flow.
 	 */
 	@SuppressWarnings("unchecked")
-	public void fillCalender(EmployeeModel em){
+	public void fillCalender(){
 		data = FXCollections.observableArrayList();
 		//add columns to table
         //table.getColumns().addAll(EntryIdCol, EntryProjectCol, EntryUserStoryCol, EntrySprintCol,EntryNameCol, EntryStartCol, EntryStopCol, EntryStatusCol);
         
         //For each entry in entry_list add to data
         AdministratorDAO edao = new AdministratorDAO();
-        edao.entry_queued_list(em.getEmployeeId()).forEach(entry-> data.add(entry));
+        edao.entry_queued_list(employeeYou.getEmployeeId()).forEach(entry-> data.add(entry));
 		EntryIdCol.setCellValueFactory(
 	    		new PropertyValueFactory<EntryModel, String>("entryId"));
 		EntryProjectCol.setCellValueFactory(
@@ -82,23 +94,23 @@ public class CalenderView implements Initializable{
 	    		new PropertyValueFactory<EntryModel, String>("entryDate"));
         //Set data into the table items.
 		allEntries.setItems(data);
-
-        
-		
 	}
 	public void showModifyEntry()
 	{
-		EntryModel selectedItem = allEntries.getSelectionModel().getSelectedItem();
-		lblId.setText(String.valueOf(selectedItem.getEntryId()));
-		txtEntryStartTime.setText(selectedItem.getEntryStartTime());
-		txtEntryEndTime.setText(selectedItem.getEntryEndTime());
-		this.entryChangePane.setVisible(true);
+		this.selectedEntry = allEntries.getSelectionModel().getSelectedItem();
+		if(selectedEntry!=null){
+			lblId.setText(String.valueOf(selectedEntry.getEntryId()));
+			txtEntryStartTime.setText(selectedEntry.getEntryStartTime());
+			txtEntryEndTime.setText(selectedEntry.getEntryEndTime());
+			this.entryChangePane.setVisible(true);
+		}
 	}
 	
 	public void modifyEntry() throws ParseException
 	{
-		EntryModel selectedItem = allEntries.getSelectionModel().getSelectedItem();
-		Date date1 = Date.valueOf(selectedItem.getEntryDate());
+//		EntryModel selectedEntry = allEntries.getSelectionModel().getSelectedItem();
+
+		Date date1 = Date.valueOf(selectedEntry.getEntryDate());
 		String startTime = txtEntryStartTime.getText();
 		String endTime = txtEntryEndTime.getText();
 		SimpleDateFormat formatStartTime = new SimpleDateFormat("hh:mm:ss");
@@ -115,7 +127,7 @@ public class CalenderView implements Initializable{
 	    //Dit wordt nog een een gecheckt in AdministratorDAO
 	    try{
 	    	
-	    	projectId = selectedItem.getEntryProjectFk();
+	    	projectId = selectedEntry.getEntryProjectFk();
 	    	
 	    }catch(NullPointerException e)
 	    {
@@ -124,7 +136,7 @@ public class CalenderView implements Initializable{
 	    
 	    try{
 	    	
-	    	sprintId = selectedItem.getEntrySprintFk();
+	    	sprintId = selectedEntry.getEntrySprintFk();
 	    	
 	    }catch(NullPointerException e)
 	    {
@@ -132,14 +144,15 @@ public class CalenderView implements Initializable{
 	    }
 	    
 	    try{
-	    	userId = selectedItem.getEntryUserstoryFk();
+	    	userId = selectedEntry.getEntryUserstoryFk();
 	    }catch(NullPointerException e)
 	    {
 	    	userId = 0;
 	    }
-		adminDao.modifyEntry(selectedItem.getEntryId(), projectId, 
+		adminDao.modifyEntry(selectedEntry.getEntryId(), projectId,
 				sprintId, date1, 
-				selectedItem.getEntryDescription(), convertedStartTime, convertedEndTime, userId);
+				selectedEntry.getEntryDescription(), convertedStartTime, convertedEndTime, userId);
+		fillCalender();
 	}
 	public void hideModifyEntry()
 	{
@@ -151,6 +164,7 @@ public class CalenderView implements Initializable{
 	}
 	public void showCalenderView()
 	{
+		fillCalender();
 		this.pane.setVisible(true);
 	}
 	@Override

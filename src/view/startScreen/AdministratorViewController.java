@@ -11,6 +11,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.EmployeeModel;
+import view.AddEntryViewController;
+import view.CalenderView;
 import view.approvalView.ApprovalController;
 import view.home.homeController;
 import view.manual.ManualController;
@@ -31,6 +33,7 @@ public class AdministratorViewController {
 	private LockUserController lockEmployee;
 	private SprintManagementViewController sprintManagementViewController;
 	private ApprovalController approveController;
+	private AddEntryViewController addEntryController;
 	
 
 	
@@ -77,9 +80,6 @@ public class AdministratorViewController {
 	    Pane sprintManagementView = sprintManagementLoader.load();	
 	    SprintManagementViewController sprintManagementViewController = sprintManagementLoader.getController();
 
-//		FXMLLoader editEmployeeLoader = new FXMLLoader(getClass().getResource("/view/EditEmployee.fxml"));			//get xml file
-//		Pane editEmployeeView = editEmployeeLoader.load();
-//		EditEmployeeController editEmployeeController = editEmployeeLoader.getController();
 
 		EditEmployeeController editEmployeeController = new EditEmployeeController();
 		Pane editEmployeeView = editEmployeeController.getEditPane();
@@ -88,11 +88,17 @@ public class AdministratorViewController {
 	    Pane approvalview = approveManagementLoader.load();	
 	    ApprovalController approvalController = approveManagementLoader.getController();
 	    
+	    
+	    FXMLLoader addEntryLoader = new FXMLLoader(getClass().getResource("/view/AddEntryView.fxml"));			//get xml file
+	    Pane addEntryView = addEntryLoader.load();	
+	    AddEntryViewController addEntryController = addEntryLoader.getController();
+	    
 
 		FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("/view/home/home.fxml"));			//get xml file
 		Pane homeView = homeLoader.load();
 		homeController homeController = homeLoader.getController();
 		homeController.setUserName(user.getEmployeeFirstname());
+	    homeController.setUserStage(primaryStage);
 		View.setTop(homeView);
 	    adminController.setControllerMedewerkerBeheren(medewerkerBeherenController);
 	    adminController.setControllerProjectManagement(projectManagementController);
@@ -100,6 +106,8 @@ public class AdministratorViewController {
 	    adminController.setControllerLockEmployee(lockController);
 	    adminController.setControllerSprintManagement(sprintManagementViewController);
 	    adminController.setControllerApproval(approvalController);
+	    addEntryController.setCurrentUser(user);
+	    adminController.setControllerAddEntryHours(addEntryController);
 	    medewerkerBeherenController.setControllerEmployee(allEmployeeController);
 	    medewerkerBeherenController.setControllerCreateUserController(createUserController);
 	    medewerkerBeherenController.setControllerLockUserController(lockController);
@@ -107,11 +115,16 @@ public class AdministratorViewController {
 	   // beheerderController.setControllerHandleiding(handleidingController);
 	    
 	    Pane tabPane = (Pane)beheerderScherm.getNamespace().get("pane"); 						//get stackPane from fieldView
-        tabPane.getChildren().addAll(approvalview, editEmployeeView,allEmployeeView, unlockView, medewerkerBeherenView, createUserView, projectManagementView,customerView, sprintManagementView);
+        tabPane.getChildren().addAll(addEntryView,approvalview, editEmployeeView,allEmployeeView, unlockView, medewerkerBeherenView, createUserView, projectManagementView,customerView, sprintManagementView);
         
 		Scene scene = new Scene(View);
 		primaryStage.setScene(scene);
 		primaryStage.show();
+	}
+
+	private void setControllerAddEntryHours(AddEntryViewController addEntryController) {
+		this.addEntryController = addEntryController;
+		
 	}
 
 	private void setControllerApproval(ApprovalController approvalController) {
@@ -161,6 +174,11 @@ public class AdministratorViewController {
 	public void showApprovalMenu()
 	{
 		this.approveController.openApprovalMenu();
+	}
+	
+	public void openAddEntryView()
+	{
+		this.addEntryController.showView();
 	}
 
 }

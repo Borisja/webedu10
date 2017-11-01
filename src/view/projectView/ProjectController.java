@@ -38,23 +38,23 @@ public class ProjectController implements Initializable{
 		pane.setVisible(false);
 	}
 
-	public void fillTabelView()
-	{
-		projectsData.addAll(projectDao.project_list_employee(currentEmployee));
-		projectTabelView.setItems(projectsData);
-	}
 
 	public void setCurrentUser(int  em) {
 		this.currentEmployee = em;
 		
 	}
-
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
+	public void fillProjectsTable(int employeeId)
+	{
 		iId.setCellValueFactory(new PropertyValueFactory<ProjectModel, Integer>("projectId"));
 		projectName.setCellValueFactory(new PropertyValueFactory<ProjectModel, String>("projectName"));
 		projectDes.setCellValueFactory(new PropertyValueFactory<ProjectModel, String>("projectDescription"));
 		
+		projectsData.addAll(projectDao.project_list_employee(employeeId));
+		projectTabelView.setItems(projectsData);
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
 	}
 
 }

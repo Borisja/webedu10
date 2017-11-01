@@ -27,6 +27,34 @@ public class SprintDAO {
 	 * @author rezanaser
 	 * @return
 	 */
+	public ArrayList<SprintModel> allSprintsEmployee(int id){
+		ArrayList<SprintModel> sprint_alist = new ArrayList<SprintModel>();
+		String projects_sprints_sql = "select sprint_version_sprint_fk, sprint_version_name, sprint_version_description,sprint_version_startdate, sprint_version_enddate from sprint_version, project_employee where project_employee_employee_fk = ? AND  project_employee_project_fk = sprint_version_project_fk";
+				
+		try {
+			PreparedStatement sprints_statement = connect.connectToDB().prepareStatement(projects_sprints_sql);
+			sprints_statement.setInt(1, id);
+			ResultSet sprints_sets = sprints_statement.executeQuery();
+			while(sprints_sets.next()) {
+				SprintModel sprint = new SprintModel();
+				sprint.setSprintId(sprints_sets.getInt("sprint_version_sprint_fk"));
+				sprint.setSprintName(sprints_sets.getString("sprint_version_name"));
+				sprint.setSprintStartDate(sprints_sets.getString("sprint_version_startdate"));
+				sprint.setSprintEndDate(sprints_sets.getString("sprint_version_enddate"));
+				sprint_alist.add(sprint);
+			}
+			sprints_statement.close();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return sprint_alist;
+	  }
+	/**
+	 * Deze methode vult de combobox met de sprints van het gevraagde project
+	 * @author rezanaser
+	 * @return
+	 */
 	public ArrayList<SprintModel> allSprints(){
 		ArrayList<SprintModel> sprint_alist = new ArrayList<SprintModel>();
 		String projects_sprints_sql = "SELECT *  FROM sprint_version";
@@ -58,7 +86,10 @@ public class SprintDAO {
 	 */
 	public ArrayList<SprintModel> sprintsProjects(int p_id){
 		ArrayList<SprintModel> sprint_alist = new ArrayList<SprintModel>();
-		String projects_sprints_sql = "SELECT *  FROM sprint_version";
+		String projects_sprints_sql = "SELECT *  FROM sprint_version sv INNER JOIN project_version pv " +
+				"ON sv.sprint_version_project_fk=pv.project_version_project_fk INNER JOIN project p " +
+				"ON p.project_id=pv.project_version_project_fk WHERE pv.project_version_project_fk= ?" +
+				"AND sv.sprint_version_current=TRUE AND project_isdeleted=FALSE";
 				//+ "AND entry_version_current = 'y' ";
 		try {
 			PreparedStatement sprints_statement = connect.connectToDB().prepareStatement(projects_sprints_sql);
@@ -172,6 +203,8 @@ public class SprintDAO {
 				sprintModelContainer.setSprintId(sprint_set.getInt("sprint_version_project_fk"));
 				sprintModelContainer.setSprintDescription(sprint_set.getString("sprint_version_description"));
 				sprintModelContainer.setSprintName(sprint_set.getString("sprint_version_name"));
+				sprintModelContainer.setSprintStartDate(sprint_set.getString("sprint_version_startdate"));
+				sprintModelContainer.setSprintEndDate(sprint_set.getString("sprint_version_enddate"));
 				sprint_list.add(sprintModelContainer);
 			}
 		} catch (SQLException e) {

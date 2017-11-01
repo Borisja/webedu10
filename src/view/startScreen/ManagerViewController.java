@@ -49,7 +49,7 @@ public class ManagerViewController {
 	    homeController homeController = homeLoader.getController();
 	    View.setTop(homeView);
 	    homeController.setUserName(em.getEmployeeFirstname());
-	    
+	    homeController.setUserStage(primaryStage);
 	    
 	    FXMLLoader approvalLoader = new FXMLLoader(getClass().getResource("/view/approvalView/approvalView.fxml"));			//get xml file
 	    Pane approvalView = approvalLoader.load();	

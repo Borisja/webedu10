@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../style.css" visible="false" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.sprintView.SprintController">
+<Pane id="pane" fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="798.0" prefWidth="1024.0" stylesheets="@../style.css" visible="false" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.sprintView.SprintController">
    <children>
-      <TableView fx:id="sprintTabelView" layoutX="190.0" layoutY="37.0" prefHeight="312.0" prefWidth="400.0">
+      <TableView fx:id="sprintTabelView" layoutX="190.0" layoutY="37.0" prefHeight="590.0" prefWidth="562.0">
         <columns>
           <TableColumn fx:id="sprintName" prefWidth="75.0" text="Naam" />
           <TableColumn fx:id="sprintStartDate" prefWidth="75.0" text="Start" />
@@ -17,8 +17,7 @@
             <TableColumn prefWidth="140.0" text="Beschrijving" />
         </columns>
       </TableView>
-      <Button layoutX="424.0" layoutY="349.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="83.0" text="Wijzig " />
-      <Button layoutX="507.0" layoutY="349.0" mnemonicParsing="false" onAction="#sluitSprintmenu" prefHeight="38.0" prefWidth="83.0" text="Terug" />
+      <Button layoutX="663.0" layoutY="651.0" mnemonicParsing="false" onAction="#sluitSprintmenu" prefHeight="38.0" prefWidth="83.0" text="Terug" />
       <Label alignment="CENTER" graphicTextGap="5.0" layoutX="14.0" layoutY="50.0" prefHeight="54.0" prefWidth="150.0" text="Sprint Overzicht">
          <font>
             <Font size="18.0" />
