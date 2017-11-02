@@ -53,10 +53,6 @@ public class ManagerViewController {
 	    Pane approvalView = approvalLoader.load();	
 	    ApprovalController approvalController = approvalLoader.getController();
 	    
-	    FXMLLoader manualLoader = new FXMLLoader(getClass().getResource("/view/Manual.fxml"));			//get xml file
-	    Pane manualView = manualLoader.load();	
-	    ManualController manualController = manualLoader.getController();
-	    
 	    FXMLLoader employeeLoader = new FXMLLoader(getClass().getResource("/view/EmployeesOverview.fxml"));			//get xml file
 	    Pane allEmployeeView = employeeLoader.load();	
 	    EmployeesOverviewController allEmployeeController = employeeLoader.getController();
@@ -69,9 +65,10 @@ public class ManagerViewController {
 	    administrationController.setManualController(manualController);
 	    administrationController.setEmployeeOverviewController(allEmployeeController);
 	    administrationController.setCustomerManagementController(customerController);
+	    customerController.disableButtons();
 	    
 	    Pane tabPane = (Pane)administrationScreen.getNamespace().get("pane"); 						//get stackPane from fieldView
-        tabPane.getChildren().addAll(allEmployeeView, approvalView,manualView, customerView);
+        tabPane.getChildren().addAll(allEmployeeView, approvalView, customerView);
         
 		Scene scene = new Scene(View);
 		primaryStage.setScene(scene);

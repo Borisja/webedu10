@@ -17,9 +17,9 @@
             <TableColumn fx:id="customerIsdeleted" prefWidth="129.0" text="Verwijder_status" />
         </columns>
       </TableView>
-      <Button layoutX="843.0" layoutY="77.0" mnemonicParsing="false" onAction="#showPopUpAdd" text="Klant toevoegen" />
-      <Button layoutX="839.0" layoutY="167.0" mnemonicParsing="false" onAction="#removeSelectedCustomer" text="Klant verwijderen" />
-      <Button layoutX="850.0" layoutY="252.0" mnemonicParsing="false" onAction="#showPopUpChange" text="Klant wijzigen" />
+      <Button fx:id="add" layoutX="843.0" layoutY="77.0" mnemonicParsing="false" onAction="#showPopUpAdd" text="Klant toevoegen" />
+      <Button fx:id="remove" layoutX="839.0" layoutY="167.0" mnemonicParsing="false" onAction="#removeSelectedCustomer" text="Klant verwijderen" />
+      <Button fx:id="modify" layoutX="850.0" layoutY="252.0" mnemonicParsing="false" onAction="#showPopUpChange" text="Klant wijzigen" />
       <Button layoutX="21.0" layoutY="650.0" mnemonicParsing="false" onAction="#closeView" prefHeight="27.0" prefWidth="64.0" text="Sluit" />
       <Pane fx:id="popUp" layoutX="784.0" layoutY="21.0" prefHeight="374.0" prefWidth="216.0" style="-fx-background-color: e3e4e5;" visible="false">
          <children>
