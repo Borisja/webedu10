@@ -38,8 +38,6 @@ public class UserStoryManagementViewController implements Initializable
 	@FXML TableColumn<UserStoryModel, Integer> userStoryID;
 	@FXML TableColumn<UserStoryModel, String> userStoryName;
 	@FXML TableColumn<UserStoryModel, String> userStoryDescription;
-	@FXML TableColumn<UserStoryModel, String> userStoryStartDate;
-	@FXML TableColumn<UserStoryModel, String> userStoryEndDate;
 	@FXML TableColumn<UserStoryModel, String> sprintName;
 	@FXML TableColumn<UserStoryModel, String> userStoryIsDeleted;
 	
@@ -50,8 +48,6 @@ public class UserStoryManagementViewController implements Initializable
 	@FXML Pane popUpAdd;
 	@FXML TextField changeUserStoryNameTextField;
 	@FXML TextField changeUserStoryDescriptionTextField;
-	@FXML DatePicker changeUserStoryStartDateDatePicker;
-	@FXML DatePicker changeUserStoryEndDateDatePicker;
 	@FXML TextField newUserStoryNameTextField;
 	@FXML TextField newUserStoryDescriptionTextField;
 	@FXML Button changeUserStoryButton;
@@ -114,8 +110,7 @@ public class UserStoryManagementViewController implements Initializable
 //			changeSprintComboBox.setValue();
 			changeUserStoryNameTextField.setText(selectedItem.getUserStoryName());
 			changeUserStoryDescriptionTextField.setText(selectedItem.getUserStoryDescription());
-//			changeUserStoryEndDateDatePicker.setValue(String.valueOf(selectedItem.getUserStoryStartDate()));
-			changeUserStoryEndDateDatePicker.setValue(null);
+
 			
 		}
 		catch(NullPointerException e)
@@ -163,20 +158,19 @@ public class UserStoryManagementViewController implements Initializable
 	public void modifyUserStory() 
 	{		
 		
-			try{
-				
-				userStoryDAO.modifyUserStory(this.selectedUserStoryID, changeUserStoryNameTextField.getText(), changeSprintComboBox.getSelectionModel().getSelectedItem().getSprintId(), changeUserStoryDescriptionTextField.getText());
-				
-				closePopup();
-			}
+		try
+		{		
+			userStoryDAO.modifyUserStory(this.selectedUserStoryID, changeUserStoryNameTextField.getText(), changeSprintComboBox.getSelectionModel().getSelectedItem().getSprintId(), changeUserStoryDescriptionTextField.getText());
+			closePopup();
+		}
 			
-			catch(NullPointerException e)
-			{
-				warningLabel.setText("Selecteer iets ");
-			}
+		catch(NullPointerException e)
+		{
+			warningLabel.setText("Selecteer iets ");
+		}
 		clearAllFields();
 		refreshTable();
-		}
+	}
 
 
 	/**
@@ -211,8 +205,6 @@ public class UserStoryManagementViewController implements Initializable
 		userStoryName.setCellValueFactory(new PropertyValueFactory<UserStoryModel, String>("userStoryName"));
 		userStoryDescription.setCellValueFactory(new PropertyValueFactory<UserStoryModel, String>("userStoryDescription"));
 				
-		userStoryStartDate.setCellValueFactory(new PropertyValueFactory<UserStoryModel, String>("userStoryStartDate"));
-		userStoryEndDate.setCellValueFactory(new PropertyValueFactory<UserStoryModel, String>("userStoryEndDate"));
 		sprintName.setCellValueFactory(new PropertyValueFactory<UserStoryModel, String>("sprintName"));
 		
 		
@@ -254,9 +246,8 @@ public class UserStoryManagementViewController implements Initializable
 		userStoryID.setCellValueFactory(new PropertyValueFactory<UserStoryModel, Integer>("userStoryId"));
 		userStoryName.setCellValueFactory(new PropertyValueFactory<UserStoryModel, String>("userStoryName"));
 		userStoryDescription.setCellValueFactory(new PropertyValueFactory<UserStoryModel, String>("userStoryDescription"));
-		userStoryIsDeleted.setCellValueFactory(new PropertyValueFactory<UserStoryModel, String>("userStoryIsDeleted"));
-		
 		sprintName.setCellValueFactory(new PropertyValueFactory<UserStoryModel, String>("sprintName"));
+		userStoryIsDeleted.setCellValueFactory(new PropertyValueFactory<UserStoryModel, String>("isDeleted"));
 		
 		allUserStorys.addAll(userStoryDAO.userStory_list());
 		userStoryTableView.setItems(allUserStorys);
@@ -270,8 +261,6 @@ public class UserStoryManagementViewController implements Initializable
 	{
 		changeUserStoryNameTextField.setText("");
 		changeUserStoryDescriptionTextField.setText("");
-		changeUserStoryStartDateDatePicker.setValue(null);
-		changeUserStoryEndDateDatePicker.setValue(null);
 		changeSprintComboBox.setValue(null);
 		
 		newUserStoryNameTextField.setText("");

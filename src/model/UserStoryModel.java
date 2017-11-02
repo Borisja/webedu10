@@ -1,5 +1,7 @@
 package model;
 
+import dao.SprintDAO;
+
 public class UserStoryModel {
 	private int userStoryId;
 	private String userStoryName;
@@ -7,6 +9,7 @@ public class UserStoryModel {
 	private int sprintFK;
 	private String sprintName;
 	private boolean isDeleted;
+	private SprintDAO sprintDAO;
 
 	public int getUserStoryId() {
 		return userStoryId;
@@ -38,6 +41,16 @@ public class UserStoryModel {
 
 	public void setSprintFK(int sprintFK) {
 		this.sprintFK = sprintFK;
+		
+		for(int counter = 0; counter < sprintDAO.sprint_list().size(); counter++)
+		{
+			if(sprintFK == sprintDAO.sprint_list().get(counter).getSprintId())
+			{
+				this.setSprintName(sprintDAO.sprint_list().get(counter).getSprintName());
+				System.out.println("sprintDAO.sprint_list().get(counter).getSprintName()");
+			};
+		}
+		
 	}
 
 	public String getSprintName() {

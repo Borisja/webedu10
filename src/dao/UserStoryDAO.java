@@ -154,18 +154,26 @@ public class UserStoryDAO {
 			 */
 			public ArrayList<UserStoryModel> userStory_list(){
 				ArrayList<UserStoryModel> userStoryList = new ArrayList<UserStoryModel>();
-				String userStoryListSQL = "SELECT * FROM userStory_version "
-						+ "INNER JOIN userStory ON (userStory_id = userStory_version_userStory_fk)"
-						+ "AND userStory_version_current = true "
-						+ "ORDER BY userStory_version.userStory_version_userStory_fk ASC";
+				String userStoryListSQL =     "SELECT usv.userstory_version_userstory_fk, usv.userstory_version_name, usv.userstory_version_description, sv.sprint_version_name, u.userstory_isdeleted " +
+					    "FROM sprint_version sv " +
+					    "JOIN sprint s ON sv.sprint_version_sprint_fk=s.sprint_id " +
+					    "JOIN userstory_sprint us ON s.sprint_id=us.userstory_sprint_sprint_fk " +
+					    "JOIN userstory_version usv ON usv.userstory_version_userstory_fk=us.userstory_sprint_userstory_fk " +
+					    "JOIN userstory u ON userstory_id=usv.userstory_version_userstory_fk " +
+					    "WHERE us.userstory_sprint_sprint_fk=sv.sprint_version_sprint_fk " +
+					    "AND usv.userstory_version_current=TRUE AND sv.sprint_version_current=true ";
+			
+				
+				
 				try {
 					PreparedStatement userStory_statement = connect.connectToDB().prepareStatement(userStoryListSQL);
 					ResultSet userStory_set = userStory_statement.executeQuery();
 					while(userStory_set.next()) {
 						UserStoryModel userStoryModelContainer = new UserStoryModel();
-						userStoryModelContainer.setUserStoryId(userStory_set.getInt("userstory_id"));
+						userStoryModelContainer.setUserStoryId(userStory_set.getInt("userstory_version_userstory_fk"));
 						userStoryModelContainer.setUserStoryDescription(userStory_set.getString("userstory_version_description"));
 						userStoryModelContainer.setUserStoryName(userStory_set.getString("userstory_version_name"));
+						userStoryModelContainer.setSprintName(userStory_set.getString("sprint_version_name"));
 						userStoryModelContainer.setDeleted(userStory_set.getBoolean("userstory_isdeleted"));
 						
 						userStoryList.add(userStoryModelContainer);
@@ -384,10 +392,11 @@ public class UserStoryDAO {
 			
 			public void modifyUserStory(int userStoryID, String userStoryName, int sprintID, String userStoryDescription)
 			{
-				String changePreviousVersion = "UPDATE userStory_version SET userStory_version_current = 'n' "
-						+ "WHERE userStory_version_userStory_fk = ? AND userStory_version_current= true";
-				String change_userStory = "INSERT INTO userStory_version(userStory_version_userStory_fk, userStory_version_name, userStory_version_userStory_fk, userStory_version_description, userStory_version_startdate, userStory_version_enddate, userStory_version_current)"
-						+ "VALUES(?, ?, ?, ?, ?, ?, true)";
+				String changePreviousVersion = "UPDATE userstory_version SET userstory_version_current = 'n' "
+						+ "WHERE userstory_version_userstory_fk = ? AND userstory_version_current= true";
+				
+				String change_userStory = "INSERT INTO userstory_version(userstory_version_userstory_fk, userstory_version_name, userstory_version_description, userstory_version_current)"
+						+ "VALUES(?, ?, ?, true)";
 				
 				
 				try {
@@ -398,8 +407,7 @@ public class UserStoryDAO {
 					PreparedStatement changeUserStory = connect.connectToDB().prepareStatement(change_userStory);
 					changeUserStory.setInt(1, userStoryID);
 					changeUserStory.setString(2, userStoryName);
-					changeUserStory.setInt(3, userStoryID);
-					changeUserStory.setString(4, userStoryDescription);
+					changeUserStory.setString(3, userStoryDescription);
 					changeUserStory.executeQuery();
 					
 					changeUserStory.close();
