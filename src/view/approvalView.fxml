@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="798.0" prefWidth="1024.0" stylesheets="@../style.css" visible="false" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.approvalView.ApprovalController">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="798.0" prefWidth="1024.0" stylesheets="@style.css" visible="false" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ApprovalController">
    <children>
       <Button fx:id="sluitKnop" layoutX="21.0" layoutY="717.0" mnemonicParsing="false" onAction="#closeApprovalMenu" prefHeight="27.0" prefWidth="77.0" text="Sluiten" />
       <TableView fx:id="tableViewToBeApproved" layoutX="14.0" layoutY="14.0" prefHeight="609.0" prefWidth="728.0">

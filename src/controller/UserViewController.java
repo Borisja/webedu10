@@ -1,8 +1,7 @@
-package view.startScreen;
+package controller;
 
 import java.io.IOException;
 
-import controller.UserInformationController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -11,11 +10,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.EmployeeModel;
-import view.AddEntryViewController;
-import view.CalenderView;
-import view.home.homeController;
-import view.projectView.ProjectController;
-import view.sprintView.SprintController;
 
 
 
@@ -37,16 +31,16 @@ public class UserViewController {
 	public void startGebruiker(EmployeeModel em) throws IOException
 	{
 		Stage primaryStage = new Stage();
-		FXMLLoader userView = new FXMLLoader(getClass().getResource("/view/startScreen/UserView.fxml"));
+		FXMLLoader userView = new FXMLLoader(getClass().getResource("/view/UserView.fxml"));
 		BorderPane view =(BorderPane) userView.load();
 		UserViewController userController = userView.getController();
 		
 		
-		FXMLLoader sprintLoader = new FXMLLoader(getClass().getResource("/view/sprintView/SprintOverviewView.fxml"));
+		FXMLLoader sprintLoader = new FXMLLoader(getClass().getResource("/view/SprintOverviewView.fxml"));
 		Pane sprintView = sprintLoader.load();
 		SprintController sprintController = sprintLoader.getController();
 		
-		FXMLLoader projectLoader = new FXMLLoader(getClass().getResource("/view/projectView/ProjectView.fxml"));
+		FXMLLoader projectLoader = new FXMLLoader(getClass().getResource("/view/ProjectView.fxml"));
 		Pane projectView = projectLoader.load();
 		ProjectController projectController = projectLoader.getController();
 		
@@ -58,11 +52,11 @@ public class UserViewController {
 		Pane entriesView = entriesLoader.load();
 		CalenderView calenderController = entriesLoader.getController();
 		
-		FXMLLoader employeeGegevensLoader = new FXMLLoader(getClass().getResource("/controller/UserInformationView.fxml"));
+		FXMLLoader employeeGegevensLoader = new FXMLLoader(getClass().getResource("/view/UserInformationView.fxml"));
 		Pane userInformationView = employeeGegevensLoader.load();
 		UserInformationController userInformationController = employeeGegevensLoader.getController();
 		
-		FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("/view/home/home.fxml"));			//get xml file
+		FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("/view/home.fxml"));			//get xml file
 	    Pane homeView = homeLoader.load();
 	    homeController homeController = homeLoader.getController();
 	    

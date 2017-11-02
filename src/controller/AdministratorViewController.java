@@ -1,4 +1,4 @@
-package view.startScreen;
+package controller;
 
 import java.io.IOException;
 
@@ -11,11 +11,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.EmployeeModel;
-import view.AddEntryViewController;
-import view.CalenderView;
-import view.approvalView.ApprovalController;
-import view.home.homeController;
-import view.manual.ManualController;
 /**
  * Deze klasse is de controller van de beheerderview
  * @author rezanaser
@@ -48,20 +43,20 @@ public class AdministratorViewController {
 	public void startAdministrator(EmployeeModel user) throws IOException
 	{
 		Stage primaryStage = new Stage();
-		FXMLLoader beheerderScherm = new FXMLLoader(getClass().getResource("/view/startScreen/AdministratorView.fxml"));	
+		FXMLLoader beheerderScherm = new FXMLLoader(getClass().getResource("/view/AdministratorView.fxml"));	
 		BorderPane View  = (BorderPane)beheerderScherm.load();
 		AdministratorViewController adminController = beheerderScherm.getController();
 
 	    
-	    FXMLLoader medewerkerBeheren = new FXMLLoader(getClass().getResource("/controller/EmployeeManagement.fxml"));			//get xml file
+	    FXMLLoader medewerkerBeheren = new FXMLLoader(getClass().getResource("/view/EmployeeManagement.fxml"));			//get xml file
 	    Pane medewerkerBeherenView = medewerkerBeheren.load();	
 	    EmployeeManagementController medewerkerBeherenController = medewerkerBeheren.getController();
 	    
-	    FXMLLoader addEmployeeLoader = new FXMLLoader(getClass().getResource("/controller/CreateUser.fxml"));			//get xml file
+	    FXMLLoader addEmployeeLoader = new FXMLLoader(getClass().getResource("/view/CreateUser.fxml"));			//get xml file
 	    Pane createUserView = addEmployeeLoader.load();	
 	    CreateUserController createUserController = addEmployeeLoader.getController();
 	    
-	    FXMLLoader customerLoader = new FXMLLoader(getClass().getResource("/controller/CustomersManagement.fxml"));			//get xml file
+	    FXMLLoader customerLoader = new FXMLLoader(getClass().getResource("/view/CustomersManagement.fxml"));			//get xml file
 	    Pane customerView = customerLoader.load();	
 	    CustomerManagementViewController customerController = customerLoader.getController();
 	    
@@ -77,11 +72,11 @@ public class AdministratorViewController {
 	    Pane allEmployeeView = employeeLoader.load();	
 	    EmployeesOverviewController allEmployeeController = employeeLoader.getController();
 	    
-	    FXMLLoader sprintManagementLoader = new FXMLLoader(getClass().getResource("/controller/SprintManagementView.fxml"));			//get xml file
+	    FXMLLoader sprintManagementLoader = new FXMLLoader(getClass().getResource("/view/SprintManagementView.fxml"));			//get xml file
 	    Pane sprintManagementView = sprintManagementLoader.load();	
 	    SprintManagementViewController sprintManagementViewController = sprintManagementLoader.getController();
 
-	    FXMLLoader userStoryManagementLoader = new FXMLLoader(getClass().getResource("/controller/UserStoryManagementView.fxml"));			//get xml file
+	    FXMLLoader userStoryManagementLoader = new FXMLLoader(getClass().getResource("/view/UserStoryManagementView.fxml"));			//get xml file
 	    Pane userStoryManagementView = userStoryManagementLoader.load();	
 	    UserStoryManagementViewController userStoryManagementViewController = userStoryManagementLoader.getController();
 
@@ -89,7 +84,7 @@ public class AdministratorViewController {
 		EditEmployeeController editEmployeeController = new EditEmployeeController();
 		Pane editEmployeeView = editEmployeeController.getEditPane();
 		
-	    FXMLLoader approveManagementLoader = new FXMLLoader(getClass().getResource("/view/approvalView/approvalView.fxml"));			//get xml file
+	    FXMLLoader approveManagementLoader = new FXMLLoader(getClass().getResource("/view/approvalView.fxml"));			//get xml file
 	    Pane approvalview = approveManagementLoader.load();	
 	    ApprovalController approvalController = approveManagementLoader.getController();
 	    
@@ -99,7 +94,7 @@ public class AdministratorViewController {
 	    AddEntryViewController addEntryController = addEntryLoader.getController();
 	    
 
-		FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("/view/home/home.fxml"));			//get xml file
+		FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("/view/home.fxml"));			//get xml file
 		Pane homeView = homeLoader.load();
 		homeController homeController = homeLoader.getController();
 		homeController.setUserName(user.getEmployeeFirstname());

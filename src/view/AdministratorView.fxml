@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.startScreen.AdministratorViewController">
+<BorderPane stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdministratorViewController">
    <left>
-      <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="798.0" prefWidth="1024.0" stylesheets="@../style.css" BorderPane.alignment="CENTER">
+      <Pane id="pane" fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="798.0" prefWidth="1024.0" stylesheets="@../style.css" BorderPane.alignment="CENTER">
          <children>
             <Button id="buttons" layoutX="94.0" layoutY="194.0" mnemonicParsing="false" onAction="#openProjectsManagement" prefHeight="89.0" prefWidth="112.0" style="-fx-background-size: 120 100; -fx-background-repeat: no-repeat; -fx-background-image: url('view/images/projects.png');" stylesheets="@../style.css" />
             <Button id="buttons" layoutX="352.0" layoutY="193.0" mnemonicParsing="false" onAction="#openSprintManagementView" prefHeight="90.0" prefWidth="112.0" style="-fx-background-repeat: no-repeat; -fx-background-size: 105 90; -fx-background-image: url('view/images/sprints.png');" stylesheets="@../style.css" />

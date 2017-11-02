@@ -1,4 +1,4 @@
-package view.startScreen;
+package controller;
 
 import java.io.IOException;
 
@@ -11,10 +11,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.EmployeeModel;
-import view.ExportController;
-import view.approvalView.ApprovalController;
-import view.home.homeController;
-import view.manual.ManualController;
 
 /**
  * Deze klasse is bestemd voor de administratie. 
@@ -41,21 +37,21 @@ public class ManagerViewController {
 	public void startManager(EmployeeModel em) throws IOException
 	{
 		Stage primaryStage = new Stage();
-		FXMLLoader administrationScreen = new FXMLLoader(getClass().getResource("/view/startScreen/ManagerView.fxml"));	
+		FXMLLoader administrationScreen = new FXMLLoader(getClass().getResource("/view/ManagerView.fxml"));	
 		BorderPane View  = (BorderPane)administrationScreen.load();
 		ManagerViewController administrationController = administrationScreen.getController();
-		FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("/view/home/home.fxml"));			//get xml file
+		FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("/view/home.fxml"));			//get xml file
 	    Pane homeView = homeLoader.load();
 	    homeController homeController = homeLoader.getController();
 	    View.setTop(homeView);
 	    homeController.setUserName(em.getEmployeeFirstname());
 	    homeController.setUserStage(primaryStage);
 	    
-	    FXMLLoader approvalLoader = new FXMLLoader(getClass().getResource("/view/approvalView/approvalView.fxml"));			//get xml file
+	    FXMLLoader approvalLoader = new FXMLLoader(getClass().getResource("/view/approvalView.fxml"));			//get xml file
 	    Pane approvalView = approvalLoader.load();	
 	    ApprovalController approvalController = approvalLoader.getController();
 	    
-	    FXMLLoader manualLoader = new FXMLLoader(getClass().getResource("/view/manual/Manual.fxml"));			//get xml file
+	    FXMLLoader manualLoader = new FXMLLoader(getClass().getResource("/view/Manual.fxml"));			//get xml file
 	    Pane manualView = manualLoader.load();	
 	    ManualController manualController = manualLoader.getController();
 

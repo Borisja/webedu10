@@ -1,6 +1,5 @@
-package view;
+package controller;
 
-import controller.EditEmployeeController;
 import dao.AdministratorDAO;
 import dao.EmployeeDAO;
 import javafx.collections.FXCollections;

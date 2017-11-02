@@ -1,9 +1,8 @@
-package view;
+package controller;
 
 import java.io.IOException;
 import java.text.ParseException;
 
-import controller.LoginController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,7 +13,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import view.home.homeController;
 
 public class LoginView {
 	/**
