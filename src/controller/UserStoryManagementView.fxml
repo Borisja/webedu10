@@ -8,7 +8,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="798.0" prefWidth="1024.0" stylesheets="@../view/style.css" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserStoryManagementViewController">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="798.0" prefWidth="1024.0" stylesheets="@../view/style.css" visible="false" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserStoryManagementViewController">
    <children>
 
       <TableView fx:id="userStoryTableView" layoutX="34.0" layoutY="21.0" prefHeight="659.0" prefWidth="696.0">
@@ -24,7 +24,7 @@
       <Button fx:id="deleteUserStoryButton" layoutX="529.0" layoutY="149.0" mnemonicParsing="false" onAction="#removeSelectedUserStory" text="Userstory verwijderen" />
       <Button fx:id="changeUserStoryButton" layoutX="539.0" layoutY="188.0" mnemonicParsing="false" onAction="#showPopUpChange" text="Userstory wijzigen" />
       <Button layoutX="556.0" layoutY="280.0" mnemonicParsing="false" onAction="#closeView" prefHeight="27.0" prefWidth="64.0" text="Sluit" />
-      <Pane fx:id="popUp" layoutX="494.0" layoutY="7.0" prefHeight="374.0" prefWidth="216.0" style="-fx-background-color: e3e4e5;">
+      <Pane fx:id="popUp" layoutX="494.0" layoutY="7.0" prefHeight="374.0" prefWidth="216.0" style="-fx-background-color: e3e4e5;" visible="false">
          <children>
             <Label layoutX="14.0" layoutY="23.0" text="Project ID:" />
             <Label layoutX="57.0" layoutY="84.0" text="UserStory naam" />

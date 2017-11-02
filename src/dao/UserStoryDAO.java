@@ -15,6 +15,7 @@ import model.UserStoryModel;
  *
  */
 public class UserStoryDAO {
+	int generatedID;
 	private ConnectDAO connect = new ConnectDAO(); // Connectie maken met de database
 	
 	/**
@@ -162,10 +163,11 @@ public class UserStoryDAO {
 					ResultSet userStory_set = userStory_statement.executeQuery();
 					while(userStory_set.next()) {
 						UserStoryModel userStoryModelContainer = new UserStoryModel();
-						userStoryModelContainer.setUserStoryId(userStory_set.getInt("userStory_id"));
-						userStoryModelContainer.setUserStoryDescription(userStory_set.getString("userStory_version_description"));
-						userStoryModelContainer.setUserStoryName(userStory_set.getString("userStory_version_name"));
-						userStoryModelContainer.setDeleted(userStory_set.getBoolean("userStory_isdeleted"));
+						userStoryModelContainer.setUserStoryId(userStory_set.getInt("userstory_id"));
+						userStoryModelContainer.setUserStoryDescription(userStory_set.getString("userstory_version_description"));
+						userStoryModelContainer.setUserStoryName(userStory_set.getString("userstory_version_name"));
+						userStoryModelContainer.setDeleted(userStory_set.getBoolean("userstory_isdeleted"));
+						
 						userStoryList.add(userStoryModelContainer);
 					}
 				} catch (SQLException e) {
@@ -251,10 +253,10 @@ public class UserStoryDAO {
 			 */
 			public int createNewUserStory()
 				{
-					int generatedID = 0;
+					generatedID = 0;
 					PreparedStatement createUserStory;
 					ResultSet userStoryID = null;
-					String insertUserStoryStatement = "INSERT INTO userStory(userStory_isdeleted) VALUES(?)";
+					String insertUserStoryStatement = "INSERT INTO userStory(userstory_isdeleted) VALUES(?)";
 					
 					try 
 					{
@@ -291,23 +293,45 @@ public class UserStoryDAO {
 			public void addUserStoryToDatabase(int sprintID, String userStoryName, String userStoryDescription)
 			{
 				PreparedStatement addUserStory;
-				String insertStatement = "INSERT INTO userstory_version(userstory_version_userstory_fk, userstory_version_userstory_fk, userstory_version_name, userstory_version_description, userstory_version_current) " 
-						+ "VALUES(?,?,?,?, true)";
-				
+				String insertStatement = "INSERT INTO userstory_version(userstory_version_userstory_fk, userstory_version_name, userstory_version_description, userstory_version_current) " 
+						+ "VALUES(?,?,?, true)";
+		
 				try 
 				{
 					addUserStory = connect.connectToDB().prepareStatement(insertStatement);
 					
 					addUserStory.setInt(1, createNewUserStory());
-					addUserStory.setInt(2,  sprintID);
-					addUserStory.setString(3, userStoryName);
-					addUserStory.setString(4, userStoryDescription);
+					addUserStory.setString(2, userStoryName);
+					addUserStory.setString(3, userStoryDescription);
 					
 					addUserStory.executeQuery();
 					addUserStory.close();			
 					
 				} catch (SQLException e) {
 
+					System.out.println(e.getMessage());
+				} catch (Exception e) {
+					System.out.println(e.getMessage());
+					
+				} 
+				
+				
+				
+				PreparedStatement linkUserStorySprint;
+				String linkStatement = "INSERT INTO userstory_sprint(userstory_sprint_userstory_fk, userstory_sprint_sprint_fk) " 
+						+ "VALUES(?,?)";
+				
+				try 
+				{
+					linkUserStorySprint = connect.connectToDB().prepareStatement(linkStatement);
+					
+					linkUserStorySprint.setInt(1, generatedID);
+					linkUserStorySprint.setInt(2,  sprintID);
+					
+					linkUserStorySprint.executeQuery();
+					linkUserStorySprint.close();			
+					
+				} catch (SQLException e) {
 					System.out.println(e.getMessage());
 				} catch (Exception e) {
 					System.out.println(e.getMessage());

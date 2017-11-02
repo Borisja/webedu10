@@ -41,8 +41,8 @@ public class SprintManagementViewController implements Initializable
 	@FXML TableColumn<SprintModel, String> projectName;
 	@FXML TableColumn<SprintModel, String> sprintIsDeleted;
 	
-	@FXML ComboBox<SprintModel> addProjectComboBox;
-	@FXML ComboBox<SprintModel> changeProjectComboBox;
+	@FXML ComboBox<ProjectModel> addProjectComboBox;
+	@FXML ComboBox<ProjectModel> changeProjectComboBox;
 	@FXML Pane pane;
 	@FXML Pane popUp;
 	@FXML Pane popUpAdd;
@@ -73,20 +73,20 @@ public class SprintManagementViewController implements Initializable
 
 	public void fillProjectBox()
 	{	
-		ArrayList<SprintModel> pList = new SprintDAO().sprint_list();
+		ArrayList<ProjectModel> pList = new ProjectDAO().project_list();
 		
-		ObservableList<SprintModel> data;
+		ObservableList<ProjectModel> data;
 		
 		data = FXCollections.observableArrayList();
 		
 		pList.forEach(e -> data.add(e));
 
 		
-		Callback<ListView<SprintModel>, ListCell<SprintModel>> factory = lv -> new ListCell<SprintModel>() {
+		Callback<ListView<ProjectModel>, ListCell<ProjectModel>> factory = lv -> new ListCell<ProjectModel>() {
 		    @Override
-		    protected void updateItem(SprintModel item, boolean empty) {
+		    protected void updateItem(ProjectModel item, boolean empty) {
 		        super.updateItem(item, empty);
-		        setText(empty ? "" :item.getSprintName());
+		        setText(empty ? "" :item.getProjectName());
 		    }
 
 		};
@@ -140,7 +140,7 @@ public class SprintManagementViewController implements Initializable
 		{
 		Date sprintStartDate = Date.valueOf(newSprintStartDateDatePicker.getValue());
 		Date sprintEndDate = Date.valueOf(newSprintEndDateDatePicker.getValue());
-		new SprintDAO().addSprintToDatabase(addProjectComboBox.getSelectionModel().getSelectedItem().getSprintId(), newSprintNameTextField.getText(), newSprintDescriptionTextField.getText(), sprintStartDate , sprintEndDate);
+		new SprintDAO().addSprintToDatabase(addProjectComboBox.getSelectionModel().getSelectedItem().getProjectId(), newSprintNameTextField.getText(), newSprintDescriptionTextField.getText(), sprintStartDate , sprintEndDate);
 		refreshTable();
 		clearAllFields();
 		
@@ -170,7 +170,7 @@ public class SprintManagementViewController implements Initializable
 				Date startDate = Date.valueOf(changeSprintStartDateDatePicker.getValue());
 				Date endDate = Date.valueOf(changeSprintEndDateDatePicker.getValue());
 				
-				sprintDAO.modifySprint(this.selectedSprintID, changeSprintNameTextField.getText(), changeProjectComboBox.getSelectionModel().getSelectedItem().getSprintId(), changeSprintDescriptionTextField.getText(), startDate, endDate);
+				sprintDAO.modifySprint(this.selectedSprintID, changeSprintNameTextField.getText(), changeProjectComboBox.getSelectionModel().getSelectedItem().getProjectId(), changeSprintDescriptionTextField.getText(), startDate, endDate);
 				
 				closePopup();
 			}

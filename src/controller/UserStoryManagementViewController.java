@@ -165,10 +165,7 @@ public class UserStoryManagementViewController implements Initializable
 		
 			try{
 				
-				Date startDate = Date.valueOf(changeUserStoryStartDateDatePicker.getValue());
-				Date endDate = Date.valueOf(changeUserStoryEndDateDatePicker.getValue());
-				
-//				userStoryDAO.modifyUserStory(this.selectedUserStoryID, changeUserStoryNameTextField.getText(), changeSprintComboBox.getSelectionModel().getSelectedItem().getSprintId(), changeUserStoryDescriptionTextField.getText(), startDate, endDate);
+				userStoryDAO.modifyUserStory(this.selectedUserStoryID, changeUserStoryNameTextField.getText(), changeSprintComboBox.getSelectionModel().getSelectedItem().getSprintId(), changeUserStoryDescriptionTextField.getText());
 				
 				closePopup();
 			}
