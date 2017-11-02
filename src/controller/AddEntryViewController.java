@@ -93,7 +93,13 @@ public class AddEntryViewController implements Initializable {
 		this.sprintCombo.setButtonCell(factory.call(null));
 		
 		this.sprintCombo.setOnAction(e-> {
-			this.fillUserStoriesBox(sprintCombo.getSelectionModel().getSelectedItem().getSprintId());
+			try{
+				this.fillUserStoriesBox(sprintCombo.getSelectionModel().getSelectedItem().getSprintId());
+			}catch(NullPointerException er )
+			{
+				System.out.println(er.getMessage());
+			}
+			
 
 		});
 	}
@@ -102,7 +108,7 @@ public class AddEntryViewController implements Initializable {
 	 * Fill the user story box when project box onaction is called
 	 * @param p_id - project id from the selected model
 	 */	
-	public void fillUserStoriesBox(int p_id)
+	public void fillUserStoriesBox(int p_id) 
 	{	
 		ArrayList<UserStoryModel> pList = new UserStoryDAO().userstoriesProjects(p_id);
 		
@@ -166,6 +172,7 @@ public class AddEntryViewController implements Initializable {
 		
 		this.projectCombo.setOnAction(e-> {
 			this.fillSprintsBox(projectCombo.getSelectionModel().getSelectedItem().getProjectId());
+			userStorysCombo.setItems(null);
 
 		});
 	}

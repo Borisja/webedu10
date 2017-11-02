@@ -190,6 +190,7 @@ public class ProjectManagementViewController implements Initializable{
 	
 	public void refreshTable()
 	{
+		this.fillCustomerBox();//Vult customer box in met klantnamen
 		tableViewProjects.getItems().clear();
 		id.setCellValueFactory(new PropertyValueFactory<ProjectModel, Integer>("projectId"));
 		projectName.setCellValueFactory(new PropertyValueFactory<ProjectModel, String>("projectName"));
