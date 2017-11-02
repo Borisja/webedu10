@@ -11,6 +11,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import model.EmployeeModel;
 import view.CalenderView;
 import view.startScreen.AdministratorViewController;
@@ -36,7 +37,7 @@ public class LoginController {
 	 * @return a user model if login was successful
 	 * @throws ParseException 
 	 */
-	public void loginRequest(String email, String pw) throws ParseException{
+	public void loginRequest(String email, String pw, Stage stage) throws ParseException{
 		AdministratorDAO admin = new AdministratorDAO();
 		EmployeeModel user = admin.loginAssignment(email, pw);
 		
@@ -55,6 +56,7 @@ public class LoginController {
 				UserViewController view = new UserViewController();
 				try {
 					view.startGebruiker(user);
+					stage.close();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -64,6 +66,7 @@ public class LoginController {
 			{
 				try {
 					new ManagerViewController().startManager(user);
+					stage.close();
 //					new CalenderView().agendaShow(user);
 					
 				} catch (Exception e) {
@@ -76,6 +79,7 @@ public class LoginController {
 			{
 				try {
 					new AdministratorViewController().startAdministrator(user);
+					stage.close();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

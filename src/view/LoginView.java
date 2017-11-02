@@ -29,8 +29,8 @@ public class LoginView {
 	
 	public void login() throws ParseException
 	{
-		login_controller.loginRequest(usernameDescription.getText(), passwordField.getText());
-		loginStage.close();
+		login_controller.loginRequest(usernameDescription.getText(), passwordField.getText(), loginStage);
+		
 	}
 			
 	
