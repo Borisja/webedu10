@@ -28,6 +28,8 @@ public class ManagerViewController {
 	private ManualController manualController;
 	private ExportController export = new ExportController();
 	private Label name;
+	private CustomerManagementViewController customerController;
+	private EmployeesOverviewController employeeController;
 
 	/**
 	 * Deze methode geeft de administratieView  na succesvol inloggen.
@@ -54,16 +56,34 @@ public class ManagerViewController {
 	    FXMLLoader manualLoader = new FXMLLoader(getClass().getResource("/view/Manual.fxml"));			//get xml file
 	    Pane manualView = manualLoader.load();	
 	    ManualController manualController = manualLoader.getController();
+	    
+	    FXMLLoader employeeLoader = new FXMLLoader(getClass().getResource("/view/EmployeesOverview.fxml"));			//get xml file
+	    Pane allEmployeeView = employeeLoader.load();	
+	    EmployeesOverviewController allEmployeeController = employeeLoader.getController();
+	    
+	    FXMLLoader customerLoader = new FXMLLoader(getClass().getResource("/view/CustomersManagement.fxml"));			//get xml file
+	    Pane customerView = customerLoader.load();	
+	    CustomerManagementViewController customerController = customerLoader.getController();
 
 	    administrationController.setApprovalController(approvalController);
 	    administrationController.setManualController(manualController);
+	    administrationController.setEmployeeOverviewController(allEmployeeController);
+	    administrationController.setCustomerManagementController(customerController);
 	    
 	    Pane tabPane = (Pane)administrationScreen.getNamespace().get("pane"); 						//get stackPane from fieldView
-        tabPane.getChildren().addAll(approvalView,manualView);
+        tabPane.getChildren().addAll(allEmployeeView, approvalView,manualView, customerView);
         
 		Scene scene = new Scene(View);
 		primaryStage.setScene(scene);
 		primaryStage.show();
+	}
+	private void setCustomerManagementController(CustomerManagementViewController customerController) {
+		this.customerController = customerController;
+		
+	}
+	private void setEmployeeOverviewController(EmployeesOverviewController allEmployeeController) {
+		this.employeeController = allEmployeeController;
+		
 	}
 	/**
 	 * Deze methode krijgt de controller van andere views.
@@ -88,6 +108,14 @@ public class ManagerViewController {
 	public void downloadCSV()
 	{
 		this.export.exportCSV();
+	}
+	public void openEmployeeView()
+	{
+		this.employeeController.showEmployeeOverview();
+	}
+	public void openCustomerView()
+	{
+		this.customerController.showView();
 	}
 	public void projectManagement(){
 		Stage stage = new Stage();
