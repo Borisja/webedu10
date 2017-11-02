@@ -1,5 +1,6 @@
 package dao;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.Date;
@@ -328,99 +329,105 @@ public class AdministratorDAO {
 		}
 		
 	}
-	/**
+	/**asd
 	 * Deze methode maakt een csv bestand van de database.
 	 * @author rezanaser
 	 */
-	public void exportCsv()
+	public boolean exportCsv(String fileName, String seperator, String path)
 	{
 		String time = new String();
-		String filename ="factuur.csv";
-	    try {
-	        FileWriter fw = new FileWriter(filename);
-	        String query = "SELECT entry_version_date, entry_version_starttime, entry_version_endtime, entry_version_description, project_version_name, (entry_version_endtime - entry_version_starttime) AS Uren "
-	        		+ "FROM entry_version, project_version "
-	        		+ "WHERE entry_version_project_fk = project_version_project_fk "
-	        		+"AND entry_version_current = true";
-	        Statement stmt = connect.connectToDB().createStatement();
-	        fw.append("Datum");
-            fw.append(';');
-            fw.append("BeginTijd");
-            fw.append(';');
-            fw.append("EindTijd");
-            fw.append(';');
-            fw.append("Project");
-            fw.append(';');
-            fw.append("Werkzaamheden");
-            fw.append(';');
-            fw.append("Uren");
-            fw.append(';');
-            fw.append("Algemeen");
-            fw.append(';');
-            fw.append("Praktijkbeoordelen");
-            fw.append(';');
-            fw.append("EduCourse");
-            fw.append(';');
-            fw.append("Overige");
-            fw.append(';');
-            fw.append("Actorius");
-            fw.append(';');
-            fw.append("Totaal");
-            fw.append(';');
-            fw.append("Check");
-            fw.append('\n');
-	        ResultSet rs = stmt.executeQuery(query);
-	        while (rs.next()) {
-	            fw.append(rs.getString(1));
-	            fw.append(';');
-	            fw.append(rs.getString(2).substring(0, 5));
-	            fw.append(';');
-	            fw.append(rs.getString(3).substring(0, 5));
-	            fw.append(';');
-	            fw.append(rs.getString(5));
-	            fw.append(';');
-	            fw.append(rs.getString(4));
-	            fw.append(';');
-	            fw.append(rs.getString(6).substring(0, 5));
-	            fw.append(';');
-	            if(rs.getString(5).equals("Algemeen"))
+		File saveFile = new File(path,fileName+".csv");
+		boolean success = true;
+		if(success) {
+		    try {
+		        FileWriter fw = new FileWriter(saveFile);
+		        String query = "SELECT entry_version_date, entry_version_starttime, entry_version_endtime, entry_version_description, project_version_name, (entry_version_endtime - entry_version_starttime) AS Uren "
+		        		+ "FROM entry_version, project_version "
+		        		+ "WHERE entry_version_project_fk = project_version_project_fk "
+		        		+"AND entry_version_current = true";
+		        Statement stmt = connect.connectToDB().createStatement();
+		        fw.append("Datum");
+	            fw.append(seperator);
+	            fw.append("BeginTijd");
+	            fw.append(seperator);
+	            fw.append("EindTijd");
+	            fw.append(seperator);
+	            fw.append("Project");
+	            fw.append(seperator);
+	            fw.append("Werkzaamheden");
+	            fw.append(seperator);
+	            fw.append("Uren");
+	            fw.append(seperator);
+	            fw.append("Algemeen");
+	            fw.append(seperator);
+	            fw.append("Praktijkbeoordelen");
+	            fw.append(seperator);
+	            fw.append("EduCourse");
+	            fw.append(seperator);
+	            fw.append("Overige");
+	            fw.append(seperator);
+	            fw.append("Actorius");
+	            fw.append(seperator);
+	            fw.append("Totaal");
+	            fw.append(seperator);
+	            fw.append("Check");
+	            fw.append('\n');
+		        ResultSet rs = stmt.executeQuery(query);
+		        while (rs.next()) {
+		            fw.append(rs.getString(1));
+		            fw.append(seperator);
+		            fw.append(rs.getString(2).substring(0, 5));
+		            fw.append(seperator);
+		            fw.append(rs.getString(3).substring(0, 5));
+		            fw.append(seperator);
+		            fw.append(rs.getString(5));
+		            fw.append(seperator);
+		            fw.append(rs.getString(4));
+		            fw.append(seperator);
+		            fw.append(rs.getString(6).substring(0, 5));
+		            fw.append(seperator);
+		            if(rs.getString(5).equals("Algemeen"))
+		            	{
+		            		fw.append(rs.getString(6).substring(0, 5));
+		            	};
+		            if(rs.getString(5).equals("Praktijkbeoordelen"))
+		            	{
+		            		fw.append(seperator);
+		            		fw.append(rs.getString(6).substring(0, 5));
+		            	}
+		            if(rs.getString(5).equals("EduCourse"))
 	            	{
-	            		fw.append(rs.getString(6).substring(0, 5));
-	            	};
-	            if(rs.getString(5).equals("Praktijkbeoordelen"))
-	            	{
-	            		fw.append(';');
+		            	fw.append(seperator);
+		            	fw.append(seperator);
 	            		fw.append(rs.getString(6).substring(0, 5));
 	            	}
-	            if(rs.getString(5).equals("EduCourse"))
-            	{
-	            	fw.append(';');
-	            	fw.append(';');
-            		fw.append(rs.getString(6).substring(0, 5));
-            	}
-	            if(rs.getString(5).equals("Overige"))
-            	{
-	            	fw.append(';');
-	            	fw.append(';');
-	            	fw.append(';');
-            		fw.append(rs.getString(6).substring(0, 5));
-            	}
-	            if(rs.getString(5).equals("Actorius"))
-            	{
-	            	fw.append(';');
-	            	fw.append(';');
-	            	fw.append(';');
-	            	fw.append(';');
-            		fw.append(rs.getString(6).substring(0, 5));
-            	}
-	            fw.append('\n');
-	           }
-	        fw.flush();
-	        fw.close();
-	        System.out.println("CSV File is created successfully.");
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    }
+		            if(rs.getString(5).equals("Overige"))
+	            	{
+		            	fw.append(seperator);
+		            	fw.append(seperator);
+		            	fw.append(seperator);
+	            		fw.append(rs.getString(6).substring(0, 5));
+	            	}
+		            if(rs.getString(5).equals("Actorius"))
+	            	{
+		            	fw.append(seperator);
+		            	fw.append(seperator);
+		            	fw.append(seperator);
+		            	fw.append(seperator);
+	            		fw.append(rs.getString(6).substring(0, 5));
+	            	}
+		            fw.append('\n');
+		           }
+		        fw.flush();
+		        fw.close();
+		        System.out.println(this.getClass().toString()+": CSV File is created successfully.");
+		    } catch (Exception e) {
+		        e.printStackTrace();
+		    }
+		    return true;
+		}else {
+			return false;
+		}
 	}
 	
 }

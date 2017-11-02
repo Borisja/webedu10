@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="798.0" prefWidth="1024.0" stylesheets="@style.css" visible="false" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ApprovalController">
+   <children>
+      <Button fx:id="sluitKnop" layoutX="21.0" layoutY="717.0" mnemonicParsing="false" onAction="#closeApprovalMenu" prefHeight="27.0" prefWidth="77.0" text="Sluiten" />
+      <TableView fx:id="tableViewToBeApproved" layoutX="14.0" layoutY="14.0" prefHeight="609.0" prefWidth="728.0">
+        <columns>
+          <TableColumn fx:id="iId" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="iDescription" prefWidth="99.0" text="Description" />
+            <TableColumn fx:id="iStartTime" prefWidth="84.0" text="StartTime" />
+            <TableColumn fx:id="iEndTime" prefWidth="65.0" text="EndTime" />
+        </columns>
+      </TableView>
+      <Button fx:id="approve" layoutX="672.0" layoutY="636.0" mnemonicParsing="false" onAction="#approveSelectedHour" text="Approve" />
+      <Button fx:id="reject" layoutX="603.0" layoutY="636.0" mnemonicParsing="false" onAction="#rejectSelectedHour" text="Reject" />
+      <Label fx:id="notSelected" layoutX="457.0" layoutY="246.0" prefHeight="27.0" prefWidth="124.0" />
+      <Button fx:id="refresh" layoutX="541.0" layoutY="636.0" mnemonicParsing="false" onAction="#refreshTable" prefHeight="13.0" prefWidth="27.0" style="-fx-background-image: url('/view/images/refresh.png'); -fx-background-repeat: no-repeat; -fx-background-size: 25 25;" />
+      <TableView fx:id="tableViewAllEntries" layoutX="757.0" layoutY="14.0" prefHeight="609.0" prefWidth="211.0">
+        <columns>
+          <TableColumn fx:id="idEntry" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="entryStatus" prefWidth="75.0" text="Status" />
+        </columns>
+      </TableView>
+   </children>
+</Pane>
