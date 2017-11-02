@@ -1,4 +1,4 @@
-package view.home;
+package controller;
 
 import java.io.IOException;
 
@@ -7,7 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import view.LoginView;
 /**
  * Deze klasse is de controller van HomeView
  * @author rezanaser
