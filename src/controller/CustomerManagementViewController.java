@@ -42,11 +42,19 @@ public class CustomerManagementViewController implements Initializable{
 	@FXML TextField customerNewName;
 	@FXML TextField customerNewDescription;
 	@FXML Button changeCustomer;
+	private @FXML Button add;
+	private @FXML Button remove;
+	private @FXML Button modify;
 	
 	private ObservableList<CustomerModel> allCustomers = FXCollections.observableArrayList(); 
 	private CustomerDAO customerDAO = new CustomerDAO();
 
-	
+	public void disableButtons()
+	{
+		this.add.setDisable(true);
+		this.remove.setDisable(true);
+		this.modify.setDisable(true);
+	}
 	/**
 	 * Wanneer deze methode voegt een nieuwe klant toe
 	 * @author rezanaser
