@@ -1,8 +1,13 @@
 package controller;
 
+import java.io.File;
 import java.io.IOException;
 
+import javafx.application.Application;
+import javafx.application.HostServices;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
@@ -12,9 +17,20 @@ import javafx.stage.Stage;
  * @author rezanaser
  *
  */
-public class homeController {
+public class homeController extends Application{
 	@FXML Button homeButton;
 	private Stage primaryStage;
+	
+	
+	public void showManual() throws IOException{
+		Stage manualStage = new Stage();
+		FXMLLoader approveManagementLoader = new FXMLLoader(getClass().getResource("/view/Manual.fxml"));			//get xml file
+	    Pane approvalview = approveManagementLoader.load();
+        Scene scene = new Scene(approvalview);
+        manualStage.setScene(scene);
+        manualStage.show();
+        
+	}
 	
 	/**
 	 * Deze methode wordt aangeropen door de gebruikerViewController en geeft een string van gebruikersnaam mee 
@@ -49,6 +65,12 @@ public class homeController {
 	{
 		this.primaryStage.close();
 		new LoginView().show_login_view();
+	}
+
+	@Override
+	public void start(Stage arg0) throws Exception {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
