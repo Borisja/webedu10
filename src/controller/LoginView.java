@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 import java.text.ParseException;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -10,9 +11,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.application.Platform;
+import java.lang.Runnable;
 
 public class LoginView {
 	/**
@@ -24,6 +29,29 @@ public class LoginView {
 	@FXML private PasswordField passwordField;
 	private Stage loginStage;
 	@FXML Pane pane;
+	
+	@FXML private void initialize() {
+		pane.addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
+	        @Override
+	        public void handle(KeyEvent keyEvent) {
+	            if (keyEvent.getCode() == KeyCode.ENTER) {
+	                try {
+	                	keyEvent.consume();
+						login();
+					} catch (ParseException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+	            }
+	        }
+	    });
+		Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+            	usernameDescription.requestFocus();
+            }
+        });
+	}
 	
 	public void login() throws ParseException
 	{
