@@ -69,15 +69,15 @@ public class SprintModel {
 	public void setProjectFK(int projectFK) 
 	{
 		this.projectFK = projectFK;
+		//Dit was het probleem bij het opstarten waar de comboboxen van entry toevoegen niet gevuld werden
 		
-		
-		for(int counter = 0; counter < projectDAO.project_list().size(); counter++)
-		{
-			if(projectFK == projectDAO.project_list().get(counter).getProjectId())
-			{
-				this.setProjectName(projectDAO.project_list().get(counter).getProjectName());
-			};
-		}
+//		for(int counter = 0; counter < projectDAO.project_list().size(); counter++)
+//		{
+//			if(projectFK == projectDAO.project_list().get(counter).getProjectId())
+//			{
+//				this.setProjectName(projectDAO.project_list().get(counter).getProjectName());
+//			};
+//		}
 	}
 	public String getProjectName() {
 		return projectName;

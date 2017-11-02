@@ -93,6 +93,8 @@ public class AddEntryViewController implements Initializable {
 		this.sprintCombo.setButtonCell(factory.call(null));
 		
 		this.sprintCombo.setOnAction(e-> {
+			this.fillUserStoriesBox(sprintCombo.getSelectionModel().getSelectedItem().getSprintId());
+
 		});
 	}
 	
@@ -164,7 +166,6 @@ public class AddEntryViewController implements Initializable {
 		
 		this.projectCombo.setOnAction(e-> {
 			this.fillSprintsBox(projectCombo.getSelectionModel().getSelectedItem().getProjectId());
-			this.fillUserStoriesBox(projectCombo.getSelectionModel().getSelectedItem().getProjectId());
 
 		});
 	}
@@ -239,6 +240,7 @@ public class AddEntryViewController implements Initializable {
 	 * @author rezanaser
 	 */
 	public void showView() {
+		this.fillProjectsBox();
 		this.pane.setVisible(true);
 
 	}

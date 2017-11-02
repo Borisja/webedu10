@@ -132,7 +132,7 @@ public class UserStoryManagementViewController implements Initializable
 	{
 		try
 		{
-
+			
 		new UserStoryDAO().addUserStoryToDatabase(addSprintComboBox.getSelectionModel().getSelectedItem().getSprintId(), newUserStoryNameTextField.getText(), newUserStoryDescriptionTextField.getText());
 		refreshTable();
 		clearAllFields();
@@ -161,6 +161,7 @@ public class UserStoryManagementViewController implements Initializable
 		try
 		{		
 			userStoryDAO.modifyUserStory(this.selectedUserStoryID, changeUserStoryNameTextField.getText(), changeSprintComboBox.getSelectionModel().getSelectedItem().getSprintId(), changeUserStoryDescriptionTextField.getText());
+			refreshTable();
 			closePopup();
 		}
 			
@@ -179,6 +180,7 @@ public class UserStoryManagementViewController implements Initializable
 	 */
 	public void showPopUpAdd() 
 	{
+		refreshTable();
 		popUpAdd.setVisible(true);
 	}
 	
@@ -200,6 +202,7 @@ public class UserStoryManagementViewController implements Initializable
 	 */
 	public void refreshTable()
 	{
+		this.fillSprintBox();//Vult customer box in met klantnamen
 		userStoryTableView.getItems().clear();
 		userStoryID.setCellValueFactory(new PropertyValueFactory<UserStoryModel, Integer>("userStoryId"));
 		userStoryName.setCellValueFactory(new PropertyValueFactory<UserStoryModel, String>("userStoryName"));
@@ -216,6 +219,7 @@ public class UserStoryManagementViewController implements Initializable
 	
 	public void showView()
 	{
+		refreshTable();
 		this.pane.setVisible(true);
 	}
 	

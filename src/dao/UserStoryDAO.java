@@ -140,7 +140,7 @@ public class UserStoryDAO {
 					userStorys_statement.close();
 				}
 				catch(Exception e) {
-					e.printStackTrace();
+					System.out.println(e.getMessage());
 				}
 				return userStory_alist;
 			  }
@@ -180,10 +180,10 @@ public class UserStoryDAO {
 					}
 				} catch (SQLException e) {
 
-					e.printStackTrace();
+					System.out.println(e.getMessage());
 				} catch (Exception e) {
 
-					e.printStackTrace();
+					System.out.println(e.getMessage());
 				} 
 				return userStoryList;
 			}
@@ -213,9 +213,9 @@ public class UserStoryDAO {
 						userStory_list.add(userStoryModelContainer);
 					}
 				} catch (SQLException e) {
-					e.printStackTrace();
+					System.out.println(e.getMessage());
 				} catch (Exception e) {
-					e.printStackTrace();
+					System.out.println(e.getMessage());
 				}
 				return userStory_list;
 			}
@@ -245,10 +245,10 @@ public class UserStoryDAO {
 					}
 				} catch (SQLException e) {
 
-					e.printStackTrace();
+					System.out.println(e.getMessage());
 				} catch (Exception e) {
 
-					e.printStackTrace();
+					System.out.println(e.getMessage());
 				}
 				return userStory_list;
 			}
@@ -283,7 +283,7 @@ public class UserStoryDAO {
 					
 					} catch (Exception e) 
 					{
-						e.printStackTrace();
+						System.out.println(e.getMessage());
 					}
 						return generatedID;
 				}
@@ -392,7 +392,7 @@ public class UserStoryDAO {
 			
 			public void modifyUserStory(int userStoryID, String userStoryName, int sprintID, String userStoryDescription)
 			{
-				String changePreviousVersion = "UPDATE userstory_version SET userstory_version_current = 'n' "
+				String changePreviousVersion = "UPDATE userstory_version SET userstory_version_current = false "
 						+ "WHERE userstory_version_userstory_fk = ? AND userstory_version_current= true";
 				
 				String change_userStory = "INSERT INTO userstory_version(userstory_version_userstory_fk, userstory_version_name, userstory_version_description, userstory_version_current)"
@@ -412,7 +412,7 @@ public class UserStoryDAO {
 					
 					changeUserStory.close();
 				} catch (Exception e) {
-					e.getMessage();
+					System.out.println(e.getMessage());
 				}
 				
 				
@@ -430,7 +430,7 @@ public class UserStoryDAO {
 					lockStatement.executeUpdate();
 				} catch (Exception e) 
 				{
-				e.printStackTrace();
+					System.out.println(e.getMessage());
 				}
 			}
 			

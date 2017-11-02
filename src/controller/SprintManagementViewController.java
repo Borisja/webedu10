@@ -190,6 +190,7 @@ public class SprintManagementViewController implements Initializable
 	 */
 	public void showPopUpAdd() 
 	{
+		refreshTable();
 		popUpAdd.setVisible(true);
 	}
 	
@@ -211,6 +212,7 @@ public class SprintManagementViewController implements Initializable
 	 */
 	public void refreshTable()
 	{
+		this.fillProjectBox();//Vult customer box in met klantnamen
 		sprintTableView.getItems().clear();
 		sprintID.setCellValueFactory(new PropertyValueFactory<SprintModel, Integer>("sprintId"));
 		sprintName.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("sprintName"));
@@ -229,6 +231,7 @@ public class SprintManagementViewController implements Initializable
 	
 	public void showView()
 	{
+		refreshTable();
 		this.pane.setVisible(true);
 	}
 	
@@ -265,7 +268,7 @@ public class SprintManagementViewController implements Initializable
 		sprintEndDate.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("sprintEndDate"));
 		projectName.setCellValueFactory(new PropertyValueFactory<SprintModel, String>("projectName"));
 		
-		allSprints.addAll(sprintDAO.sprint_list());
+		allSprints.addAll(sprintDAO.sprint_list()); //HET PROBLEEM IS HIER
 		sprintTableView.setItems(allSprints);
 	}
 	

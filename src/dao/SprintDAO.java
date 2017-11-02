@@ -89,7 +89,7 @@ public class SprintDAO {
 		String projects_sprints_sql = "SELECT *  FROM sprint_version sv INNER JOIN project_version pv " +
 				"ON sv.sprint_version_project_fk=pv.project_version_project_fk INNER JOIN project p " +
 				"ON p.project_id=pv.project_version_project_fk WHERE pv.project_version_project_fk= ?" +
-				"AND sv.sprint_version_current=TRUE AND project_isdeleted=FALSE";
+				"AND sv.sprint_version_current=TRUE";
 				//+ "AND entry_version_current = 'y' ";
 		try {
 			PreparedStatement sprints_statement = connect.connectToDB().prepareStatement(projects_sprints_sql);
@@ -121,9 +121,11 @@ public class SprintDAO {
 	public ArrayList<SprintModel> sprint_list(){
 		ArrayList<SprintModel> sprintList = new ArrayList<SprintModel>();
 		String sprintListSQL = "SELECT * FROM sprint_version "
-				+ "INNER JOIN sprint ON (sprint_id = sprint_version_sprint_fk)"
+				+ "INNER JOIN sprint ON (sprint_id = sprint_version_sprint_fk) "
+				+ "INNER JOIN project_version ON (sprint_version_project_fk = project_version_project_fk) "
 				+ "AND sprint_version_current = true "
-				+ "ORDER BY sprint_version.sprint_version_sprint_fk ASC";
+                + "AND project_version_current = true ";
+
 		try {
 			PreparedStatement sprint_statement = connect.connectToDB().prepareStatement(sprintListSQL);
 			ResultSet sprint_set = sprint_statement.executeQuery();
@@ -135,9 +137,10 @@ public class SprintDAO {
 				sprintModelContainer.setSprintIsDeleted(sprint_set.getBoolean("sprint_isdeleted"));
 				sprintModelContainer.setSprintStartDate(sprint_set.getString("sprint_version_startdate"));
 				sprintModelContainer.setSprintEndDate(sprint_set.getString("sprint_version_enddate"));
-				sprintModelContainer.setProjectFK(sprint_set.getInt("sprint_version_project_fk"));
+				sprintModelContainer.setProjectName(sprint_set.getString("project_version_name"));
 				sprintList.add(sprintModelContainer);
 			}
+			sprint_statement.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -332,7 +335,7 @@ public class SprintDAO {
 	
 	public void modifySprint(int sprintID, String sprintName, int projectID, String sprintDescription, Date sprintStartDate, Date sprintEndDate)
 	{
-		String changePreviousVersion = "UPDATE sprint_version SET sprint_version_current = 'n' "
+		String changePreviousVersion = "UPDATE sprint_version SET sprint_version_current = false "
 				+ "WHERE sprint_version_sprint_fk = ? AND sprint_version_current= true";
 		String change_sprint = "INSERT INTO sprint_version(sprint_version_sprint_fk, sprint_version_name, sprint_version_project_fk, sprint_version_description, sprint_version_startdate, sprint_version_enddate, sprint_version_current)"
 				+ "VALUES(?, ?, ?, ?, ?, ?, true)";

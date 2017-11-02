@@ -30,7 +30,7 @@ public class ProjectDAO {
 		String project_list_sql = "SELECT * FROM project_version "
 				+ "INNER JOIN project ON (project_id = project_version_project_fk)"
 				+ "AND project_version_current = true "
-				+ "ORDER BY project_version.project_version_name ASC";
+				+ "AND project_isdeleted = false";
 		try {
 			PreparedStatement project_statement = connect.connectToDB().prepareStatement(project_list_sql);
 			ResultSet project_set = project_statement.executeQuery();
@@ -42,6 +42,7 @@ public class ProjectDAO {
 				pm_container.setProjectIsDeleted(project_set.getBoolean("project_isdeleted"));
 				proj_list.add(pm_container);
 			}
+			project_statement.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

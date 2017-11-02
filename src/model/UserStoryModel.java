@@ -42,14 +42,13 @@ public class UserStoryModel {
 	public void setSprintFK(int sprintFK) {
 		this.sprintFK = sprintFK;
 		
-		for(int counter = 0; counter < sprintDAO.sprint_list().size(); counter++)
-		{
-			if(sprintFK == sprintDAO.sprint_list().get(counter).getSprintId())
-			{
-				this.setSprintName(sprintDAO.sprint_list().get(counter).getSprintName());
-				System.out.println("sprintDAO.sprint_list().get(counter).getSprintName()");
-			};
-		}
+//		for(int counter = 0; counter < sprintDAO.sprint_list().size(); counter++)
+//		{
+//			if(sprintFK == sprintDAO.sprint_list().get(counter).getSprintId())
+//			{
+//				this.setSprintName(sprintDAO.sprint_list().get(counter).getSprintName());
+//			};
+//		}
 		
 	}
 
