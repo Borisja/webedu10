@@ -26,8 +26,8 @@ public class UserStoryDAO {
 	public ArrayList<UserStoryModel> userstoriesProjects(int p_id){
 		ArrayList<UserStoryModel> userstory_alist = new ArrayList<UserStoryModel>();
 		String projects_userstories_sql = "SELECT *  "
-				+ "FROM userstory_version "
-				+ "WHERE userstory_version_project_fk = ? "
+				+ "FROM userstory_sprint, userstory_version "
+				+ "WHERE userstory_sprint_sprint_fk = ? "
 				+ "AND userstory_version_current = true";
 				//+ "AND entry_version_current = 'y' ";
 		try {
