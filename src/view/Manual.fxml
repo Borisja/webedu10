@@ -15,7 +15,7 @@
                <children>
                   <ImageView fitHeight="5300.0" fitWidth="1500.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="7.0">
                      <image>
-                        <Image url="@../../../../Desktop/merge_from_ofoct%20(1).jpg" />
+                        <Image url="@images/merge_from_ofoct%20(1).jpg" />
                      </image>
                      <viewport>
                         <Rectangle2D minX="1000.0" minY="8000.0" width="2000.0" />
