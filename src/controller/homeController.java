@@ -16,6 +16,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import model.EmployeeModel;
 /**
  * Deze klasse is de controller van HomeView
  * @author rezanaser
@@ -24,7 +25,7 @@ import javafx.stage.Stage;
 public class homeController extends Application{
 	@FXML Button homeButton;
 	private Stage primaryStage;
-	
+	private EmployeeModel user;
 	
 	public void showManual() throws IOException{
 		Stage manualStage = new Stage();
@@ -34,6 +35,10 @@ public class homeController extends Application{
         manualStage.setScene(scene);
         manualStage.show();
         
+	}
+	
+	public void setUser(EmployeeModel employeeModel){
+		this.user=employeeModel;
 	}
 	
 	/**
@@ -67,6 +72,7 @@ public class homeController extends Application{
 	 */
 	public void backToHome() throws IOException
 	{
+		System.out.println(this.getClass().toString()+": uitloggen werkt");
 		Alert areYouSure = new Alert(AlertType.CONFIRMATION);
 		areYouSure.setContentText("Weet u zeker dat u wilt uitloggen? ");
 		Optional<ButtonType> result = areYouSure.showAndWait();
