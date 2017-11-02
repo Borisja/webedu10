@@ -224,11 +224,19 @@ public class UserStoryManagementViewController implements Initializable
 		this.pane.setVisible(false);
 	}
 	
+	/**
+	 * Deze methode sluit de popup die wordt gebruikt om user stories te veranderen.
+	 * @author Jeroen Zandvliet
+	 */
 	public void closePopup()
 	{
 		this.popUp.setVisible(false);
 	}
 	
+	/**
+	 * Deze methode sluit de popup die wordt gebruikt om user stories toe te voegen
+	 * @author Jeroen Zandvliet
+	 */
 	public void closePopupAdd()
 	{
 		this.popUpAdd.setVisible(false);

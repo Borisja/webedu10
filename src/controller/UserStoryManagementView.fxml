@@ -8,7 +8,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="798.0" prefWidth="1024.0" stylesheets="@../view/style.css" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserStoryManagementViewController">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="798.0" prefWidth="1024.0" stylesheets="@../view/style.css" visible="false" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserStoryManagementViewController">
    <children>
 
       <TableView fx:id="userStoryTableView" layoutX="32.0" layoutY="22.0" prefHeight="659.0" prefWidth="696.0">
@@ -24,12 +24,12 @@
       <Button fx:id="deleteUserStoryButton" layoutX="780.0" layoutY="135.0" mnemonicParsing="false" onAction="#removeSelectedUserStory" text="Userstory verwijderen" />
       <Button fx:id="changeUserStoryButton" layoutX="793.0" layoutY="189.0" mnemonicParsing="false" onAction="#showPopUpChange" text="Userstory wijzigen" />
       <Button layoutX="845.0" layoutY="642.0" mnemonicParsing="false" onAction="#closeView" prefHeight="27.0" prefWidth="64.0" text="Sluit" />
-      <Pane fx:id="popUp" layoutX="770.0" layoutY="41.0" prefHeight="374.0" prefWidth="216.0" style="-fx-background-color: e3e4e5;">
+      <Pane fx:id="popUp" layoutX="770.0" layoutY="41.0" prefHeight="374.0" prefWidth="216.0" style="-fx-background-color: e3e4e5;" visible="false">
          <children>
             <Label layoutX="48.0" layoutY="66.0" text="UserStory naam" />
             <Label layoutX="24.0" layoutY="132.0" text="Userstory beschrijving" />
-            <TextField fx:id="changeUserStoryNameTextField" layoutX="-9.0" layoutY="93.0" />
-            <TextField fx:id="changeUserStoryDescriptionTextField" layoutX="-9.0" layoutY="159.0" />
+            <TextField fx:id="changeUserStoryNameTextField" layoutX="7.0" layoutY="93.0" prefHeight="39.0" prefWidth="208.0" />
+            <TextField fx:id="changeUserStoryDescriptionTextField" layoutX="7.0" layoutY="159.0" prefHeight="39.0" prefWidth="208.0" />
             <Button layoutX="64.0" layoutY="274.0" mnemonicParsing="false" onAction="#modifyUserStory" text="Wijzigen" />
             <Button layoutX="55.0" layoutY="321.0" mnemonicParsing="false" onAction="#closePopup" text="Annuleren" />
             <ComboBox fx:id="changeSprintComboBox" layoutX="36.0" layoutY="225.0" prefWidth="150.0" />
