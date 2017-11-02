@@ -2,13 +2,17 @@ package controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Optional;
 
 import javafx.application.Application;
 import javafx.application.HostServices;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -63,8 +67,15 @@ public class homeController extends Application{
 	 */
 	public void backToHome() throws IOException
 	{
-		this.primaryStage.close();
-		new LoginView().show_login_view();
+		Alert areYouSure = new Alert(AlertType.CONFIRMATION);
+		areYouSure.setContentText("Weet u zeker dat u wilt uitloggen? ");
+		Optional<ButtonType> result = areYouSure.showAndWait();
+		if(result.get() == ButtonType.OK)
+		{
+			this.primaryStage.close();
+			new LoginView().show_login_view();
+		}
+	
 	}
 
 	@Override
