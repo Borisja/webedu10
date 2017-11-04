@@ -8,5 +8,6 @@
    <children>
       <Button id="buttons" fx:id="homeButton" layoutX="923.0" layoutY="5.0" mnemonicParsing="false" onAction="#backToHome" prefHeight="42.0" prefWidth="62.0" style="-fx-background-image: url('view/images/loguit.png'); -fx-background-size: 50 40; -fx-background-repeat: no-repeat;" stylesheets="@../style.css" />
       <Label fx:id="userName" layoutX="14.0" layoutY="13.0" prefHeight="25.0" prefWidth="119.0" textFill="WHITE" />
+      <Button id="buttons" layoutX="833.0" layoutY="3.0" mnemonicParsing="false" onAction="#showManual" prefHeight="42.0" prefWidth="62.0" style="-fx-background-image: url('view/images/manual.png'); -fx-background-repeat: no-repeat; -fx-background-size: 50 40;" stylesheets="@style.css" />
    </children>
 </Pane>

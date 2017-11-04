@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="798.0" prefWidth="1024.0" stylesheets="@../view/style.css" visible="false" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserStoryManagementViewController">
+   <children>
+
+      <TableView fx:id="userStoryTableView" layoutX="32.0" layoutY="22.0" prefHeight="659.0" prefWidth="696.0">
+        <columns>
+          <TableColumn fx:id="userStoryID" prefWidth="45.0" text="ID" />
+          <TableColumn fx:id="userStoryName" prefWidth="62.0" text="Naam" />
+            <TableColumn fx:id="userStoryDescription" prefWidth="82.6666259765625" text="Beschrijving" />
+            <TableColumn fx:id="sprintName" prefWidth="64.66668701171875" text="Sprint" />
+            <TableColumn fx:id="userStoryIsDeleted" prefWidth="118.33331298828125" text="Verwijderd" />
+        </columns>
+      </TableView>
+      <Button fx:id="addUserStoryButton" layoutX="783.0" layoutY="74.0" mnemonicParsing="false" onAction="#showPopUpAdd" text="Userstory toevoegen" />
+      <Button fx:id="deleteUserStoryButton" layoutX="780.0" layoutY="135.0" mnemonicParsing="false" onAction="#removeSelectedUserStory" text="Userstory verwijderen" />
+      <Button fx:id="changeUserStoryButton" layoutX="793.0" layoutY="189.0" mnemonicParsing="false" onAction="#showPopUpChange" text="Userstory wijzigen" />
+      <Button layoutX="845.0" layoutY="642.0" mnemonicParsing="false" onAction="#closeView" prefHeight="27.0" prefWidth="64.0" text="Sluit" />
+      <Pane fx:id="popUp" layoutX="770.0" layoutY="41.0" prefHeight="374.0" prefWidth="216.0" style="-fx-background-color: e3e4e5;" visible="false">
+         <children>
+            <Label layoutX="48.0" layoutY="66.0" text="UserStory naam" />
+            <Label layoutX="24.0" layoutY="132.0" text="Userstory beschrijving" />
+            <TextField fx:id="changeUserStoryNameTextField" layoutX="7.0" layoutY="93.0" prefHeight="39.0" prefWidth="208.0" />
+            <TextField fx:id="changeUserStoryDescriptionTextField" layoutX="7.0" layoutY="159.0" prefHeight="39.0" prefWidth="208.0" />
+            <Button layoutX="64.0" layoutY="274.0" mnemonicParsing="false" onAction="#modifyUserStory" text="Wijzigen" />
+            <Button layoutX="55.0" layoutY="321.0" mnemonicParsing="false" onAction="#closePopup" text="Annuleren" />
+            <ComboBox fx:id="changeSprintComboBox" layoutX="36.0" layoutY="225.0" prefWidth="150.0" />
+            <Label layoutX="87.0" layoutY="198.0" text="Sprint" />
+         </children>
+      </Pane>
+      <Pane fx:id="popUpAdd" layoutX="787.0" layoutY="21.0" prefHeight="374.0" prefWidth="216.0" style="-fx-background-color: e3e4e5;" visible="false">
+       <children>
+            <Label layoutX="14.0" layoutY="23.0" text="ProjectToevoegen" />
+            <Label layoutX="58.0" layoutY="80.0" text="Userstory naam" />
+            <Label layoutX="45.0" layoutY="147.0" text="Userstory beschrijving" />
+            <TextField fx:id="newUserStoryNameTextField" layoutX="25.0" layoutY="107.0" />
+            <TextField fx:id="newUserStoryDescriptionTextField" layoutX="25.0" layoutY="174.0" />
+            <Button layoutX="65.0" layoutY="286.0" mnemonicParsing="false" onAction="#addUserStory" text="Toevoegen" />
+            <Button layoutX="68.0" layoutY="321.0" mnemonicParsing="false" onAction="#closePopupAdd" text="Annuleren" />
+            <Label layoutX="83.0" layoutY="215.0" text="Sprint" />
+            <ComboBox fx:id="addSprintComboBox" layoutX="33.0" layoutY="239.0" prefWidth="150.0" />
+         </children>
+      </Pane>
+   </children>
+</Pane>
