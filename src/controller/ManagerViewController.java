@@ -66,6 +66,7 @@ public class ManagerViewController {
 	    administrationController.setEmployeeOverviewController(allEmployeeController);
 	    administrationController.setCustomerManagementController(customerController);
 	    customerController.disableButtons();
+	    approvalController.disableLockUnlock();
 	    
 	    Pane tabPane = (Pane)administrationScreen.getNamespace().get("pane"); 						//get stackPane from fieldView
         tabPane.getChildren().addAll(allEmployeeView, approvalView, customerView);

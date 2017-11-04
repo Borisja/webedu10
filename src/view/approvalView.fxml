@@ -14,18 +14,20 @@
           <TableColumn fx:id="iId" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="iDescription" prefWidth="99.0" text="Description" />
             <TableColumn fx:id="iStartTime" prefWidth="84.0" text="StartTime" />
-            <TableColumn fx:id="iEndTime" prefWidth="65.0" text="EndTime" />
+            <TableColumn id="entrIslocked" fx:id="iEndTime" prefWidth="65.0" text="EndTime" />
+            <TableColumn fx:id="entrIslocked" prefWidth="151.0" text="IsLocked?" />
         </columns>
       </TableView>
       <Button fx:id="approve" layoutX="672.0" layoutY="636.0" mnemonicParsing="false" onAction="#approveSelectedHour" text="Approve" />
       <Button fx:id="reject" layoutX="603.0" layoutY="636.0" mnemonicParsing="false" onAction="#rejectSelectedHour" text="Reject" />
       <Label fx:id="notSelected" layoutX="457.0" layoutY="246.0" prefHeight="27.0" prefWidth="124.0" />
-      <Button fx:id="refresh" layoutX="541.0" layoutY="636.0" mnemonicParsing="false" onAction="#refreshTable" prefHeight="13.0" prefWidth="27.0" style="-fx-background-image: url('/view/images/refresh.png'); -fx-background-repeat: no-repeat; -fx-background-size: 25 25;" />
       <TableView fx:id="tableViewAllEntries" layoutX="757.0" layoutY="14.0" prefHeight="609.0" prefWidth="211.0">
         <columns>
           <TableColumn fx:id="idEntry" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="entryStatus" prefWidth="75.0" text="Status" />
         </columns>
       </TableView>
+      <Button fx:id="lock" layoutX="519.0" layoutY="636.0" mnemonicParsing="false" onAction="#lockSelectedEntry" text="Locken" />
+      <Button fx:id="unlock" layoutX="419.0" layoutY="636.0" mnemonicParsing="false" onAction="#unlockSelectedEntry" text="Unlocken" />
    </children>
 </Pane>

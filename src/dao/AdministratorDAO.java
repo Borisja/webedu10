@@ -194,6 +194,43 @@ public class AdministratorDAO {
 			
 	}
 	/**
+	 * Deze methode lockt de geselecteerde entry
+	 * @param id >entry id meegekregen van approveController
+	 * @author rezanaser
+	 */
+	public void lockHours(int id)
+	{
+		String employee_entry_sql = "UPDATE entry SET entry_islocked = true WHERE entry_id = ? ";
+			try {
+				PreparedStatement entries_statement;
+				entries_statement = connect.connectToDB().prepareStatement(employee_entry_sql);
+				entries_statement.setInt(1, id);
+				entries_statement.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+	}
+	/**
+	 * Deze methode lockt de geselecteerde entry
+	 * 
+	 * @param id>entry id meegekregen van approveController
+	 * @author rezanaser
+	 */
+	public void unlockHours(int id)
+	{
+		String employee_entry_sql = "UPDATE entry SET entry_islocked = false WHERE entry_id = ? ";
+			try {
+				PreparedStatement entries_statement;
+				entries_statement = connect.connectToDB().prepareStatement(employee_entry_sql);
+				entries_statement.setInt(1, id);
+				entries_statement.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+	}
+	/**
 	 * Deze methode voegt een nieuwe entry toe
 	 * @param entryStartTime 
 	 */

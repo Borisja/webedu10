@@ -10,6 +10,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -24,6 +26,8 @@ public class ApprovalController implements Initializable{
 	@FXML Button approveButton;
 	@FXML Button rejectButton;
 	@FXML Button refreshButton;
+	@FXML Button lock;
+	@FXML Button unlock;
 	@FXML TableView<EntryModel> tableViewToBeApproved;
 	@FXML TableColumn<EntryModel, Integer> iId;
 	@FXML TableColumn<EntryModel, String> iDescription;
@@ -31,6 +35,7 @@ public class ApprovalController implements Initializable{
 	@FXML TableView<EntryModel> tableViewAllEntries;
 	@FXML TableColumn<EntryModel, Integer> idEntry;
 	@FXML TableColumn<EntryModel, String> entryStatus;
+	@FXML TableColumn<EntryModel, String> entrIslocked;
 	
 	
 	@FXML TableColumn<EntryModel, String> iStartTime;
@@ -53,6 +58,57 @@ public class ApprovalController implements Initializable{
 			EntryModel selected_item = tableViewToBeApproved.getSelectionModel().getSelectedItem();
 			adminDao.approveHours(selected_item.getEntryId());
 			refreshTable();
+			Alert showInfo  = new Alert(AlertType.INFORMATION);
+			showInfo.setContentText("Entry is goedgekeurd");
+			showInfo.showAndWait();
+		}catch(NullPointerException e)
+		{
+			notSelected.setText("Select an hour");
+		}
+	}
+	/**
+	 * Deze methode lockt de geselcteerde uur 
+	 * @author rezanaser
+	 */
+	public void lockSelectedEntry()
+	{
+		try{
+			EntryModel selected_item = tableViewToBeApproved.getSelectionModel().getSelectedItem();
+			adminDao.lockHours(selected_item.getEntryId());
+			refreshTable();
+			Alert showInfo  = new Alert(AlertType.INFORMATION);
+			
+			showInfo.setContentText("Entry is gelockt");
+			showInfo.showAndWait();
+		}catch(NullPointerException e)
+		{
+			notSelected.setText("Select an hour");
+		}
+	}
+	/**
+	 * Deze methode disable je de lock unlock knoppen als je geen administrator ben
+	 * @author rezanaser
+	 */
+	public void disableLockUnlock()
+	{
+		this.lock.setDisable(true);
+		this.unlock.setDisable(true);
+	}
+	
+	/**
+	 * Deze methode unlockt de geselcteerde uur 
+	 * @author rezanaser
+	 */
+	public void unlockSelectedEntry()
+	{
+		try{
+			EntryModel selected_item = tableViewToBeApproved.getSelectionModel().getSelectedItem();
+			adminDao.unlockHours(selected_item.getEntryId());
+			refreshTable();
+			Alert showInfo  = new Alert(AlertType.INFORMATION);
+			
+			showInfo.setContentText("Entry is unlockt");
+			showInfo.showAndWait();
 		}catch(NullPointerException e)
 		{
 			notSelected.setText("Select an hour");
@@ -69,6 +125,10 @@ public class ApprovalController implements Initializable{
 			EntryModel selected_item = tableViewToBeApproved.getSelectionModel().getSelectedItem();
 			adminDao.rejectHours(selected_item.getEntryId());
 			refreshTable();
+			Alert showInfo  = new Alert(AlertType.INFORMATION);
+			
+			showInfo.setContentText("Entry is afgekeurd");
+			showInfo.showAndWait();
 		}catch(NullPointerException e)
 		{
 			notSelected.setText("Select an hour");
@@ -108,9 +168,11 @@ public class ApprovalController implements Initializable{
 		iDescription.setCellValueFactory(new PropertyValueFactory<EntryModel, String>("entryDescription"));
 		iStartTime.setCellValueFactory(new PropertyValueFactory<EntryModel, String>("entryStartTime"));
 		iEndTime.setCellValueFactory(new PropertyValueFactory<EntryModel, String>("entryEndTime"));
+		entrIslocked.setCellValueFactory(new PropertyValueFactory<EntryModel, String>("entryIsLocked"));
 		
 		idEntry.setCellValueFactory(new PropertyValueFactory<EntryModel, Integer>("entryId"));
 		entryStatus.setCellValueFactory(new PropertyValueFactory<EntryModel, String>("entryStatus"));
+		
 		allData.addAll(adminDao.entry_all_list());
 		dataToBeApproved.addAll(adminDao.entry_queued_list(0));
 		tableViewToBeApproved.setItems(dataToBeApproved);
