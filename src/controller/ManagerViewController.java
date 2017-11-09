@@ -25,7 +25,6 @@ public class ManagerViewController {
 	@FXML private Button approvalButton;
 	@FXML private Pane pane;
 	private ApprovalController approvalController;
-	private ManualController manualController;
 	private ExportController export = new ExportController();
 	private Label name;
 	private CustomerManagementViewController customerController;
@@ -62,7 +61,6 @@ public class ManagerViewController {
 	    CustomerManagementViewController customerController = customerLoader.getController();
 
 	    administrationController.setApprovalController(approvalController);
-	    administrationController.setManualController(manualController);
 	    administrationController.setEmployeeOverviewController(allEmployeeController);
 	    administrationController.setCustomerManagementController(customerController);
 	    customerController.disableButtons();
@@ -91,14 +89,7 @@ public class ManagerViewController {
 	{
 		this.approvalController = approvalController;
 	}
-	public void setManualController(ManualController manualController)
-	{
-		this.manualController = manualController;
-	}
-	public void showManual()
-	{
-		this.manualController.openHandleidingMenu();
-	}
+
 	public void toonGoedkeurenMenu()
 	{
 		this.approvalController.openApprovalMenu();

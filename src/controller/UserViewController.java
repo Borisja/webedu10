@@ -14,7 +14,8 @@ import model.EmployeeModel;
 
 
 /**
- * This class loads fxml files of the employeesceen and initializes their respective controllers.
+ * Deze klasse laad alle fxml files van de gebruikersview en initialiseert de bijbehorende controllers
+ * Fardin Samandar
  */
 
 public class UserViewController {
@@ -27,6 +28,8 @@ public class UserViewController {
 	private UserInformationController userInformationController;
 	private EmployeeModel user;
 	private CalenderView calenderView;
+	
+
 	
 	public void startGebruiker(EmployeeModel em) throws IOException
 	{

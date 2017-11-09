@@ -295,7 +295,12 @@ public class SprintDAO {
 		
 	}
 	
-	
+	/**
+	 * Deze methode geeft sprints van de bijbehorende gebruiker
+	 * Fardin Samandar
+	 * @param e_id
+	 * @return
+	 */
 
 
 	public ArrayList <SprintModel> toonUserSprint (int e_id){

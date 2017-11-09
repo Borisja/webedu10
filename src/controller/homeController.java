@@ -27,6 +27,12 @@ public class homeController extends Application{
 	private Stage primaryStage;
 	private EmployeeModel user;
 	
+	
+	/**
+	 * Deze methode toont de handleiding 
+	 * Fardin Samandar
+	 * @throws IOException
+	 */
 	public void showManual() throws IOException{
 		Stage manualStage = new Stage();
 		FXMLLoader approveManagementLoader = new FXMLLoader(getClass().getResource("/view/Manual.fxml"));			//get xml file
